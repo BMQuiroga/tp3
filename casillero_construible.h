@@ -13,6 +13,7 @@ class CasilleroConstruible : public Casillero{//Terreno
 
 private:
     Edificio edificio;
+    int jugador;
     
 public:
     //Pre: Recibe el objeto edificio
@@ -41,7 +42,11 @@ public:
 
     //Pre: -
     //Post: - 
-    void poner_material(std::string material);
+    void poner_material(Material material);
+
+    int devolver_jugador();
+
+    void cambiar_jugador(int numero);
 };
 
 

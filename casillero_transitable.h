@@ -7,12 +7,12 @@
 class CasilleroTransitable : public Casillero{//Camino
 
 private:
-    std::string material;
+    Material material;
 
 public:
     //Pre:Recibe el nombre del material
     //Post:Asigna al atributo material el que le pasan
-    void poner_material(std::string material);//Se usa en la lluvia de materiales
+    void poner_material(Material material);//Se usa en la lluvia de materiales
 
     //Pre:
     //Post: Devuelve true si hay material
@@ -38,6 +38,10 @@ public:
     //Pre:
     //Post: No hace nada
     void demoler(ListaMateriales materiales);
+
+    int devolver_jugador();
+
+    void cambiar_jugador(int numero);
 };
 
 #endif 

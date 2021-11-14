@@ -40,6 +40,8 @@ public:
     void reescribir_materiales();
 
     NodoMateriales* obtener_nodo(int pos);
+
+    int devolver_cantidad();
 private:
     
     //PRE: -

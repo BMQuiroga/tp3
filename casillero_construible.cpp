@@ -16,6 +16,7 @@ void CasilleroConstruible::construir(Edificio edificio){
 CasilleroConstruible::CasilleroConstruible(){
     this->edificio = Edificio();
     this->tipo = 'T';
+    this->jugador=0;
 }
 
 
@@ -56,9 +57,17 @@ bool CasilleroConstruible::tiene_material_o_edificio(){
     return (this->edificio.devolver_maximos_permitidos() != 0);
 }
 
-void CasilleroConstruible::poner_material(std::string material){
+void CasilleroConstruible::poner_material(Material material){
     
 }
 
 //Casillero::~Casillero(){
 //}
+
+void CasilleroConstruible::cambiar_jugador(int numero){
+    this->jugador=numero;
+}
+
+int CasilleroConstruible::devolver_jugador(){
+    return this->jugador;
+}

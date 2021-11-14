@@ -14,7 +14,7 @@ std::string CasilleroInaccesible::devolver_material_o_edificio(){
     return "0";
 }
 
-void CasilleroInaccesible::poner_material(std::string material){
+void CasilleroInaccesible::poner_material(Material material){
     
 }
 
@@ -31,4 +31,13 @@ void CasilleroInaccesible::demoler(ListaMateriales Materiales){
 }
 
 Casillero::~Casillero(){
+}
+
+void CasilleroInaccesible::cambiar_jugador(int numero){
+    //this->jugador=numero;
+}
+
+int CasilleroInaccesible::devolver_jugador(){
+    //return this->jugador;
+    return 0;
 }

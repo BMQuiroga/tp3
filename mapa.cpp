@@ -7,7 +7,7 @@
 
 Mapa::Mapa(ListaEdificios edificios){
     procesar_archivo_mapa();
-    procesar_archivo_ubicaciones(edificios);
+    //procesar_archivo_ubicaciones(edificios);
 }
 
 void Mapa::definir(int coordenada_x,int coordenada_y){
@@ -62,7 +62,8 @@ void Mapa::lluvia(int cantidad, std::string material){
         int coord_x=rand()%coordenada_x;
         int coord_y=rand()%coordenada_y;
         if (matriz[coord_x][coord_y]->devolver_tipo()=='C' && (!matriz[coord_x][coord_y]->tiene_material_o_edificio())){
-            matriz[coord_x][coord_y]->poner_material(material);
+            Material mat(material,1);
+            matriz[coord_x][coord_y]->poner_material(mat);
             cantidad--;
         }
         if (error>100){
@@ -349,7 +350,7 @@ void Mapa::listar_todos_los_edificios(ListaEdificios edificios){
     }
 }
 
-void Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios){
+/*void Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios){
     std::string nombre;
     int coord_x;
     int coord_y;
@@ -379,7 +380,7 @@ void Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios){
             }
         }
     }
-}
+}*/
 
 
 

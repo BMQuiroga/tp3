@@ -6,18 +6,20 @@
 class Jugador{
 
 private:
-    std::string nombre;
+    int nombre;
     ListaMateriales materiales;
     int energia;
     int objetivo1,objetivo2,objetivo3;
+    int coordenada_x,coordenada_y;
 
 public:
     void mover();
+    void mover_gratis(int x, int y);
     void sumar_energia(int cantidad);
     void restar_energia(int cantidad);
-    Jugador();
+    Jugador(int x, int y, int numero);
     void mostrar_objetivos();
-
+    void asignar_lista_materiales(ListaMateriales materiales);
 private:
     void asignar_objetivos();
 

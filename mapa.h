@@ -100,7 +100,7 @@ private:
 
     //Pre:Recibe la lista de edificios
     //Post:Verifica que exista el archivo ubicaciones.txt y los carga en una matriz
-    void procesar_archivo_ubicaciones(ListaEdificios edificios);
+    //void procesar_archivo_ubicaciones(ListaEdificios edificios);
 
     //Pre: Recibe la cantidad aleatoria y el nombre del material
     //Post:posiciona en forma aleatoria el material en el tipo de casillero Camino
@@ -130,7 +130,7 @@ private:
     //Post:Muestra por pantalla el nombre, tipo de casillero y si se encuentra vacio o no
     void consultar_coordenadas(int coordenada_x,int coordenada_y);
     
-
+    bool procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u);
 };
 
 

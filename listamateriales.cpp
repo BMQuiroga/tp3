@@ -131,3 +131,7 @@ void ListaMateriales::reescribir_materiales(){
     archivo_materiales.close();
     }
 }
+
+int ListaMateriales::devolver_cantidad(){
+    return this->cantidad;
+}

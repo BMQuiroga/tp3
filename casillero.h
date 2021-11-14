@@ -24,7 +24,7 @@ public:
 
     //Pre:Recibe el nombre del material
     //Post:Asigna al atributo material el que le pasan
-    virtual void poner_material(std::string material)=0;//Se usa en la lluvia de materiales  
+    virtual void poner_material(Material material)=0;//Se usa en la lluvia de materiales  
 
     //Pre:
     //Post:Si el casillero es construible devuelve true si el max_permitido!=0
@@ -42,6 +42,10 @@ public:
     //Pre::Recibe la lista de materiales cargada
     //Post:Realiza la destruccion, modificando la cantidad de materiales
     virtual void demoler(ListaMateriales materiales)=0;
+
+    virtual int devolver_jugador();
+
+    virtual void cambiar_jugador(int numero);
 };
 
 

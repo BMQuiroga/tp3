@@ -7,17 +7,17 @@
 
 }*/
 
-void CasilleroTransitable::poner_material(std::string material){
-    this->material = material;
+void CasilleroTransitable::poner_material(Material mat){
+    this->material = mat;
 
 }
 
 bool CasilleroTransitable::tiene_material_o_edificio(){
-    return (this->material != "0");
+    return (this->material.devolver_nombre() != "0");
 }
 
 std::string CasilleroTransitable::devolver_material_o_edificio(){
-    return this->material;
+    return this->material.devolver_nombre();
 }
 
 /*char CasilleroTransitable::devolver_tipo(){
@@ -25,7 +25,8 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
 }*/
 
 CasilleroTransitable::CasilleroTransitable(){
-    this->material = "0";
+    Material material;
+    this->material = material;
     this->tipo = 'C';
 }
 
@@ -43,3 +44,12 @@ void CasilleroTransitable::demoler(ListaMateriales Materiales){
 
 //Casillero::~Casillero(){
 //}
+
+void CasilleroTransitable::cambiar_jugador(int numero){
+    //this->jugador=numero;
+}
+
+int CasilleroTransitable::devolver_jugador(){
+    //return this->jugador;
+    return 0;
+}
