@@ -1,0 +1,3 @@
+piedra 1039
+metal 650
+madera 114
