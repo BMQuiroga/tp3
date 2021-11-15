@@ -4,6 +4,7 @@
 #include "listaedificios.h"
 #include "listamateriales.h"
 #include "mapa.h"
+#include "jugador.h"
 
 
 
@@ -45,7 +46,7 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
             //mapa.listar_todos_los_edificios(edificios);
             break;
         case COMENZAR_PARTIDA:
-            //mapa.menu_demoler(materiales);
+            partida(materiales,edificios,mapa);
             break;
         case GUARDAR_Y_SALIR_MENU:
             //mapa.mostrar_mapa();
@@ -53,47 +54,47 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
     }
 }
 
-void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
+void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            mapa.construir(edificios,materiales);
+            //mapa.construir(edificios,materiales);
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            mapa.listar_edificios_construidos(edificios);
+            //mapa.listar_edificios_construidos(edificios);
             break;
         case DEMOLER_EDIFICIO:
-            mapa.listar_todos_los_edificios(edificios);
+            //mapa.listar_todos_los_edificios(edificios);
             break;
         case ATACAR_EDIFICIO:
-            mapa.menu_demoler(materiales);
+            //mapa.menu_demoler(materiales);
             break;
         case REPARAR_EDIFICIO:
-            mapa.mostrar_mapa();
+            //mapa.mostrar_mapa();
             break;
         case COMPRAR_BOMBAS:
-            mapa.menu_consultar_coordenada();
+            //mapa.menu_consultar_coordenada();
             break;
         case CONSULTAR_COORDENADA:
-            materiales.mostrar();
+            //materiales.mostrar();
             break;
         case MOSTRAR_INVENTARIO:
-            mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();
             break;
         case MOSTRAR_OBJETIVOS:
-            mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();
             break;
         case RECOLECTAR_RECURSOS:
-            mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();
             break;
         case MOVERSE:
-            mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();
             break;
         case FINALIZAR_TURNO:
-            mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();
             break;
         case GUARDAR_Y_SALIR_PARTIDA:
-            mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();
             break;
         /*case SALIR:
             guardar(materiales,edificios,mapa);
@@ -123,4 +124,32 @@ void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
 
 int generador_de_numeros_aleatorios(int min, int max){
   return min + rand()%(max-min);
+}
+
+void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
+    int opcion=0;
+    while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0){
+        mostrar_menu_partida();
+        cin >> opcion;
+        while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
+            cout<<"No es valida "<< endl;
+            mostrar_menu_partida();
+            cin >> opcion;
+        }
+        procesar_opcion_partida(opcion,materiales,edificios,mapa,j,u);
+        j.sumar_energia(20);
+    }
+    while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0){
+        mostrar_menu_partida();
+        cin >> opcion;
+        while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
+            cout<<"No es valida "<< endl;
+            mostrar_menu_partida();
+            cin >> opcion;
+        }
+        procesar_opcion_partida(opcion,materiales,edificios,mapa,u,j);
+        u.sumar_energia(20);
+    }
+    //llamar lluvia recursos
+
 }

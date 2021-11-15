@@ -12,3 +12,7 @@ void Jugador::mover_gratis(int x, int y){
     this->coordenada_x=x;
     this->coordenada_y=y;
 }
+
+int Jugador::devolver_energia(){
+    return this->energia;
+}

@@ -52,4 +52,10 @@ void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
 
 void mostrar_menu_partida();
 
+
+
+void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
+
+
+
 #endif 
