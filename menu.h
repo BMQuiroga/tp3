@@ -6,21 +6,27 @@
 //#define CLR_SCREEN "clear"//PARA LINUX
 #define CLR_SCREEN "CLS"//PARA WINDOWS
 
-
-const int OPCION_MINIMA = 1;
-const int OPCION_MAXIMA = 10;
-
+const int MODIFICAR_EDIFICIO = 1;
+const int LISTAR_TODOS_LOS_EDIFICIOS = 2;
+const int MOSTRAR_MAPA = 3;
+const int COMENZAR_PARTIDA = 4;
+const int GUARDAR_Y_SALIR_MENU = 5;
 
 const int CONSTRUIR_EDIFICIO = 1;
 const int LISTAR_EDIFICIOS_CONSTRUIDOS = 2;
-const int LISTAR_TODOS_LOS_EDIFICIOS= 3;
-const int DEMOLER_EDIFICIO= 4;
-const int MOSTRAR_MAPA =5;
-const int CONSULTAR_COORDENADA= 6;
-const int LISTAR_MATERIALES = 7;
-const int RECOLECTAR_RECURSOS= 8;
-const int LLUVIA_DE_RECURSOS= 9;
-const int SALIR = 10;
+const int DEMOLER_EDIFICIO = 3;
+const int ATACAR_EDIFICIO = 4;
+const int REPARAR_EDIFICIO = 5;
+const int COMPRAR_BOMBAS = 6;
+const int CONSULTAR_COORDENADA = 7;
+const int MOSTRAR_INVENTARIO = 8;
+const int MOSTRAR_OBJETIVOS = 9;
+const int RECOLECTAR_RECURSOS = 10;
+const int MOVERSE = 11;
+const int FINALIZAR_TURNO = 12;
+const int GUARDAR_Y_SALIR_PARTIDA = 13;
+
+
 
 //pre:-
 //post: Imprime por pantalla el menu
@@ -32,7 +38,7 @@ void procesar_opcion(int opcion_elegida, ListaMateriales materiales, ListaEdific
 
 //pre:-
 //post: Devuelve true si la opcion ingresada por el usuario esta en el rango valido, si no devuelve false.
-bool es_opcion_valida(int elegida);
+bool es_opcion_valida(int elegida, int maxima);
 
 //pre: -
 //post: Devuelve un numero aleatorio entre los valores seleccionados (no incluye el max)

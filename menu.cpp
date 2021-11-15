@@ -26,16 +26,34 @@ void mostrar_menu_partida(){
     cout << "6. Comprar bombas"<<endl;
     cout << "7. Consultar coordenada"<<endl;
     cout << "8. Mostrar inventario"<<endl;
-    //cout << "5. Mostrar mapa"<<endl;
     cout << "9. Mostrar objetivos"<<endl;
     cout << "10. Recolectar recursos producidos"<<endl;
     cout << "11. Moverse a una coordenada"<<endl;
-    //cout << "9. Llamar lluvia de recursos"<<endl;
     cout << "12. Finalizar Turno"<<endl;
     cout << "13. Guardar y salír"<<endl;
 }
+void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
+    system(CLR_SCREEN);
+    switch(opcion_elegida){
+        case MODIFICAR_EDIFICIO:
+            //mapa.construir(edificios,materiales);
+            break;
+        case LISTAR_TODOS_LOS_EDIFICIOS:
+            //mapa.listar_edificios_construidos(edificios);
+            break;
+        case MOSTRAR_MAPA:
+            //mapa.listar_todos_los_edificios(edificios);
+            break;
+        case COMENZAR_PARTIDA:
+            //mapa.menu_demoler(materiales);
+            break;
+        case GUARDAR_Y_SALIR_MENU:
+            //mapa.mostrar_mapa();
+            break;
+    }
+}
 
-void procesar_opcion(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
+void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
@@ -44,28 +62,40 @@ void procesar_opcion(int opcion_elegida, ListaMateriales materiales, ListaEdific
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
             mapa.listar_edificios_construidos(edificios);
             break;
-        case LISTAR_TODOS_LOS_EDIFICIOS:
+        case DEMOLER_EDIFICIO:
             mapa.listar_todos_los_edificios(edificios);
             break;
-        case DEMOLER_EDIFICIO:
+        case ATACAR_EDIFICIO:
             mapa.menu_demoler(materiales);
             break;
-        case MOSTRAR_MAPA:
+        case REPARAR_EDIFICIO:
             mapa.mostrar_mapa();
             break;
-        case CONSULTAR_COORDENADA:
+        case COMPRAR_BOMBAS:
             mapa.menu_consultar_coordenada();
             break;
-        case LISTAR_MATERIALES:
+        case CONSULTAR_COORDENADA:
             materiales.mostrar();
             break;
-        case RECOLECTAR_RECURSOS:
-            mapa.recolectar(materiales);
-            break;
-        case LLUVIA_DE_RECURSOS:
+        case MOSTRAR_INVENTARIO:
             mapa.llamar_lluvia();
             break;
-        case SALIR:
+        case MOSTRAR_OBJETIVOS:
+            mapa.llamar_lluvia();
+            break;
+        case RECOLECTAR_RECURSOS:
+            mapa.llamar_lluvia();
+            break;
+        case MOVERSE:
+            mapa.llamar_lluvia();
+            break;
+        case FINALIZAR_TURNO:
+            mapa.llamar_lluvia();
+            break;
+        case GUARDAR_Y_SALIR_PARTIDA:
+            mapa.llamar_lluvia();
+            break;
+        /*case SALIR:
             guardar(materiales,edificios,mapa);
             cout<< "Gracias por el usar el programa" <<endl;
             cout<< ".....Adios....." << endl;
@@ -73,12 +103,12 @@ void procesar_opcion(int opcion_elegida, ListaMateriales materiales, ListaEdific
             cout<< endl;
             break;
         default:
-        cout<< "Error: opcion invalida";
+        cout<< "Error: opcion invalida";*/
     }
 }
 
-bool es_opcion_valida(int elegida){
-    return (elegida>= OPCION_MINIMA && elegida <= OPCION_MAXIMA);
+bool es_opcion_valida(int elegida, int maxima){
+    return (elegida>=1 && elegida <= maxima);
 }
 
 void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
