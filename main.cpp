@@ -5,18 +5,12 @@ using namespace std;
 
 
 int main(){
-    /*
-    Material *materiales=new Material [MAX_MATERIALES];
-    int tope_material;
-    Edificio *edificios=new Edificio[MAX_EDIFICIOS];
-    int tope_edificio;
-    procesar_archivo_materiales(materiales,tope_material);
-    procesar_archivo_edificios(edificios,tope_edificio);
-    */
     ListaEdificios edificios;
     ListaMateriales materiales;
     Mapa mapa(edificios);
-    //if(tope_material != ERROR){
+    //construir los 2 jugadores
+    //pasar los 2 jugadores por procesar_archivo_materiales que esta en ideas1.cpp
+    //if (ubicaciones=false){partida()}
     int opcion_elegida;
     do{
         cout<< "Bienvenido a Andypolis :D !" << endl;

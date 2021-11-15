@@ -137,8 +137,9 @@ void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Ju
             cin >> opcion;
         }
         procesar_opcion_partida(opcion,materiales,edificios,mapa,j,u);
-        j.sumar_energia(20);
+        
     }
+    j.sumar_energia(20);
     while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0){
         mostrar_menu_partida();
         cin >> opcion;
@@ -148,8 +149,8 @@ void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Ju
             cin >> opcion;
         }
         procesar_opcion_partida(opcion,materiales,edificios,mapa,u,j);
-        u.sumar_energia(20);
     }
+    u.sumar_energia(20);
     //llamar lluvia recursos
 
 }
