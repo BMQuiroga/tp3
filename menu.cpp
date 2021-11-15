@@ -10,16 +10,29 @@
 using namespace std;
 
 void mostrar_menu(){
+    cout << "1. Modificar edificio por nombre"<<endl;
+    cout << "2. Listar todos los edificios"<<endl;
+    cout << "3. Mostrar mapa"<<endl;
+    cout << "4. Comenzar partida"<<endl;
+    cout << "5. Guardar y salír"<<endl;
+}
+
+void mostrar_menu_partida(){
     cout << "1. Construir edificio por nombre"<<endl;
-    cout << "2. Listar edificios construidos" <<endl;
-    cout << "3. Listar todos los edificios"<<endl;
-    cout << "4. Demoler un edificio por coordenada"<<endl;
-    cout << "5. Mostrar mapa"<<endl;
-    cout << "6. Consultar coordenada"<<endl;
-    cout << "7. Mostrar inventario"<<endl;
-    cout << "8. Recolectar recursos producidos"<<endl;
-    cout << "9. Llamar lluvia de recursos"<<endl;
-    cout << "10. Salir"<<endl;
+    cout << "2. Listar mis edificios construidos" <<endl;
+    cout << "3. Demoler un edificio por coordenada"<<endl;
+    cout << "4. Atacar un edificio por coordenada"<<endl;
+    cout << "5. Reparar un edificio por coordenada"<<endl;
+    cout << "6. Comprar bombas"<<endl;
+    cout << "7. Consultar coordenada"<<endl;
+    cout << "8. Mostrar inventario"<<endl;
+    //cout << "5. Mostrar mapa"<<endl;
+    cout << "9. Mostrar objetivos"<<endl;
+    cout << "10. Recolectar recursos producidos"<<endl;
+    cout << "11. Moverse a una coordenada"<<endl;
+    //cout << "9. Llamar lluvia de recursos"<<endl;
+    cout << "12. Finalizar Turno"<<endl;
+    cout << "13. Guardar y salír"<<endl;
 }
 
 void procesar_opcion(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){

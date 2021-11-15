@@ -41,4 +41,9 @@ int generador_de_numeros_aleatorios(int min, int max);
 //pre: -
 //post: libera la memoria dinamica y guarda los datos en los respectivos archivos
 void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
+
+
+
+void mostrar_menu_partida();
+
 #endif 
