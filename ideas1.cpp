@@ -39,6 +39,10 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 archivo_ubicaciones>>nombre;
                 nombre="planta electrica";
             }
+            if (nombre=="mina"){
+                archivo_ubicaciones>>nombre;
+                nombre="mina oro";
+            }
             if (nombre=="2"){
                 getline(archivo_ubicaciones,aux,'(');
                 archivo_ubicaciones>>aux;
@@ -62,6 +66,11 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 archivo_ubicaciones>>nombre;
                 nombre="planta electrica";
             }
+            if (nombre=="mina"){
+                archivo_ubicaciones>>nombre;
+                nombre="mina oro";
+            }
+
             getline(archivo_ubicaciones,aux,'(');
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
