@@ -33,23 +33,24 @@ void mostrar_menu_partida(){
     cout << "12. Finalizar Turno"<<endl;
     cout << "13. Guardar y salír"<<endl;
 }
+
 void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
-            //mapa.construir(edificios,materiales);
+            //no esta hecha
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
-            //mapa.listar_edificios_construidos(edificios);
+            mapa.listar_edificios_construidos(edificios);
             break;
         case MOSTRAR_MAPA:
-            //mapa.listar_todos_los_edificios(edificios);
+            //falta añadir nuevos edificios, materiales, colores de casilleros y posicion de los jugadores, mapa.mostrar_mapa()
             break;
         case COMENZAR_PARTIDA:
             partida(materiales,edificios,mapa);
             break;
         case GUARDAR_Y_SALIR_MENU:
-            //mapa.mostrar_mapa();
+            //falta
             break;
     }
 }
@@ -58,43 +59,43 @@ void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, Lis
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            //mapa.construir(edificios,materiales);
+            //mapa.construir(edificios,materiales); //falta poner que jugador construye
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            //mapa.listar_edificios_construidos(edificios);
+            //mapa.listar_edificios_construidos(edificios); //falta poner que jugador
             break;
         case DEMOLER_EDIFICIO:
-            //mapa.listar_todos_los_edificios(edificios);
+            ///solo podes demoler tus edificios y le devuelve los materiales al jugador
             break;
         case ATACAR_EDIFICIO:
-            //mapa.menu_demoler(materiales);
+            //nueva
             break;
         case REPARAR_EDIFICIO:
-            //mapa.mostrar_mapa();
+            //nueva
             break;
         case COMPRAR_BOMBAS:
-            //mapa.menu_consultar_coordenada();
+            j.comprar_bombas();
             break;
         case CONSULTAR_COORDENADA:
-            //materiales.mostrar();
+            //se queda igual
             break;
         case MOSTRAR_INVENTARIO:
-            //mapa.llamar_lluvia();
+            j.devolver_materiales()->mostrar();
             break;
         case MOSTRAR_OBJETIVOS:
-            //mapa.llamar_lluvia();
+            //nuevo
             break;
         case RECOLECTAR_RECURSOS:
-            //mapa.llamar_lluvia();
+            //mapa.llamar_lluvia();  //falta poner que jugador
             break;
         case MOVERSE:
-            //mapa.llamar_lluvia();
+            //nueva
             break;
         case FINALIZAR_TURNO:
-            //mapa.llamar_lluvia();
+            //no hace nada
             break;
         case GUARDAR_Y_SALIR_PARTIDA:
-            //mapa.llamar_lluvia();
+            //llamar a la funcion guardar
             break;
         /*case SALIR:
             guardar(materiales,edificios,mapa);
@@ -128,29 +129,39 @@ int generador_de_numeros_aleatorios(int min, int max){
 
 void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     int opcion=0;
-    while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0){
-        mostrar_menu_partida();
-        cin >> opcion;
-        while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
-            cout<<"No es valida "<< endl;
+    while(opcion!=GUARDAR_Y_SALIR_PARTIDA){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0){
             mostrar_menu_partida();
             cin >> opcion;
+            while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
+                cout<<"No es valida "<< endl;
+                mostrar_menu_partida();
+                cin >> opcion;
+            }
+            procesar_opcion_partida(opcion,materiales,edificios,mapa,j,u);
+            //CHECKEAR SI TERMINO TODOS LOS OBJETIVOS
         }
-        procesar_opcion_partida(opcion,materiales,edificios,mapa,j,u);
-        
-    }
-    j.sumar_energia(20);
-    while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0){
-        mostrar_menu_partida();
-        cin >> opcion;
-        while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
-            cout<<"No es valida "<< endl;
+        j.sumar_energia(20);
+        opcion=corregir_opcion(opcion);
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0){
             mostrar_menu_partida();
             cin >> opcion;
+            while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
+                cout<<"No es valida "<< endl;
+                mostrar_menu_partida();
+                cin >> opcion;
+            }
+            procesar_opcion_partida(opcion,materiales,edificios,mapa,u,j);
+            //CHECKEAR SI TERMINO TODOS LOS OBJETIVOS
         }
-        procesar_opcion_partida(opcion,materiales,edificios,mapa,u,j);
+        u.sumar_energia(20);
+        //llamar lluvia recursos
+        opcion=corregir_opcion(opcion);
     }
-    u.sumar_energia(20);
-    //llamar lluvia recursos
+}
 
+int corregir_opcion(int opcion){
+    if (opcion!=GUARDAR_Y_SALIR_PARTIDA)
+        return 1;
+    return GUARDAR_Y_SALIR_PARTIDA;
 }

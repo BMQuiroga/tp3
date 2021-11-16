@@ -21,6 +21,8 @@ public:
     Jugador(int x, int y, int numero);
     void mostrar_objetivos();
     void asignar_lista_materiales(ListaMateriales materiales);
+    void comprar_bombas();
+    ListaMateriales* devolver_materiales();
 private:
     void asignar_objetivos();
 

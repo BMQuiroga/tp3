@@ -58,4 +58,7 @@ void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
 
 
 
+int corregir_opcion(int opcion);
+
+
 #endif 
