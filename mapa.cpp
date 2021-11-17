@@ -80,6 +80,7 @@ void Mapa::recolectar(Jugador jugador){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN 
                 matriz[i][j]->recolectar_material(jugador); //MANDAR PARAMETRO PIEDRA METAL MADERA
         }
     }
+    jugador.restar_energia(20);
 }
 
 void Mapa::demoler(int coord_x,int coord_y,Jugador jugador){
