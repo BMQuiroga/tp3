@@ -38,7 +38,8 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
-            //no esta hecha
+            //no esta testeado
+            modificar_datos_edificio(edificios);
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
             //mapa.listar_edificios_construidos(edificios);
@@ -162,4 +163,48 @@ int corregir_opcion(int opcion){
     if (opcion!=GUARDAR_Y_SALIR_PARTIDA)
         return 1;
     return GUARDAR_Y_SALIR_PARTIDA;
+}
+
+
+void modificar_datos_edificio(ListaEdificios edificios) {
+    // no probe si funciona, por ahi tiene algun error boludo
+    std::string nombre;
+    bool resultado = false;
+    Edificio edificio;
+    int indice = 0;
+
+    cout << "Ingrese el nombre del edificio que quiere modificar o \"fin\" para cancelar: ";
+    cin >> nombre;
+
+    while (!resultado && nombre != "fin") {
+        indice = edificios.buscar_indice(nombre);
+
+        if (indice == -1) {
+            cout << "No se encontro el edificio ingresado. Intente de nuevo: ";
+            cin >> nombre;
+
+        } else {
+            edificio = edificios.consulta(indice);
+
+            if (edificio.devolver_nombre() != "obelisco") {
+                cout << "Se encontro el edificio " << edificio.devolver_nombre() << "." << endl;
+
+                //se podria poner como un metodo de edificio?
+                int piedra, madera, metal, max;
+                cout << "Ingrese los datos nuevos para el edificio: " << endl;
+                cout << "Piedra necesaria para construir: "; cin >> piedra;
+                cout << "Madera necesaria para construir: "; cin >> madera; 
+                cout << "Metal necesario para construir: "; cin >> metal; 
+                cout << "Cantidad maxima para construir: "; cin >> max; 
+
+                edificio.cambiar_todo(edificio.devolver_nombre(), piedra, madera, metal, max);
+                //
+
+            } else {
+                cout << "No se puede cambiar los datos del obelisco." << endl;
+            }
+
+            resultado = true;
+        }
+    }
 }

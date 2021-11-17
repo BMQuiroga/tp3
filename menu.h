@@ -54,6 +54,8 @@ void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
 void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador jugador, Jugador rival);
 
 
+void modificar_datos_edificio(ListaEdificios edificios);
+
 
 void mostrar_menu_partida();
 
