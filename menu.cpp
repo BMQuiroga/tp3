@@ -42,10 +42,10 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
             modificar_datos_edificio(edificios);
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
-            //mapa.listar_edificios_construidos(edificios);
+            mapa.listar_todos_los_edificios(edificios,j,u);
             break;
         case MOSTRAR_MAPA:
-            //falta añadir nuevos edificios, materiales, colores de casilleros y posicion de los jugadores, mapa.mostrar_mapa()
+            mapa.mostrar_mapa(j,u);
             break;
         case COMENZAR_PARTIDA:
             partida(materiales,edificios,mapa,j,u);

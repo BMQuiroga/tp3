@@ -79,7 +79,7 @@ public:
 
     //Pre:Recibe las lista de edificios
     //Post:Muestra por pantalla todos los edificios(nombre, cuanto material se requiere, cant construidos y cuantos se pueden construir)
-    void listar_todos_los_edificios(ListaEdificios edificios);
+    void listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2);
 
     //Pre:-
     //Post:Libera memoria 

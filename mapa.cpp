@@ -353,7 +353,7 @@ void Mapa::menu_consultar_coordenada(){
     consultar_coordenadas(coord_x,coord_y);
 }
 
-void Mapa::listar_todos_los_edificios(ListaEdificios edificios){
+void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2){
     int limite=edificios.devolver_cantidad();
     //std::cout<<limite<<std::endl;
     for(int i=1;i<limite+1;i++){
@@ -361,13 +361,16 @@ void Mapa::listar_todos_los_edificios(ListaEdificios edificios){
         int cantidad_piedra=edificios.consulta(i).devolver_piedra();
         int cantidad_madera=edificios.consulta(i).devolver_madera();
         int cantidad_metal=edificios.consulta(i).devolver_metal();
-        //int construidos=edificios_construidos(nombre);
+        int construidos1=edificios_construidos(nombre,jugador1);
+        int construidos2=edificios_construidos(nombre,jugador2);
         int maximos_permitidos=edificios.consulta(i).devolver_maximos_permitidos();
         
         
         std::cout<<"Nombre: "<<nombre<</*" ,Cantidad construida: "<<construidos<<*/std::endl;
         std::cout<<"Para construirlo se requieren "<<cantidad_piedra<<" de piedra, "<<cantidad_madera<<" de madera y "<<cantidad_metal<<" de metal."<<std::endl;
-        std::cout<<"Hay "<</*construidos<<*/" construidos y se pueden construir "<<maximos_permitidos/*-construidos*/<<" mas antes de llegar al limite."<<std::endl;
+        //std::cout<<"Hay "<</*construidos<<*/" construidos y se pueden construir "<<maximos_permitidos/*-construidos*/<<" mas antes de llegar al limite."<<std::endl;
+        std::cout<<"El jugador 1 construyó "<<construidos1<<" y puede construir "<<maximos_permitidos-construidos1<<" mas antes de llegar al limite."<<std::endl;
+        std::cout<<"El jugador 2 construyó "<<construidos2<<" y puede construir "<<maximos_permitidos-construidos2<<" mas antes de llegar al limite."<<std::endl;
         edificios.consulta(i).imprimir_brinda_materiales();
         std::cout<<"-------------------------------------------------"<<std::endl;
     }
