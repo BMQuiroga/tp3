@@ -180,7 +180,11 @@ void Mapa::procesar_archivo_mapa(){
                 if(letra=='T')
                     casilla[i][j]=new CasilleroConstruible();
                 else if(letra=='C')
-                    casilla[i][j]=new CasilleroTransitable();
+                    casilla[i][j]=new CasilleroTransitable("Camino");
+                else if(letra=='B')
+                    casilla[i][j]=new CasilleroTransitable("Betun");
+                else if(letra=='M')
+                    casilla[i][j]=new CasilleroTransitable("Muelle");
                 else if(letra=='L')
                     casilla[i][j]=new CasilleroInaccesible();
                 else

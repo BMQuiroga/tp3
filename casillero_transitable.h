@@ -8,6 +8,7 @@ class CasilleroTransitable : public Casillero{//Camino
 
 private:
     Material material;
+    std::string tipo_de_camino;
 
 public:
     //Pre:Recibe el nombre del material
@@ -20,7 +21,7 @@ public:
     
     //Pre:
     //Post: Crea un objeto, asignandole "C" al tipo
-    CasilleroTransitable();
+    CasilleroTransitable(std::string camino);
     
 
     //Pre:

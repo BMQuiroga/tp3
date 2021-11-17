@@ -24,10 +24,11 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
     return this->tipo;
 }*/
 
-CasilleroTransitable::CasilleroTransitable(){
+CasilleroTransitable::CasilleroTransitable(std::string camino){
     Material material;
     this->material = material;
     this->tipo = 'C';
+    this->tipo_de_camino=camino;
 }
 
 void CasilleroTransitable::construir(Edificio edificio){
