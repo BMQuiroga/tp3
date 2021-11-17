@@ -65,7 +65,7 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             mapa.listar_edificios_construidos(edificios,jugador);
             break;
         case DEMOLER_EDIFICIO:
-            //mapa.menu_demoler(jugador) //solo podes demoler tus edificios y le devuelve los materiales al jugador
+            mapa.menu_demoler(jugador); //solo podes demoler tus edificios y le devuelve los materiales al jugador
             break;
         case ATACAR_EDIFICIO:
             //nueva
@@ -95,17 +95,15 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             //no hace nada
             break;
         case GUARDAR_Y_SALIR_PARTIDA:
-            //llamar a la funcion guardar
-            break;
-        /*case SALIR:
+            /*llamar a la funcion guardar
             guardar(materiales,edificios,mapa);
             cout<< "Gracias por el usar el programa" <<endl;
             cout<< ".....Adios....." << endl;
             system(CLR_SCREEN);
-            cout<< endl;
+            cout<< endl;*/
             break;
         default:
-        cout<< "Error: opcion invalida";*/
+        cout<< "Error: opcion invalida";
     }
 }
 

@@ -1,1 +1,5 @@
-flags
+funciones del menu partida
+funciones del menu principal
+edificios como arbol binario
+funcion moverse
+destructor edificios
