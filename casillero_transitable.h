@@ -33,7 +33,7 @@ public:
     
     //Pre:
     //Post: No hace nada
-    void recolectar_material(ListaMateriales materiales);
+    void recolectar_material(Jugador jugador);
 
     //Pre:
     //Post: No hace nada

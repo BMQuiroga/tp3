@@ -34,7 +34,7 @@ void CasilleroTransitable::construir(Edificio edificio){
 
 }
 
-void CasilleroTransitable::recolectar_material(ListaMateriales Materiales){
+void CasilleroTransitable::recolectar_material(Jugador jugador){
     
 }
 

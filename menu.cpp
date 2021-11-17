@@ -87,7 +87,7 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             //nuevo
             break;
         case RECOLECTAR_RECURSOS:
-            //mapa.llamar_lluvia();  //falta poner que jugador
+            mapa.recolectar(jugador);
             break;
         case MOVERSE:
             //nueva

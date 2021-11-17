@@ -36,7 +36,7 @@ public:
 
     //Pre: Recibe la lista de materiales
     //Post: Recolecta los materiales que produjeron los edifcios construidos
-    void recolectar(ListaMateriales materiales);
+    void recolectar(Jugador jugador);
 
     //Pre:
     //Post:

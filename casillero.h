@@ -38,7 +38,7 @@ public:
     
     //Pre:Recibe la lista de materiales cargada
     //Post:Suma los materiales producidos por la mina, aserradero y fabrica a la lista de materiales.
-    virtual void recolectar_material(ListaMateriales materiales)=0;
+    virtual void recolectar_material(Jugador jugador)=0;
 
     //Pre::Recibe la lista de materiales cargada
     //Post:Realiza la destruccion, modificando la cantidad de materiales

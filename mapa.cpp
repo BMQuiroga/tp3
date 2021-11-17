@@ -73,11 +73,11 @@ void Mapa::lluvia(int cantidad, std::string material){
     }
 }
 
-void Mapa::recolectar(ListaMateriales materiales){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN LAGO Y CAMINO PERO NO HACER NADA
+void Mapa::recolectar(Jugador jugador){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN LAGO Y CAMINO PERO NO HACER NADA
     for(int i=0;i<coordenada_x;i++){
         for(int j=0;j<coordenada_y;j++){
-            if(matriz[i][j]->devolver_tipo()=='T')
-                matriz[i][j]->recolectar_material(materiales); //MANDAR PARAMETRO PIEDRA METAL MADERA
+            if(matriz[i][j]->devolver_tipo()=='T' && matriz[i][j]->devolver_jugador()==jugador.devolver_nombre())
+                matriz[i][j]->recolectar_material(jugador); //MANDAR PARAMETRO PIEDRA METAL MADERA
         }
     }
 }

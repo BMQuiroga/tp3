@@ -22,7 +22,7 @@ void CasilleroInaccesible::construir(Edificio edificio){
     std::cout <<"No se puede construir en un lago"<<std::endl;
 }
 
-void CasilleroInaccesible::recolectar_material(ListaMateriales Materiales){
+void CasilleroInaccesible::recolectar_material(Jugador jugador){
     
 }
 
