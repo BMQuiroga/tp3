@@ -26,7 +26,7 @@ void CasilleroInaccesible::recolectar_material(ListaMateriales Materiales){
     
 }
 
-void CasilleroInaccesible::demoler(ListaMateriales Materiales){
+void CasilleroInaccesible::demoler(Jugador jugador){
     
 }
 

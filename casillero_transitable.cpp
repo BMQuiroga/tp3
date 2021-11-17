@@ -38,7 +38,7 @@ void CasilleroTransitable::recolectar_material(ListaMateriales Materiales){
     
 }
 
-void CasilleroTransitable::demoler(ListaMateriales Materiales){
+void CasilleroTransitable::demoler(Jugador jugador){
     
 }
 

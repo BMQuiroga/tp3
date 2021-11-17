@@ -3,6 +3,7 @@
 #define CASILLERO_H
 #include "listaedificios.h"
 #include "listamateriales.h"
+#include "jugador.h"
 
 
 class Casillero{
@@ -41,7 +42,7 @@ public:
 
     //Pre::Recibe la lista de materiales cargada
     //Post:Realiza la destruccion, modificando la cantidad de materiales
-    virtual void demoler(ListaMateriales materiales)=0;
+    virtual void demoler(Jugador jugador)=0;
 
     virtual int devolver_jugador();
 

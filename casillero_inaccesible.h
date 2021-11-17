@@ -35,7 +35,7 @@ public:
     
     //Pre:
     //Post: No hace nada
-    void demoler(ListaMateriales materiales);
+    void demoler(Jugador jugador);
 
     int devolver_jugador();
 

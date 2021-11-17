@@ -55,17 +55,17 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
     }
 }
 
-void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador jugador, Jugador rival){
+void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa mapa, Jugador jugador, Jugador rival){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            mapa.construir(edificios,materiales,jugador); 
+            mapa.construir(edificios,jugador); 
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
             mapa.listar_edificios_construidos(edificios,jugador);
             break;
         case DEMOLER_EDIFICIO:
-            ///solo podes demoler tus edificios y le devuelve los materiales al jugador
+            //mapa.menu_demoler(jugador) //solo podes demoler tus edificios y le devuelve los materiales al jugador
             break;
         case ATACAR_EDIFICIO:
             //nueva

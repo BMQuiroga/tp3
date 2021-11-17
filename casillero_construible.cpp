@@ -25,8 +25,8 @@ std::string CasilleroConstruible::devolver_material_o_edificio(){
     return this->edificio.devolver_nombre();
 }
 
-void CasilleroConstruible::demoler(ListaMateriales materiales){
-    this->edificio.demoler(materiales);
+void CasilleroConstruible::demoler(Jugador jugador){
+    this->edificio.demoler(jugador);
 }
 
 void CasilleroConstruible::recolectar_material(ListaMateriales materiales){

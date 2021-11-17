@@ -9,6 +9,7 @@
 #include "listamateriales.h"
 #include "listaedificios.h"
 
+
 class CasilleroConstruible : public Casillero{//Terreno
 
 private:
@@ -38,7 +39,7 @@ public:
 
     //Pre: Recibe la lista de materiales
     //Post: Realiza la destruccion, modificando la cantidad de materiales   
-    void demoler(ListaMateriales materiales);
+    void demoler(Jugador jugador);
 
     //Pre: -
     //Post: - 

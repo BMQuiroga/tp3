@@ -55,7 +55,7 @@ public:
 
     //Pre:Recibe la lista de edificios y materiales
     //Post:Solicita al usuario el nombre del edificio que desea construir, y si es valida pide las coordenadas
-    void construir(ListaEdificios edificios,ListaMateriales materiales,Jugador jugador);
+    void construir(ListaEdificios edificios,Jugador jugador);
 
     //Pre:NO LA USAMOS(LA TENEMOS COMENTADA EN EL .CPP)
     //Post:
@@ -75,7 +75,7 @@ public:
 
     //Pre:Recibe la lista de materiales
     //Post:Solicita al usuario que ingrese las coordenadas y si es valido lo destruye
-    void menu_demoler(ListaMateriales materiales);
+    void menu_demoler(Jugador jugador);
 
     //Pre:Recibe las lista de edificios
     //Post:Muestra por pantalla todos los edificios(nombre, cuanto material se requiere, cant construidos y cuantos se pueden construir)
@@ -105,7 +105,7 @@ private:
 
     //Pre:Recibe 2 coordenadas y la lista de materiales
     //Post:Evalua si hay edificio para demoler, destruyendolo y sumando la mitad de los materiales
-    void demoler(int coord_x,int coord_y,ListaMateriales materiales);
+    void demoler(int coord_x,int coord_y,Jugador jugador);
 
     //Pre: Recibe coordenadas
     //Post: imprime un caracter, usado en la funcion mostrar mapa
@@ -113,11 +113,11 @@ private:
 
     //Pre:Recibe la lista de edificios, materiales y el nombre del edificio
     //Post:Verifica que haya la cantidad suficiente de materiales para poder construir
-    bool se_puede_construir(ListaEdificios edificios,ListaMateriales materiales,std::string nombre,Jugador jugador);
+    bool se_puede_construir(ListaEdificios edificios,std::string nombre,Jugador jugador);
 
     //Pre:Recibe la lista de edificios y materiales,el nombre del edifiio y el posicion del edificio
     //Post:Resta la cantidad de materiales que se usara en la construccion
-    void realizar_construccion(ListaEdificios edificios,ListaMateriales materiales,int coord_x, int coord_y, std::string nombre, int indice_edificio);
+    void realizar_construccion(ListaEdificios edificios,int coord_x, int coord_y, std::string nombre, int indice_edificio, Jugador jugador);
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve las coordanas del nombre ingresado

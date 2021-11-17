@@ -82,13 +82,13 @@ void Mapa::recolectar(ListaMateriales materiales){//RECOLECTAR MATERIAL TIENE QU
     }
 }
 
-void Mapa::demoler(int coord_x,int coord_y,ListaMateriales materiales){
+void Mapa::demoler(int coord_x,int coord_y,Jugador jugador){
     if (matriz[coord_x][coord_y]->tiene_material_o_edificio() && matriz[coord_x][coord_y]->devolver_tipo()=='T'){//HAY QUE HACERLA DEVUELTA CON LAS LISTAS DE MATERIALES
         /*int piedra=devolver_indice_materiales(materiales,"piedra");
         int madera=devolver_indice_materiales(materiales,"madera");
         int metal=devolver_indice_materiales(materiales,"metal");*/
         std::cout<<matriz[coord_x][coord_y]->devolver_material_o_edificio()<<" demolido/a satisfactoriamente"<<std::endl;
-        matriz[coord_x][coord_y]->demoler(materiales);
+        matriz[coord_x][coord_y]->demoler(jugador);
     }
     else
         std::cout<<"No hay ningun edificio en este casillero!"<<std::endl;
@@ -190,12 +190,12 @@ void Mapa::procesar_archivo_mapa(){
     }
 }
 
-void Mapa::construir(ListaEdificios edificios,ListaMateriales materiales, Jugador jugador){
+void Mapa::construir(ListaEdificios edificios, Jugador jugador){
     std::string edificio,ingreso;
     int coord_x,coord_y;
     std::cout<<"Ingrese el nombre del edificio que desea construir"<<std::endl;
     std::cin>>edificio;
-    if(se_puede_construir(edificios,materiales,edificio,jugador)){
+    if(se_puede_construir(edificios,edificio,jugador)){
         std::cout<<"Se puede construir el edificio, desea hacerlo?\n1. Construir el edificio\n2. Salir al menú"<<std::endl;
         std::cin>>ingreso;
         if(ingreso=="1"){
@@ -205,7 +205,7 @@ void Mapa::construir(ListaEdificios edificios,ListaMateriales materiales, Jugado
             std::cin>>coord_y;
             if(coord_x>=0&&coord_x<coordenada_x&&coord_y>=0&&coord_y<coordenada_y){
                 if(matriz[coord_x][coord_y]->devolver_tipo()=='T'){
-                    realizar_construccion(edificios,materiales,coord_x,coord_y,edificio,edificios.buscar_indice(edificio));
+                    realizar_construccion(edificios,coord_x,coord_y,edificio,edificios.buscar_indice(edificio),jugador);
                     matriz[coord_x][coord_y]->cambiar_jugador(jugador.devolver_nombre());
                 }
                 else
@@ -217,21 +217,21 @@ void Mapa::construir(ListaEdificios edificios,ListaMateriales materiales, Jugado
     }
 }
 
-bool Mapa::se_puede_construir(ListaEdificios edificios,ListaMateriales materiales,std::string nombre,Jugador jugador){
+bool Mapa::se_puede_construir(ListaEdificios edificios,std::string nombre,Jugador jugador){
     bool es_valido_construir=false;
     int indice_edificio=edificios.buscar_indice(nombre);
     if(indice_edificio==-1){
         std::cout<<"No existe un edificio con ese nombre!"<<std::endl;
         return false;
     }
-    int indice_piedra=materiales.buscar_indice("piedra");
-    int indice_madera=materiales.buscar_indice("madera");
-    int indice_metal=materiales.buscar_indice("metal");
+    int indice_piedra=jugador.devolver_materiales()->buscar_indice("piedra");
+    int indice_madera=jugador.devolver_materiales()->buscar_indice("madera");
+    int indice_metal=jugador.devolver_materiales()->buscar_indice("metal");
     bool hay_piedra=false,hay_madera=false,hay_metal=false;
     
-    hay_piedra=(materiales.consulta(indice_piedra).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_piedra());
-    hay_madera=(materiales.consulta(indice_madera).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_madera());
-    hay_metal=(materiales.consulta(indice_metal).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_metal());
+    hay_piedra=(jugador.devolver_materiales()->consulta(indice_piedra).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_piedra());
+    hay_madera=(jugador.devolver_materiales()->consulta(indice_madera).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_madera());
+    hay_metal=(jugador.devolver_materiales()->consulta(indice_metal).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_metal());
 
     if(hay_madera&&hay_piedra&&hay_metal){
         if(edificios.consulta(indice_edificio).devolver_maximos_permitidos()>edificios_construidos(nombre,jugador)){
@@ -276,13 +276,13 @@ int Mapa::edificios_construidos(std::string nombre,Jugador jugador){
     return indice;
 }*/
 
-void Mapa::realizar_construccion(ListaEdificios edificios,ListaMateriales materiales,int coord_x, int coord_y, std::string nombre, int indice_edificio){
-    int indice_piedra=materiales.buscar_indice("piedra");
-    int indice_madera=materiales.buscar_indice("madera");
-    int indice_metal=materiales.buscar_indice("metal");
-    materiales.obtener_nodo(indice_piedra)->restar_cantidad(edificios.consulta(indice_edificio).devolver_piedra());
-    materiales.obtener_nodo(indice_madera)->restar_cantidad(edificios.consulta(indice_edificio).devolver_madera());
-    materiales.obtener_nodo(indice_metal)->restar_cantidad(edificios.consulta(indice_edificio).devolver_metal());
+void Mapa::realizar_construccion(ListaEdificios edificios,int coord_x, int coord_y, std::string nombre, int indice_edificio, Jugador jugador){
+    int indice_piedra=jugador.devolver_materiales()->buscar_indice("piedra");
+    int indice_madera=jugador.devolver_materiales()->buscar_indice("madera");
+    int indice_metal=jugador.devolver_materiales()->buscar_indice("metal");
+    jugador.devolver_materiales()->obtener_nodo(indice_piedra)->restar_cantidad(edificios.consulta(indice_edificio).devolver_piedra());
+    jugador.devolver_materiales()->obtener_nodo(indice_madera)->restar_cantidad(edificios.consulta(indice_edificio).devolver_madera());
+    jugador.devolver_materiales()->obtener_nodo(indice_metal)->restar_cantidad(edificios.consulta(indice_edificio).devolver_metal());
     matriz[coord_x][coord_y]->construir(edificios.consulta(indice_edificio));
     std::cout<<nombre<<" construido/a satisfactoriamente!"<<std::endl;
 }
@@ -313,13 +313,13 @@ void Mapa::mostrar_coordenadas(std::string nombre,Jugador jugador){
     std::cout<<"\n-------------------------------------------------"<<std::endl;
 }
 
-void Mapa::menu_demoler(ListaMateriales materiales){
+void Mapa::menu_demoler(Jugador jugador){
     int coord_x,coord_y;
     std::cout<<"Ingrese la coordenada x"<<std::endl;
     std::cin>>coord_x;
     std::cout<<"Ingrese la coordenada y"<<std::endl;
     std::cin>>coord_y;
-    demoler(coord_x,coord_y,materiales);
+    demoler(coord_x,coord_y,jugador);
 }
 
 void Mapa::menu_consultar_coordenada(){
