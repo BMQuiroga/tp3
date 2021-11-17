@@ -98,3 +98,26 @@ void Edificio::imprimir_brinda_materiales(){
     if(this->nombre == "fabrica")
         std::cout <<"Brinda 40 de metal" <<std::endl;
 }
+
+void Edificio::modificar_datos() {
+    int piedra, madera, metal, max;
+    std::cout << "Ingrese los datos nuevos para el edificio: " << std::endl;
+    std::cout << "Piedra necesaria para construir: "; std::cin >> piedra;
+    while (piedra < 0 || piedra > 50000) {
+        std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> piedra; 
+    }
+    std::cout << "Madera necesaria para construir: "; std::cin >> madera;
+    while (madera < 0 || madera > 50000) {
+        std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> madera; 
+    }
+    std::cout << "Metal necesario para construir: "; std::cin >> metal;
+    while (metal < 0 || metal > 50000) {
+        std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> metal; 
+    } 
+
+    this->cambiar_todo(
+        this->devolver_nombre(), 
+        piedra, madera, metal, 
+        this->devolver_maximos_permitidos()
+    );
+}

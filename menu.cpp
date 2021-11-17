@@ -188,18 +188,7 @@ void modificar_datos_edificio(ListaEdificios edificios) {
 
             if (edificio.devolver_nombre() != "obelisco") {
                 cout << "Se encontro el edificio " << edificio.devolver_nombre() << "." << endl;
-
-                //se podria poner como un metodo de edificio?
-                int piedra, madera, metal, max;
-                cout << "Ingrese los datos nuevos para el edificio: " << endl;
-                cout << "Piedra necesaria para construir: "; cin >> piedra;
-                cout << "Madera necesaria para construir: "; cin >> madera; 
-                cout << "Metal necesario para construir: "; cin >> metal; 
-                cout << "Cantidad maxima para construir: "; cin >> max; 
-
-                edificio.cambiar_todo(edificio.devolver_nombre(), piedra, madera, metal, max);
-                //
-
+                edificio.modificar_datos();
             } else {
                 cout << "No se puede cambiar los datos del obelisco." << endl;
             }

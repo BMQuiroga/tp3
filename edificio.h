@@ -59,6 +59,10 @@ public:
     //Pre:-
     //Post:Muestra por pantalla los materiales y la cant que produce la mina, el aserradero y la fabrica
     void imprimir_brinda_materiales();
+
+    //Pre:-
+    //Post:Pide datos nuevos y modifica el edificio en cuestion
+    void modificar_datos();
 };
 
 
