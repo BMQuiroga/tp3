@@ -24,6 +24,8 @@ public:
     void comprar_bombas();
     ListaMateriales* devolver_materiales();
     int devolver_nombre();
+    int devolver_coordenada_x();
+    int devolver_coordenada_y();
 private:
     void asignar_objetivos();
 

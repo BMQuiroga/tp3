@@ -51,7 +51,7 @@ public:
 
     //Pre:-
     //Post:Muestra por pantalla el mapa con su tipo de casillero
-    void mostrar_mapa();
+    void mostrar_mapa(Jugador jugador1, Jugador jugador2);
 
     //Pre:Recibe la lista de edificios y materiales
     //Post:Solicita al usuario el nombre del edificio que desea construir, y si es valida pide las coordenadas
@@ -109,7 +109,7 @@ private:
 
     //Pre: Recibe coordenadas
     //Post: imprime un caracter, usado en la funcion mostrar mapa
-    void mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y);
+    void mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador jugador1, Jugador jugador2);
 
     //Pre:Recibe la lista de edificios, materiales y el nombre del edificio
     //Post:Verifica que haya la cantidad suficiente de materiales para poder construir

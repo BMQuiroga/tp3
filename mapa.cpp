@@ -95,31 +95,44 @@ void Mapa::demoler(int coord_x,int coord_y,Jugador jugador){
         std::cout<<"No hay ningun edificio en este casillero!"<<std::endl;
 }
 
-void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y){
+void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador jugador1, Jugador jugador2){
     if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="piedra")
-        std::cout<</*" \033[0;1m"<<*/" \033[33;1mS\033[0m";//⛏️
+        std::cout<<" \033[33;1mS\033[0m";//⛏️
     else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="madera")
-        std::cout<</*" \033[0;1m"<<*/" \033[33;1mW\033[0m";//🪓
+        std::cout<<" \033[33;1mW\033[0m";//🪓
     else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="metal")
-        std::cout<</*" \033[0;1m"<<*/" \033[33;1mI\033[0m";//⚙️
-    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="planta electrica")
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1mP\033[0m";
-    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="obelisco")
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1mO\033[0m";
-    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="escuela")
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1mE\033[0m";
-    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="fabrica")
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1mF\033[0m";
-    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="aserradero")
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1mA\033[0m";
-    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="mina")
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1mM\033[0m";
-    else
-        std::cout<</*" \033[0;1m"<<*/" \033[31;1m#\033[0m";
+        std::cout<<" \033[33;1mI\033[0m";//⚙️
+    else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="andycoins")
+        std::cout<<" \033[33;1mC\033[0m";//⚙️
+    else{
+        //SETEA EL COLOR DEPENDIENDO DE QUIEN SEA EL EDIFICIO, SI NO ES UN MATERIAL
+        if(matriz[coord_x][coord_y]->devolver_jugador()==jugador1.devolver_nombre())
+            std::cout<<"\033[31;1m"; //ROJO PARA J1
+        if(matriz[coord_x][coord_y]->devolver_jugador()==jugador2.devolver_nombre())
+            std::cout<<"\033[35;1m"; //VIOLETA PARA J2
+
+
+        if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="planta electrica")
+            std::cout<<"P\033[0m";
+        else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="obelisco")
+            std::cout<<"O\033[0m";
+        else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="escuela")
+            std::cout<<"E\033[0m";
+        else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="fabrica")
+            std::cout<<"F\033[0m";
+        else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="aserradero")
+            std::cout<<"A\033[0m";
+        else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="mina")
+            std::cout<<"M\033[0m";
+        else if(matriz[coord_x][coord_y]->devolver_material_o_edificio()=="mina oro")
+            std::cout<<"\033[0m";
+        else
+            std::cout<<"#\033[0m";
+    }
 }   
 
-void Mapa::mostrar_mapa(){
-    std::cout<<"Ademas de los mencionados en el pdf, se usan: C para camino, T para terreno y L para lago"<<std::endl;
+void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
+    std::cout<<"Ademas de los mencionados en el pdf, se usan: R para camino, T para terreno y L para lago"<<std::endl;
     std::cout<<"Columna: ";
     for(int k=0;k<coordenada_y;k++)
         std::cout<<k<<" ";
@@ -132,15 +145,19 @@ void Mapa::mostrar_mapa(){
         //std::cout<<coordenada_y<<std::endl;
         for(int j=0;j<coordenada_y;j++){
             //std::cout<<"ENTRA"<<std::endl;
-            if (matriz[i][j]->tiene_material_o_edificio())
-                mostrar_mapa_edificios_y_materiales(i,j);
+            if(i==jugador1.devolver_coordenada_x() && j==jugador1.devolver_coordenada_y())
+                std::cout<<" \033[31;1mJ\033[0m";
+            else if(i==jugador2.devolver_coordenada_x() && j==jugador2.devolver_coordenada_y())
+                std::cout<<" \033[31;1mU\033[0m";
+            else if (matriz[i][j]->tiene_material_o_edificio())
+                mostrar_mapa_edificios_y_materiales(i,j,jugador1,jugador2);
             else {
                 if (matriz[i][j]->devolver_tipo()=='C')
-                    std::cout<</*" \033[0;1m"<<*/" \033[1;38;5;136mC\033[0m";
+                    std::cout<<" \033[1;38;5;136mR\033[0m";
                 else if (matriz[i][j]->devolver_tipo()=='T')
-                    std::cout<</*" \033[32m"<<*/" \033[32;1mT\033[0m";
+                    std::cout<<" \033[32;1mT\033[0m";
                 else
-                    std::cout<</*" \033[94;1m"<<*/" \033[34;1mL\033[0m";
+                    std::cout<<" \033[34;1mL\033[0m";
             }
         }
         std::cout<<std::endl;

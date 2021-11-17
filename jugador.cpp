@@ -42,3 +42,11 @@ ListaMateriales* Jugador::devolver_materiales(){
 int Jugador::devolver_nombre(){
     return this->nombre;
 }
+
+int Jugador::devolver_coordenada_x(){
+    return this->coordenada_x;
+}
+
+int Jugador::devolver_coordenada_y(){
+    return this->coordenada_y;
+}
