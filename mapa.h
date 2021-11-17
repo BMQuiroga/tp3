@@ -57,10 +57,6 @@ public:
     //Post:Solicita al usuario el nombre del edificio que desea construir, y si es valida pide las coordenadas
     void construir(ListaEdificios edificios,ListaMateriales materiales,Jugador jugador);
 
-    //Pre:Recibe el nombre del edificio
-    //Post:Devuelve la cantidad de edificios construidos
-    int edificios_construidos(std::string nombre);
-
     //Pre:NO LA USAMOS(LA TENEMOS COMENTADA EN EL .CPP)
     //Post:
     int devolver_indice_edificios(Edificio edificios[],std::string nombre);
@@ -71,7 +67,7 @@ public:
 
     //Pre: Recibe una lista de edificios
     //Post:Muestra por pantalla los edificios con cant>0, el nombre, cant construida y sus coordenadas
-    void listar_edificios_construidos(ListaEdificios edificios);
+    void listar_edificios_construidos(ListaEdificios edificios, Jugador jugadores);
 
     //Pre:-
     //Post:Solicita al usuario que ingrese las coordenadas, y muestra lo que hay en esa posicion
@@ -117,7 +113,7 @@ private:
 
     //Pre:Recibe la lista de edificios, materiales y el nombre del edificio
     //Post:Verifica que haya la cantidad suficiente de materiales para poder construir
-    bool se_puede_construir(ListaEdificios edificios,ListaMateriales materiales,std::string nombre);
+    bool se_puede_construir(ListaEdificios edificios,ListaMateriales materiales,std::string nombre,Jugador jugador);
 
     //Pre:Recibe la lista de edificios y materiales,el nombre del edifiio y el posicion del edificio
     //Post:Resta la cantidad de materiales que se usara en la construccion
@@ -125,13 +121,18 @@ private:
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve las coordanas del nombre ingresado
-    void mostrar_coordenadas(std::string nombre);
+    void mostrar_coordenadas(std::string nombre,Jugador jugador);
 
      //Pre:Recibe 2 coordenadas 
     //Post:Muestra por pantalla el nombre, tipo de casillero y si se encuentra vacio o no
     void consultar_coordenadas(int coordenada_x,int coordenada_y);
     
     bool procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u);
+
+    //Pre:Recibe el nombre del edificio
+    //Post:Devuelve la cantidad de edificios construidos
+    int edificios_construidos(std::string nombre, Jugador jugador);
+
 };
 
 

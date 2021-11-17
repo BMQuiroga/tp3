@@ -41,7 +41,7 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
             //no esta hecha
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
-            mapa.listar_edificios_construidos(edificios);
+            //mapa.listar_edificios_construidos(edificios);
             break;
         case MOSTRAR_MAPA:
             //falta añadir nuevos edificios, materiales, colores de casilleros y posicion de los jugadores, mapa.mostrar_mapa()
@@ -59,10 +59,10 @@ void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, Lis
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            mapa.construir(edificios,materiales,jugador); //falta poner que jugador construye
+            mapa.construir(edificios,materiales,jugador); 
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            //mapa.listar_edificios_construidos(edificios); //falta poner que jugador
+            mapa.listar_edificios_construidos(edificios,jugador);
             break;
         case DEMOLER_EDIFICIO:
             ///solo podes demoler tus edificios y le devuelve los materiales al jugador
