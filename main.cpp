@@ -23,7 +23,7 @@ int main(){
             cin >> opcion_elegida;
 
         }
-        procesar_opcion(opcion_elegida,materiales,edificios,mapa);
+        //procesar_opcion_menu(opcion_elegida,materiales,edificios,mapa,jugador1,jugador2);
     }while(opcion_elegida!=GUARDAR_Y_SALIR_MENU);
     //}
     //guardar_archivo_materiales(materiales, tope_material);

@@ -23,6 +23,7 @@ public:
     void asignar_lista_materiales(ListaMateriales materiales);
     void comprar_bombas();
     ListaMateriales* devolver_materiales();
+    int devolver_nombre();
 private:
     void asignar_objetivos();
 

@@ -4,7 +4,8 @@
 #include "listaedificios.h"
 #include "listamateriales.h"
 //#define CLR_SCREEN "clear"//PARA LINUX
-#define CLR_SCREEN "CLS"//PARA WINDOWS
+#define CLR_SCREEN "CLS"//PARA WINDOWS#
+#include "jugador.h"
 
 const int MODIFICAR_EDIFICIO = 1;
 const int LISTAR_TODOS_LOS_EDIFICIOS = 2;
@@ -34,7 +35,7 @@ void mostrar_menu();
 
 //pre:-
 //post: Realiza la opcion
-void procesar_opcion(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
+void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u);
 
 //pre:-
 //post: Devuelve true si la opcion ingresada por el usuario esta en el rango valido, si no devuelve false.
@@ -47,6 +48,10 @@ int generador_de_numeros_aleatorios(int min, int max);
 //pre: -
 //post: libera la memoria dinamica y guarda los datos en los respectivos archivos
 void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa);
+
+//pre:-
+//post: Realiza la opcion
+void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador jugador, Jugador rival);
 
 
 

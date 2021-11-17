@@ -190,7 +190,7 @@ void Mapa::procesar_archivo_mapa(){
     }
 }
 
-void Mapa::construir(ListaEdificios edificios,ListaMateriales materiales/*Jugador jugador*/){
+void Mapa::construir(ListaEdificios edificios,ListaMateriales materiales, Jugador jugador){
     std::string edificio,ingreso;
     int coord_x,coord_y;
     std::cout<<"Ingrese el nombre del edificio que desea construir"<<std::endl;
@@ -206,7 +206,7 @@ void Mapa::construir(ListaEdificios edificios,ListaMateriales materiales/*Jugado
             if(coord_x>=0&&coord_x<coordenada_x&&coord_y>=0&&coord_y<coordenada_y){
                 if(matriz[coord_x][coord_y]->devolver_tipo()=='T'){
                     realizar_construccion(edificios,materiales,coord_x,coord_y,edificio,edificios.buscar_indice(edificio));
-                    //matriz[x][y].cambiar_jugador(jugador)
+                    matriz[coord_x][coord_y]->cambiar_jugador(jugador.devolver_nombre());
                 }
                 else
                     std::cout<<"No se puede construir en esa coordenada!"<<std::endl;

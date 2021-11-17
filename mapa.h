@@ -8,6 +8,7 @@
 #include "material.h"
 #include "listaedificios.h"
 #include "listamateriales.h"
+#include "jugador.h"
 #include <string>
 
 
@@ -54,7 +55,7 @@ public:
 
     //Pre:Recibe la lista de edificios y materiales
     //Post:Solicita al usuario el nombre del edificio que desea construir, y si es valida pide las coordenadas
-    void construir(ListaEdificios edificios,ListaMateriales materiales);
+    void construir(ListaEdificios edificios,ListaMateriales materiales,Jugador jugador);
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve la cantidad de edificios construidos

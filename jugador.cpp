@@ -38,3 +38,7 @@ void Jugador::comprar_bombas(){
 ListaMateriales* Jugador::devolver_materiales(){
     return this->materiales;
 }
+
+int Jugador::devolver_nombre(){
+    return this->nombre;
+}

@@ -34,7 +34,7 @@ void mostrar_menu_partida(){
     cout << "13. Guardar y salír"<<endl;
 }
 
-void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
+void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
@@ -47,7 +47,7 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
             //falta añadir nuevos edificios, materiales, colores de casilleros y posicion de los jugadores, mapa.mostrar_mapa()
             break;
         case COMENZAR_PARTIDA:
-            partida(materiales,edificios,mapa);
+            partida(materiales,edificios,mapa,j,u);
             break;
         case GUARDAR_Y_SALIR_MENU:
             //falta
@@ -55,11 +55,11 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
     }
 }
 
-void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
+void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador jugador, Jugador rival){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            //mapa.construir(edificios,materiales); //falta poner que jugador construye
+            mapa.construir(edificios,materiales,jugador); //falta poner que jugador construye
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
             //mapa.listar_edificios_construidos(edificios); //falta poner que jugador
@@ -74,13 +74,13 @@ void procesar_opcion_partida(int opcion_elegida, ListaMateriales materiales, Lis
             //nueva
             break;
         case COMPRAR_BOMBAS:
-            j.comprar_bombas();
+            jugador.comprar_bombas();
             break;
         case CONSULTAR_COORDENADA:
             //se queda igual
             break;
         case MOSTRAR_INVENTARIO:
-            j.devolver_materiales()->mostrar();
+            jugador.devolver_materiales()->mostrar();
             break;
         case MOSTRAR_OBJETIVOS:
             //nuevo
