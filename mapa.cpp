@@ -90,7 +90,7 @@ void Mapa::demoler(ListaEdificios edificios, int coord_x,int coord_y,Jugador jug
         int madera=devolver_indice_materiales(materiales,"madera");
         int metal=devolver_indice_materiales(materiales,"metal");*/
 
-        if (jugador.devolver_nombre() != matriz[coord_x][coord_y]->devolver_jugador()) {
+        if (jugador.devolver_nombre() == matriz[coord_x][coord_y]->devolver_jugador()) {
             std::cout << matriz[coord_x][coord_y]->devolver_material_o_edificio() << " demolido/a satisfactoriamente." << std::endl;
             matriz[coord_x][coord_y]->demoler(jugador);
             jugador.restar_energia(15);  
