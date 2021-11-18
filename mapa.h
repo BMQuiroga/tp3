@@ -75,7 +75,7 @@ public:
 
     //Pre:Recibe la lista de materiales
     //Post:Solicita al usuario que ingrese las coordenadas y si es valido lo destruye
-    void menu_demoler(Jugador jugador);
+    void menu_demoler(ListaEdificios edificios, Jugador jugador);
 
     //Pre:Recibe las lista de edificios
     //Post:Muestra por pantalla todos los edificios(nombre, cuanto material se requiere, cant construidos y cuantos se pueden construir)
@@ -105,7 +105,7 @@ private:
 
     //Pre:Recibe 2 coordenadas y la lista de materiales
     //Post:Evalua si hay edificio para demoler, destruyendolo y sumando la mitad de los materiales
-    void demoler(int coord_x,int coord_y,Jugador jugador);
+    void demoler(ListaEdificios edificios, int coord_x,int coord_y,Jugador jugador);
 
     //Pre: Recibe coordenadas
     //Post: imprime un caracter, usado en la funcion mostrar mapa

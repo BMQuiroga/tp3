@@ -81,7 +81,8 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             //se queda igual
             break;
         case MOSTRAR_INVENTARIO:
-            jugador.devolver_materiales()->mostrar();
+            // jugador.devolver_materiales()->mostrar();
+            jugador.devolver_materiales().mostrar();
             break;
         case MOSTRAR_OBJETIVOS:
             //nuevo

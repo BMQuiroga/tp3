@@ -35,7 +35,11 @@ void Jugador::comprar_bombas(){
 
 }
 
-ListaMateriales* Jugador::devolver_materiales(){
+// ListaMateriales* Jugador::devolver_materiales(){
+//     return this->materiales;
+// }
+
+ListaMateriales Jugador::devolver_materiales() {
     return this->materiales;
 }
 

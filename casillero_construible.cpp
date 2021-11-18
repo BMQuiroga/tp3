@@ -31,24 +31,54 @@ void CasilleroConstruible::demoler(Jugador jugador){
 
 void CasilleroConstruible::recolectar_material(Jugador jugador){
     int indice;
+    // if (this->edificio.devolver_nombre() == "mina"){
+    //     indice=jugador.devolver_materiales()->buscar_indice("piedra");
+    //     jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(15);
+    //     std::cout << "Recolectados 15 de piedra" << std::endl;
+    // }
+    // if (this->edificio.devolver_nombre() == "aserradero"){
+    //     indice=jugador.devolver_materiales()->buscar_indice("madera");
+    //     jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(25);
+    //     std::cout << "Recolectados 25 de madera" << std::endl;
+    // }
+    // if (this->edificio.devolver_nombre() == "fabrica"){
+    //     indice=jugador.devolver_materiales()->buscar_indice("metal");
+    //     jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(40);
+    //     std::cout << "Recolectados 40 de metal" << std::endl;
+    // }
+    // if (this->edificio.devolver_nombre() == "escuela"){
+    //     indice=jugador.devolver_materiales()->buscar_indice("andycoins");
+    //     jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(25);
+    //     std::cout << "Recolectados 25 andycoins" << std::endl;
+    // }
+    // if (this->edificio.devolver_nombre() == "planta electrica"){
+    //     jugador.sumar_energia(15);
+    //     std::cout << "Recolectados 15 de energia" << std::endl;
+    // }
+    // if (this->edificio.devolver_nombre() == "mina oro"){
+    //     indice=jugador.devolver_materiales()->buscar_indice("andycoins");
+    //     jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(50);
+    //     std::cout << "Recolectados 50 andycoins" << std::endl;
+    // }
+    
     if (this->edificio.devolver_nombre() == "mina"){
-        indice=jugador.devolver_materiales()->buscar_indice("piedra");
-        jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(15);
+        indice=jugador.devolver_materiales().buscar_indice("piedra");
+        jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad(15);
         std::cout << "Recolectados 15 de piedra" << std::endl;
     }
     if (this->edificio.devolver_nombre() == "aserradero"){
-        indice=jugador.devolver_materiales()->buscar_indice("madera");
-        jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(25);
+        indice=jugador.devolver_materiales().buscar_indice("madera");
+        jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad(25);
         std::cout << "Recolectados 25 de madera" << std::endl;
     }
     if (this->edificio.devolver_nombre() == "fabrica"){
-        indice=jugador.devolver_materiales()->buscar_indice("metal");
-        jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(40);
+        indice=jugador.devolver_materiales().buscar_indice("metal");
+        jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad(40);
         std::cout << "Recolectados 40 de metal" << std::endl;
     }
     if (this->edificio.devolver_nombre() == "escuela"){
-        indice=jugador.devolver_materiales()->buscar_indice("andycoins");
-        jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(25);
+        indice=jugador.devolver_materiales().buscar_indice("andycoins");
+        jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad(25);
         std::cout << "Recolectados 25 andycoins" << std::endl;
     }
     if (this->edificio.devolver_nombre() == "planta electrica"){
@@ -56,8 +86,8 @@ void CasilleroConstruible::recolectar_material(Jugador jugador){
         std::cout << "Recolectados 15 de energia" << std::endl;
     }
     if (this->edificio.devolver_nombre() == "mina oro"){
-        indice=jugador.devolver_materiales()->buscar_indice("andycoins");
-        jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(50);
+        indice=jugador.devolver_materiales().buscar_indice("andycoins");
+        jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad(50);
         std::cout << "Recolectados 50 andycoins" << std::endl;
     }
 }

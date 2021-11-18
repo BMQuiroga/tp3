@@ -55,12 +55,19 @@ Edificio::Edificio(){
 
 void Edificio::demoler(Jugador jugador){
     int indice;
-    indice = jugador.devolver_materiales()->buscar_indice("piedra");
-    jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_piedra)/2);
-    indice = jugador.devolver_materiales()->buscar_indice("madera");
-    jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_madera)/2);
-    indice = jugador.devolver_materiales()->buscar_indice("metal");
-    jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_metal)/2);
+    // indice = jugador.devolver_materiales()->buscar_indice("piedra");
+    // jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_piedra)/2);
+    // indice = jugador.devolver_materiales()->buscar_indice("madera");
+    // jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_madera)/2);
+    // indice = jugador.devolver_materiales()->buscar_indice("metal");
+    // jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_metal)/2);
+
+    indice = jugador.devolver_materiales().buscar_indice("piedra");
+    jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad((this->cantidad_piedra)/2);
+    indice = jugador.devolver_materiales().buscar_indice("madera");
+    jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad((this->cantidad_madera)/2);
+    indice = jugador.devolver_materiales().buscar_indice("metal");
+    jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad((this->cantidad_metal)/2);
 
     this->nombre = "0";
     this->cantidad_piedra = 0;
