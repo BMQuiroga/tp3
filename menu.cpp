@@ -60,7 +60,7 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            mapa.construir(edificios,jugador); 
+            mapa.construir(edificios,jugador,rival); 
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
             mapa.listar_edificios_construidos(edificios,jugador);
@@ -76,7 +76,7 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             break;
         case COMPRAR_BOMBAS:
             jugador.comprar_bombas();
-            break;
+            break; 
         case CONSULTAR_COORDENADA:
             //se queda igual
             mapa.menu_consultar_coordenada();

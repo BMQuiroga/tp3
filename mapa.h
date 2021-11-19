@@ -54,8 +54,8 @@ public:
     void mostrar_mapa(Jugador jugador1, Jugador jugador2);
 
     //Pre:Recibe la lista de edificios y materiales
-    //Post:Solicita al usuario el nombre del edificio que desea construir, y si es valida pide las coordenadas
-    void construir(ListaEdificios edificios,Jugador jugador);
+    //Post:Solicita al usuario el nombre del edificio que desea construir, y si es valida y no esta ninguno de los jugadores en el caasillero pide las coordenadas
+    void construir(ListaEdificios edificios,Jugador jugador,Jugador rival);
 
     //Pre:NO LA USAMOS(LA TENEMOS COMENTADA EN EL .CPP)
     //Post:
@@ -137,6 +137,7 @@ private:
     //Post:Devuelve la cantidad de edificios construidos
     int edificios_construidos(std::string nombre, Jugador jugador);
 
+    bool casillero_ocupado(Jugador jugador, int coord_x, int coord_y);
 };
 
 

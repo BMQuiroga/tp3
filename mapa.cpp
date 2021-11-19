@@ -21,7 +21,7 @@ void Mapa::definir(int coordenada_x,int coordenada_y){
 }
 
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
-    if(matriz[coord_x][coord_y]->devolver_tipo()=='C' || (matriz[coord_x][coord_y]->devolver_tipo()=='B'||(matriz[coord_x][coord_y]->devolver_tipo()=='M'){
+    if(matriz[coord_x][coord_y]->devolver_tipo()=='C' || matriz[coord_x][coord_y]->devolver_tipo()=='B'||matriz[coord_x][coord_y]->devolver_tipo()=='M'){
         if (matriz[coord_x][coord_y]->tiene_material_o_edificio()){
             std::cout<<"Soy un casillero transitable y no me encuentro vacio"<<std::endl;
             std::cout<<"Soy un(a) "<<matriz[coord_x][coord_y]->devolver_material_o_edificio()<<" y me encuentro en el casillero consultado"<<std::endl;
@@ -219,8 +219,13 @@ void Mapa::procesar_archivo_mapa(){
         this->matriz=casilla;
     }
 }
+bool Mapa::casillero_ocupado(Jugador jugador, int coord_x, int coord_y){
+    return(matriz[jugador.devolver_coordenada_x()][jugador.devolver_coordenada_y()] == matriz[coord_x][coord_y]);
 
-void Mapa::construir(ListaEdificios edificios, Jugador jugador){
+}
+
+
+void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
     std::string edificio,ingreso;
     int coord_x,coord_y;
     std::cout<<"Ingrese el nombre del edificio que desea construir"<<std::endl;
@@ -233,16 +238,18 @@ void Mapa::construir(ListaEdificios edificios, Jugador jugador){
             std::cin>>coord_x;
             std::cout<<"Ingrese la coordenada y (entre 0 y "<<coordenada_y-1<<")"<<std::endl;
             std::cin>>coord_y;
-            if(coord_x>=0&&coord_x<coordenada_x&&coord_y>=0&&coord_y<coordenada_y){
-                if(matriz[coord_x][coord_y]->devolver_tipo()=='T'){
-                    realizar_construccion(edificios,coord_x,coord_y,edificio,edificios.buscar_indice(edificio),jugador);
-                    matriz[coord_x][coord_y]->cambiar_jugador(jugador.devolver_nombre());
+            if(!casillero_ocupado(jugador, coord_x, coord_y) && !casillero_ocupado(rival, coord_x, coord_y)){
+                if(coord_x>=0&&coord_x<coordenada_x&&coord_y>=0&&coord_y<coordenada_y){
+                    if(matriz[coord_x][coord_y]->devolver_tipo()=='T'){
+                        realizar_construccion(edificios,coord_x,coord_y,edificio,edificios.buscar_indice(edificio),jugador);
+                        matriz[coord_x][coord_y]->cambiar_jugador(jugador.devolver_nombre());
+                    }
+                    else
+                        std::cout<<"No se puede construir en esa coordenada!"<<std::endl;
                 }
                 else
-                    std::cout<<"No se puede construir en esa coordenada!"<<std::endl;
+                    std::cout<<"Coordenadas fuera de rango!"<<std::endl;
             }
-            else
-                std::cout<<"Coordenadas fuera de rango!"<<std::endl;
         }
     }
 }
