@@ -79,6 +79,7 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             break;
         case CONSULTAR_COORDENADA:
             //se queda igual
+            mapa.menu_consultar_coordenada();
             break;
         case MOSTRAR_INVENTARIO:
             // jugador.devolver_materiales()->mostrar();
