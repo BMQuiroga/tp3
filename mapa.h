@@ -89,6 +89,10 @@ public:
     //Post:Guarda los cambios en ubicaciones.txt
     void reescribir_ubicaciones();
 
+    void menu_atacar(Jugador jugador, Jugador rival);
+
+    void menu_reparar(Jugador jugador);
+
 private:
     
     //Pre:-

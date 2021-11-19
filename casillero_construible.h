@@ -48,6 +48,10 @@ public:
     int devolver_jugador();
 
     void cambiar_jugador(int numero);
+
+    bool atacar();
+
+    void reparar(Jugador jugador);
 };
 
 

@@ -8,6 +8,7 @@
 class Edificio{
 
 private:
+    int vida;
     std::string nombre;
     int cantidad_piedra;
     int cantidad_madera;
@@ -63,6 +64,10 @@ public:
     //Pre:-
     //Post:Pide datos nuevos y modifica el edificio en cuestion
     void modificar_datos();
+
+    int devolver_vida();
+
+    bool restar_vida(int numero);
 };
 
 

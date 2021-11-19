@@ -66,13 +66,13 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             mapa.listar_edificios_construidos(edificios,jugador);
             break;
         case DEMOLER_EDIFICIO:
-            mapa.menu_demoler(jugador); //solo podes demoler tus edificios y le devuelve los materiales al jugador
+            mapa.menu_demoler(edificios,jugador); //solo podes demoler tus edificios y le devuelve los materiales al jugador
             break;
         case ATACAR_EDIFICIO:
-            //nueva
+            mapa.menu_atacar(jugador,rival);
             break;
         case REPARAR_EDIFICIO:
-            //nueva
+            mapa.menu_reparar(jugador);
             break;
         case COMPRAR_BOMBAS:
             jugador.comprar_bombas();

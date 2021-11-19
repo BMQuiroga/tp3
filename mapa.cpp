@@ -93,6 +93,7 @@ void Mapa::demoler(ListaEdificios edificios, int coord_x,int coord_y,Jugador jug
         if (jugador.devolver_nombre() == matriz[coord_x][coord_y]->devolver_jugador()) {
             std::cout << matriz[coord_x][coord_y]->devolver_material_o_edificio() << " demolido/a satisfactoriamente." << std::endl;
             matriz[coord_x][coord_y]->demoler(jugador);
+            matriz[coord_x][coord_y]->cambiar_jugador(0);
             jugador.restar_energia(15);  
         } else {
             std::cout << "No podes demoler un edificio que no es tuyo." << std::endl;
@@ -452,3 +453,51 @@ void Mapa::reescribir_ubicaciones(){
     }
 }
 
+void Mapa::menu_atacar(Jugador jugador, Jugador rival){
+    bool destruido;
+    int coord_x,coord_y;
+    std::cout<<"Ingrese la coordenada x del edificio enemigo que desea atacar"<<std::endl;
+    std::cin>>coord_x;
+    std::cout<<"Ingrese la coordenada y"<<std::endl;
+    std::cin>>coord_y;
+    if(matriz[coord_x][coord_y]->devolver_jugador()==rival.devolver_nombre() && matriz[coord_x][coord_y]->tiene_material_o_edificio()){
+        if(jugador.devolver_energia()>=30){
+            if(jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).devolver_cantidad()>=1){
+                destruido=matriz[coord_x][coord_y]->atacar();
+                if(destruido)
+                    matriz[coord_x][coord_y]->cambiar_jugador(0);
+                jugador.restar_energia(30);
+                jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).sumar_cantidad(-1);
+            }
+            else
+                std::cout<<"No tienes bombas!"<<std::endl;
+        }
+        else
+            std::cout<<"No tienes energia suficiente!"<<std::endl;
+    }
+    else
+        std::cout<<"No hay un edificio enemigo en esa posicion!"<<std::endl;
+
+
+}
+
+void Mapa::menu_reparar(Jugador jugador){
+    int coord_x,coord_y;
+    std::cout<<"Ingrese la coordenada x del edificio que desea reparar"<<std::endl;
+    std::cin>>coord_x;
+    std::cout<<"Ingrese la coordenada y"<<std::endl;
+    std::cin>>coord_y;
+    if(matriz[coord_x][coord_y]->devolver_jugador()==jugador.devolver_nombre() && matriz[coord_x][coord_y]->tiene_material_o_edificio()){
+        if((matriz[coord_x][coord_y]->devolver_material_o_edificio()=="mina" || matriz[coord_x][coord_y]->devolver_material_o_edificio()=="fabrica")){
+            matriz[coord_x][coord_y]->reparar(jugador);
+        }
+        else
+            std::cout<<"Ese edificio no está dañado!"<<std::endl;
+    }
+    else
+        std::cout<<"No hay un edificio propio en esa posicion!"<<std::endl;
+
+
+
+
+}

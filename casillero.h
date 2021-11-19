@@ -47,6 +47,10 @@ public:
     virtual int devolver_jugador();
 
     virtual void cambiar_jugador(int numero);
+
+    virtual bool atacar();
+
+    virtual void reparar(Jugador jugador);
 };
 
 

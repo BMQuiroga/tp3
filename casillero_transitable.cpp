@@ -54,3 +54,11 @@ int CasilleroTransitable::devolver_jugador(){
     //return this->jugador;
     return 0;
 }
+
+bool CasilleroTransitable::atacar(){
+    return false;
+}
+
+void CasilleroTransitable::reparar(Jugador jugador){
+    
+}

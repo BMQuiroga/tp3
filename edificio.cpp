@@ -28,6 +28,10 @@ Edificio::Edificio(std::string nombre, int piedra, int madera, int metal, int ma
     this->cantidad_madera = madera;
     this->cantidad_metal = metal;
     this->maximos_permitidos = max;
+    if(nombre=="mina" ||  nombre=="fabrica")
+        this->vida=2;
+    else
+        this->vida=1;
 }
 
 std::string Edificio::devolver_nombre(){
@@ -82,6 +86,12 @@ void Edificio::cambiar_todo(std::string nombre, int piedra, int madera, int meta
     this->cantidad_madera = madera;
     this->cantidad_metal = metal;
     this->maximos_permitidos = max;
+
+    if(nombre=="mina" ||  nombre=="fabrica")
+        this->vida=2;
+    else
+        this->vida=1;
+
 }
 
 int Edificio::devolver_piedra(){
@@ -127,4 +137,22 @@ void Edificio::modificar_datos() {
         piedra, madera, metal, 
         this->devolver_maximos_permitidos()
     );
+}
+
+int Edificio::devolver_vida(){
+    return this->vida;
+}
+
+bool Edificio::restar_vida(int numero){
+    this->vida-=numero;
+    if(vida==0){
+        std::cout<<"El "<<nombre<<" ha sido destruido"<<std::endl;
+        cambiar_todo("0",0,0,0,0);
+        return true;
+    }
+    else{
+        std::cout<<"La "<<nombre<<" ha sido dañada"<<std::endl;
+        return false;
+    }
+
 }

@@ -114,3 +114,35 @@ void CasilleroConstruible::cambiar_jugador(int numero){
 int CasilleroConstruible::devolver_jugador(){
     return this->jugador;
 }
+
+bool CasilleroConstruible::atacar(){
+    return (this->edificio.restar_vida(1));
+}
+
+void CasilleroConstruible::reparar(Jugador jugador){
+    bool hay_piedra;
+    bool hay_madera;
+    bool hay_metal;
+    int piedra=(this->edificio.devolver_piedra())*0.25;
+    int madera=(this->edificio.devolver_madera())*0.25;
+    int metal=(this->edificio.devolver_metal())*0.25;
+    if(this->edificio.devolver_vida()==1){
+        if(jugador.devolver_energia()>=25){
+            hay_piedra=(piedra<=jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("piedra")).devolver_cantidad());
+            hay_madera=(madera<=jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("madera")).devolver_cantidad());
+            hay_metal=(metal<=jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("metal")).devolver_cantidad());
+            if(hay_piedra && hay_madera && hay_metal){
+                this->edificio.restar_vida(-1);
+                jugador.devolver_materiales().obtener_nodo(jugador.devolver_materiales().buscar_indice("piedra"))->restar_cantidad(piedra);
+                jugador.devolver_materiales().obtener_nodo(jugador.devolver_materiales().buscar_indice("madera"))->restar_cantidad(madera);
+                jugador.devolver_materiales().obtener_nodo(jugador.devolver_materiales().buscar_indice("metal"))->restar_cantidad(metal);
+            }
+            else
+                std::cout<<"No alcanzan los materiales para reparar el edificio!"<<std::endl;
+        }
+        else
+            std::cout<<"No tienes energia suficiente!"<<std::endl;
+    }
+    else
+        std::cout<<"Ese edificio no está dañado!"<<std::endl;
+}

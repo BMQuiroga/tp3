@@ -41,3 +41,11 @@ int CasilleroInaccesible::devolver_jugador(){
     //return this->jugador;
     return 0;
 }
+
+bool CasilleroInaccesible::atacar(){
+    return false;
+}
+
+void CasilleroInaccesible::reparar(Jugador jugador){
+    
+}
