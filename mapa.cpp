@@ -21,7 +21,7 @@ void Mapa::definir(int coordenada_x,int coordenada_y){
 }
 
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
-    if(matriz[coord_x][coord_y]->devolver_tipo()=='C'){
+    if(matriz[coord_x][coord_y]->devolver_tipo()=='C' || (matriz[coord_x][coord_y]->devolver_tipo()=='B'||(matriz[coord_x][coord_y]->devolver_tipo()=='M'){
         if (matriz[coord_x][coord_y]->tiene_material_o_edificio()){
             std::cout<<"Soy un casillero transitable y no me encuentro vacio"<<std::endl;
             std::cout<<"Soy un(a) "<<matriz[coord_x][coord_y]->devolver_material_o_edificio()<<" y me encuentro en el casillero consultado"<<std::endl;
