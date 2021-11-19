@@ -28,12 +28,13 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
         }
         else if (!matriz[coord_x][coord_y]->tiene_material_o_edificio())
             std::cout<<"Soy un casillero transitable y me encuentro vacio"<<std::endl;
-    
+
     }
     else if(matriz[coord_x][coord_y]->devolver_tipo()=='T'){
         if (matriz[coord_x][coord_y]->tiene_material_o_edificio()){
             std::cout<<"Soy un casillero construible y no me encuentro vacio"<<std::endl;
             std::cout<<"Soy un(a) "<<matriz[coord_x][coord_y]->devolver_material_o_edificio()<<" y me encuentro en el casillero consultado"<<std::endl;
+            std::cout<<"Soy un edificio del jugador "<<matriz[coord_x][coord_y]->devolver_jugador()<<std::endl;
         }
         else if (!matriz[coord_x][coord_y]->tiene_material_o_edificio())
             std::cout<<"Soy un casillero construible y me encuentro vacio"<<std::endl;
