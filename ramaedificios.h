@@ -23,16 +23,6 @@ public:
 
     void asignar_nodo(RamaEdificios* rama);
 
-
-
-
-
-
-
-
-
-
-
 };
 
 
