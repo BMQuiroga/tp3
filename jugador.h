@@ -9,8 +9,11 @@ private:
     int nombre;
     ListaMateriales materiales;
     int energia;
-    int objetivo1,objetivo2,objetivo3;
     int coordenada_x,coordenada_y;
+    Objetivo objetivo_principal;
+    Objetivo objetivo_1;
+    Objetivo objetivo_2;
+    Objetivo objetivo_3;
 
 public:
     void mover();
@@ -24,7 +27,7 @@ public:
     void comprar_bombas();
     // ListaMateriales* devolver_materiales();
     ListaMateriales devolver_materiales();
-
+    bool checkear_objetivos();
     int devolver_nombre();
     int devolver_coordenada_x();
     int devolver_coordenada_y();
