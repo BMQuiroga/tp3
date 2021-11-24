@@ -5,26 +5,7 @@ Jugador::Jugador(int x,int y,int numero, ListaEdificios edificios, ListaMaterial
     mover_gratis(x,y);
     this->energia=50;
     this->nombre=numero;
-<<<<<<< HEAD
-    /*
-    int a=0;
-    int b=0;
-    int c=0;
-
-    while (a==b || b==c || a==c){
-        a=generador_de_numeros_aleatorios(1,11);
-        b=generador_de_numeros_aleatorios(1,11);
-        c=generador_de_numeros_aleatorios(1,11);
-    }
-    
-    this->objetivo_1=Objetivo(a);
-    this->objetivo_2=Objetivo(b);
-    this->objetivo_3=Objetivo(c);
-    this->objetivo_principal=Objetivo(11);
-*/
-=======
     this->asignar_objetivos(edificios, materiales, mapa, *this);
->>>>>>> 124aace907afe9937535e644938fb92014c69b64
 }
 
 void Jugador::mover_gratis(int x, int y){
@@ -80,7 +61,6 @@ int Jugador::devolver_coordenada_y(){
            (objetivo_2->checkear() && objetivo_3->checkear()) ||
            (objetivo_1->checkear() && objetivo_3->checkear()) ||
            (objetivo_principal->checkear()));
-<<<<<<< HEAD
 }*/
 
 void Jugador::asignar_lista_materiales(ListaMateriales materiales){
@@ -94,8 +74,7 @@ void Jugador::sumar_energia(int numero){
 void Jugador::restar_energia(int numero){
     this->energia-=numero;
 }
-=======
-}
+
 
 void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa mapa, Jugador jugador) {
     int a=0;
@@ -170,4 +149,3 @@ void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
     }
 }
 
->>>>>>> 124aace907afe9937535e644938fb92014c69b64
