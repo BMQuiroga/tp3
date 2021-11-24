@@ -7,28 +7,21 @@
 class ArbolEdificios{
 
 private:
-    NodoEdificios* raiz;
+    RamaEdificios* raiz;
 
 public:
     //Constructor
     //PRE: -
     //POS: tope = 0
-    ArbolEdificios();
+    ArbolEdificios(Edificio edificio);
 
     //PRE: 1 <= pos <= cantidad + 1
     //POS: agrega d arriba de la pila e incrementa tope en 1
-    void alta(std::string nombre, int piedra, int madera, int metal, int maximos, int pos);
+    void alta(std::string nombre, int piedra, int madera, int metal, int maximos);
 
     //PRE: 1 <= pos <= cantidad
     //POS: devuelve el dato que esta arriba
-    Edificio consulta(int pos);
-
-    //Destructor
-    void destruir();
-
-    //PRE: -
-    //POST: Devuelve el indice del edificio buscado
-    int buscar_indice(std::string nombre);
+    Edificio consulta(std::string edificio);
 
     //PRE: -
     //POST: Devuelve la cantidad de edificios
@@ -36,3 +29,5 @@ public:
 };
 
 #endif
+
+//ARCORDARSE DE BORRAR TODAS LAS APARICIONES DE "BUSCAR INDICE" Y MODIFICIAR TODAS LAS CONSULTAS

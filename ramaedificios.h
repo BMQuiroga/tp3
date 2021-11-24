@@ -15,13 +15,13 @@ private:
 
 public:
 
-    RamaEdificios();
+    RamaEdificios(Edificio edificio);
 
-    std::string devolver_nombre();
+    Edificio buscar_edificio(std::string edificio);
 
-    Edificio devolver_edificio();
+    void asignar_nodo(/*RamaEdificios* rama,*/ Edificio edificio);
 
-    void asignar_nodo(RamaEdificios* rama);
+    int contador_de_elementos();
 
 };
 
