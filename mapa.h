@@ -93,6 +93,8 @@ public:
 
     void menu_reparar(Jugador jugador);
 
+    bool procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u);
+
 private:
     
     //Pre:-
@@ -130,8 +132,6 @@ private:
      //Pre:Recibe 2 coordenadas 
     //Post:Muestra por pantalla el nombre, tipo de casillero y si se encuentra vacio o no
     void consultar_coordenadas(int coordenada_x,int coordenada_y);
-    
-    bool procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u);
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve la cantidad de edificios construidos

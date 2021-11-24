@@ -123,9 +123,9 @@ void CasilleroConstruible::reparar(Jugador jugador){
     bool hay_piedra;
     bool hay_madera;
     bool hay_metal;
-    int piedra=(this->edificio.devolver_piedra())*0.25;
-    int madera=(this->edificio.devolver_madera())*0.25;
-    int metal=(this->edificio.devolver_metal())*0.25;
+    int piedra=(this->edificio.devolver_piedra())/4;
+    int madera=(this->edificio.devolver_madera())/4;
+    int metal=(this->edificio.devolver_metal())/4;
     if(this->edificio.devolver_vida()==1){
         if(jugador.devolver_energia()>=25){
             hay_piedra=(piedra<=jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("piedra")).devolver_cantidad());

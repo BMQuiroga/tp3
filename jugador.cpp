@@ -5,7 +5,7 @@ Jugador::Jugador(int x,int y,int numero){
     mover_gratis(x,y);
     this->energia=50;
     this->nombre=numero;
-    
+    /*
     int a=0;
     int b=0;
     int c=0;
@@ -20,7 +20,7 @@ Jugador::Jugador(int x,int y,int numero){
     this->objetivo_2=Objetivo(b);
     this->objetivo_3=Objetivo(c);
     this->objetivo_principal=Objetivo(11);
-
+*/
 }
 
 void Jugador::mover_gratis(int x, int y){
@@ -70,9 +70,21 @@ int Jugador::devolver_coordenada_y(){
     return this->coordenada_y;
 }
 
-bool Jugador::checkear_objetivos(){
+/*bool Jugador::checkear_objetivos(){
     return((objetivo_1->checkear() && objetivo_2->checkear()) ||
            (objetivo_2->checkear() && objetivo_3->checkear()) ||
            (objetivo_1->checkear() && objetivo_3->checkear()) ||
            (objetivo_principal->checkear()));
+}*/
+
+void Jugador::asignar_lista_materiales(ListaMateriales materiales){
+    this->materiales=materiales;
+}
+
+void Jugador::sumar_energia(int numero){
+    this->energia+=numero;
+}
+
+void Jugador::restar_energia(int numero){
+    this->energia-=numero;
 }
