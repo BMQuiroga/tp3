@@ -1,7 +1,9 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
-#include "menu.h"
 
+#include "listamateriales.h"
+#include "menu.h"
+#include "objetivo.h"
 
 class Jugador{
 

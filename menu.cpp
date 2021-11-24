@@ -48,7 +48,7 @@ void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaE
             mapa.mostrar_mapa(j,u);
             break;
         case COMENZAR_PARTIDA:
-            partida(materiales,edificios,mapa,j,u);
+            partida(edificios,mapa,j,u);
             break;
         case GUARDAR_Y_SALIR_MENU:
             //falta
@@ -128,7 +128,7 @@ int generador_de_numeros_aleatorios(int min, int max){
   return min + rand()%(max-min);
 }
 
-void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
+void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     int opcion=0;
     while(opcion!=GUARDAR_Y_SALIR_PARTIDA){
         while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0){
@@ -139,7 +139,7 @@ void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Ju
                 mostrar_menu_partida();
                 cin >> opcion;
             }
-            procesar_opcion_partida(opcion,materiales,edificios,mapa,j,u);
+            procesar_opcion_partida(opcion,edificios,mapa,j,u);
             //CHECKEAR SI TERMINO TODOS LOS OBJETIVOS
         }
         j.sumar_energia(20);
@@ -152,7 +152,7 @@ void partida(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Ju
                 mostrar_menu_partida();
                 cin >> opcion;
             }
-            procesar_opcion_partida(opcion,materiales,edificios,mapa,u,j);
+            procesar_opcion_partida(opcion,edificios,mapa,u,j);
             //CHECKEAR SI TERMINO TODOS LOS OBJETIVOS
         }
         u.sumar_energia(20);

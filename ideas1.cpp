@@ -11,12 +11,13 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
     int coord_x;
     int coord_y;
     std::string aux;
-    bool partida_en_proceso;
+    bool archivo_en_blanco;
     std::ifstream archivo_ubicaciones("ubicaciones.txt",std::ios::in);
     if(!archivo_ubicaciones)
-        return false;
+        return true;
     else{
         while((archivo_ubicaciones>>nombre)){//no puedo poner el and porque esta condicion no es un bool, asi que va con breaks
+            archivo_en_blanco=false;
             if (nombre=="1"){
                 getline(archivo_ubicaciones,aux,'(');
                 archivo_ubicaciones>>aux;
@@ -39,10 +40,6 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 archivo_ubicaciones>>nombre;
                 nombre="planta electrica";
             }
-            if (nombre=="mina"){
-                archivo_ubicaciones>>nombre;
-                nombre="mina oro";
-            }
             if (nombre=="2"){
                 getline(archivo_ubicaciones,aux,'(');
                 archivo_ubicaciones>>aux;
@@ -53,6 +50,9 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 break;
             }
             getline(archivo_ubicaciones,aux,'(');
+            if (aux=="oro ("){
+                nombre="mina oro";
+            }
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
@@ -66,12 +66,10 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 archivo_ubicaciones>>nombre;
                 nombre="planta electrica";
             }
-            if (nombre=="mina"){
-                archivo_ubicaciones>>nombre;
+            getline(archivo_ubicaciones,aux,'(');
+            if (aux=="oro ("){
                 nombre="mina oro";
             }
-
-            getline(archivo_ubicaciones,aux,'(');
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
@@ -82,6 +80,7 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
         }
     archivo_ubicaciones.close();
     }
+    return archivo_en_blanco;
 }
 
 int diccionario_materiales(std::string material){

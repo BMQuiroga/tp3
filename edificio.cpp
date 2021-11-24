@@ -130,12 +130,16 @@ void Edificio::modificar_datos() {
     std::cout << "Metal necesario para construir: "; std::cin >> metal;
     while (metal < 0 || metal > 50000) {
         std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> metal; 
+    std::cout << "Maximos permitidos: "; std::cin >> max; 
     } 
+    while (max < 0 || max > 50000) {
+        std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> max; 
+    } 
+
 
     this->cambiar_todo(
         this->devolver_nombre(), 
-        piedra, madera, metal, 
-        this->devolver_maximos_permitidos()
+        piedra, madera, metal, max
     );
 }
 

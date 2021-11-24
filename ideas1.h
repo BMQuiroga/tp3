@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "jugador.h"
 
 int diccionario_materiales(std::string material);
 

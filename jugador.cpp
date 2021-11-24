@@ -56,12 +56,25 @@ int Jugador::devolver_coordenada_y(){
     return this->coordenada_y;
 }
 
-bool Jugador::checkear_objetivos(){
+/*bool Jugador::checkear_objetivos(){
     return((objetivo_1->checkear() && objetivo_2->checkear()) ||
            (objetivo_2->checkear() && objetivo_3->checkear()) ||
            (objetivo_1->checkear() && objetivo_3->checkear()) ||
            (objetivo_principal->checkear()));
+}*/
+
+void Jugador::asignar_lista_materiales(ListaMateriales materiales){
+    this->materiales=materiales;
 }
+
+void Jugador::sumar_energia(int numero){
+    this->energia+=numero;
+}
+
+void Jugador::restar_energia(int numero){
+    this->energia-=numero;
+}
+
 
 void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa mapa, Jugador jugador) {
     int a=0;

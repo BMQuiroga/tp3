@@ -26,6 +26,8 @@ public:
     //PRE: -
     //POST: Devuelve la cantidad de edificios
     int devolver_cantidad();
+
+    void procesar_archivo_edificios();
 };
 
 #endif
