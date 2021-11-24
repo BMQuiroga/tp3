@@ -35,6 +35,7 @@ public:
     //POST: Devuelve la cantidad de edificios
     int devolver_cantidad();
 
+    NodoEdificios* obtener_nodo(int pos);
     
 private:
     //PRE: 1 <= pos <= cantidad
@@ -48,7 +49,7 @@ private:
 
     //PRE -
     //POST: obtiene el nodo en una posicion
-    NodoEdificios* obtener_nodo(int pos);
+    // NodoEdificios* obtener_nodo(int pos);
 
     //PRE: -
     //POS: carga la lista con los datos del archivo edificios
