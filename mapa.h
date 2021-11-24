@@ -25,6 +25,7 @@ private:
 
 //Metodos
 public:
+    Mapa() {};
 
     //Pre: Recibe la lista de edificios.
     //Post: Procesa los archivos mapa.txt y ubicaciones.txt
@@ -93,6 +94,10 @@ public:
 
     void menu_reparar(Jugador jugador);
 
+    bool tiene_edificio(std::string nombre_edificio, Jugador jugador);
+
+    int edificios_construidos(std::string nombre, Jugador jugador);
+
 private:
     
     //Pre:-
@@ -135,7 +140,7 @@ private:
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve la cantidad de edificios construidos
-    int edificios_construidos(std::string nombre, Jugador jugador);
+    // int edificios_construidos(std::string nombre, Jugador jugador);
 
     bool casillero_ocupado(Jugador jugador, int coord_x, int coord_y);
 };

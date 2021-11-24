@@ -476,6 +476,7 @@ void Mapa::menu_atacar(Jugador jugador, Jugador rival){
                     matriz[coord_x][coord_y]->cambiar_jugador(0);
                 jugador.restar_energia(30);
                 jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).sumar_cantidad(-1);
+                jugador.actualizar_objetivo(OBJ_BOMBARDERO, 1);
             }
             else
                 std::cout<<"No tienes bombas!"<<std::endl;
@@ -504,8 +505,24 @@ void Mapa::menu_reparar(Jugador jugador){
     }
     else
         std::cout<<"No hay un edificio propio en esa posicion!"<<std::endl;
+}
 
 
 
+bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
+    int i = 0;
+    int j = 0;
+    bool coincidencia = false;
 
+    while (i < coordenada_x && !coincidencia) {
+        while (j < coordenada_x && !coincidencia) {
+            if(matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_material_o_edificio() == nombre_edificio && matriz[i][j]->devolver_jugador() == jugador.devolver_nombre()) {
+                coincidencia = true;
+            }
+            j++;
+        }
+        i++;
+    }
+
+    return coincidencia;
 }
