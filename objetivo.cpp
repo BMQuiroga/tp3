@@ -49,7 +49,7 @@ Letrado::Letrado(ListaEdificios edificios, Mapa mapa, Jugador jugador) {
     this->mapa = mapa;
     this->jugador = jugador;
     this->progreso = 0;
-    this->objetivo = edificios.consulta(edificios.buscar_indice("escuela")).devolver_maximos_permitidos();
+    this->objetivo = edificios.consulta(edificios.buscar_indice("escuela")).devolver_maximos_permitidos();  // cambiar para arbol binario
 }
 
 Minero::Minero(ListaEdificios edificios, Mapa mapa, Jugador jugador) {
@@ -137,23 +137,21 @@ int Armado::calcular_progreso() {
 }
 
 int Constructor::calcular_progreso() {
-    int i = 0;
     int contador = 0;
     bool resultado = true;
     std::string nombre;
-    while (i < edificios.devolver_cantidad()) {
+    for (int i = 0; i < edificios.devolver_cantidad(); i++) {
         nombre = edificios.consulta(i).devolver_nombre();
-        resultado = mapa.tiene_edificio(nombre, jugador);   //si no tiene un edificio, corta y devuelve false
+        resultado = mapa.tiene_edificio(nombre, jugador);   
         if (resultado) {
             contador++;
         }
-        i++;
     }
     return contador;
 }
 
 int Principal::calcular_progreso() {
-    return mapa.tiene_edificio("obelisco", jugador);    //0 o 1
+    return mapa.tiene_edificio("obelisco", jugador);    //0 si false; 1 si true
 }
 
 int Extremista::calcular_progreso() {
