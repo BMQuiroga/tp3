@@ -6,7 +6,7 @@
 //#define CLR_SCREEN "clear"//PARA LINUX
 #define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
-//#include "objetivo.h"
+#include "objetivo.h"
 //#include "arboledificios.h"
 
 const int MODIFICAR_EDIFICIO = 1;
