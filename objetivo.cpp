@@ -1,8 +1,7 @@
 #include "objetivo.h"
 
-
 void Objetivo::mostrar() {
-    std::cout << this->nombre << " ------> ( " << progreso << " / " << objetivo << " )" << std::endl;
+    std::cout << this->nombre << " ------> ( " << calcular_progreso() << " / " << objetivo << " )" << std::endl;
 }
 
 std::string Objetivo::devolver_nombre() {
@@ -21,12 +20,6 @@ Edad_De_Piedra::Edad_De_Piedra(ListaMateriales materiales) {
     this->materiales = materiales;
     this->progreso = 0;
     this->objetivo = 50000;
-}
-
-int Edad_De_Piedra::calcular_progreso() {
-    int indice_piedra = materiales.buscar_indice("piedra");
-    this->progreso = materiales.consulta(indice_piedra).devolver_cantidad();
-    return this->progreso;
 }
 
 Bombardero::Bombardero() {
@@ -56,7 +49,7 @@ Letrado::Letrado(ListaEdificios edificios, Mapa mapa, Jugador jugador) {
     this->mapa = mapa;
     this->jugador = jugador;
     this->progreso = 0;
-    this->objetivo = edificios.consulta(edificios.buscar_indice("escuela")).devolver_maximos_permitidos();
+    this->objetivo = edificios.consulta(edificios.buscar_indice("escuela")).devolver_maximos_permitidos();  // cambiar para arbol binario
 }
 
 Minero::Minero(ListaEdificios edificios, Mapa mapa, Jugador jugador) {
@@ -100,6 +93,23 @@ Principal::Principal(Mapa mapa, Jugador jugador) {
 }
 
 
+int Comprar_Andypolis::calcular_progreso() {
+    return this->progreso;
+}
+
+int Bombardero::calcular_progreso() {
+    return this->progreso;
+}
+
+int Letrado::calcular_progreso() {
+    return (mapa.edificios_construidos("escuela", jugador));
+}
+
+int Edad_De_Piedra::calcular_progreso() {
+    int indice_piedra = materiales.buscar_indice("piedra");
+    return materiales.consulta(indice_piedra).devolver_cantidad();
+}
+
 int Energetico::calcular_progreso() {
     return jugador.devolver_energia();
 }
@@ -125,6 +135,29 @@ int Armado::calcular_progreso() {
     this->progreso = materiales.consulta(indice_piedra).devolver_cantidad();
     return this->progreso;
 }
+
+int Constructor::calcular_progreso() {
+    int contador = 0;
+    bool resultado = true;
+    std::string nombre;
+    for (int i = 0; i < edificios.devolver_cantidad(); i++) {
+        nombre = edificios.consulta(i).devolver_nombre();
+        resultado = mapa.tiene_edificio(nombre, jugador);   
+        if (resultado) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+int Principal::calcular_progreso() {
+    return mapa.tiene_edificio("obelisco", jugador);    //0 si false; 1 si true
+}
+
+int Extremista::calcular_progreso() {
+    return this->progreso;
+}
+
 
 
 void Comprar_Andypolis::actualizar(int valor){
@@ -161,53 +194,45 @@ void Principal::actualizar(int valor){}
 
 
 bool Comprar_Andypolis::checkear(){
-    return this->progreso >= this->objetivo;
+    return (this->calcular_progreso() >= this->objetivo);
 }
 
 bool Edad_De_Piedra::checkear(){
-    return (calcular_progreso() >= this->objetivo);
+    return (this->calcular_progreso() >= this->objetivo);
 }
 
 bool Bombardero::checkear(){
-    return this->progreso >= this->objetivo;
+    return (this->calcular_progreso() >= this->objetivo);
 }
 
 bool Energetico::checkear(){
-    return (calcular_progreso() >= this->objetivo);
+    return (this->calcular_progreso() >= this->objetivo);
 }
 
 bool Letrado::checkear(){
-    return (mapa.edificios_construidos("escuela", jugador) == this->objetivo);
+    return (this->calcular_progreso() == this->objetivo);
 }
 
 bool Minero::checkear(){
-    return (calcular_progreso() == this->objetivo);
+    return (this->calcular_progreso() == this->objetivo);
 }
 
 bool Cansado::checkear(){
-    return (calcular_progreso() == this->objetivo);
+    return (this->calcular_progreso() == this->objetivo);
 }
 
 bool Armado::checkear() {
-    return (calcular_progreso() >= this->objetivo);
+    return (this->calcular_progreso() >= this->objetivo);
 }
 
 bool Extremista::checkear(){
-    return (this->progreso >= this->objetivo);
+    return (this->calcular_progreso() >= this->objetivo);
 }
 
 bool Principal::checkear(){
-    return (mapa.tiene_edificio("obelisco", jugador));
+    return (this->calcular_progreso() == this->objetivo);
 }   
 
 bool Constructor::checkear(){
-    int i = 0;
-    bool resultado = true;
-    std::string nombre;
-    while (i < edificios.devolver_cantidad() && resultado) {
-        nombre = edificios.consulta(i).devolver_nombre();
-        resultado = mapa.tiene_edificio(nombre, jugador);   //si no tiene un edificio, corta y devuelve false
-        i++;
-    }
-    return resultado;
+    return (this->calcular_progreso() == this->objetivo);
 }

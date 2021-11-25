@@ -35,18 +35,21 @@ class Objetivo{
 
 protected:
     std::string nombre;
+    std::string destripcion;
     int progreso;
     int objetivo;
 public:
     std::string devolver_nombre();
     void mostrar();
     virtual bool checkear() = 0;
+    virtual int calcular_progreso() = 0;
     virtual void actualizar(int valor)=0;
 };
 
 class Comprar_Andypolis : public Objetivo {
     public:
         Comprar_Andypolis();
+        int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
@@ -64,6 +67,7 @@ class Edad_De_Piedra : public Objetivo {
 class Bombardero : public Objetivo {
     public:
         Bombardero();
+        int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
@@ -85,6 +89,7 @@ class Letrado : public Objetivo {
         Jugador jugador;
     public:
         Letrado(ListaEdificios edificios, Mapa mapa, Jugador jugador);
+        int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
@@ -118,6 +123,7 @@ class Constructor : public Objetivo {
         Jugador jugador;
     public:
         Constructor(ListaEdificios edificios, Mapa mapa, Jugador jugador);
+        int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
@@ -135,6 +141,7 @@ class Armado : public Objetivo {
 class Extremista : public Objetivo {
     public:
         Extremista();
+        int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
@@ -145,6 +152,7 @@ class Principal : public Objetivo {
         Jugador jugador;
     public:
         Principal(Mapa mapa, Jugador jugador);
+        int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
