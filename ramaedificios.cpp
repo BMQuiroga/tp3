@@ -21,3 +21,14 @@ void RamaEdificios::asignar_nodo(Edificio edificio){
     }
 
 }
+
+Edificio RamaEdificios::buscar_edificio(std::string edificio){
+    if(edificio>this->clave){
+        this->nodo_der->buscar_edificio(edificio);
+    }
+    else if(edificio<this->clave){
+        this->nodo_izq->buscar_edificio(edificio);
+    }
+    else
+        return this->valor;
+}
