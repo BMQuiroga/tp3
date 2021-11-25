@@ -10,3 +10,8 @@ void ArbolEdificios::alta(std::string nombre, int piedra, int madera, int metal,
     Edificio edificio(nombre,piedra,madera,metal,maximos);
     this->raiz->asignar_nodo(edificio);
 }
+
+Edificio ArbolEdificios::consulta(std::string edificio){
+    return(this->raiz->buscar_edificio(edificio));
+
+}
