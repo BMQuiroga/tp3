@@ -476,7 +476,7 @@ void Mapa::menu_atacar(Jugador jugador, Jugador rival){
                     matriz[coord_x][coord_y]->cambiar_jugador(0);
                 jugador.restar_energia(30);
                 jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).sumar_cantidad(-1);
-                jugador.actualizar_objetivo(OBJ_BOMBARDERO, 1);
+                jugador.actualizar_objetivo(1, 1);
             }
             else
                 std::cout<<"No tienes bombas!"<<std::endl;
