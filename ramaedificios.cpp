@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <iostream>
 #include "ramaedificios.h"
 
@@ -7,10 +6,6 @@ RamaEdificios::RamaEdificios(Edificio edificio){
     this->clave=edificio.devolver_nombre();
 }
 
-=======
-#include "ramaedificios.h"
-
->>>>>>> 72129b45f466af1afec34c75921276dbf129cb61
 void RamaEdificios::asignar_nodo(Edificio edificio){
     if(edificio.devolver_nombre()>this->clave){
         if(!nodo_der){
@@ -43,7 +38,6 @@ Edificio RamaEdificios::buscar_edificio(std::string edificio){
     else
         return this->valor;
 }
-<<<<<<< HEAD
 
 int RamaEdificios::contador_de_elementos(){
     if(!nodo_der && !nodo_izq)
@@ -55,5 +49,3 @@ int RamaEdificios::contador_de_elementos(){
     else
         return 1+nodo_der->contador_de_elementos()+nodo_izq->contador_de_elementos();
 }
-=======
->>>>>>> 72129b45f466af1afec34c75921276dbf129cb61
