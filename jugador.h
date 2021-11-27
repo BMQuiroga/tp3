@@ -2,8 +2,9 @@
 #define JUGADOR_H
 
 #include "listamateriales.h"
-#include "menu.h"
+#include "listaedificios.h"
 #include "objetivo.h"
+// #include "menu.h"
 
 class Jugador{
 
@@ -19,7 +20,7 @@ private:
 
 public:
     Jugador() {};
-    Jugador(int x, int y, int numero, ListaEdificios edificios, ListaMateriales materiales, Mapa mapa);
+    Jugador(int x, int y, int numero, ListaEdificios edificios, Mapa * mapa);
     void mover();
     void mover_gratis(int x, int y);
     void sumar_energia(int cantidad);
@@ -34,11 +35,11 @@ public:
     int devolver_nombre();
     int devolver_coordenada_x();
     int devolver_coordenada_y();
-    void asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa mapa, Jugador jugador);
+    void asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
     void actualizar_objetivo(int numero_objetivo, int valor);
 
 private:
-    Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa mapa, Jugador jugador);
+    Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
 };
 
 

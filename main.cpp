@@ -8,8 +8,10 @@ using namespace std;
 int main(){
     ListaEdificios edificios;
     Mapa mapa(edificios);
-    Jugador jugador1(1,1,1);
-    Jugador jugador2(2,2,2);
+    // Jugador jugador1(1,1,1);
+    // Jugador jugador2(2,2,2);
+    Jugador jugador1(1,1,1,edificios, &mapa);
+    Jugador jugador2(1,1,1, edificios, &mapa);
     procesar_archivo_materiales(jugador1,jugador2);
     bool archivo_en_blanco=mapa.procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
     
