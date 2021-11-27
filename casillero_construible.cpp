@@ -26,7 +26,7 @@ std::string CasilleroConstruible::devolver_material_o_edificio(){
 }
 
 void CasilleroConstruible::demoler(Jugador jugador){
-    this->edificio.demoler(jugador);
+    // this->edificio.demoler(jugador);
 }
 
 void CasilleroConstruible::recolectar_material(Jugador jugador){

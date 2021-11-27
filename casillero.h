@@ -12,11 +12,13 @@ protected:
     char tipo;
 
 public:
+    Casillero() {};
+    // virtual ~Casillero()=0;
+    // virtual ~Casillero() = 0;
+
     //Pre:
     //Post:Retorna el tipo de casillero
     char devolver_tipo();
-
-    virtual ~Casillero()=0;
 
     //Pre:
     //Post:Si el casillero es construible devuelve el nombre del edificio
@@ -44,13 +46,13 @@ public:
     //Post:Realiza la destruccion, modificando la cantidad de materiales
     virtual void demoler(Jugador jugador)=0;
 
-    virtual int devolver_jugador();
+    virtual int devolver_jugador()=0;
 
-    virtual void cambiar_jugador(int numero);
+    virtual void cambiar_jugador(int numero)=0;
 
-    virtual bool atacar();
+    virtual bool atacar()=0;
 
-    virtual void reparar(Jugador jugador);
+    virtual void reparar(Jugador jugador)=0;
 };
 
 

@@ -10,7 +10,7 @@
 #include "listaedificios.h"
 
 
-class CasilleroConstruible : public Casillero{//Terreno
+class CasilleroConstruible : public Casillero {//Terreno
 
 private:
     Edificio edificio;
@@ -24,6 +24,7 @@ public:
     //Pre:-
     //Post: Crea un objeto, asignando los atributos  
     CasilleroConstruible();
+    ~CasilleroConstruible() {};
 
     //Pre:
     //Post: Devuelve true si los max_permitidos es != 0   

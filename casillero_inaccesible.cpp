@@ -30,8 +30,8 @@ void CasilleroInaccesible::demoler(Jugador jugador){
     
 }
 
-Casillero::~Casillero(){
-}
+// Casillero::~Casillero(){
+// }
 
 void CasilleroInaccesible::cambiar_jugador(int numero){
     //this->jugador=numero;
