@@ -2,6 +2,7 @@
 #include <iostream>
 
 Jugador::Jugador(int x,int y,int numero, ListaEdificios edificios, Mapa * mapa){
+    //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
     this->energia=50;
     this->nombre=numero;
@@ -77,11 +78,11 @@ void Jugador::restar_energia(int numero){
 
 
 void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
-    int a=0;
-    int b=0;
-    int c=0;
+    //int a=0;
+    //int b=0;
+    //int c=0;
 
-    // while (a==b || b==c || a==c){
+    //while (a==b || b==c || a==c){
     //     a=generador_de_numeros_aleatorios(1,11);
     //     b=generador_de_numeros_aleatorios(1,11);
     //     c=generador_de_numeros_aleatorios(1,11);

@@ -146,3 +146,7 @@ void CasilleroConstruible::reparar(Jugador jugador){
     else
         std::cout<<"Ese edificio no está dañado!"<<std::endl;
 }
+/*
+Casillero::~Casillero(){
+
+}*/

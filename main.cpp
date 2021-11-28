@@ -10,8 +10,10 @@ int main(){
     Mapa mapa(edificios);
     // Jugador jugador1(1,1,1);
     // Jugador jugador2(2,2,2);
+    //std::cout<<"supera mapa y edificios"<<std::endl;
     Jugador jugador1(1,1,1,edificios, &mapa);
-    Jugador jugador2(1,1,1, edificios, &mapa);
+    Jugador jugador2(2,2,2, edificios, &mapa);
+    //std::cout<<"creados jugadores"<<std::endl;
     procesar_archivo_materiales(jugador1,jugador2);
     bool archivo_en_blanco=mapa.procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
     

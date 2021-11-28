@@ -105,7 +105,9 @@ void procesar_archivo_materiales(Jugador j, Jugador u){
         std::cout <<"No se encontro el archivo materiales" <<std::endl;
     }else{
         while(archivo >> nombre){ //voy guardando hasta un espacio
+            //std::cout<<"Nombre"<<std::endl;
             archivo>>numero1;
+            //std::cout<<numero1<<std::endl;
             num1=stoi(numero1);
             archivo>>numero2;
             num2=stoi(numero2);
