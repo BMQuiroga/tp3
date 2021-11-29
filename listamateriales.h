@@ -17,7 +17,7 @@ public:
 
     //PRE: 1 <= pos <= cantidad + 1
     //POS: agrega d arriba de la pila e incrementa tope en 1
-    void alta(Material d, int pos);
+    void alta(Material d /*, int pos */);
 
     //PRE: 1 <= pos <= cantidad
     //POS: devuelve el dato que esta arriba

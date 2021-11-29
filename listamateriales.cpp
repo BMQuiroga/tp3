@@ -5,23 +5,21 @@
 ListaMateriales::ListaMateriales() {
     primero = 0;
     cantidad = 0;
-    procesar_archivo_materiales();
 }
 
 bool ListaMateriales::vacia() {
     return (cantidad == 0);
 }
 
-void ListaMateriales::alta(Material d, int pos) {
+void ListaMateriales::alta(Material d /*, int pos */) {
     NodoMateriales* nuevo = new NodoMateriales(d);
-    //std::cout << "Pido memoria en: " << nuevo << std::endl;
     NodoMateriales* siguiente = primero;
 
-    if (pos == 1) {
+    if (cantidad == 0) {
         primero = nuevo;
     }
     else {
-        NodoMateriales* anterior = obtener_nodo(pos - 1);
+        NodoMateriales* anterior = obtener_nodo(cantidad - 1);
         siguiente = anterior->obtener_siguiente();
         anterior->cambiar_siguiente(nuevo);
     }
@@ -75,6 +73,7 @@ int ListaMateriales::buscar_indice(std::string nombre){
 
 void ListaMateriales::mostrar() {
     NodoMateriales* aux = primero;
+    
     while (aux) {
         std::cout <<"Material: "<< aux->obtener_dato().devolver_nombre() << ", Cantidad: "<<aux->obtener_dato().devolver_cantidad()<<std::endl;
         aux = aux->obtener_siguiente();
@@ -82,26 +81,26 @@ void ListaMateriales::mostrar() {
     std::cout<<"-------------------------------------------------"<<std::endl;
 }
 
-void ListaMateriales::procesar_archivo_materiales(){
-    std::string nombre,numero;
-    int num = 0;
+// void ListaMateriales::procesar_archivo_materiales(){
+//     std::string nombre,numero;
+//     int num = 0;
 
-    std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
+//     std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
 
-    if(!archivo.is_open()){ //no existe el archivo
-        std::cout <<"No se encontro el archivo materiales" <<std::endl;
-    }else{
-        while(archivo >> nombre){ //voy guardando hasta un espacio
-            archivo>>numero;
-            num=stoi(numero);
-            Material material(nombre,num);
-            //std::cout<<cantidad<<std::endl;
-            this->alta(material,cantidad+1);
+//     if(!archivo.is_open()){ //no existe el archivo
+//         std::cout <<"No se encontro el archivo materiales" <<std::endl;
+//     }else{
+//         while(archivo >> nombre){ //voy guardando hasta un espacio
+//             archivo>>numero;
+//             num=stoi(numero);
+//             Material material(nombre,num);
+//             //std::cout<<cantidad<<std::endl;
+//             this->alta(material,cantidad+1);
             
-        }
-    archivo.close();
-    }
-}
+//         }
+//     archivo.close();
+//     }
+// }
 
 
 /*void ListaMateriales::buscar_indice(){
