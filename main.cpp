@@ -5,16 +5,23 @@
 using namespace std;
 
 
+
 int main(){
     ListaEdificios edificios;
     Mapa mapa(edificios);
-    // Jugador jugador1(1,1,1);
-    // Jugador jugador2(2,2,2);
-    //std::cout<<"supera mapa y edificios"<<std::endl;
-    Jugador jugador1(1,1,1,edificios, &mapa);
+
+    Jugador jugador1(1,1,1, edificios, &mapa);
     Jugador jugador2(2,2,2, edificios, &mapa);
-    //std::cout<<"creados jugadores"<<std::endl;
-    procesar_archivo_materiales(jugador1,jugador2);
+    
+    ListaMateriales materiales1;
+    ListaMateriales materiales2;
+
+    // procesar_archivo_materiales(jugador1,jugador2);
+    procesar_archivo_materiales(materiales1,materiales2);   //tuve que hacerlo asi porque sino perdia scope las variables y me devolvia 0 el primer puntero
+
+    jugador1.asignar_lista_materiales(materiales1);
+    jugador2.asignar_lista_materiales(materiales2);
+
     bool archivo_en_blanco=mapa.procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
     
     if(archivo_en_blanco)
@@ -30,9 +37,10 @@ int main(){
                 cout<<"No es valida "<< endl;
                 mostrar_menu();
                 cin >> opcion_elegida;
+            } 
+            // procesar_opcion_menu(opcion_elegida,materiales,edificios,mapa,jugador1,jugador2);
+            procesar_opcion_menu(opcion_elegida, edificios, mapa, jugador1, jugador2);
 
-            }
-            //procesar_opcion_menu(opcion_elegida,materiales,edificios,mapa,jugador1,jugador2);
         }while(opcion_elegida!=GUARDAR_Y_SALIR_MENU);
         
     }

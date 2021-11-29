@@ -92,33 +92,53 @@ int diccionario_materiales(std::string material){
         return 50;
 }
 
-void procesar_archivo_materiales(Jugador j, Jugador u){
+
+// void procesar_archivo_materiales(Jugador j, Jugador u){
+//     std::string nombre,numero1,numero2;
+//     int num1 = 0, num2 = 0;
+
+//     ListaMateriales materiales1;
+//     ListaMateriales materiales2;
+
+//     std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
+
+//     if(!archivo.is_open()){ //no existe el archivo
+//         std::cout <<"No se encontro el archivo materiales" <<std::endl;
+//     }else{
+//         while(getline(archivo, nombre, ' ')) {
+//             getline(archivo, numero1, ' ');
+//             getline(archivo, numero2);
+//             Material material1(nombre,stoi(numero1));
+//             Material material2(nombre,stoi(numero2));
+//             materiales1.alta(material1,materiales1.devolver_cantidad());
+//             materiales2.alta(material2,materiales2.devolver_cantidad());
+//         }
+    
+//     archivo.close();
+//     j.asignar_lista_materiales(materiales1);
+//     u.asignar_lista_materiales(materiales2);
+//     }
+// }
+
+
+void procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2){
     std::string nombre,numero1,numero2;
     int num1 = 0, num2 = 0;
-
-    ListaMateriales materiales1;
-    ListaMateriales materiales2;
 
     std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
 
     if(!archivo.is_open()){ //no existe el archivo
         std::cout <<"No se encontro el archivo materiales" <<std::endl;
     }else{
-        while(archivo >> nombre){ //voy guardando hasta un espacio
-            //std::cout<<"Nombre"<<std::endl;
-            archivo>>numero1;
-            //std::cout<<numero1<<std::endl;
-            num1=stoi(numero1);
-            archivo>>numero2;
-            num2=stoi(numero2);
-            Material material1(nombre,num1);
-            Material material2(nombre,num2);
-            materiales1.alta(material1,materiales1.devolver_cantidad());
-            materiales2.alta(material2,materiales2.devolver_cantidad());
+        while(getline(archivo, nombre, ' ')) {
+            getline(archivo, numero1, ' ');
+            getline(archivo, numero2);
+            Material material1(nombre,stoi(numero1));
+            Material material2(nombre,stoi(numero2));
+            j1.alta(material1);
+            j2.alta(material2);
         }
+    
     archivo.close();
-    j.asignar_lista_materiales(materiales1);
-    u.asignar_lista_materiales(materiales2);
     }
 }
-
