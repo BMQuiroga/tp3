@@ -49,3 +49,7 @@ bool CasilleroInaccesible::atacar(){
 void CasilleroInaccesible::reparar(Jugador jugador){
     
 }
+
+void CasilleroInaccesible::mostrar(){
+    std::cout<<"Soy un casillero intransitable y me encuentro vacio"<<std::endl;
+}

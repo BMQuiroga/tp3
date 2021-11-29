@@ -53,6 +53,8 @@ public:
     bool atacar();
 
     void reparar(Jugador jugador);
+
+    void mostrar();
 };
 
 

@@ -62,3 +62,12 @@ bool CasilleroTransitable::atacar(){
 void CasilleroTransitable::reparar(Jugador jugador){
     
 }
+
+void CasilleroTransitable::mostrar(){
+    if (tiene_material_o_edificio){
+        std::cout<<"Soy un casillero transitable y no me encuentro vacio"<<std::endl;
+        std::cout<<"Soy un(a) "<<devolver_material_o_edificio<<" y me encuentro en el casillero consultado"<<std::endl;
+    }
+    else if (!tiene_material_o_edificio)
+        std::cout<<"Soy un casillero transitable y me encuentro vacio"<<std::endl;
+}

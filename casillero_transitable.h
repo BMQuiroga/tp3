@@ -49,6 +49,7 @@ public:
 
     void reparar(Jugador jugador);
 
+    void mostrar();
 
 };
 

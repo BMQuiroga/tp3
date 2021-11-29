@@ -53,6 +53,8 @@ public:
     virtual bool atacar()=0;
 
     virtual void reparar(Jugador jugador)=0;
+
+    virtual void mostrar()=0;
 };
 
 

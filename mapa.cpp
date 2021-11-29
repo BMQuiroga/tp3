@@ -20,6 +20,7 @@ void Mapa::definir(int coordenada_x,int coordenada_y){
 
 }
 
+/*FUNCION OBSOLETA
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
     if(matriz[coord_x][coord_y]->devolver_tipo()=='C' || matriz[coord_x][coord_y]->devolver_tipo()=='B'||matriz[coord_x][coord_y]->devolver_tipo()=='M'){
         if (matriz[coord_x][coord_y]->tiene_material_o_edificio()){
@@ -42,6 +43,7 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
     else 
         std::cout<<"Soy un casillero intransitable y me encuentro vacio"<<std::endl;
 }
+*/
 
 void Mapa::llamar_lluvia(){
     srand((unsigned)time(0));
@@ -372,7 +374,10 @@ void Mapa::menu_demoler(ListaEdificios edificios, Jugador jugador){
     std::cin>>coord_x;
     std::cout<<"Ingrese la coordenada y"<<std::endl;
     std::cin>>coord_y;
-    demoler(edificios, coord_x,coord_y,jugador);
+    if(coord_x<coordenada_x && coord_y<coordenada_y && coord_x>=0 && coord_y>=0)
+        demoler(edificios, coord_x,coord_y,jugador);
+    else
+        std::cout<<"Posicion elegida fuera de rango!"<<std::endl;
 }
 
 void Mapa::menu_consultar_coordenada(){
@@ -381,7 +386,10 @@ void Mapa::menu_consultar_coordenada(){
     std::cin>>coord_x;
     std::cout<<"Ingrese la coordenada y"<<std::endl;
     std::cin>>coord_y;
-    consultar_coordenadas(coord_x,coord_y);
+    if(coord_x<coordenada_x && coord_y<coordenada_y && coord_x>=0 && coord_y>=0)
+        this->matriz[coord_x][coord_y]->mostrar();
+    else
+        std::cout<<"Posicion elegida fuera de rango!"<<std::endl;
 }
 
 void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2){
