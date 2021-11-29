@@ -99,7 +99,6 @@ public:
     bool tiene_edificio(std::string nombre_edificio, Jugador jugador);
 
     int edificios_construidos(std::string nombre, Jugador jugador);
-
 private:
     
     //Pre:-
@@ -133,10 +132,6 @@ private:
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve las coordanas del nombre ingresado
     void mostrar_coordenadas(std::string nombre,Jugador jugador);
-
-     //Pre:Recibe 2 coordenadas 
-    //Post:Muestra por pantalla el nombre, tipo de casillero y si se encuentra vacio o no
-    void consultar_coordenadas(int coordenada_x,int coordenada_y);
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve la cantidad de edificios construidos
