@@ -37,7 +37,7 @@ void mostrar_menu();
 
 //pre:-
 //post: Realiza la opcion
-void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u);
+void procesar_opcion_menu(int opcion_elegida, /*ListaMateriales materiales,*/ ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u);
 
 //pre:-
 //post: Devuelve true si la opcion ingresada por el usuario esta en el rango valido, si no devuelve false.

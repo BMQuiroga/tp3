@@ -34,7 +34,7 @@ void mostrar_menu_partida(){
     cout << "13. Guardar y salír"<<endl;
 }
 
-void procesar_opcion_menu(int opcion_elegida, ListaMateriales materiales, ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
+void procesar_opcion_menu(int opcion_elegida, /* ListaMateriales materiales, */ ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
