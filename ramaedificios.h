@@ -23,7 +23,13 @@ public:
 
     int contador_de_elementos();
 
-    bool es_valido(std::string nombre)
+    bool es_valido(std::string nombre);
+
+    bool tiene_rama_izq();
+
+    bool tiene_rama_der();
+
+    void destruir();
 
 };
 

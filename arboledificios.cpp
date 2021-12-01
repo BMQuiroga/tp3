@@ -66,3 +66,7 @@ bool ArbolEdificios::es_edificio_valido(std::string nombre){
     return(this->raiz->es_valido(nombre));
 }
 
+void ArbolEdificios::destruir(){
+    this->raiz->destruir();
+    delete this->raiz;
+}
