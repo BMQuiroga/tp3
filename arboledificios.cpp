@@ -3,9 +3,10 @@
 #include <fstream>
 
 ArbolEdificios::ArbolEdificios(Edificio edificio){
-    RamaEdificios nuevo(edificio);
-    RamaEdificios *p=&nuevo;
-    this->raiz=p;
+    RamaEdificios *rama = new RamaEdificios(edificio);
+    //RamaEdificios nuevo(edificio);
+    //RamaEdificios *p=&nuevo;
+    this->raiz=rama;
 }
 
 void ArbolEdificios::alta(std::string nombre, int piedra, int madera, int metal, int maximos){
@@ -62,6 +63,6 @@ void ArbolEdificios::procesar_archivo_edificios(){
 }
 
 bool ArbolEdificios::es_edificio_valido(std::string nombre){
-    this->raiz->es_valido(nombre);
+    return(this->raiz->es_valido(nombre));
 }
 
