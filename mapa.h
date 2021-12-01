@@ -90,15 +90,26 @@ public:
     //Post:Guarda los cambios en ubicaciones.txt
     void reescribir_ubicaciones();
 
+    //Pre:-
+    //Post: El jugador que la llama puede atacar un edificio rival
     void menu_atacar(Jugador jugador, Jugador rival);
 
+    //Pre:-
+    //Post: El jugador que la llama puede reparar un edificio
     void menu_reparar(Jugador jugador);
 
+    //Pre:-
+    //Post: Lee ubicaciones.txt, devuelve si el archivo esta vacio
     bool procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u);
-    
+
+    //Pre: Requiere un edificio valido
+    //Post: Devuelve si el jugador tiene al menos un edificio del tipo que recibe
     bool tiene_edificio(std::string nombre_edificio, Jugador jugador);
 
+    //Pre: Requiere un edificio valido
+    //Post: Devuelve la cantidad de edificios de ese tipo que tiene construidos ese jugador
     int edificios_construidos(std::string nombre, Jugador jugador);
+
 private:
     
     //Pre:-
@@ -137,6 +148,8 @@ private:
     //Post:Devuelve la cantidad de edificios construidos
     // int edificios_construidos(std::string nombre, Jugador jugador);
 
+    //Pre:Recibe coordenadas validas
+    //Post:Devuelve si el jugador se encuentra alli
     bool casillero_ocupado(Jugador jugador, int coord_x, int coord_y);
 };
 

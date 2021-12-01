@@ -65,8 +65,12 @@ public:
     //Post:Pide datos nuevos y modifica el edificio en cuestion
     void modificar_datos();
 
+    //Pre:-
+    //Post: Devuelve la vida del edificio, 1 o 2
     int devolver_vida();
 
+    //Pre:-
+    //Post: Le resta 1 de vida al edificio, devuelve si lo destruyó
     bool restar_vida(int numero);
 };
 

@@ -28,6 +28,8 @@ public:
     int devolver_cantidad();
 
     void procesar_archivo_edificios();
+
+    bool es_edificio_valido(std::string nombre);
 };
 
 #endif

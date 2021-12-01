@@ -46,14 +46,24 @@ public:
     //Post: - 
     void poner_material(Material material);
 
+    //Pre:
+    //Post:Retorna el jugador que es el dueño del edificio 
     int devolver_jugador();
 
+    //Pre:
+    //Post:Cambia quien es el dueño del edificio
     void cambiar_jugador(int numero);
 
+    //Pre:
+    //Post: Le resta 1 de vida al edificio, devuelve si lo destruyó
     bool atacar();
 
+    //Pre:
+    //Post: Le suma 1 de vida al edificio, si tiene 2 de vida maxima
     void reparar(Jugador jugador);
 
+    //Pre:
+    //Post: muestra "soy un casillero construible" y si tiene_material_o_edificio()
     void mostrar();
 };
 

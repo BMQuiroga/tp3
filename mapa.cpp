@@ -343,15 +343,12 @@ void Mapa::realizar_construccion(ListaEdificios edificios,int coord_x, int coord
 }
 
 void Mapa::listar_edificios_construidos(ListaEdificios edificios, Jugador jugador){
-    int limite=edificios.devolver_cantidad();
-    //std::cout<<limite<<std::endl;
-    for(int i=1;i<limite+1;i++){//
+    for(int i=1;i<(edificios.devolver_cantidad()+1);i++){//
         std::string nombre=edificios.consulta(i).devolver_nombre();
         int construidos=edificios_construidos(nombre,jugador);
         if (construidos&&nombre!="0"){
             std::cout<<"Nombre: "<<nombre<<", Cantidad construida: "<<construidos<<std::endl;
             std::cout<<"Coodenadas:";
-            //for(int i=0;i<construidos;i++)
             mostrar_coordenadas(nombre,jugador);
             
         }
@@ -393,21 +390,14 @@ void Mapa::menu_consultar_coordenada(){
 }
 
 void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2){
-    int limite=edificios.devolver_cantidad();
-    //std::cout<<limite<<std::endl;
-    for(int i=1;i<limite+1;i++){
+    for(int i=1;i<(edificios.devolver_cantidad()+1);i++){
         std::string nombre=edificios.consulta(i).devolver_nombre();
-        int cantidad_piedra=edificios.consulta(i).devolver_piedra();
-        int cantidad_madera=edificios.consulta(i).devolver_madera();
-        int cantidad_metal=edificios.consulta(i).devolver_metal();
         int construidos1=edificios_construidos(nombre,jugador1);
         int construidos2=edificios_construidos(nombre,jugador2);
         int maximos_permitidos=edificios.consulta(i).devolver_maximos_permitidos();
         
-        
-        std::cout<<"Nombre: "<<nombre<</*" ,Cantidad construida: "<<construidos<<*/std::endl;
-        std::cout<<"Para construirlo se requieren "<<cantidad_piedra<<" de piedra, "<<cantidad_madera<<" de madera y "<<cantidad_metal<<" de metal."<<std::endl;
-        //std::cout<<"Hay "<</*construidos<<*/" construidos y se pueden construir "<<maximos_permitidos/*-construidos*/<<" mas antes de llegar al limite."<<std::endl;
+        std::cout<<"Nombre: "<<edificios.consulta(i).devolver_nombre()<<std::endl;
+        std::cout<<"Para construirlo se requieren "<<edificios.consulta(i).devolver_piedra()<<" de piedra, "<<edificios.consulta(i).devolver_madera()<<" de madera y "<<edificios.consulta(i).devolver_metal()<<" de metal."<<std::endl;
         std::cout<<"El jugador 1 construyó "<<construidos1<<" y puede construir "<<maximos_permitidos-construidos1<<" mas antes de llegar al limite."<<std::endl;
         std::cout<<"El jugador 2 construyó "<<construidos2<<" y puede construir "<<maximos_permitidos-construidos2<<" mas antes de llegar al limite."<<std::endl;
         edificios.consulta(i).imprimir_brinda_materiales();
@@ -520,17 +510,16 @@ void Mapa::menu_reparar(Jugador jugador){
 bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
     int i = 0;
     int j = 0;
-    bool coincidencia = false;
 
-    while (i < coordenada_x && !coincidencia) {
-        while (j < coordenada_x && !coincidencia) {
+    while (i < coordenada_x) {
+        while (j < coordenada_x) {
             if(matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_material_o_edificio() == nombre_edificio && matriz[i][j]->devolver_jugador() == jugador.devolver_nombre()) {
-                coincidencia = true;
+                return true;
             }
             j++;
         }
         i++;
     }
 
-    return coincidencia;
+    return false;
 }
