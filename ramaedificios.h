@@ -24,12 +24,15 @@ public:
     int contador_de_elementos();
 
     bool es_valido(std::string nombre);
+<<<<<<< HEAD
 
     bool tiene_rama_izq();
 
     bool tiene_rama_der();
 
     void destruir();
+=======
+>>>>>>> 7d8d9be111d3f26c3315c7f7681bd8ef5653e4e9
 
 };
 

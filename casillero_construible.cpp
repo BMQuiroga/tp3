@@ -17,6 +17,7 @@ CasilleroConstruible::CasilleroConstruible(){
     this->edificio = Edificio();
     this->tipo = 'T';
     this->jugador=0;
+    this->letra = 'T';
 }
 
 
@@ -152,11 +153,11 @@ Casillero::~Casillero(){
 }*/
 
 void CasilleroConstruible::mostrar(){
-    if (tiene_material_o_edificio){
+    if (tiene_material_o_edificio()){
         std::cout<<"Soy un casillero construible y no me encuentro vacio"<<std::endl;
-        std::cout<<"Soy un(a) "<<devolver_material_o_edificio<<" y me encuentro en el casillero consultado"<<std::endl;
-        std::cout<<"Soy un edificio del jugador "<<devolver_jugador<<std::endl;
+        std::cout<<"Soy un(a) "<<devolver_material_o_edificio()<<" y me encuentro en el casillero consultado"<<std::endl;
+        std::cout<<"Soy un edificio del jugador "<<devolver_jugador()<<std::endl;
     }
-    else if (!tiene_material_o_edificio)
+    else if (!tiene_material_o_edificio())
         std::cout<<"Soy un casillero construible y me encuentro vacio"<<std::endl;
 }

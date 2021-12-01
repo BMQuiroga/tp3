@@ -61,6 +61,7 @@ public:
     //Post: Muestra "soy un casillero transitable" y si tiene algun material
     void mostrar();
 
+    std::string devolver_tipo_camino();
 };
 
 #endif 

@@ -4,6 +4,7 @@
 
 CasilleroInaccesible::CasilleroInaccesible(){
     this->tipo = 'L';
+    this->letra = 'L';
 }
 
 bool CasilleroInaccesible::tiene_material_o_edificio(){
