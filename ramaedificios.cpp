@@ -3,6 +3,14 @@
 
 RamaEdificios::RamaEdificios(Edificio edificio){
     this->valor=edificio;
+    /*Edificio *edificio2=new Edificio;
+    edificio2->cambiar_todo(
+        edificio.devolver_nombre(),
+        edificio.devolver_piedra(),
+        edificio.devolver_madera(),
+        edificio.devolver_metal(),
+        edificio.devolver_maximos_permitidos());
+    this->valor=edificio2;*/
     this->clave=edificio.devolver_nombre();
 }
 
@@ -36,7 +44,7 @@ Edificio RamaEdificios::buscar_edificio(std::string edificio){
         this->nodo_izq->buscar_edificio(edificio);
     }
     else
-        return this->valor;
+        return valor;
 }
 
 int RamaEdificios::contador_de_elementos(){
@@ -48,4 +56,27 @@ int RamaEdificios::contador_de_elementos(){
         return 1+nodo_der->contador_de_elementos();
     else
         return 1+nodo_der->contador_de_elementos()+nodo_izq->contador_de_elementos();
+}
+
+bool RamaEdificios::es_valido(std::string nombre){
+    if(nombre>this->clave){
+        if(nodo_der)
+            this->nodo_der->es_valido(nombre);
+        else
+            return false;
+    }
+    else if(nombre<this->clave){
+        if(nodo_izq)
+            this->nodo_izq->es_valido(nombre);
+        else
+            return false;
+    }
+    else{
+        if(this->clave==nombre)
+            return true;
+        else
+            return false;
+    }
+
+
 }

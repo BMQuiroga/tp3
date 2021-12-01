@@ -61,5 +61,7 @@ void ArbolEdificios::procesar_archivo_edificios(){
     archivo_edificios.close();
 }
 
-
+bool ArbolEdificios::es_edificio_valido(std::string nombre){
+    this->raiz->es_valido(nombre);
+}
 
