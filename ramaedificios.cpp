@@ -79,6 +79,7 @@ bool RamaEdificios::es_valido(std::string nombre){
     }
 }
 
+
 bool RamaEdificios::tiene_rama_der(){
     return(nodo_der);
 }
@@ -94,9 +95,7 @@ void RamaEdificios::destruir(){
     }
     if(nodo_izq){
         this->nodo_izq->destruir();
-
-
+        delete nodo_der;
     }
-
-
 }
+
