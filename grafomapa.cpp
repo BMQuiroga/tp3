@@ -1,9 +1,31 @@
 #include "grafomapa.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+
 
 GrafoMapa::GrafoMapa(Jugador jugador) {
     this->jugador = jugador;
 
 }
+
+
+void GrafoMapa::inicializar_vertices() {
+    this->matriz_vertices = new int * [filas * columnas];
+
+    for (int i = 0; i < filas * columnas; i++) {
+        matriz_vertices[i] = new int [filas * columnas];
+    }
+
+    for (int i = 0; i < filas * columnas; i++) {
+        for (int j = 0; j < filas * columnas; j++) {
+            matriz_vertices[i][j] = j;
+        }
+    }
+}
+
+
+
 
 void GrafoMapa::floyd() {
     int cantidad_vertices = filas * columnas;
