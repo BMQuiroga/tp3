@@ -7,6 +7,8 @@
 
 using namespace std;
 
+const int INFINITO=999999;
+
 class GrafoMapa {
 private:
     int filas;
