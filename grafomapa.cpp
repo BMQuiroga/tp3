@@ -6,9 +6,17 @@
 
 GrafoMapa::GrafoMapa(Jugador jugador) {
     this->jugador = jugador;
-
+    procesar_archivo_mapa();
+    generar_caminos();
+    mostrar_matriz();
 }
 
+void GrafoMapa::generar_caminos() {
+    inicializar_matriz_adyacencia();
+    inicializar_caminos();
+    inicializar_vertices();
+    floyd();
+}
 
 void GrafoMapa::inicializar_vertices() {
     this->matriz_vertices = new int * [filas * columnas];
