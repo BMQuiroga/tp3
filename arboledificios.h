@@ -27,10 +27,16 @@ public:
     //POST: Devuelve la cantidad de edificios
     int devolver_cantidad();
 
+    //PRE: -
+    //POST: Crea el arbol con los datos de edificios.txt
     void procesar_archivo_edificios();
 
+    //PRE: -
+    //POST: Devuelve si el edificio se encuentra en el diccionario
     bool es_edificio_valido(std::string nombre);
 
+    //PRE: -
+    //POST: Libera la memoria
     void destruir();
 };
 
