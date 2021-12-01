@@ -51,6 +51,7 @@ public:
 
     void mostrar();
 
+    std::string devolver_tipo_camino();
 };
 
 #endif 

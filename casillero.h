@@ -9,8 +9,9 @@
 class Casillero{
 
 protected:
+    int id;
     char tipo;
-
+    char letra;
 public:
     Casillero() {};
     // virtual ~Casillero()=0;
@@ -20,6 +21,9 @@ public:
     //Post:Retorna el tipo de casillero
     char devolver_tipo();
 
+    void setear_id(int id);
+
+    int obtener_id();
     //Pre:
     //Post:Si el casillero es construible devuelve el nombre del edificio
     //     Si el casillero es transitable devuelve el nombre del material 
@@ -55,6 +59,8 @@ public:
     virtual void reparar(Jugador jugador)=0;
 
     virtual void mostrar()=0;
+
+    char devolver_tipo_camino();
 };
 
 

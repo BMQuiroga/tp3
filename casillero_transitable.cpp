@@ -29,6 +29,14 @@ CasilleroTransitable::CasilleroTransitable(std::string camino){
     this->material = material;
     this->tipo = 'C';
     this->tipo_de_camino=camino;
+
+    if (camino == "Camino") {
+        this->letra = 'C';
+    } else if (camino == "Betun") {
+        this->letra = 'B';
+    } else if (camino == "Muelle") {
+        this->letra = 'M';
+    }
 }
 
 void CasilleroTransitable::construir(Edificio edificio){
@@ -64,10 +72,11 @@ void CasilleroTransitable::reparar(Jugador jugador){
 }
 
 void CasilleroTransitable::mostrar(){
-    if (tiene_material_o_edificio){
+    if (tiene_material_o_edificio()){
         std::cout<<"Soy un casillero transitable y no me encuentro vacio"<<std::endl;
-        std::cout<<"Soy un(a) "<<devolver_material_o_edificio<<" y me encuentro en el casillero consultado"<<std::endl;
+        std::cout<<"Soy un(a) "<< devolver_material_o_edificio() <<" y me encuentro en el casillero consultado"<<std::endl;
     }
-    else if (!tiene_material_o_edificio)
+    else if (!tiene_material_o_edificio())
         std::cout<<"Soy un casillero transitable y me encuentro vacio"<<std::endl;
 }
+
