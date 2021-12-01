@@ -38,14 +38,24 @@ public:
     //Post: No hace nada
     void demoler(Jugador jugador);
 
+    //Pre:
+    //Post: No hace nada
     int devolver_jugador();
 
+    //Pre:
+    //Post: No hace nada
     void cambiar_jugador(int numero);
 
+    //Pre:
+    //Post: No hace nada
     bool atacar();
 
+    //Pre:
+    //Post: No hace nada
     void reparar(Jugador jugador);
 
+    //Pre:
+    //Post: Muestra "soy un casillero inaccesible y me encuentro vacio"
     void mostrar();
 
 };
