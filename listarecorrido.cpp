@@ -14,7 +14,7 @@ void ListaRecorrido::copiar(Dato* lista) {
     }
 }
 
-void ListaRecorrido::agregar(int dato) {
+void ListaRecorrido::agregar(Dato dato) {
     int cantidad = this->devolver_cantidad();
     Dato* lista_copia = new Dato [cantidad + 1];
 
@@ -36,7 +36,7 @@ void ListaRecorrido::mostrar() {
     std::cout << std::endl;
 }
 
-bool ListaRecorrido::contiene(int dato) {
+bool ListaRecorrido::contiene(Dato dato) {
     int contador = 0;
     bool resultado = false;
     while(contador < this->devolver_cantidad() && !resultado) {

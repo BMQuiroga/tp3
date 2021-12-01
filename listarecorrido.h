@@ -13,10 +13,10 @@ private:
 public:
     ListaRecorrido();
     ~ListaRecorrido();
-    void agregar(int dato);
+    void agregar(Dato dato);
     int devolver_cantidad();
     void mostrar();
-    bool contiene(int dato);
+    bool contiene(Dato dato);
 private:
     void copiar(Dato* lista);
     void liberar_memoria();
