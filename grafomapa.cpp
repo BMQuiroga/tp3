@@ -32,6 +32,9 @@ void GrafoMapa::inicializar_vertices() {
     }
 }
 
+int GrafoMapa::devolver_costo(int origen, int destino) {
+    return matriz_adyacencia[origen][destino];
+}
 
 ListaRecorrido* GrafoMapa::camino_minimo(int origen, int destino) {
     ListaRecorrido* recorrido = new ListaRecorrido;
