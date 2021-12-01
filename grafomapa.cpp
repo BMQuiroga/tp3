@@ -25,6 +25,24 @@ void GrafoMapa::inicializar_vertices() {
 }
 
 
+ListaRecorrido* GrafoMapa::camino_minimo(int origen, int destino) {
+    ListaRecorrido* recorrido = new ListaRecorrido;
+    int casillero_actual = origen;
+
+    recorrido->agregar(casillero_actual);
+
+    while (casillero_actual != destino) {
+        casillero_actual = matriz_vertices[casillero_actual][destino];
+        recorrido->agregar(casillero_actual);
+    }
+
+    recorrido->mostrar();   //sacar
+    cout << "Coste: " << devolver_costo(origen, destino) << endl; //poner en otro lado usando devolver_costo()
+
+    mostrar_recorrido_en_mapa(recorrido);
+
+    return recorrido;
+}
 
 
 void GrafoMapa::floyd() {
