@@ -55,6 +55,29 @@ ListaRecorrido* GrafoMapa::camino_minimo(int origen, int destino) {
     return recorrido;
 }
 
+int GrafoMapa::generar_peso(Casillero* casillero) {
+    int peso = 0;
+    if (casillero->devolver_tipo_camino() == 'C') {
+        peso = 4;
+    } else if (casillero->devolver_tipo_camino() == 'B') {
+        peso = 0;
+    } else if (casillero->devolver_tipo_camino() == 'M') {
+        if (jugador.devolver_nombre() == 1) {
+            peso = 5;
+        } else {
+            peso = 2;
+        }
+    } else if (casillero->devolver_tipo_camino() == 'L') {
+        if (jugador.devolver_nombre() == 1) {
+            peso = 2;
+        } else {
+            peso = 5;
+        }
+    } else if (casillero->devolver_tipo_camino() == 'T') {
+        peso = 25;
+    }
+    return peso;
+}
 
 void GrafoMapa::floyd() {
     int cantidad_vertices = filas * columnas;
