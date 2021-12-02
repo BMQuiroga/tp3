@@ -99,3 +99,7 @@ void GrafoMapa::floyd() {
         }
     }
 }
+
+void GrafoMapa::agregar_camino(int posicion_inicial, int posicion_final, int peso) {
+    this->matriz_adyacencia[posicion_inicial][posicion_final] = peso;
+}

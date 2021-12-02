@@ -409,39 +409,6 @@ void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1
     }
 }
 
-/*void Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios){
-    std::string nombre;
-    int coord_x;
-    int coord_y;
-    std::string aux;
-    std::ifstream archivo_ubicaciones("ubicaciones.txt",std::ios::in);
-    if(!archivo_ubicaciones)
-        std::cout<<"El archivo no se abrio correctamente"<<std::endl;
-    else{
-        while(archivo_ubicaciones>>nombre){
-            if (nombre=="planta"){
-                archivo_ubicaciones>>nombre;
-                nombre="planta electrica";
-            }
-
-            //aux=archivo_ubicaciones.get();
-            getline(archivo_ubicaciones,aux,'(');
-            archivo_ubicaciones>>aux;
-            coord_x=stoi(aux);
-            archivo_ubicaciones>>aux;
-            coord_y=stoi(aux);
-            if (matriz[coord_x][coord_y]->devolver_tipo()=='T'){
-                int indice=edificios.buscar_indice(nombre);
-                matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
-            }
-            if (matriz[coord_x][coord_y]->devolver_tipo()=='C'){
-                matriz[coord_x][coord_y]->poner_material(nombre);
-            }
-        }
-    }
-}*/
-
-
 
 void Mapa::reescribir_ubicaciones(){
     std::ofstream archivo_ubicaciones;
