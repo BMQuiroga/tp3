@@ -70,4 +70,7 @@ void partida(ListaEdificios edificios, Mapa mapa, Jugador jugador1, Jugador juga
 int corregir_opcion(int opcion);
 
 
+bool esta_terminado(Jugador jugador);
+
+
 #endif 

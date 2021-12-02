@@ -1,11 +1,11 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
-
 #include "listamateriales.h"
 #include "listaedificios.h"
 #include "objetivo.h"
-// #include "menu.h"
 
+
+// #include "menu.h"
 class Jugador{
 
 private:
@@ -13,7 +13,7 @@ private:
     ListaMateriales materiales;
     int energia;
     int coordenada_x,coordenada_y;
-    Objetivo* objetivo_principal;
+    Objetivo* objetivo_principal; //construir el obelisco.
     Objetivo* objetivo_1;
     Objetivo* objetivo_2;
     Objetivo* objetivo_3;
@@ -37,6 +37,12 @@ public:
     int devolver_coordenada_y();
     void asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
     void actualizar_objetivo(int numero_objetivo, int valor);
+
+    bool ha_ganado();
+
+    bool cumplio_objetivo_principal();
+
+    bool cumplio_objetivo_secundario();
 
 private:
     Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);

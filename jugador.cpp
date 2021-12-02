@@ -150,3 +150,8 @@ void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
     // }
 }
 
+
+bool Jugador::ha_ganado(){
+    return false;
+
+}

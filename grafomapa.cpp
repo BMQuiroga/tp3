@@ -103,3 +103,58 @@ void GrafoMapa::floyd() {
 void GrafoMapa::agregar_camino(int posicion_inicial, int posicion_final, int peso) {
     this->matriz_adyacencia[posicion_inicial][posicion_final] = peso;
 }
+
+void GrafoMapa::inicializar_matriz_adyacencia() {
+    int largo_matriz = filas * columnas;
+
+    this->matriz_adyacencia = new int *[largo_matriz];
+
+    for (int i = 0; i < largo_matriz; i++) {
+        matriz_adyacencia[i] = new int [largo_matriz];
+    }
+
+    for (int i = 0; i < largo_matriz; i++) {
+        for (int j = 0; j < largo_matriz; j++) {
+            if (i == j) {
+                matriz_adyacencia[i][j] = 0;
+            } else {
+                matriz_adyacencia[i][j] = INFINITO;
+            }
+        }
+    }
+}
+
+
+void GrafoMapa::inicializar_caminos() {
+    int peso;
+
+    for (int coord_x = 0; coord_x < filas; coord_x++) {
+        for (int coord_y = 0; coord_y < columnas; coord_y++) {
+            int posicion_inicial = matriz[coord_x][coord_y]->obtener_id();
+
+            if (coord_y != 0) {
+                int posicion_final = matriz[coord_x][coord_y - 1]->obtener_id();
+                peso = generar_peso(matriz[coord_x][coord_y - 1]);
+                agregar_camino(posicion_inicial, posicion_final, peso);
+            }
+
+            if (coord_y != this->columnas - 1) {
+                int posicion_final = matriz[coord_x][coord_y + 1]->obtener_id();
+                peso = generar_peso(matriz[coord_x][coord_y + 1]);
+                agregar_camino(posicion_inicial, posicion_final, peso);
+            }
+
+            if (coord_x != 0) {
+                int posicion_final = matriz[coord_x - 1][coord_y]->obtener_id();
+                peso = generar_peso(matriz[coord_x - 1][coord_y]);
+                agregar_camino(posicion_inicial, posicion_final, peso);
+            }
+
+            if (coord_x != this->filas - 1) {
+                int posicion_final = matriz[coord_x + 1][coord_y]->obtener_id();
+                peso = generar_peso(matriz[coord_x + 1][coord_y]);
+                agregar_camino(posicion_inicial, posicion_final, peso);
+            }
+        }
+    }
+}
