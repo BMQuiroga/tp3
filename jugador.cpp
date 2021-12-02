@@ -152,6 +152,23 @@ void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
 
 
 bool Jugador::ha_ganado(){
-    return false;
 
+    bool gano = false;
+    if (cumplio_objetivo_principal()){
+        gano = true;
+    } else if (cumplio_objetivo_secundario()){
+        gano = true;
+    }
+
+    return gano;
+
+}
+
+bool Jugador::cumplio_objetivo_principal() {
+
+    return false;
+}
+
+bool Jugador::cumplio_objetivo_secundario() {
+    return false;
 }
