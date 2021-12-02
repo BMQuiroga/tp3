@@ -231,8 +231,12 @@ bool Mapa::casillero_ocupado(Jugador jugador, int coord_x, int coord_y){
 void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
     std::string edificio,ingreso;
     int coord_x,coord_y;
-    std::cout<<"Ingrese el nombre del edificio que desea construir"<<std::endl;
+    std::cout<<"Ingrese el nombre del edificio que desea construir SIN ESPACIOS"<<std::endl;
     std::cin>>edificio;
+    if(edificio == "plantaelectrica")
+        edificio = "planta electrica";
+    if(edificio == "minaoro")
+        edificio = "mina oro";
     if(se_puede_construir(edificios,edificio,jugador)){
         std::cout<<"Se puede construir el edificio, desea hacerlo?\n1. Construir el edificio\n2. Salir al menú"<<std::endl;
         std::cin>>ingreso;
