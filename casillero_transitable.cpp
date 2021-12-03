@@ -8,7 +8,9 @@
 }*/
 
 void CasilleroTransitable::poner_material(Material mat){
+    std::cout<<"puesto"<<std::endl;
     this->material = mat;
+    
 
 }
 

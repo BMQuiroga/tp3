@@ -1,0 +1,8 @@
+madera (1, 0)
+madera (2, 0)
+1 (7, 6)
+mina oro (1, 6)
+planta electrica (4, 2)
+2 (2, 7)
+mina oro (4, 6)
+planta electrica (8, 0)

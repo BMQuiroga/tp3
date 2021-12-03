@@ -98,6 +98,10 @@ void ListaEdificios::procesar_archivo_edificios(){
                 nombre="planta electrica";
             }
             archivo_edificios>>numero;
+            if (numero=="oro"){
+                archivo_edificios>>numero;
+                nombre="mina oro";
+            }
             piedra=stoi(numero);
             archivo_edificios>>numero;
             madera=stoi(numero);

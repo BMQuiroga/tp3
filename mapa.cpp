@@ -402,8 +402,8 @@ void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1
         
         std::cout <<"Nombre: " <<edificios.consulta(i).devolver_nombre() <<std::endl;
         std::cout <<"Para construirlo se requieren " <<edificios.consulta(i).devolver_piedra() <<" de piedra, " <<edificios.consulta(i).devolver_madera() <<" de madera y " <<edificios.consulta(i).devolver_metal() <<" de metal." <<std::endl;
-        std::cout <<"El jugador 1 construyó "<<construidos1 <<" y puede construir " <<maximos_permitidos-construidos1 <<" mas antes de llegar al limite." <<std::endl;
-        std::cout <<"El jugador 2 construyó "<<construidos2 <<" y puede construir " <<maximos_permitidos-construidos2 <<" mas antes de llegar al limite." <<std::endl;
+        std::cout <<"El jugador 1 construyó "<<construidos1 <<" y puede construir " << maximos_permitidos - construidos1 <<" mas antes de llegar al limite." <<std::endl;
+        std::cout <<"El jugador 2 construyó "<<construidos2 <<" y puede construir " << maximos_permitidos - construidos2 <<" mas antes de llegar al limite." <<std::endl;
         edificios.consulta(i).imprimir_brinda_materiales();
         std::cout <<"-------------------------------------------------" <<std::endl;
     }

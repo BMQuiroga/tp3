@@ -13,10 +13,12 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
     std::string aux;
     bool archivo_en_blanco;
     std::ifstream archivo_ubicaciones("ubicaciones.txt",std::ios::in);
-    if(!archivo_ubicaciones)
+    if(!archivo_ubicaciones){
         return true;
+        std::cout<<"No se ha encontrado el archivo ubicaciones, comenzando nueva partida..."<<std::endl;
+    }
     else{
-        while((archivo_ubicaciones>>nombre)){//no puedo poner el and porque esta condicion no es un bool, asi que va con breaks
+        while(archivo_ubicaciones>>nombre){//no puedo poner el and porque esta condicion no es un bool, asi que va con breaks
             archivo_en_blanco=false;
             if (nombre=="1"){
                 getline(archivo_ubicaciones,aux,'(');
@@ -27,11 +29,13 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 j.mover_gratis(coord_x,coord_y);
                 break;
             }
+            std::cout<<nombre<<std::endl;
             getline(archivo_ubicaciones,aux,'(');
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
+            std::cout<<nombre<<std::endl;
             Material material(nombre,diccionario_materiales(nombre));
             matriz[coord_x][coord_y]->poner_material(material);
         }
@@ -50,36 +54,41 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 break;
             }
             getline(archivo_ubicaciones,aux,'(');
-            if (aux=="oro ("){
+            if (aux=="oro "){
                 nombre="mina oro";
             }
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
-            int indice=edificios.buscar_indice(nombre);
+            int indice = edificios.buscar_indice(nombre);
+            std::cout<<indice<<std::endl;
             matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
             matriz[coord_x][coord_y]->cambiar_jugador(1);
         }
+        std::cout<<"ULTIMO WHILE"<<std::endl;
         while (archivo_ubicaciones>>nombre){
             if (nombre=="planta"){
                 archivo_ubicaciones>>nombre;
                 nombre="planta electrica";
             }
             getline(archivo_ubicaciones,aux,'(');
-            if (aux=="oro ("){
+            if (aux=="oro "){
                 nombre="mina oro";
             }
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
-            int indice=edificios.buscar_indice(nombre);
+            int indice = edificios.buscar_indice(nombre);
+            std::cout<<indice<<std::endl;
             matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
             matriz[coord_x][coord_y]->cambiar_jugador(2);
         }
-    archivo_ubicaciones.close();
+        std::cout<<"cierra"<<std::endl;
+        archivo_ubicaciones.close();
     }
+    std::cout<<"vuelve"<<std::endl;
     return archivo_en_blanco;
 }
 
