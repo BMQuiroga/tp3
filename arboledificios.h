@@ -1,8 +1,10 @@
 #ifndef ARBOLEDIFICIOS_H
 #define ARBOLEDIFICIOS_H
 
-#include "listaedificios.h"
+#include "edificio.h"
 #include "ramaedificios.h"
+
+#define ArbolEdificios ListaEdificios
 
 class ArbolEdificios{
 
@@ -12,15 +14,15 @@ private:
 public:
     //Constructor
     //PRE: -
-    //POS: tope = 0
-    ArbolEdificios(Edificio edificio);
+    //POS: -
+    ArbolEdificios(/*Edificio edificio*/);
 
-    //PRE: 1 <= pos <= cantidad + 1
-    //POS: agrega d arriba de la pila e incrementa tope en 1
+    //PRE: -
+    //POS: agrega el edificio al arbol
     void alta(std::string nombre, int piedra, int madera, int metal, int maximos);
 
-    //PRE: 1 <= pos <= cantidad
-    //POS: devuelve el dato que esta arriba
+    //PRE: que el edificio exista
+    //POS: devuelve el edificio
     Edificio consulta(std::string edificio);
 
     //PRE: -

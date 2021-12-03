@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ramaedificios.h"
+#include "arboledificios.h"
 
 RamaEdificios::RamaEdificios(Edificio edificio){
     this->valor=edificio;

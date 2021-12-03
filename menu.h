@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 #include "mapa.h"
-#include "listaedificios.h"
+#include "arboledificios.h"
 #include "listamateriales.h"
 //#define CLR_SCREEN "clear"//PARA LINUX
 #define CLR_SCREEN "CLS"//PARA WINDOWS#

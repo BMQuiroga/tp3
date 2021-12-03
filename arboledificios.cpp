@@ -2,11 +2,12 @@
 #include "arboledificios.h"
 #include <fstream>
 
-ArbolEdificios::ArbolEdificios(Edificio edificio){
-    RamaEdificios *rama = new RamaEdificios(edificio);
+ArbolEdificios::ArbolEdificios(/*Edificio edificio*/){
+    //RamaEdificios *rama = new RamaEdificios(edificio);
     //RamaEdificios nuevo(edificio);
     //RamaEdificios *p=&nuevo;
-    this->raiz=rama;
+    //this->raiz=rama;
+    procesar_archivo_edificios();
 }
 
 void ArbolEdificios::alta(std::string nombre, int piedra, int madera, int metal, int maximos){
@@ -30,12 +31,13 @@ int ArbolEdificios::devolver_cantidad(){
 
 void ArbolEdificios::procesar_archivo_edificios(){
     std::string numero,nombre;
-    int piedra,madera,metal,max;
+    int piedra,madera,metal,max,contador=0;
     std::ifstream archivo_edificios("edificios.txt",std::ios::in);
     if(!archivo_edificios)
         std::cout<<"El archivo no se abrio correctamente"<<std::endl;
     else{
         while(archivo_edificios>>nombre){
+            contador++;
             if (nombre=="planta"){
                 archivo_edificios>>nombre;
                 nombre="planta electrica";
@@ -54,8 +56,13 @@ void ArbolEdificios::procesar_archivo_edificios(){
             max=stoi(numero);
             //std::cout<<nombre<<" "<<piedra<<" "<<madera<<" "<<metal<<" "<<max<<std::endl;
             //edificio.mostrar();
-            alta(nombre,piedra,madera,metal,max);
-            
+            if(contador!=1)
+                alta(nombre,piedra,madera,metal,max);
+            else{
+                Edificio edificio(nombre,piedra,madera,metal,max);
+                this->raiz= new RamaEdificios(edificio);
+            }
+                
             
         }
     }

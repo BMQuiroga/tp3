@@ -1,6 +1,6 @@
 #ifndef OBJETIVO_H
 #define OBJETIVO_H
-#include "listaedificios.h"
+#include "arboledificios.h"
 #include "listamateriales.h"
 #include <iostream>
 

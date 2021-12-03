@@ -2,8 +2,7 @@
 #define RAMAEDIFICIOS_H
 
 #include <iostream>
-#include "listaedificios.h"
-
+#include "arboledificios.h"
 
 class RamaEdificios{
 

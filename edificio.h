@@ -1,9 +1,11 @@
-#ifndef EDIFICIO_H
-#define EDIFICIO_H
 #include <string>
 #include "material.h"
 #include "listamateriales.h"
-// #include "jugador.h"
+
+#ifndef EDIFICIOOBJ_H
+#define EDIFICIOOBJ_H
+
+
 
 class Edificio{
 

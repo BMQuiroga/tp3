@@ -1,6 +1,6 @@
 #include <iostream>
 #include "casillero_construible.h"
-#include "listaedificios.h"
+#include "arboledificios.h"
 
 void CasilleroConstruible::construir(Edificio edificio){
     //this->edificio=edificio;

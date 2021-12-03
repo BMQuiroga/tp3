@@ -6,7 +6,7 @@
 #include "casillero_inaccesible.h"
 #include "edificio.h"
 #include "material.h"
-#include "listaedificios.h"
+#include "arboledificios.h"
 #include "listamateriales.h"
 #include "jugador.h"
 #include <string>

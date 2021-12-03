@@ -1,7 +1,7 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
 #include "listamateriales.h"
-#include "listaedificios.h"
+#include "arboledificios.h"
 #include "objetivo.h"
 
 
