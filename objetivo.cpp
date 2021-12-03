@@ -168,8 +168,9 @@ int Constructor::calcular_progreso() {
     int contador = 0;
     bool resultado = true;
     std::string nombre;
+    Edificio* array_edificios = edificios.devolver_todo();
     for (int i = 0; i < edificios.devolver_cantidad(); i++) {
-        nombre = edificios.consulta(i).devolver_nombre();
+        nombre = array_edificios[i].devolver_nombre();
         resultado = mapa->tiene_edificio(nombre, *jugador);   
         if (resultado) {
             contador++;

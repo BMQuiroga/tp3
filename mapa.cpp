@@ -348,8 +348,9 @@ void Mapa::realizar_construccion(ListaEdificios edificios, int coord_x, int coor
 }
 
 void Mapa::listar_edificios_construidos(ListaEdificios edificios, Jugador jugador){
-    for(int i = 1 ; i < (edificios.devolver_cantidad()+1); i++){//
-        std::string nombre = edificios.consulta(i).devolver_nombre();
+    Edificio* array_edificios = edificios.devolver_todo();
+    for(int i = 0 ; i < edificios.devolver_cantidad() ; i++){//
+        std::string nombre = array_edificios[i].devolver_nombre();
         int construidos = edificios_construidos(nombre, jugador);
         if (construidos && nombre != "0"){
             std::cout <<"Nombre: " <<nombre<<", Cantidad construida: " <<construidos <<std::endl;
@@ -395,8 +396,9 @@ void Mapa::menu_consultar_coordenada(){
 }
 
 void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2){
-    for(int i = 1; i < (edificios.devolver_cantidad()+1); i++){
-        Edificio edificio = edificios.consulta(i);
+    Edificio* array_edificios = edificios.devolver_todo();
+    for(int i = 0; i < edificios.devolver_cantidad() ; i++){
+        Edificio edificio = array_edificios[i];
         std::string nombre = edificio.devolver_nombre();
         int construidos1 = edificios_construidos(nombre, jugador1);
         int construidos2 = edificios_construidos(nombre, jugador2);
