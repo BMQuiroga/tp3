@@ -29,13 +29,11 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
                 j.mover_gratis(coord_x,coord_y);
                 break;
             }
-            std::cout<<nombre<<std::endl;
             getline(archivo_ubicaciones,aux,'(');
             archivo_ubicaciones>>aux;
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
-            std::cout<<nombre<<std::endl;
             Material material(nombre,diccionario_materiales(nombre));
             matriz[coord_x][coord_y]->poner_material(material);
         }
@@ -62,11 +60,9 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
             int indice = edificios.buscar_indice(nombre);
-            std::cout<<indice<<std::endl;
             matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
             matriz[coord_x][coord_y]->cambiar_jugador(1);
         }
-        std::cout<<"ULTIMO WHILE"<<std::endl;
         while (archivo_ubicaciones>>nombre){
             if (nombre=="planta"){
                 archivo_ubicaciones>>nombre;
@@ -81,14 +77,11 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
             int indice = edificios.buscar_indice(nombre);
-            std::cout<<indice<<std::endl;
             matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
             matriz[coord_x][coord_y]->cambiar_jugador(2);
         }
-        std::cout<<"cierra"<<std::endl;
         archivo_ubicaciones.close();
     }
-    std::cout<<"vuelve"<<std::endl;
     return archivo_en_blanco;
 }
 
