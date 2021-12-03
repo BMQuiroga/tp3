@@ -77,3 +77,9 @@ void ArbolEdificios::destruir(){
     this->raiz->destruir();
     delete this->raiz;
 }
+
+Edificio* ArbolEdificios::devolver_todo(){
+    Edificio array[devolver_cantidad()];
+    this->raiz->devolver_todo(array,0);
+    return array;
+}

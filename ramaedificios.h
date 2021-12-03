@@ -44,6 +44,9 @@ public:
     //POST: Despues de que sus hijos borraron a todos sus respectivos hijos, los borra
     void destruir();
 
+    //PRE: -
+    //POST: Añade al array su edificio, y llama a la funcion en sus 2 hijas, si existen
+    int devolver_todo(Edificio array[], int contador);
 };
 
 

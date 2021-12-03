@@ -44,8 +44,14 @@ Edificio RamaEdificios::buscar_edificio(std::string edificio){
     else if(edificio<this->clave){
         return(this->nodo_izq->buscar_edificio(edificio));
     }
-    else
-        return valor;
+    else{
+        if(edificio==this->clave)
+            return valor;
+        else{
+            Edificio aux("0",0,0,0,0);
+            return aux;
+        }
+    }     
 }
 
 int RamaEdificios::contador_de_elementos(){
@@ -100,3 +106,12 @@ void RamaEdificios::destruir(){
     }
 }
 
+int RamaEdificios::devolver_todo(Edificio array[], int contador){
+    array[contador]=this->valor;
+    contador++;
+    if(nodo_der)
+        contador=this->nodo_der->devolver_todo(array,contador);
+    if(nodo_izq)
+        contador=this->nodo_izq->devolver_todo(array,contador);
+    return contador;
+}

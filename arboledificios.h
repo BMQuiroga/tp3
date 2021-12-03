@@ -40,6 +40,10 @@ public:
     //PRE: -
     //POST: Libera la memoria
     void destruir();
+
+    //PRE: -
+    //POST: Devuelve un array con todos los edificios
+    Edificio* devolver_todo();
 };
 
 #endif

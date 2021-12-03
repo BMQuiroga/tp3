@@ -59,8 +59,8 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
-            int indice = edificios.buscar_indice(nombre);
-            matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
+            Edificio edificio = edificios.consulta(nombre);
+            matriz[coord_x][coord_y]->construir(edificio);
             matriz[coord_x][coord_y]->cambiar_jugador(1);
         }
         while (archivo_ubicaciones>>nombre){
@@ -76,8 +76,8 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Juga
             coord_x=stoi(aux);
             archivo_ubicaciones>>aux;
             coord_y=stoi(aux);
-            int indice = edificios.buscar_indice(nombre);
-            matriz[coord_x][coord_y]->construir(edificios.consulta(indice));
+            Edificio edificio = edificios.consulta(nombre);
+            matriz[coord_x][coord_y]->construir(edificio);
             matriz[coord_x][coord_y]->cambiar_jugador(2);
         }
         archivo_ubicaciones.close();

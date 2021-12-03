@@ -77,7 +77,7 @@ Letrado::Letrado(ListaEdificios edificios, Mapa * mapa, Jugador * jugador) {
     this->mapa = mapa;
     this->jugador = jugador;
     this->progreso = 0;
-    this->objetivo = edificios.consulta(edificios.buscar_indice("escuela")).devolver_maximos_permitidos();  // cambiar para arbol binario
+    this->objetivo = edificios.consulta("escuela").devolver_maximos_permitidos();  // cambiar para arbol binario
 }
 
 Minero::Minero(ListaEdificios edificios, Mapa * mapa, Jugador * jugador) {

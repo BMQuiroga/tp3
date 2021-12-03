@@ -138,7 +138,7 @@ private:
 
     //Pre:Recibe la lista de edificios y materiales,el nombre del edifiio y el posicion del edificio
     //Post:Resta la cantidad de materiales que se usara en la construccion
-    void realizar_construccion(ListaEdificios edificios,int coord_x, int coord_y, std::string nombre, int indice_edificio, Jugador jugador);
+    void realizar_construccion(ListaEdificios edificios,int coord_x, int coord_y, std::string nombre, Jugador jugador);
 
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve las coordanas del nombre ingresado

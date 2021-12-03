@@ -1,7 +1,7 @@
 #include "menu.h"
 #include <iostream>
 #include "mapa.h"
-#include "listaedificios.h"
+#include "arboledificios.h"
 #include "listamateriales.h"
 #include "mapa.h"
 #include "jugador.h"
@@ -179,15 +179,14 @@ void modificar_datos_edificio(ListaEdificios edificios) {
     cin >> nombre;
 
     while (!resultado && nombre != "fin") {
-        indice = edificios.buscar_indice(nombre);
+        edificio = edificios.consulta(nombre);
 
-        if (indice == -1) {
+        if (edificio.devolver_maximos_permitidos()==0) {
             cout << "No se encontro el edificio ingresado. Intente de nuevo: ";
             cin >> nombre;
 
         } else {
-            edificio = edificios.consulta(indice);
-
+            
             if (edificio.devolver_nombre() != "obelisco") {
                 cout << "Se encontro el edificio " << edificio.devolver_nombre() << "." << endl;
                 edificio.modificar_datos();
