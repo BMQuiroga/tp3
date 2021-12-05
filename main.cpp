@@ -5,13 +5,13 @@
 using namespace std;
 
 
-
 int main(){
     ListaEdificios edificios;
-    Mapa mapa(edificios);
+    Mapa* mapa = new Mapa(edificios);
+    // Mapa mapa(edificios);
 
-    Jugador jugador1(1,1,1, edificios, &mapa);
-    Jugador jugador2(2,2,2, edificios, &mapa);
+    Jugador jugador1(1,1,1, edificios, mapa);
+    Jugador jugador2(2,2,2, edificios, mapa);
     
     ListaMateriales materiales1;
     ListaMateriales materiales2;
@@ -22,14 +22,17 @@ int main(){
     jugador1.asignar_lista_materiales(materiales1);
     jugador2.asignar_lista_materiales(materiales2);
 
+
+    
+
     //lista_objetivos
     //juegador1.asignar_objetivo(lista_objetivos)
 
-
-    bool archivo_en_blanco=mapa.procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
+    bool archivo_en_blanco = false;
+    // bool archivo_en_blanco=mapa.procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
     
     if(archivo_en_blanco)
-        partida(edificios,mapa,jugador1,jugador2);
+        partida(edificios,*mapa,jugador1,jugador2);
     else{
         int opcion_elegida;
         do{
@@ -43,7 +46,7 @@ int main(){
                 cin >> opcion_elegida;
             } 
             // procesar_opcion_menu(opcion_elegida,materiales,edificios,mapa,jugador1,jugador2);
-            procesar_opcion_menu(opcion_elegida, edificios, mapa, jugador1, jugador2);
+            procesar_opcion_menu(opcion_elegida, edificios, *mapa, jugador1, jugador2);
 
         }while(opcion_elegida!=GUARDAR_Y_SALIR_MENU);
         
