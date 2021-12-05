@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include "mapa.h"
 #include "menu.h"
+#include "grafomapa.h"
 
 Mapa::Mapa(ListaEdificios edificios){
     procesar_archivo_mapa();
@@ -18,6 +19,14 @@ void Mapa::definir(int coordenada_x,int coordenada_y){
         aux[i]=new Casillero [coordenada_y];
     matriz=aux;*/
 
+}
+
+int Mapa::devolver_cantidad_filas() {
+    return this->coordenada_x;
+}
+
+int Mapa::devolver_cantidad_columnas() {
+    return this->coordenada_y;
 }
 
 /*FUNCION OBSOLETA
@@ -187,6 +196,7 @@ void Mapa::destruir(){
 void Mapa::procesar_archivo_mapa(){
     char letra;
     int coordenadax, coordenaday;
+    int contador = 0;
     std::ifstream archivo_mapa("mapa.txt" ,std::ios::in);
     if(!archivo_mapa)
         std::cout <<"El archivo no se abrio correctamente"<<std::endl;
@@ -217,6 +227,9 @@ void Mapa::procesar_archivo_mapa(){
                     casilla[i][j] = new CasilleroInaccesible();
                 else
                     std::cout<<"ERROR";
+
+                casilla[i][j]->setear_id(contador);
+                contador++;
             }     
         }
         this->matriz = casilla;
@@ -490,11 +503,50 @@ bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
         while (j < coordenada_x) {
             if(matriz[i][j] -> devolver_tipo() == 'T' && matriz[i][j] -> devolver_material_o_edificio() == nombre_edificio && matriz[i][j] -> devolver_jugador() == jugador.devolver_nombre()) {
                 return true;
-            }
-            j++;
-        }
-        i++;
+            } j++;
+        } i++;
     }
-
     return false;
 }
+
+Casillero* Mapa::devolver_casillero(int x, int y) {
+    return matriz[x][y];
+}
+
+void Mapa::mover_jugador(Jugador jugador) {
+    int origen_x, origen_y, destino_x, destino_y;
+    GrafoMapa* mover = jugador.movimiento();
+    string opcion;
+
+    // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
+
+    //
+    // falta validar entradas
+    std::cout << "Casillero de origen" << std::endl; 
+    std::cout << "Ingrese fila: " << std::endl;         cin >> origen_x;
+    std::cout << "Ingrese columna: " << std::endl;      cin >> origen_y;
+    std::cout << std::endl;
+    std::cout << "Casillero de destino" << std::endl; 
+    std::cout << "Ingrese fila: " << std::endl;         cin >> destino_x;
+    std::cout << "Ingrese columna: " << std::endl;      cin >> destino_y;
+
+    int costo = mover->devolver_costo(origen_x, origen_y, destino_x, destino_y);
+
+    std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
+    std::cout << "Tenes " << jugador.devolver_energia() << " de energia." << std::endl;
+
+    if (jugador.devolver_energia() >= costo) {
+        std::cout << "Desea realizar? [si/no]" << endl;
+        std::cin >> opcion;
+
+        if (opcion == "si") {
+            jugador.restar_energia(costo); //no funciona
+            //cambiar de posicion del jugador en el mapa
+            ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
+            mover->mostrar_recorrido_en_mapa(recorrido);
+        }
+    } else {
+        std::cout << "No tenes energia suficiente." << std::endl;
+    }
+}
+    

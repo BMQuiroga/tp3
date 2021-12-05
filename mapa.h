@@ -31,6 +31,9 @@ public:
     //Post: Procesa los archivos mapa.txt y ubicaciones.txt
     Mapa(ListaEdificios edificios);
 
+    int devolver_cantidad_filas();
+    int devolver_cantidad_columnas();
+
     //Pre: Recibe la cantidad de filas y la cant de columnas
     //Post: Pide memoria para cada casillero de la matriz
     void definir(int coordenada_x,int coordenada_y);
@@ -110,6 +113,11 @@ public:
     //Post: Devuelve la cantidad de edificios de ese tipo que tiene construidos ese jugador
     int edificios_construidos(std::string nombre, Jugador jugador);
 
+
+    void mover_jugador(Jugador jugador);
+
+
+    Casillero* devolver_casillero(int x, int y);
 private:
     
     //Pre:-
