@@ -1,0 +1,11 @@
+
+#ifndef TP3_2021_2C_LISTAOBJETIVOS_H
+#define TP3_2021_2C_LISTAOBJETIVOS_H
+
+
+class listaObjetivos {
+
+};
+
+
+#endif //TP3_2021_2C_LISTAOBJETIVOS_H
