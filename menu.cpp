@@ -92,7 +92,7 @@ void procesar_opcion_partida(int opcion_elegida, ListaEdificios edificios, Mapa 
             mapa.recolectar(jugador);
             break;
         case MOVERSE:
-            //nueva
+            mapa.mover_jugador(jugador);
             break;
         case FINALIZAR_TURNO:
             //no hace nada
