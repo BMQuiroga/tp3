@@ -4,13 +4,14 @@
 #include "arboledificios.h"
 #include "objetivo.h"
 
+class GrafoMapa;
 
-// #include "menu.h"
 class Jugador{
 
 private:
     int nombre;
     ListaMateriales materiales;
+    GrafoMapa* grafo;
     int energia;
     int coordenada_x,coordenada_y;
     Objetivo* objetivo_principal; //construir el obelisco.
@@ -29,7 +30,6 @@ public:
     void mostrar_objetivos();
     void asignar_lista_materiales(ListaMateriales materiales);
     void comprar_bombas();
-    // ListaMateriales* devolver_materiales();
     ListaMateriales devolver_materiales();
     bool checkear_objetivos();
     int devolver_nombre();
@@ -43,9 +43,11 @@ public:
     bool cumplio_objetivo_principal();
 
     bool cumplio_objetivo_secundario();
+    GrafoMapa* movimiento();
 
 private:
     Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
+    void crear_grafo(Mapa * mapa);
 };
 
 

@@ -1,12 +1,20 @@
 #include "jugador.h"
 #include <iostream>
+#include "grafomapa.h"
 
 Jugador::Jugador(int x,int y,int numero, ListaEdificios edificios, Mapa * mapa){
     //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
-    this->energia=50;
-    this->nombre=numero;
+    this->energia = 50;
+    this->nombre = numero;
+    this->crear_grafo(mapa);
     this->asignar_objetivos(edificios, materiales, mapa, *this);
+}
+
+
+void Jugador::crear_grafo(Mapa * mapa) {
+    this->grafo = new GrafoMapa(this, mapa);
+    
 }
 
 void Jugador::mover_gratis(int x, int y){
@@ -35,6 +43,11 @@ void Jugador::comprar_bombas(){
     this->materiales.obtener_nodo(materiales.buscar_indice("andycoins"))->obtener_dato().operator-(bombas*100);
     this->energia-=5;
 
+}
+
+
+GrafoMapa* Jugador::movimiento() {
+    return grafo;
 }
 
 // ListaMateriales* Jugador::devolver_materiales(){
