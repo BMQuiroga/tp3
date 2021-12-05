@@ -22,6 +22,10 @@ int main(){
     jugador1.asignar_lista_materiales(materiales1);
     jugador2.asignar_lista_materiales(materiales2);
 
+    //lista_objetivos
+    //juegador1.asignar_objetivo(lista_objetivos)
+
+
     bool archivo_en_blanco=mapa.procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
     
     if(archivo_en_blanco)

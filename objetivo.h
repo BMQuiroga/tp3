@@ -4,6 +4,7 @@
 #include "listamateriales.h"
 #include <iostream>
 
+using namespace std;
 
 class Jugador;
 class Mapa;
@@ -18,19 +19,22 @@ protected:
 public:
     std::string devolver_nombre();
     void mostrar();
+    virtual void mostrar_objetivo();
     virtual bool checkear() = 0;
     virtual int calcular_progreso() = 0;
     virtual void actualizar(int valor)=0;
 };
 
-class Comprar_Andypolis : public Objetivo {
+/*
+class ComprarAndypolis : public Objetivo {
     public:
-        Comprar_Andypolis();
+        ComprarAndypolis();
         int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
 };
-
+*/
+/*
 class Edad_De_Piedra : public Objetivo {
     private:
         ListaMateriales materiales;
@@ -39,16 +43,18 @@ class Edad_De_Piedra : public Objetivo {
         int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
-};
+};*/
 
+/*
 class Bombardero : public Objetivo {
     public:
         Bombardero();
         int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
-};
+};*/
 
+/*
 class Energetico : public Objetivo {
     private:
         Jugador * jugador;
@@ -57,8 +63,9 @@ class Energetico : public Objetivo {
         int calcular_progreso();
         bool checkear();
         void actualizar(int valor);
-};
+};*/
 
+/*
 class Letrado : public Objetivo {
     private:
         ListaEdificios edificios; 
@@ -95,7 +102,7 @@ class Cansado : public Objetivo {
 
 class Constructor : public Objetivo {
     private:
-        ListaEdificios edificios; 
+        ListaEdificios edificios;
         Mapa * mapa;
         Jugador * jugador;
     public:
@@ -122,6 +129,7 @@ class Extremista : public Objetivo {
         bool checkear();
         void actualizar(int valor);
 };
+ */
 
 class Principal : public Objetivo {
     private:

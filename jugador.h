@@ -14,7 +14,7 @@ private:
     int energia;
     int coordenada_x,coordenada_y;
     Objetivo* objetivo_principal; //construir el obelisco.
-    Objetivo* objetivo_1;
+    Objetivo** objetivo_secundario;
     Objetivo* objetivo_2;
     Objetivo* objetivo_3;
 
