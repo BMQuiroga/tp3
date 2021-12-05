@@ -6,6 +6,8 @@
 
 #define ArbolEdificios ListaEdificios
 
+class RamaEdificios;
+
 class ArbolEdificios{
 
 private:
