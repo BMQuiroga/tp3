@@ -84,3 +84,7 @@ Edificio* ArbolEdificios::devolver_todo(){
     this->raiz->devolver_todo(array,0);
     return array;
 }
+
+void ArbolEdificios::cambiar_nodo(Edificio edificio){
+    this->raiz->cambiar_edificio(edificio);
+}

@@ -56,9 +56,9 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
 
 void Mapa::llamar_lluvia(){
     srand((unsigned)time(0));
-    int cantidad_material_piedra = generador_de_numeros_aleatorios(1,3);//1+rand()%1;
-    int cantidad_material_madera = generador_de_numeros_aleatorios(0,2);//rand()%1;
-    int cantidad_material_metal = generador_de_numeros_aleatorios(2,5);//2+rand()%2;
+    int cantidad_material_piedra = generador_de_numeros_aleatorios(1,2);//1+rand()%1;
+    int cantidad_material_madera = generador_de_numeros_aleatorios(0,1);//rand()%1;
+    int cantidad_material_metal = generador_de_numeros_aleatorios(2,4);//2+rand()%2;
     //std::cout<<cantidad_material_piedra<<" "<<cantidad_material_madera<<" "<<cantidad_material_metal<<std::endl;
     lluvia(cantidad_material_piedra, "piedra");
     lluvia(cantidad_material_madera, "madera");

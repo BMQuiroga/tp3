@@ -96,9 +96,9 @@ void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materi
     //int c=0;
 
     //while (a==b || b==c || a==c){
-    //     a=generador_de_numeros_aleatorios(1,11);
-    //     b=generador_de_numeros_aleatorios(1,11);
-    //     c=generador_de_numeros_aleatorios(1,11);
+    //     a=generador_de_numeros_aleatorios(1,10);
+    //     b=generador_de_numeros_aleatorios(1,10);
+    //     c=generador_de_numeros_aleatorios(1,10);
     // }
     
     // this->objetivo_1 = crear_objetivo(a, edificios, materiales, mapa, jugador);

@@ -47,6 +47,10 @@ public:
     //PRE: -
     //POST: Añade al array su edificio, y llama a la funcion en sus 2 hijas, si existen
     int devolver_todo(Edificio array[], int contador);
+
+    //PRE: -
+    //POST: Busca el nodo con el mismo nombre y lo cambia por el nuevo edificio
+    void cambiar_edificio(Edificio edificio);
 };
 
 

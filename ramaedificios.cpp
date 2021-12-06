@@ -115,3 +115,4 @@ int RamaEdificios::devolver_todo(Edificio array[], int contador){
         contador=this->nodo_izq->devolver_todo(array,contador);
     return contador;
 }
+

@@ -125,7 +125,7 @@ void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
 }
 
 int generador_de_numeros_aleatorios(int min, int max){
-  return min + rand()%(max-min);
+    return min + rand()%(max+1-min);
 }
 
 void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
@@ -190,6 +190,7 @@ void modificar_datos_edificio(ListaEdificios edificios) {
             if (edificio.devolver_nombre() != "obelisco") {
                 cout << "Se encontro el edificio " << edificio.devolver_nombre() << "." << endl;
                 edificio.modificar_datos();
+                edificios.cambiar_nodo(edificio);
             } else {
                 cout << "No se puede cambiar los datos del obelisco." << endl;
             }
