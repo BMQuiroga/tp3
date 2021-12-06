@@ -211,7 +211,7 @@ void Mapa::destruir(){
     	for(int j = 0; j < coordenada_y; j++){
 
             delete matriz[i][j];
-            matriz[i][j] = nullptr;
+            matriz[i][j] = nullptr;// no es necesario pero buena practica.
         }
 
         delete[] matriz[i];
