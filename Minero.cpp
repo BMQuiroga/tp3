@@ -3,3 +3,6 @@
 //
 
 #include "Minero.h"
+Minero::Minero(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
+
+}

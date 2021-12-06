@@ -7,7 +7,7 @@ class EdadDePiedra : public Objetivo {
 private:
     ListaMateriales materiales;
 public:
-    Edad_De_Piedra(ListaMateriales materiales);
+    EdadDePiedra(ListaMateriales materiales);
 
     void mostrar(){cout << "Edad de piedra: tener en el inventario 50000 piedras" << endl;}
     int calcular_progreso();

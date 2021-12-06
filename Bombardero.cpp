@@ -3,3 +3,7 @@
 //
 
 #include "Bombardero.h"
+
+Bombardero::Bombardero() {
+
+}

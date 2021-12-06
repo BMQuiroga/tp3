@@ -4,6 +4,19 @@
 #include "listamateriales.h"
 #include <iostream>
 
+const int OBJ_COMPRAR_ANDYPOLIS = 1;
+const int OBJ_EDAD_PIEDRA = 2;
+const int OBJ_BOMBARDERO = 3;
+const int OBJ_ENERGICO = 4;
+const int OBJ_LETRADO = 5;
+const int OBJ_MINERO = 6;
+const int OBJ_CANSADO = 7;
+const int OBJ_CONSTRUCTOR = 8;
+const int OBJ_ARMADO = 9;
+const int OBJ_EXTREMISTA = 10;
+const int OBJ_OBELISCO = 11;
+const int TOPE_OBJETIVOS = 10;
+
 using namespace std;
 
 class Jugador;

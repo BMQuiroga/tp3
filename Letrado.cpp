@@ -3,3 +3,6 @@
 //
 
 #include "Letrado.h"
+Letrado::Letrado(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
+
+}

@@ -25,7 +25,8 @@ int main(){
 
     
 
-    //lista_objetivos
+    //lista_objetivos1
+    //lista_objetivos2
     //juegador1.asignar_objetivo(lista_objetivos)
 
     bool archivo_en_blanco = false;

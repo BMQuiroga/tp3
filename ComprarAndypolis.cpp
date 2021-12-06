@@ -3,3 +3,6 @@
 //
 
 #include "ComprarAndypolis.h"
+ComprarAndypolis::ComprarAndypolis(){
+
+}

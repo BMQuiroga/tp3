@@ -208,8 +208,12 @@ void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
 
 void Mapa::destruir(){
     for(int i = 0; i < coordenada_x; i++){
-    	for(int j = 0; j < coordenada_y; j++)
+    	for(int j = 0; j < coordenada_y; j++){
+
             delete matriz[i][j];
+            matriz[i][j] = nullptr;// no es necesario pero buena practica.
+        }
+
         delete[] matriz[i];
     }
     delete[] matriz;
