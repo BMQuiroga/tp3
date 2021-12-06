@@ -42,7 +42,7 @@ bool Utilidad::pedir_confirmacion() {
     cout << "Desea continuar con la operacion? [si/no] -> ";
     cin >> opcion;
     
-    while (this->minuscula(opcion) != "si" || this->minuscula(opcion) != "no") {
+    while (minuscula(opcion) != "si" && minuscula(opcion) != "no") {
         cout << "Ingreso invalido. Ingrese si o no [si/no] -> ";
         cin >> opcion;
     }

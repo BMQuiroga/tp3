@@ -116,3 +116,7 @@ int RamaEdificios::devolver_todo(Edificio array[], int contador){
     return contador;
 }
 
+
+void RamaEdificios::cambiar_edificio(Edificio edificio) {
+    
+}
