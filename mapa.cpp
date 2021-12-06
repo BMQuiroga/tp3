@@ -5,6 +5,7 @@
 #include "mapa.h"
 #include "menu.h"
 #include "grafomapa.h"
+#include "utilidad.h"
 
 Mapa::Mapa(ListaEdificios edificios){
     procesar_archivo_mapa();
@@ -28,6 +29,27 @@ int Mapa::devolver_cantidad_filas() {
 int Mapa::devolver_cantidad_columnas() {
     return this->coordenada_y;
 }
+
+int Mapa::pedir_fila() {
+    int fila;
+    cout << "Ingrese la coordenada x [entre 0 - " << this->devolver_cantidad_filas() - 1 << "] -> ";    cin >> fila;
+    while(fila < 0 || fila >= this->devolver_cantidad_filas()) {
+        cout << "Fila no valida. Ingrese de nuevo. [entre 0 - " << this->devolver_cantidad_filas() - 1 << "] -> ";
+        cin >> fila; 
+    }
+    return fila;
+}
+
+int Mapa::pedir_columna() {
+    int columna;
+    cout << "Ingrese la coordenada y [entre 0 - " << this->devolver_cantidad_columnas() - 1 << "] -> ";    cin >> columna;
+    while(columna < 0 || columna >= this->devolver_cantidad_columnas()) {
+        cout << "Fila no valida. Ingrese de nuevo. [entre 0 - " << this->devolver_cantidad_columnas() - 1 << "] -> ";
+        cin >> columna; 
+    }
+    return columna;
+}
+
 
 /*FUNCION OBSOLETA
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
@@ -254,10 +276,14 @@ void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
         std::cout <<"Se puede construir el edificio, desea hacerlo?\n1. Construir el edificio\n2. Salir al menú" <<std::endl;
         std::cin >>ingreso;
         if(ingreso=="1"){
-            std::cout <<"Ingrese la coordenada x (entre 0 y "<<coordenada_x-1<<")" <<std::endl;
-            std::cin >>coord_x;
-            std::cout <<"Ingrese la coordenada y (entre 0 y "<<coordenada_y-1<<")" <<std::endl;
-            std::cin >>coord_y;
+            // std::cout <<"Ingrese la coordenada x (entre 0 y "<<coordenada_x-1<<")" <<std::endl;
+            // std::cin >>coord_x;
+            // std::cout <<"Ingrese la coordenada y (entre 0 y "<<coordenada_y-1<<")" <<std::endl;
+            // std::cin >>coord_y;
+            
+            coord_x = pedir_fila();
+            coord_y = pedir_columna();
+            
             if(!casillero_ocupado(jugador, coord_x, coord_y) && !casillero_ocupado(rival, coord_x, coord_y)){
                 if(coord_x >= 0 && coord_x < coordenada_x && coord_y >= 0 && coord_y < coordenada_y){
                     if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T'){
@@ -386,26 +412,37 @@ void Mapa::mostrar_coordenadas(std::string nombre, Jugador jugador){
 
 void Mapa::menu_demoler(ListaEdificios edificios, Jugador jugador){
     int coord_x, coord_y;
-    std::cout <<"Ingrese la coordenada x"<<std::endl;
-    std::cin >>coord_x;
-    std::cout<<"Ingrese la coordenada y"<<std::endl;
-    std::cin >>coord_y;
-    if(coord_x < coordenada_x && coord_y < coordenada_y && coord_x >= 0 && coord_y >= 0)
-        demoler(edificios, coord_x,coord_y,jugador);
-    else
-        std::cout<<"Posicion elegida fuera de rango!"<<std::endl;
+    // std::cout <<"Ingrese la coordenada x"<<std::endl;
+    // std::cin >>coord_x;
+    // std::cout<<"Ingrese la coordenada y"<<std::endl;
+    // std::cin >>coord_y;
+
+    coord_x = pedir_fila();
+    coord_y = pedir_columna();
+
+    demoler(edificios, coord_x,coord_y,jugador);
+
+    // if(coord_x < coordenada_x && coord_y < coordenada_y && coord_x >= 0 && coord_y >= 0)
+    //     demoler(edificios, coord_x,coord_y,jugador);
+    // else
+    //     std::cout<<"Posicion elegida fuera de rango!"<<std::endl;
 }
 
 void Mapa::menu_consultar_coordenada(){
     int coord_x,coord_y;
-    std::cout <<"Ingrese la coordenada x"<<std::endl;
-    std::cin >>coord_x;
-    std::cout <<"Ingrese la coordenada y"<<std::endl;
-    std::cin >>coord_y;
-    if(coord_x < coordenada_x && coord_y<coordenada_y && coord_x >= 0 && coord_y >= 0)
-        this->matriz[coord_x][coord_y]->mostrar();
-    else
-        std::cout <<"Posicion elegida fuera de rango!" <<std::endl;
+    // std::cout <<"Ingrese la coordenada x"<<std::endl;
+    // std::cin >>coord_x;
+    // std::cout <<"Ingrese la coordenada y"<<std::endl;
+    // std::cin >>coord_y;
+    coord_x = pedir_fila();
+    coord_y = pedir_columna();
+
+    this->matriz[coord_x][coord_y]->mostrar();
+
+    // if(coord_x < coordenada_x && coord_y<coordenada_y && coord_x >= 0 && coord_y >= 0)
+    //     this->matriz[coord_x][coord_y]->mostrar();
+    // else
+    //     std::cout <<"Posicion elegida fuera de rango!" <<std::endl;
 }
 
 void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2){
@@ -450,10 +487,13 @@ void Mapa::reescribir_ubicaciones(){
 void Mapa::menu_atacar(Jugador jugador, Jugador rival){
     bool destruido;
     int coord_x, coord_y;
-    std::cout <<"Ingrese la coordenada x del edificio enemigo que desea atacar" <<std::endl;
-    std::cin >>coord_x;
-    std::cout <<"Ingrese la coordenada y" <<std::endl;
-    std::cin >>coord_y;
+    // std::cout <<"Ingrese la coordenada x del edificio enemigo que desea atacar" <<std::endl;
+    // std::cin >>coord_x;
+    // std::cout <<"Ingrese la coordenada y" <<std::endl;
+    // std::cin >>coord_y;
+    coord_x = pedir_fila();
+    coord_y = pedir_columna();
+
     if(matriz[coord_x][coord_y] -> devolver_jugador() == rival.devolver_nombre() && matriz[coord_x][coord_y] -> tiene_material_o_edificio()){
         if(jugador.devolver_energia() >= 30){
             if(jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).devolver_cantidad() >= 1){
@@ -478,10 +518,13 @@ void Mapa::menu_atacar(Jugador jugador, Jugador rival){
 
 void Mapa::menu_reparar(Jugador jugador){
     int coord_x, coord_y;
-    std::cout <<"Ingrese la coordenada x del edificio que desea reparar" <<std::endl;
-    std::cin >>coord_x;
-    std::cout <<"Ingrese la coordenada y" <<std::endl;
-    std::cin >>coord_y;
+    // std::cout <<"Ingrese la coordenada x del edificio que desea reparar" <<std::endl;
+    // std::cin >>coord_x;
+    // std::cout <<"Ingrese la coordenada y" <<std::endl;
+    // std::cin >>coord_y;
+    coord_x = pedir_fila();
+    coord_y = pedir_columna();
+
     if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador.devolver_nombre() && matriz[coord_x][coord_y] -> tiene_material_o_edificio()){
         if((matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "mina" || matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "fabrica")){
             matriz[coord_x][coord_y] -> reparar(jugador);
@@ -492,7 +535,6 @@ void Mapa::menu_reparar(Jugador jugador){
     else
         std::cout <<"No hay un edificio propio en esa posicion!" <<std::endl;
 }
-
 
 
 bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
@@ -516,19 +558,16 @@ Casillero* Mapa::devolver_casillero(int x, int y) {
 void Mapa::mover_jugador(Jugador jugador) {
     int origen_x, origen_y, destino_x, destino_y;
     GrafoMapa* mover = jugador.movimiento();
-    string opcion;
+    Utilidad util;
 
     // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
 
-    //
-    // falta validar entradas
     std::cout << "Casillero de origen" << std::endl; 
-    std::cout << "Ingrese fila: " << std::endl;         cin >> origen_x;
-    std::cout << "Ingrese columna: " << std::endl;      cin >> origen_y;
-    std::cout << std::endl;
+    origen_x = pedir_fila();
+    origen_y = pedir_columna();                                 std::cout << std::endl;
     std::cout << "Casillero de destino" << std::endl; 
-    std::cout << "Ingrese fila: " << std::endl;         cin >> destino_x;
-    std::cout << "Ingrese columna: " << std::endl;      cin >> destino_y;
+    destino_x = pedir_fila();
+    destino_y = pedir_columna();                                std::cout << std::endl;
 
     int costo = mover->devolver_costo(origen_x, origen_y, destino_x, destino_y);
 
@@ -536,17 +575,17 @@ void Mapa::mover_jugador(Jugador jugador) {
     std::cout << "Tenes " << jugador.devolver_energia() << " de energia." << std::endl;
 
     if (jugador.devolver_energia() >= costo) {
-        std::cout << "Desea realizar? [si/no]" << endl;
-        std::cin >> opcion;
-
-        if (opcion == "si") {
+        if (util.pedir_confirmacion()) {
             jugador.restar_energia(costo); //no funciona
             //cambiar de posicion del jugador en el mapa
             ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
             mover->mostrar_recorrido_en_mapa(recorrido);
+        } else {
+            std::cout << "Operacion cancelada." << std::endl;
         }
     } else {
         std::cout << "No tenes energia suficiente." << std::endl;
     }
-}
+    std::cout << std::endl; 
+}  
     
