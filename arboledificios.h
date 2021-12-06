@@ -46,6 +46,10 @@ public:
     //PRE: -
     //POST: Devuelve un array con todos los edificios
     Edificio* devolver_todo();
+
+    //PRE: -
+    //POST: Cambia el edificio por otro con el mismo nombre
+    void cambiar_nodo(Edificio edificio);
 };
 
 #endif
