@@ -1,6 +1,6 @@
 #include "objetivo.h"
 #include "mapa.h"
-
+/*
 const int OBJ_COMPRAR_ANDYPOLIS = 1;
 const int OBJ_EDAD_PIEDRA = 2;
 const int OBJ_BOMBARDERO = 3;
@@ -12,6 +12,7 @@ const int OBJ_CONSTRUCTOR = 8;
 const int OBJ_ARMADO = 9;
 const int OBJ_EXTREMISTA = 10;
 const int OBJ_OBELISCO = 11;
+ */
 
 std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
     "Comprar andypolis: haber juntado 100.000 andycoins a lo largo de la partida",

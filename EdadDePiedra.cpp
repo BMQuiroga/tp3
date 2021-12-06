@@ -3,3 +3,7 @@
 //
 
 #include "EdadDePiedra.h"
+
+EdadDePiedra::EdadDePiedra(ListaMateriales materiales) {
+
+}

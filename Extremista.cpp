@@ -3,3 +3,6 @@
 //
 
 #include "Extremista.h"
+Extremista::Extremista() {
+
+}

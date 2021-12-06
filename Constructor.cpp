@@ -3,3 +3,6 @@
 //
 
 #include "Constructor.h"
+Constructor::Constructor(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
+
+}

@@ -3,3 +3,6 @@
 //
 
 #include "Cansado.h"
+Cansado::Cansado(Jugador *jugador) {
+
+}
