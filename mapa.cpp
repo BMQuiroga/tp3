@@ -633,3 +633,90 @@ void Mapa::reescribir_jugador(ofstream & archivo_ubicaciones, int numero_jugador
         }
     }   
 }
+
+bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u){
+    std::string nombre;
+    int coord_x;
+    int coord_y;
+    std::string aux;
+    bool archivo_en_blanco;
+    std::ifstream archivo_ubicaciones("ubicaciones.txt",std::ios::in);
+    if(!archivo_ubicaciones){
+        return true;
+        std::cout<<"No se ha encontrado el archivo ubicaciones, comenzando nueva partida..."<<std::endl;
+    }
+    else{
+        archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
+        if(archivo_en_blanco)
+            return true;
+        else{
+            getline(archivo_ubicaciones,aux,'(');
+            procesar_archivo_ubicaciones_jugador(archivo_ubicaciones,j);
+            procesar_archivo_ubicaciones_edificios(archivo_ubicaciones,edificios,1);
+            procesar_archivo_ubicaciones_jugador(archivo_ubicaciones,u);
+            procesar_archivo_ubicaciones_edificios(archivo_ubicaciones,edificios,2);
+        }
+    }
+    return archivo_en_blanco;
+}
+
+bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
+    std::string nombre;
+    bool archivo_en_blanco;
+    std::string aux;
+    int coord_x,coord_y;
+    while(archivo>>nombre){
+        archivo_en_blanco=false;
+        if (nombre=="1"){
+            return archivo_en_blanco;
+        }
+        getline(archivo,aux,'(');
+        archivo>>aux;
+        coord_x=stoi(aux);
+        archivo>>aux;
+        coord_y=stoi(aux);
+        Material material(nombre,diccionario_materiales(nombre));
+        matriz[coord_x][coord_y]->poner_material(material);
+    }
+    return archivo_en_blanco;
+}
+
+void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios edificios, int numero_jugador){
+    std::string nombre;
+    bool archivo_en_blanco;
+    std::string aux;
+    int coord_x,coord_y;
+   while (archivo>>nombre){
+        if (nombre=="planta"){
+            archivo>>nombre;
+            nombre="planta electrica";
+        }
+        if (nombre=="2"){
+            return;
+        }
+        getline(archivo,aux,'(');
+        if (aux=="oro "){
+            nombre="mina oro";
+        }
+        archivo>>aux;
+        coord_x=stoi(aux);
+        archivo>>aux;
+        coord_y=stoi(aux);
+        Edificio edificio = edificios.consulta(nombre);
+        matriz[coord_x][coord_y]->construir(edificio);
+        matriz[coord_x][coord_y]->cambiar_jugador(numero_jugador);
+    };
+}
+
+
+void Mapa::procesar_archivo_ubicaciones_jugador(ifstream & archivo,  Jugador jugador){
+    std::string aux;
+    int coord_x,coord_y;
+    getline(archivo,aux,'(');
+    archivo>>aux;
+    coord_x=stoi(aux);
+    archivo>>aux;
+    coord_y=stoi(aux);
+    jugador.mover_gratis(coord_x,coord_y);
+
+}
