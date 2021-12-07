@@ -602,9 +602,9 @@ void Mapa::reescribir_ubicaciones(Jugador j, Jugador u){
     }
     else{
         reescribir_materiales(archivo_ubicaciones);
-        archivo_ubicaciones << "1 (" << j.devolver_coordenada_x() << ", " << j.devolver_coordenada_y() << std::endl;
+        archivo_ubicaciones << "1 (" << j.devolver_coordenada_x() << ", " << j.devolver_coordenada_y() << ")" << std::endl;
         reescribir_jugador(archivo_ubicaciones,1);
-        archivo_ubicaciones << "1 (" << u.devolver_coordenada_x() << ", " << u.devolver_coordenada_y() << std::endl;
+        archivo_ubicaciones << "2 (" << u.devolver_coordenada_x() << ", " << u.devolver_coordenada_y() << ")" << std::endl;
         reescribir_jugador(archivo_ubicaciones,2);
     }
     archivo_ubicaciones.close();
@@ -616,7 +616,7 @@ void Mapa::reescribir_materiales(ofstream & archivo_ubicaciones){
         for(int j = 0; j < coordenada_y; j++){
             if(matriz[i][j] -> tiene_material_o_edificio() && matriz[i][j] -> devolver_tipo()=='C'){
                 material_o_edificio = matriz[i][j] -> devolver_material_o_edificio();
-                archivo_ubicaciones <<material_o_edificio <<" (" <<i <<", " <<j <<")"<<std::endl;
+                archivo_ubicaciones <<material_o_edificio <<" (" << i <<", " << j <<")"<<std::endl;
             }
         }
     }   
@@ -628,7 +628,7 @@ void Mapa::reescribir_jugador(ofstream & archivo_ubicaciones, int numero_jugador
         for(int j = 0; j < coordenada_y; j++){
             if(matriz[i][j] -> tiene_material_o_edificio() && matriz[i][j] -> devolver_jugador()==numero_jugador){
                 material_o_edificio = matriz[i][j] -> devolver_material_o_edificio();
-                archivo_ubicaciones <<material_o_edificio <<" (" <<i <<", " <<j <<")"<<std::endl;
+                archivo_ubicaciones <<material_o_edificio <<" (" << i <<", " << j <<")"<<std::endl;
             }
         }
     }   
