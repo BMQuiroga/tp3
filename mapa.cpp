@@ -467,7 +467,7 @@ void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1
     }
 }
 
-
+/*
 void Mapa::reescribir_ubicaciones(){
     std::ofstream archivo_ubicaciones;
     std::string material_o_edificio;
@@ -486,7 +486,7 @@ void Mapa::reescribir_ubicaciones(){
         }
     archivo_ubicaciones.close();
     }
-}
+}*/
 
 void Mapa::menu_atacar(Jugador jugador, Jugador rival){
     bool destruido;
@@ -592,4 +592,44 @@ void Mapa::mover_jugador(Jugador jugador) {
     }
     std::cout << std::endl; 
 }  
+
+void Mapa::reescribir_ubicaciones(Jugador j, Jugador u){
+    std::ofstream archivo_ubicaciones;
     
+    archivo_ubicaciones.open("ubicaciones.txt");
+    if(!archivo_ubicaciones.is_open()){ //no existe el archivo
+        std::cout <<"No se encontro el archivo ubicaciones" <<std::endl;
+    }
+    else{
+        reescribir_materiales(archivo_ubicaciones);
+        archivo_ubicaciones << "1 (" << j.devolver_coordenada_x() << ", " << j.devolver_coordenada_y() << std::endl;
+        reescribir_jugador(archivo_ubicaciones,1);
+        archivo_ubicaciones << "1 (" << u.devolver_coordenada_x() << ", " << u.devolver_coordenada_y() << std::endl;
+        reescribir_jugador(archivo_ubicaciones,2);
+    }
+    archivo_ubicaciones.close();
+}
+
+void Mapa::reescribir_materiales(ofstream & archivo_ubicaciones){
+    std::string material_o_edificio;
+    for(int i = 0; i < coordenada_x; i++){
+        for(int j = 0; j < coordenada_y; j++){
+            if(matriz[i][j] -> tiene_material_o_edificio() && matriz[i][j] -> devolver_tipo()=='C'){
+                material_o_edificio = matriz[i][j] -> devolver_material_o_edificio();
+                archivo_ubicaciones <<material_o_edificio <<" (" <<i <<", " <<j <<")"<<std::endl;
+            }
+        }
+    }   
+}
+
+void Mapa::reescribir_jugador(ofstream & archivo_ubicaciones, int numero_jugador){
+    std::string material_o_edificio;
+    for(int i = 0; i < coordenada_x; i++){
+        for(int j = 0; j < coordenada_y; j++){
+            if(matriz[i][j] -> tiene_material_o_edificio() && matriz[i][j] -> devolver_jugador()==numero_jugador){
+                material_o_edificio = matriz[i][j] -> devolver_material_o_edificio();
+                archivo_ubicaciones <<material_o_edificio <<" (" <<i <<", " <<j <<")"<<std::endl;
+            }
+        }
+    }   
+}

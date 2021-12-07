@@ -6,7 +6,7 @@
 void Menu::guardar(){
     //edificios.reescribir();
     reescribir_materiales();
-    //mapa.reescribir_ubicaciones();
+    mapa.reescribir_ubicaciones(jugador1,jugador2);
     edificios.destruir();
     mapa.destruir();
     jugador1.destruir();
