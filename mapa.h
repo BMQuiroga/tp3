@@ -12,6 +12,8 @@
 #include <string>
 
 
+class ListaRecorrido;
+
 class Mapa{
 
 //Atributos
@@ -27,6 +29,7 @@ private:
 public:
     Mapa() {};
 
+    Mapa(int filas, int columnas);
     //Pre: Recibe la lista de edificios.
     //Post: Procesa los archivos mapa.txt y ubicaciones.txt
     Mapa(ListaEdificios edificios);
@@ -119,6 +122,8 @@ public:
 
     Casillero* devolver_casillero(int x, int y);
 
+    void setear_casillero(int x, int y, Casillero* casillero);
+
     //agregue estos dos para q no salte error
     int pedir_fila();
     int pedir_columna();
@@ -144,6 +149,8 @@ private:
     //Post: imprime un caracter, usado en la funcion mostrar mapa
     void mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador jugador1, Jugador jugador2);
 
+    void mostrar_recorrido(ListaRecorrido* recorrido);
+
     //Pre:Recibe la lista de edificios, materiales y el nombre del edificio
     //Post:Verifica que haya la cantidad suficiente de materiales para poder construir
     bool se_puede_construir(ListaEdificios edificios,std::string nombre,Jugador jugador);
@@ -159,6 +166,9 @@ private:
     //Pre:Recibe el nombre del edificio
     //Post:Devuelve la cantidad de edificios construidos
     // int edificios_construidos(std::string nombre, Jugador jugador);
+
+
+
 
     //Pre:Recibe coordenadas validas
     //Post:Devuelve si el jugador se encuentra alli

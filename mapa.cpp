@@ -7,6 +7,16 @@
 #include "grafomapa.h"
 #include "utilidad.h"
 
+
+Mapa::Mapa(int filas, int columnas) {
+    Casillero*** casilla;
+    casilla = new Casillero**[filas];
+
+    for(int i = 0; i < filas; i++){
+        casilla[i] = new Casillero*[columnas];
+    }
+}
+
 Mapa::Mapa(ListaEdificios edificios){
     procesar_archivo_mapa();
     //procesar_archivo_ubicaciones(edificios);
@@ -50,6 +60,16 @@ int Mapa::pedir_columna() {
     return columna;
 }
 
+Casillero* Mapa::devolver_casillero(int x, int y) {
+    return matriz[x][y];
+}
+
+void Mapa::setear_casillero(int x, int y, Casillero* casillero) {
+    cout << "ED";
+    this->matriz[x][y] = casillero;
+    cout << "SAD";
+
+}
 
 /*FUNCION OBSOLETA
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
@@ -206,6 +226,12 @@ void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
     }
 }
 
+
+void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
+
+}
+
+
 void Mapa::destruir(){
     for(int i = 0; i < coordenada_x; i++){
     	for(int j = 0; j < coordenada_y; j++){
@@ -270,24 +296,22 @@ bool Mapa::casillero_ocupado(Jugador jugador, int coord_x, int coord_y){
 void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
     std::string edificio, ingreso;
     int coord_x, coord_y;
-    std::cout <<"Ingrese el nombre del edificio que desea construir SIN ESPACIOS"<<std::endl;
-    std::cin>>edificio;
-    if(edificio == "plantaelectrica")
-        edificio = "planta electrica";
-    if(edificio == "minaoro")
-        edificio = "mina oro";
+    std::cout <<"Ingrese el nombre del edificio que desea construir -> ";
+    cin.ignore();
+    getline(cin, edificio);
+    std::cout <<"Ingresaste  (es para probar espacios) -> " << edificio << std::endl;
+    // std::cin>>edificio;
+    // if(edificio == "plantaelectrica")
+    //     edificio = "planta electrica";
+    // if(edificio == "minaoro")
+    //     edificio = "mina oro";
     if(se_puede_construir(edificios, edificio, jugador)){
         std::cout <<"Se puede construir el edificio, desea hacerlo?\n1. Construir el edificio\n2. Salir al menú" <<std::endl;
         std::cin >>ingreso;
         if(ingreso=="1"){
-            // std::cout <<"Ingrese la coordenada x (entre 0 y "<<coordenada_x-1<<")" <<std::endl;
-            // std::cin >>coord_x;
-            // std::cout <<"Ingrese la coordenada y (entre 0 y "<<coordenada_y-1<<")" <<std::endl;
-            // std::cin >>coord_y;
-            
             coord_x = pedir_fila();
             coord_y = pedir_columna();
-            
+
             if(!casillero_ocupado(jugador, coord_x, coord_y) && !casillero_ocupado(rival, coord_x, coord_y)){
                 if(coord_x >= 0 && coord_x < coordenada_x && coord_y >= 0 && coord_y < coordenada_y){
                     if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T'){
@@ -555,9 +579,7 @@ bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
     return false;
 }
 
-Casillero* Mapa::devolver_casillero(int x, int y) {
-    return matriz[x][y];
-}
+
 
 void Mapa::mover_jugador(Jugador jugador) {
     int origen_x, origen_y, destino_x, destino_y;
