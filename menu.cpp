@@ -114,6 +114,7 @@ bool es_opcion_valida(int elegida, int maxima){
     return (elegida>=1 && elegida <= maxima);
 }
 
+/*
 void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
     //REESCRIBIR ARCHIVOS
     materiales.reescribir_materiales();
@@ -123,6 +124,7 @@ void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
     materiales.destruir();
     mapa.destruir();
 }
+*/
 
 int generador_de_numeros_aleatorios(int min, int max){
     return min + rand()%(max+1-min);
@@ -131,7 +133,7 @@ int generador_de_numeros_aleatorios(int min, int max){
 void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     int opcion=0;
     while(opcion!=GUARDAR_Y_SALIR_PARTIDA){
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !esta_terminado(u)){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !u.ha_ganado()){
             mostrar_menu_partida();
             cin >> opcion;
             while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
@@ -144,7 +146,7 @@ void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
         }
         j.sumar_energia(20);
         opcion=corregir_opcion(opcion);
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !esta_terminado(j)){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !j.ha_ganado()){
             mostrar_menu_partida();
             cin >> opcion;
             while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
@@ -200,10 +202,3 @@ void modificar_datos_edificio(ListaEdificios edificios) {
     }
 }
 
-bool esta_terminado(Jugador jugador){
-    if (jugador.ha_ganado() == true)
-        return true;
-    else{
-        return false;
-    }
-}

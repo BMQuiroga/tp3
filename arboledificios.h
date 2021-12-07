@@ -50,6 +50,10 @@ public:
     //PRE: -
     //POST: Cambia el edificio por otro con el mismo nombre
     void cambiar_nodo(Edificio edificio);
+
+    //PRE: -
+    //POST: Reescribe el archivo edificios
+    //void reescribir();
 };
 
 #endif

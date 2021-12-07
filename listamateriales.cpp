@@ -113,6 +113,7 @@ void ListaMateriales::mostrar() {
 
 }*/
 
+/*
 void ListaMateriales::reescribir_materiales(){
     std::ofstream archivo_materiales;
     archivo_materiales.open("materiales.txt");
@@ -133,4 +134,4 @@ void ListaMateriales::reescribir_materiales(){
 
 int ListaMateriales::devolver_cantidad(){
     return this->cantidad;
-}
+}*/

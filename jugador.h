@@ -49,6 +49,8 @@ public:
     bool cumplio_objetivo_secundario();
     GrafoMapa* movimiento();
 
+    void destruir();
+
 private:
     Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
     void crear_grafo(Mapa * mapa);

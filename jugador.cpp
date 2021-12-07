@@ -197,3 +197,7 @@ bool Jugador::cumplio_objetivo_principal() {
 bool Jugador::cumplio_objetivo_secundario() {
     return false;
 }
+
+void Jugador::destruir(){
+    this->materiales.destruir();
+}
