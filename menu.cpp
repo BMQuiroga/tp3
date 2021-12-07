@@ -5,7 +5,7 @@
 #include "listamateriales.h"
 #include "mapa.h"
 #include "jugador.h"
-
+#include <fstream>
 
 
 using namespace std;
@@ -114,6 +114,7 @@ bool es_opcion_valida(int elegida, int maxima){
     return (elegida>=1 && elegida <= maxima);
 }
 
+/*
 void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
     //REESCRIBIR ARCHIVOS
     materiales.reescribir_materiales();
@@ -123,6 +124,7 @@ void guardar(ListaMateriales materiales, ListaEdificios edificios, Mapa mapa){
     materiales.destruir();
     mapa.destruir();
 }
+*/
 
 int generador_de_numeros_aleatorios(int min, int max){
     return min + rand()%(max+1-min);
@@ -131,7 +133,7 @@ int generador_de_numeros_aleatorios(int min, int max){
 void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     int opcion=0;
     while(opcion!=GUARDAR_Y_SALIR_PARTIDA){
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !esta_terminado(u)){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !u.ha_ganado()){
             mostrar_menu_partida();
             cin >> opcion;
             while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
@@ -144,7 +146,7 @@ void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
         }
         j.sumar_energia(20);
         opcion=corregir_opcion(opcion);
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !esta_terminado(j)){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !j.ha_ganado()){
             mostrar_menu_partida();
             cin >> opcion;
             while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
@@ -200,10 +202,33 @@ void modificar_datos_edificio(ListaEdificios edificios) {
     }
 }
 
-bool esta_terminado(Jugador jugador){
-    if (jugador.ha_ganado() == true)
-        return true;
-    else{
-        return false;
+int diccionario_materiales(std::string material){
+    if (material=="andycoin")
+        return 250;
+    if (material=="piedra")
+        return 100;
+    else
+        return 50;
+}
+
+void procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2){
+    std::string nombre,numero1,numero2;
+    int num1 = 0, num2 = 0;
+
+    std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
+
+    if(!archivo.is_open()){ //no existe el archivo
+        std::cout <<"No se encontro el archivo materiales" <<std::endl;
+    }else{
+        while(getline(archivo, nombre, ' ')) {
+            getline(archivo, numero1, ' ');
+            getline(archivo, numero2);
+            Material material1(nombre,stoi(numero1));
+            Material material2(nombre,stoi(numero2));
+            j1.alta(material1);
+            j2.alta(material2);
+        }
+    
+    archivo.close();
     }
 }

@@ -88,3 +88,16 @@ Edificio* ArbolEdificios::devolver_todo(){
 void ArbolEdificios::cambiar_nodo(Edificio edificio){
     this->raiz->cambiar_edificio(edificio);
 }
+
+/*void ArbolEdificios::reescribir(){
+    std::ofstream archivo;
+    archivo.open("edificios.txt");
+
+    if(archivo.is_open()){
+        this->raiz.
+
+
+
+
+    }
+}*/

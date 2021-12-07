@@ -98,10 +98,12 @@ bool RamaEdificios::tiene_rama_izq(){
 void RamaEdificios::destruir(){
     if(nodo_der){
         this->nodo_der->destruir();
+        //guardarlo en edificios.txt
         delete nodo_der;
     }
     if(nodo_izq){
         this->nodo_izq->destruir();
+        //guardarlo en edificios.txt
         delete nodo_der;
     }
 }

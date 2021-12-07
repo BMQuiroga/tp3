@@ -37,16 +37,22 @@ public:
 
     //PRE: -
     //POS: reescribe el archivo materiales.txt
-    void reescribir_materiales();
+    //void reescribir_materiales();
 
+
+    //PRE: posicion valida
+    //POS: devuelve el puntero al nodo de una posicion
     NodoMateriales* obtener_nodo(int pos);
 
+    //PRE: -
+    //POS: devuelve la cantidad de elementos
     int devolver_cantidad();
+
 private:
     
     //PRE: -
     //POS: contruye la lista en base a materiales.txt
-    void procesar_archivo_materiales();
+    //void procesar_archivo_materiales();
 
     
     //PRE: 1 <= pos <= cantidad

@@ -13,14 +13,14 @@
 #include "Armado.h"
 #include "Extremista.h"
 
-class listaObjetivos {
+class ListaObjetivos {
 
 private:
     Objetivo** objetivos;
     int tope;
 
 public:
-    listaObjetivos(int tope, Jugador * jugador, ListaMateriales materiales, ListaEdificios edificios, Mapa * mapa);
+    ListaObjetivos(Jugador jugador, ListaMateriales materiales, ListaEdificios edificios, Mapa * mapa);
 
     void alta(Objetivo *objetivo, int posicion);
 

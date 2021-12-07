@@ -3,6 +3,7 @@
 #include "mapa.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
+#include "listaObjetivos.h"
 //#define CLR_SCREEN "clear"//PARA LINUX
 #define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
@@ -62,9 +63,7 @@ void modificar_datos_edificio(ListaEdificios edificios);
 void mostrar_menu_partida();
 
 
-
 void partida(ListaEdificios edificios, Mapa mapa, Jugador jugador1, Jugador jugador2);
-
 
 
 int corregir_opcion(int opcion);
@@ -72,5 +71,8 @@ int corregir_opcion(int opcion);
 
 bool esta_terminado(Jugador jugador);
 
+void procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2);
+
+int diccionario_materiales(std::string material);
 
 #endif 

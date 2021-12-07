@@ -94,7 +94,7 @@ public:
 
     //Pre:-
     //Post:Guarda los cambios en ubicaciones.txt
-    void reescribir_ubicaciones();
+    void reescribir_ubicaciones(Jugador jugador1, Jugador jugador2);
 
     //Pre:-
     //Post: El jugador que la llama puede atacar un edificio rival
@@ -127,6 +127,8 @@ public:
     //agregue estos dos para q no salte error
     int pedir_fila();
     int pedir_columna();
+
+  
 private:
     
     //Pre:-
@@ -173,6 +175,26 @@ private:
     //Pre:Recibe coordenadas validas
     //Post:Devuelve si el jugador se encuentra alli
     bool casillero_ocupado(Jugador jugador, int coord_x, int coord_y);
+
+    //Pre: -
+    //Post: Reescribe la parte de materiales en ubicaciones.txt
+    void reescribir_materiales(ofstream & archivo);
+
+    //Pre: -
+    //Post: Reescribe la parte de edificios del jugador en ubicaciones.txt
+    void reescribir_jugador(ofstream & archivo, int numero_jugador);
+
+    //Pre: -
+    //Post: Lee la parte de materiales del jugador en ubicaciones.txt
+    bool procesar_archivo_ubicaciones_materiales(ifstream & archivo);
+
+    //Pre: -
+    //Post: Lee la parte de edificios del jugador en ubicaciones.txt
+    void procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios edificios, int numero_jugador);
+
+    //Pre: -
+    //Post: Lee la parte de jugador en ubicaciones.txt
+    void procesar_archivo_ubicaciones_jugador(ifstream & archivo, Jugador jugaor);
 };
 
 

@@ -13,11 +13,11 @@ private:
 public:
     void mostrar_menu();
     void mostrar_menu_partida();
-    void procesar_opcion_menu();
-    void procesar_opcion_partida();
+    void procesar_opcion_menu(int opcion_elegida);
+    void procesar_opcion_partida(int opcion_elegida, Jugador jugador, Jugador rival);
     void guardar();
-    void partida();
-    bool esta_terminado();
+    void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u);
+    void reescribir_materiales();
     
 
 

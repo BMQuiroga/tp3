@@ -5,9 +5,15 @@
 #include "objetivo.h"
 
 class ComprarAndypolis : public Objetivo {
+
+private:
+    int andycoins_juntadas;
+    int cantidad_andycoins_objetivo;
+
 public:
     ComprarAndypolis();
     int calcular_progreso();
+    void mostrar_progreso();
     void mostrar_objetivo(){cout << "Comprar andypolis: haber juntado 100.000 andycoins a lo largo de la partida (las monedas gastadas también cuentan para este objetivo)" << endl;}
     bool checkear();
     void actualizar(int valor);
