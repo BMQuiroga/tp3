@@ -14,6 +14,7 @@ const int OBJ_EXTREMISTA = 10;
 const int OBJ_OBELISCO = 11;
  */
 
+
 std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
     "Comprar andypolis: haber juntado 100.000 andycoins a lo largo de la partida",
     "Edad de piedra: tener en el inventario 50000 piedras",

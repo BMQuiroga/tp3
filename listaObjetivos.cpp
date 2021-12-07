@@ -4,8 +4,7 @@
 
 #include "listaObjetivos.h"
 
-listaObjetivos::listaObjetivos(int tope, Jugador * jugador, ListaMateriales materiales, ListaEdificios edificios, Mapa * mapa){
-    this->tope = tope;
+ListaObjetivos::ListaObjetivos( Jugador jugador, ListaMateriales materiales, ListaEdificios edificios, Mapa * mapa){
 
     this->objetivos[0] = new ComprarAndypolis;
     this->objetivos[1] = new EdadDePiedra(materiales);
@@ -20,6 +19,6 @@ listaObjetivos::listaObjetivos(int tope, Jugador * jugador, ListaMateriales mate
 
 }
 
-void listaObjetivos::alta(Objetivo *objetivo, int posicion) {
+void ListaObjetivos::alta(Objetivo *objetivo, int posicion) {
     this->objetivos[posicion] = objetivo;
 }

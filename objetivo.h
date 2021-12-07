@@ -2,6 +2,7 @@
 #define OBJETIVO_H
 #include "arboledificios.h"
 #include "listamateriales.h"
+#include "jugador.h"
 #include <iostream>
 
 const int OBJ_COMPRAR_ANDYPOLIS = 1;
@@ -31,8 +32,10 @@ protected:
     int objetivo;
 public:
     std::string devolver_nombre();
-    void mostrar();
-    virtual void mostrar_objetivo();
+    //virtual void mostrar() = 0;
+
+    virtual void mostrar_progreso() = 0;
+    virtual void mostrar_objetivo() = 0;
     virtual bool checkear() = 0;
     virtual int calcular_progreso() = 0;
     virtual void actualizar(int valor)=0;

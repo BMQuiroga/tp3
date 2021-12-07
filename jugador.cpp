@@ -107,6 +107,18 @@ void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materi
     // this->objetivo_principal = crear_objetivo(OBJ_OBELISCO, edificios, materiales, mapa, jugador);
 }
 
+
+void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos, ListaEdificios edificios, ListaMateriales materiales, Mapa *mapa) {
+
+    int pos1, pos2, pos3;
+
+    pos1 = rand() % 10;
+
+
+
+}
+
+
 Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
     Objetivo* nuevo_objetivo;
     return nuevo_objetivo; // hay que cambiarlo, es para que no tire warning

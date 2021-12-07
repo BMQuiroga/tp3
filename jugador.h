@@ -3,6 +3,7 @@
 #include "listamateriales.h"
 #include "arboledificios.h"
 #include "objetivo.h"
+#include "listaObjetivos.h"
 
 class GrafoMapa;
 
@@ -36,7 +37,10 @@ public:
     int devolver_coordenada_x();
     int devolver_coordenada_y();
     void asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
+
+    void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa);
     void actualizar_objetivo(int numero_objetivo, int valor);
+
 
     bool ha_ganado();
 

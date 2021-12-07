@@ -3,6 +3,7 @@
 #include "mapa.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
+#include "listaObjetivos.h"
 //#define CLR_SCREEN "clear"//PARA LINUX
 #define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
