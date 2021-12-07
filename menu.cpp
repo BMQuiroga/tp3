@@ -5,7 +5,7 @@
 #include "listamateriales.h"
 #include "mapa.h"
 #include "jugador.h"
-
+#include <fstream>
 
 
 using namespace std;
@@ -202,3 +202,33 @@ void modificar_datos_edificio(ListaEdificios edificios) {
     }
 }
 
+int diccionario_materiales(std::string material){
+    if (material=="andycoin")
+        return 250;
+    if (material=="piedra")
+        return 100;
+    else
+        return 50;
+}
+
+void procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2){
+    std::string nombre,numero1,numero2;
+    int num1 = 0, num2 = 0;
+
+    std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
+
+    if(!archivo.is_open()){ //no existe el archivo
+        std::cout <<"No se encontro el archivo materiales" <<std::endl;
+    }else{
+        while(getline(archivo, nombre, ' ')) {
+            getline(archivo, numero1, ' ');
+            getline(archivo, numero2);
+            Material material1(nombre,stoi(numero1));
+            Material material2(nombre,stoi(numero2));
+            j1.alta(material1);
+            j2.alta(material2);
+        }
+    
+    archivo.close();
+    }
+}

@@ -173,6 +173,18 @@ private:
     //Pre: -
     //Post: Reescribe la parte de edificios del jugador en ubicaciones.txt
     void reescribir_jugador(ofstream & archivo, int numero_jugador);
+
+    //Pre: -
+    //Post: Lee la parte de materiales del jugador en ubicaciones.txt
+    bool procesar_archivo_ubicaciones_materiales(ifstream & archivo);
+
+    //Pre: -
+    //Post: Lee la parte de edificios del jugador en ubicaciones.txt
+    void procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios edificios, int numero_jugador);
+
+    //Pre: -
+    //Post: Lee la parte de jugador en ubicaciones.txt
+    void procesar_archivo_ubicaciones_jugador(ifstream & archivo, Jugador jugaor);
 };
 
 
