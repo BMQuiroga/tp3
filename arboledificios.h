@@ -40,7 +40,7 @@ public:
     bool es_edificio_valido(std::string nombre);
 
     //PRE: -
-    //POST: Libera la memoria
+    //POST: Libera la memoria y guarda los edificios en edificios.txt
     void destruir();
 
     //PRE: -
