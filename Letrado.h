@@ -11,7 +11,7 @@ private:
     Jugador * jugador;
 public:
 
-    void mostrar(){cout << "Letrado: haber construido el máximo posible de escuelas. " << endl;}
+    void mostrar();
     Letrado(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
     int calcular_progreso();
     bool checkear();

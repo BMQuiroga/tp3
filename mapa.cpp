@@ -717,6 +717,7 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
             return;
         }
         getline(archivo,aux,'(');
+        //if (aux.length()>1){
         if (aux=="oro "){
             nombre="mina oro";
         }

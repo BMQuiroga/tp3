@@ -6,3 +6,7 @@
 Constructor::Constructor(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
 
 }
+
+void Constructor::mostrar(){
+    cout << "Constructor: construir un edificio de cada tipo. " << endl;
+}

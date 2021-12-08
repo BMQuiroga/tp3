@@ -11,7 +11,7 @@ private:
     Jugador * jugador;
 public:
 
-    void mostrar(){cout << "Minero: haber construido una mina de cada tipo. " << endl;}
+    void mostrar();
     Minero(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
     bool checkear();
     int calcular_progreso();

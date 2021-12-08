@@ -8,7 +8,7 @@ private:
     Jugador * jugador;
 public:
 
-    void mostrar(){cout << "Cansado: terminar un turno con 0 de energía." << endl;}
+    void mostrar();
     Cansado(Jugador * jugador);
     int calcular_progreso();
     bool checkear();
