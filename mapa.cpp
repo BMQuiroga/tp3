@@ -60,6 +60,10 @@ int Mapa::pedir_columna() {
     return columna;
 }
 
+int Mapa::generador_de_numeros_aleatorios(int min, int max){
+    return min + rand()%(max+1-min);
+}
+
 Casillero* Mapa::devolver_casillero(int x, int y) {
     return matriz[x][y];
 }
