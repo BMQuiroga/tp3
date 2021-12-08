@@ -5,7 +5,7 @@
 
 class Cansado : public Objetivo {
 private:
-    Jugador * jugador;
+    //Jugador * jugador;
     int energia;
     int energia_minima;
     bool cumplio;
@@ -13,7 +13,7 @@ public:
 
     void mostrar();
     void mostrar_progreso();
-    Cansado(Jugador * jugador);
+    Cansado(Jugador jugador);
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);

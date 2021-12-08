@@ -3,7 +3,7 @@
 //
 
 #include "Minero.h"
-Minero::Minero(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
+Minero::Minero(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
 
     this->cantidad_minero = 0;
     this->cantidad_minero_oro = 0;

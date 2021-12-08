@@ -13,7 +13,7 @@ class ListaEdificios;
 class ListaObjetivos {
 
 private:
-    Objetivo** objetivos;
+    Objetivo **objetivos;
     int tope;
 
 public:
@@ -22,6 +22,8 @@ public:
     void alta(Objetivo *objetivo, int posicion);
 
     void obtener_objetivos_aleatorios(Jugador jugador);
+
+    Objetivo obtener_objetivo(int posicion);
 
 };
 

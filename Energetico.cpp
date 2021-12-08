@@ -4,10 +4,10 @@
 
 #include "Energetico.h"
 
-Energetico::Energetico(Jugador *jugador) {
+Energetico::Energetico(Jugador jugador) {
 
-    this->jugador = jugador;
-    this->energia = jugador->devolver_energia();
+    //this->jugador = jugador;
+    this->energia = jugador.devolver_energia();
     this->energia_maxima = 100;
     this->cumplio = false;
 }

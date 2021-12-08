@@ -122,7 +122,7 @@ void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
         pos3 =rand() % 10;
     }
 
-    //this->objetivo_secundario[0] = vector_objetivos[pos1];
+    //this->objetivo_secundario[0] = *vector_objetivos.obtener_objetivo(pos1);
     //this->objetivo_secundario[1] = vector_objetivos[pos2];
     //this->objetivo_secundario[2] = vector_objetivos[pos3];
 

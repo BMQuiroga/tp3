@@ -1,5 +1,8 @@
-#ifndef OBJETIVO_H
-#define OBJETIVO_H
+
+#ifndef TP3_2021_2C_OBJETIVO_H
+#define TP3_2021_2C_OBJETIVO_H
+//#ifndef OBJETIVO_H
+//#define OBJETIVO_H
 #include "arboledificios.h"
 #include "listamateriales.h"
 #include "jugador.h"
@@ -47,6 +50,7 @@ public:
     bool checkear();
     int calcular_progreso();
     void actualizar(int valor);
+    virtual ~Objetivo() = default;
 };
 
 /*
@@ -154,7 +158,7 @@ class Extremista : public Objetivo {
         void actualizar(int valor);
 };
  */
-
+/*
 class Principal : public Objetivo {
     private:
         Mapa * mapa;
@@ -165,5 +169,5 @@ class Principal : public Objetivo {
         bool checkear();
         void actualizar(int valor);
 };
-
+*/
 #endif

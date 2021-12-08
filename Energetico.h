@@ -6,14 +6,14 @@
 
 class Energetico  : public Objetivo {
 private:
-    Jugador * jugador;
+    //Jugador * jugador;
     int energia;
     int energia_maxima;
     bool cumplio;
 public:
 
     void mostrar();
-    Energetico(Jugador * jugador);
+    Energetico(Jugador jugador);
     void mostrar_progreso();
     int calcular_progreso();
     bool checkear();

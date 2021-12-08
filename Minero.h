@@ -17,7 +17,7 @@ public:
 
     void mostrar();
     void mostrar_progreso();
-    Minero(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
+    Minero(/*ListaEdificios edificios, Mapa * mapa, Jugador * jugador*/);
     bool checkear();
     int calcular_progreso();
     void actualizar(int valor_minero, int valor_minero_oro);

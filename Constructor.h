@@ -25,7 +25,7 @@ public:
 
     void mostrar();
     void mostrar_progreso();
-    Constructor(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
+    Constructor(/*ListaEdificios edificios, Mapa * mapa, Jugador * jugador*/);
     int calcular_progreso();
     bool checkear();
     void actualizar(string nombre, int valor);

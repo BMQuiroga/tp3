@@ -3,7 +3,7 @@
 //
 
 #include "Letrado.h"
-Letrado::Letrado(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
+Letrado::Letrado(ListaEdificios edificios/*, Mapa *mapa, Jugador *jugador*/) {
 
     this->cantidad_escuelas_construidas = 0; //
     this->cantidad_escuela_maxima = edificios.consulta("escuela").devolver_maximos_permitidos();

@@ -3,7 +3,7 @@
 //
 
 #include "Constructor.h"
-Constructor::Constructor(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
+Constructor::Constructor(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
 
     //this->edificios = edificios;
     this->cantidad_yacimiento = 0;
