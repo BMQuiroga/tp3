@@ -7,3 +7,7 @@
 Armado::Armado(ListaMateriales materiales) {
 
 }
+
+void Armado::mostrar(){
+    cout << "Armado: tener 10 bombas en el inventario." << endl;
+}

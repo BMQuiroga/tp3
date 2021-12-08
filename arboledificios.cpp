@@ -7,7 +7,8 @@ ArbolEdificios::ArbolEdificios(/*Edificio edificio*/){
     //RamaEdificios nuevo(edificio);
     //RamaEdificios *p=&nuevo;
     //this->raiz=rama;
-    procesar_archivo_edificios();
+    //procesar_archivo_edificios();
+    this->raiz = NULL;
 }
 
 void ArbolEdificios::alta(std::string nombre, int piedra, int madera, int metal, int maximos){

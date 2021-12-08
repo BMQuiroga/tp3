@@ -81,6 +81,9 @@ void ListaMateriales::mostrar() {
     std::cout<<"-------------------------------------------------"<<std::endl;
 }
 
+int ListaMateriales::devolver_cantidad(){
+    return this->cantidad;
+}
 // void ListaMateriales::procesar_archivo_materiales(){
 //     std::string nombre,numero;
 //     int num = 0;
@@ -132,6 +135,4 @@ void ListaMateriales::reescribir_materiales(){
     }
 }
 
-int ListaMateriales::devolver_cantidad(){
-    return this->cantidad;
 }*/

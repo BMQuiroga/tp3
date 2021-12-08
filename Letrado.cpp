@@ -6,3 +6,7 @@
 Letrado::Letrado(ListaEdificios edificios, Mapa *mapa, Jugador *jugador) {
 
 }
+
+void Letrado::mostrar(){
+    cout << "Letrado: haber construido el máximo posible de escuelas. " << endl;
+}

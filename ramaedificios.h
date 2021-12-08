@@ -54,7 +54,7 @@ public:
     void cambiar_edificio(Edificio edificio);
 
     //PRE: -
-    //POST: Añade al array su edificio, y llama a la funcion en sus 2 hijas, si existen
+    //POST: guarda el edificio a edificios.txt
     void guardar(std::ofstream & archivo);
 };
 

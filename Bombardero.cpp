@@ -7,3 +7,7 @@
 Bombardero::Bombardero() {
 
 }
+
+void Bombardero::mostrar(){
+    cout << "Bombardero: haber usado 5 bombas." << endl;
+}

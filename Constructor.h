@@ -12,7 +12,7 @@ private:
     Jugador * jugador;
 public:
 
-    void mostrar(){cout << "Constructor: construir un edificio de cada tipo. " << endl;}
+    void mostrar();
     Constructor(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
     int calcular_progreso();
     bool checkear();

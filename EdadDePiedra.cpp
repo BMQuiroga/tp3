@@ -7,3 +7,7 @@
 EdadDePiedra::EdadDePiedra(ListaMateriales materiales) {
 
 }
+
+void EdadDePiedra::mostrar(){
+    cout << "Edad de piedra: tener en el inventario 50000 piedras" << endl;
+}

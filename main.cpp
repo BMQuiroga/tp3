@@ -1,22 +1,19 @@
 #include <iostream>
 #include "menu.h"
-#include "ideas1.h"
 
 using namespace std;
 
 
 int main(){
     ListaEdificios edificios;
-    Mapa* mapa = new Mapa(edificios);
-    // Mapa mapa(edificios);
+    ListaMateriales materiales1, materiales2;
+    Mapa * mapa = new Mapa(edificios);
+    // Mapa* mapa = new Mapa(edificios);
 
     Jugador jugador1(1,1,1, edificios, mapa);
     Jugador jugador2(2,2,2, edificios, mapa);
     
-    ListaMateriales materiales1;
-    ListaMateriales materiales2;
-
-    // procesar_archivo_materiales(jugador1,jugador2);
+    //edificios.procesar_archivo_edificios();               //revisar: tira seg fault
     procesar_archivo_materiales(materiales1,materiales2);   //tuve que hacerlo asi porque sino perdia scope las variables y me devolvia 0 el primer puntero
 
     jugador1.asignar_lista_materiales(materiales1);
