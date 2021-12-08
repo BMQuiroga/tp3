@@ -95,15 +95,15 @@ bool RamaEdificios::tiene_rama_izq(){
     return(nodo_izq);
 }
 
-void RamaEdificios::destruir(){
+void RamaEdificios::destruir(std::ofstream & archivo){
     if(nodo_der){
-        this->nodo_der->destruir();
-        //guardarlo en edificios.txt
+        this->nodo_der->destruir(archivo);
+        nodo_der->guardar(archivo);
         delete nodo_der;
     }
     if(nodo_izq){
-        this->nodo_izq->destruir();
-        //guardarlo en edificios.txt
+        this->nodo_izq->destruir(archivo);
+        nodo_der->guardar(archivo);
         delete nodo_der;
     }
 }
@@ -130,4 +130,17 @@ void RamaEdificios::cambiar_edificio(Edificio edificio){
     else if(edificio.devolver_nombre() < this->clave){
         this->nodo_izq->cambiar_edificio(edificio);
     }
+}
+
+void RamaEdificios::guardar(std::ofstream & archivo){
+    archivo<<this->valor.devolver_nombre();
+    archivo<<" ";
+    archivo<<this->valor.devolver_piedra();
+    archivo<<" ";
+    archivo<<this->valor.devolver_madera();
+    archivo<<" ";
+    archivo<<this->valor.devolver_metal();
+    archivo<<" ";
+    archivo<<this->valor.devolver_maximos_permitidos();
+    archivo<<std::endl;
 }

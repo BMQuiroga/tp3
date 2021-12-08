@@ -9,7 +9,7 @@ private:
 public:
     EdadDePiedra(ListaMateriales materiales);
 
-    void mostrar(){cout << "Edad de piedra: tener en el inventario 50000 piedras" << endl;}
+    void mostrar();
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);

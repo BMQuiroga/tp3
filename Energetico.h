@@ -9,7 +9,7 @@ private:
     Jugador * jugador;
 public:
 
-    void mostrar(){cout << "Energético: haber terminado un turno con 100 puntos de energía. " << endl;}
+    void mostrar();
     Energetico(Jugador * jugador);
     int calcular_progreso();
     bool checkear();

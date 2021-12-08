@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "arboledificios.h"
+#include <fstream>
 
 class RamaEdificios{
 
@@ -42,7 +43,7 @@ public:
 
     //PRE: -
     //POST: Despues de que sus hijos borraron a todos sus respectivos hijos, los borra
-    void destruir();
+    void destruir(std::ofstream & archivo);
 
     //PRE: -
     //POST: Añade al array su edificio, y llama a la funcion en sus 2 hijas, si existen
@@ -51,6 +52,10 @@ public:
     //PRE: -
     //POST: Busca el nodo con el mismo nombre y lo cambia por el nuevo edificio
     void cambiar_edificio(Edificio edificio);
+
+    //PRE: -
+    //POST: guarda el edificio a edificios.txt
+    void guardar(std::ofstream & archivo);
 };
 
 

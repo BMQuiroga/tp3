@@ -7,7 +7,7 @@ class Bombardero : public Objetivo {
 public:
     Bombardero();
 
-    void mostrar(){cout << "Bombardero: haber usado 5 bombas." << endl;}
+    void mostrar();
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);

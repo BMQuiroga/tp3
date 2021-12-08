@@ -9,6 +9,7 @@ public:
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);
+    void mostrar();
 };
 
 

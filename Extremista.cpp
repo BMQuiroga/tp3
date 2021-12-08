@@ -6,3 +6,7 @@
 Extremista::Extremista() {
 
 }
+
+void Extremista::mostrar(){
+    cout << "Extremista: haber comprado 500 bombas en una partida." << endl;
+}
