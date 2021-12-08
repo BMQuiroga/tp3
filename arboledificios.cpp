@@ -75,15 +75,8 @@ bool ArbolEdificios::es_edificio_valido(std::string nombre){
 }
 
 void ArbolEdificios::destruir(){
-    std::ofstream archivo;
-    archivo.open("edificios.txt");
-
-    if(archivo.is_open()){
-        this->raiz->destruir(archivo);
-        this->raiz->guardar(archivo);
+        this->raiz->destruir();
         delete this->raiz;
-        archivo.close();
-    }
 }
 
 Edificio* ArbolEdificios::devolver_todo(){
@@ -97,15 +90,12 @@ void ArbolEdificios::cambiar_nodo(Edificio edificio){
     this->raiz->cambiar_edificio(edificio);
 }
 
-/*void ArbolEdificios::reescribir(){
+void ArbolEdificios::reescribir(){
     std::ofstream archivo;
     archivo.open("edificios.txt");
 
     if(archivo.is_open()){
-        this->raiz.
-
-
-
-
+        this->raiz->modificar(archivo);
     }
-}*/
+}
+

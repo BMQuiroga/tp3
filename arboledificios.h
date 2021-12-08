@@ -53,7 +53,7 @@ public:
 
     //PRE: -
     //POST: Reescribe el archivo edificios
-    //void reescribir();
+    void reescribir();
 };
 
 #endif

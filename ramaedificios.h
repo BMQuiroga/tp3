@@ -43,7 +43,7 @@ public:
 
     //PRE: -
     //POST: Despues de que sus hijos borraron a todos sus respectivos hijos, los borra
-    void destruir(std::ofstream & archivo);
+    void destruir();
 
     //PRE: -
     //POST: Añade al array su edificio, y llama a la funcion en sus 2 hijas, si existen
@@ -56,6 +56,10 @@ public:
     //PRE: -
     //POST: guarda el edificio a edificios.txt
     void guardar(std::ofstream & archivo);
+
+    //PRE -
+    //POST: recorre el arbol y va guardando los edificios en edificios.txt
+    void modificar(std::ofstream & archivo);
 };
 
 

@@ -95,16 +95,14 @@ bool RamaEdificios::tiene_rama_izq(){
     return(nodo_izq);
 }
 
-void RamaEdificios::destruir(std::ofstream & archivo){
+void RamaEdificios::destruir(){
     if(nodo_der){
-        this->nodo_der->destruir(archivo);
-        nodo_der->guardar(archivo);
+        this->nodo_der->destruir();
         delete nodo_der;
     }
     if(nodo_izq){
-        this->nodo_izq->destruir(archivo);
-        nodo_der->guardar(archivo);
-        delete nodo_der;
+        this->nodo_izq->destruir();
+        delete nodo_izq;
     }
 }
 
@@ -144,3 +142,17 @@ void RamaEdificios::guardar(std::ofstream & archivo){
     archivo<<this->valor.devolver_maximos_permitidos();
     archivo<<std::endl;
 }
+
+void RamaEdificios::modificar(std::ofstream & archivo){
+    guardar(archivo);
+    if(nodo_der){
+        this->nodo_der->modificar(archivo);
+    }
+    if(nodo_izq){
+        this->nodo_izq->modificar(archivo);
+    }
+}
+
+
+
+

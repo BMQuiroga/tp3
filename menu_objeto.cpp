@@ -12,7 +12,7 @@ Menu::Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugado
 
 
 void Menu::guardar(){
-    //edificios.reescribir();
+    edificios.reescribir();
     reescribir_materiales();
     mapa.reescribir_ubicaciones(jugador1,jugador2);
     edificios.destruir();
