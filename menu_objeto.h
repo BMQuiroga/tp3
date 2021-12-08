@@ -11,20 +11,17 @@ private:
     ListaEdificios edificios;
 
 public:
+    Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugador2);
     void mostrar_menu();
     void mostrar_menu_partida();
     void procesar_opcion_menu(int opcion_elegida);
     void procesar_opcion_partida(int opcion_elegida, Jugador jugador, Jugador rival);
     void guardar();
-    void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u);
+    void partida();
     void reescribir_materiales();
+    Jugador* crear_cola_jugadores(Jugador jugador1, Jugador jugador2);
+    void cambiar_turno(Jugador* lista_jugadores);
     
-
-
-
-
-
-
 };
 
 

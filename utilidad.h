@@ -13,6 +13,7 @@ public:
     string capitalizar(string palabra);
     bool es_numero(string numero);
     bool pedir_confirmacion();
+    int pedir_opcion();
 };
 
 

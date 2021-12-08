@@ -7,6 +7,7 @@
 //#define CLR_SCREEN "clear"//PARA LINUX
 #define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
+#include "utilidad.h"
 // #include "objetivo.h"
 //#include "arboledificios.h"
 

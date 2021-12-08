@@ -48,3 +48,17 @@ bool Utilidad::pedir_confirmacion() {
     }
     return this->minuscula(opcion) == "si";
 }
+
+int Utilidad::pedir_opcion() {
+    std::string opcion;
+
+    std::cout << "Ingrese una opcion: " << std::endl;
+    std::cin >> opcion;
+
+    while (!this->es_numero(opcion))
+    {
+        std::cout << "Ingreso invalido. Intente de nuevo: ";
+        std::cin >> opcion;
+    }
+    return stoi(opcion);
+}

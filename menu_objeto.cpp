@@ -3,6 +3,14 @@
 #include <fstream>
 
 
+Menu::Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugador2) {
+    this->mapa = mapa;
+    this->edificios = edificios;
+    this->jugador1 = jugador1;
+    this->jugador2 = jugador2;
+}
+
+
 void Menu::guardar(){
     //edificios.reescribir();
     reescribir_materiales();
@@ -39,47 +47,52 @@ void Menu::mostrar_menu_partida(){
     cout << "13. Guardar y salír"<<endl;
 }
 
-void Menu::partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
-    int opcion=0;
-    while(opcion!=GUARDAR_Y_SALIR_PARTIDA){
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !u.ha_ganado()){
+void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/){
+    Utilidad util;
+    int opcion = -1;
+
+    Jugador* lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
+    Jugador jugador = lista_jugadores[0];
+    Jugador rival = lista_jugadores[1];
+
+    while(opcion != GUARDAR_Y_SALIR_PARTIDA) {
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && jugador.devolver_energia()!=0 && !rival.ha_ganado()) {
             mostrar_menu_partida();
-            cin >> opcion;
-            while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
-                cout<<"No es valida "<< endl;
-                mostrar_menu_partida();
-                cin >> opcion;
-            }
-            procesar_opcion_partida(opcion,j,u);
-            //CHECKEAR SI TERMINO TODOS LOS OBJETIVOS
+            opcion = util.pedir_opcion();
+            procesar_opcion_partida(opcion, jugador, rival);
         }
-        j.sumar_energia(20);
-        opcion=corregir_opcion(opcion);
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !j.ha_ganado()){
-            mostrar_menu_partida();
-            cin >> opcion;
-            while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
-                cout<<"No es valida "<< endl;
-                mostrar_menu_partida();
-                cin >> opcion;
-            }
-            procesar_opcion_partida(opcion,u,j);
-            //CHECKEAR SI TERMINO TODOS LOS OBJETIVOS
-        }
-        u.sumar_energia(20);
-        //llamar lluvia recursos
-        opcion=corregir_opcion(opcion);
+        jugador.sumar_energia(20);
+        cambiar_turno(lista_jugadores);
+        opcion = -1;
     }
-
-
+    
+    delete [] lista_jugadores; //poner en otro lado
 }
+
+
+
+Jugador* Menu::crear_cola_jugadores(Jugador jugador1, Jugador jugador2) {   
+    Jugador * lista_jugadores = new Jugador[2];
+    lista_jugadores[0] = jugador1;
+    lista_jugadores[1] = jugador2;
+
+    return lista_jugadores;
+}
+
+void Menu::cambiar_turno(Jugador* lista_jugadores) {
+    Jugador aux = lista_jugadores[0];
+    lista_jugadores[0] = lista_jugadores[1];
+    lista_jugadores[1] = aux;
+}
+
 
 void Menu::procesar_opcion_menu(int opcion_elegida){
     system(CLR_SCREEN);
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
             //no esta testeado
-            modificar_datos_edificio(edificios);
+            //modificar_datos_edificio(edificios);
+            
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
             mapa.listar_todos_los_edificios(edificios,jugador1,jugador2);
@@ -88,7 +101,7 @@ void Menu::procesar_opcion_menu(int opcion_elegida){
             mapa.mostrar_mapa(jugador1,jugador2);
             break;
         case COMENZAR_PARTIDA:
-            partida(edificios,mapa,jugador1,jugador2);
+            partida();
             break;
         case GUARDAR_Y_SALIR_MENU:
             //falta
