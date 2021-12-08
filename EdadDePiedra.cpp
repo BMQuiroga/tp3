@@ -15,9 +15,14 @@ EdadDePiedra::EdadDePiedra(ListaMateriales materiales, Jugador jugador) {
 
 void EdadDePiedra::mostrar(){
     cout << "Edad de piedra: tener en el inventario 50000 piedras" << endl;
+    cout << "Piedra obtenida: " << calcular_progreso << "/50000" << endl;
+    if(checkear)
+        cout << "Este objetivo ha sido completado" << endl;
 }
 
 bool EdadDePiedra::checkear() {
+    if(this->cumplio)
+        return true;
     if (this->cantidad_piedras >= this->cantidad_piedras_necesarias){
         this->cumplio = true;
     }
@@ -28,6 +33,7 @@ void EdadDePiedra::actualizar(int valor) {
     this->cantidad_piedras += valor;
 }
 
+/*
 void EdadDePiedra::mostrar_progreso() {
     cout << "La cantidad de piedras obtenida es: " << this->cantidad_piedras << endl;
-}
+}*/

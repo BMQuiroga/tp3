@@ -10,7 +10,7 @@ private:
     ListaEdificios edificios;
     Mapa * mapa;
     Jugador * jugador;
-
+    /*
     int cantidad_yacimiento;
     int cantidad_mina;
     int cantidad_mina_oro;
@@ -20,6 +20,7 @@ private:
     int cantidad_escuela;
     int cantidad_casa;
     int cantidad_necesaria;
+    */
     bool cumplio;
 public:
 
@@ -29,6 +30,7 @@ public:
     int calcular_progreso();
     bool checkear();
     void actualizar(string nombre, int valor);
+    /*
     void actualizar_yacimiento(int valor);
     void actualizar_mina(int valor);
     void actualizar_mina_oro(int valor);
@@ -37,6 +39,7 @@ public:
     void actualizar_aserradero(int valor);
     void actualizar_escuela(int valor);
     void actualizar_casa(int valor);
+    */
 };
 
 

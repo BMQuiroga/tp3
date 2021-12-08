@@ -15,7 +15,6 @@ private:
 public:
 
     void mostrar();
-    void mostrar_progreso();
     Letrado(ListaEdificios edificios/*, Mapa * mapa, Jugador * jugador*/);
     int calcular_progreso();
     bool checkear();

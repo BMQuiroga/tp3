@@ -16,7 +16,6 @@ private:
 public:
 
     void mostrar();
-    void mostrar_progreso();
     Minero(/*ListaEdificios edificios, Mapa * mapa, Jugador * jugador*/);
     bool checkear();
     int calcular_progreso();

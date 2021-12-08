@@ -13,6 +13,7 @@ Minero::Minero(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
 
 void Minero::mostrar(){
     cout << "Minero: haber construido una mina de cada tipo. " << endl;
+    cout << "Tipos de minas construidas: " << calcular_progreso << "/2" << endl;
 }
 
 bool Minero::checkear() {
@@ -33,6 +34,17 @@ void Minero::actualizar(string nombre, int valor ){
     }
 }
 
+/*
 void Minero::mostrar_progreso() {
     cout << "La cantidad de minero contruido es: " << this->cantidad_minero << " y la cantidad de minero de oro contruido es: " << this->cantidad_minero_oro << endl;
+}*/
+
+int Minero::calcular_progreso(){
+    int contador = 0;
+    bool resultado = true;
+    if(this->mapa->tiene_edificio("mina",*jugador))
+        contador++;
+    if(this->mapa->tiene_edificio("mina oro",*jugador))
+        contador++;
+    return contador;
 }

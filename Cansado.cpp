@@ -12,6 +12,8 @@ Cansado::Cansado(Jugador jugador) {
 
 void Cansado::mostrar(){
     cout << "Cansado: terminar un turno con 0 de energía." << endl;
+    if(checkear)
+        cout << "Este objetivo ha sido completado" << endl;
 }
 
 void Cansado::actualizar(int valor) {
@@ -25,10 +27,15 @@ bool Cansado::checkear() {
     return this->cumplio;
 }
 
+/*
 void Cansado::mostrar_progreso() {
     if (this->cumplio){
         cout << "Ya terminaste tu turno con 0 puntos de energia por lo menos una vez." << endl;
     } else{
         cout << "Todavia no terminaste tu turno con 0 puntos de energia" << endl;
     }
+}*/
+
+int Cansado::calcular_progreso(){
+    return 0;
 }

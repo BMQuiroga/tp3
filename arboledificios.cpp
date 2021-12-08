@@ -81,7 +81,7 @@ void ArbolEdificios::destruir(){
 
 Edificio* ArbolEdificios::devolver_todo(){
     // Edificio array[devolver_cantidad()];         //depende del compilador te va a tirar error asi
-    Edificio* array = new Edificio [devolver_cantidad()];
+    Edificio* array = new Edificio [devolver_cantidad()];//esto no pierde memoria?
     this->raiz->devolver_todo(array,0);
     return array;
 }

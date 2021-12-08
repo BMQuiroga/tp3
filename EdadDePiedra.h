@@ -13,7 +13,6 @@ public:
     EdadDePiedra(ListaMateriales materiales, Jugador jugador);
 
     void mostrar();
-    void mostrar_progreso();
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);
