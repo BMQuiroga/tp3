@@ -122,9 +122,13 @@ public:
 
     Casillero* devolver_casillero(int x, int y);
 
+
     //agregue estos dos para q no salte error
     int pedir_fila();
     int pedir_columna();
+    
+    
+  
 
     //Pre:-
     //Post:Verifica que exista el archivo mapa.txt y los carga en una matriz
