@@ -208,9 +208,11 @@ bool Jugador::cumplio_objetivo_principal() {
 bool Jugador::cumplio_objetivo_secundario() {
 
     int i = 0;
-    /*while (this->objetivo_secundario[i]->checkear() == true){
-        i++;
-    }*/
+    for (int j = 0; j < 3; ++j) {
+        if (this->objetivo_secundario[j]->checkear()){
+            i++;
+        }
+    }
     if (i == 2)
         return true;
     else{
