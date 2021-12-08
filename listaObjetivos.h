@@ -1,17 +1,14 @@
 
 #ifndef TP3_2021_2C_LISTAOBJETIVOS_H
 #define TP3_2021_2C_LISTAOBJETIVOS_H
-#include "objetivo.h"
-#include "ComprarAndypolis.h"
-#include "EdadDePiedra.h"
-#include "Bombardero.h"
-#include "Energetico.h"
-#include "Letrado.h"
-#include "Minero.h"
-#include "Cansado.h"
-#include "Constructor.h"
-#include "Armado.h"
-#include "Extremista.h"
+
+
+// para evitar el importe circular
+class Mapa;
+class Jugador;
+class Objetivo;
+class ListaMateriales;
+class ListaEdificios;
 
 class ListaObjetivos {
 

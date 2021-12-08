@@ -122,18 +122,16 @@ public:
 
     Casillero* devolver_casillero(int x, int y);
 
-    void setear_casillero(int x, int y, Casillero* casillero);
-
     //agregue estos dos para q no salte error
     int pedir_fila();
     int pedir_columna();
 
-  
-private:
-    
     //Pre:-
     //Post:Verifica que exista el archivo mapa.txt y los carga en una matriz
     void procesar_archivo_mapa();
+  
+private:
+    
 
     //Pre:Recibe la lista de edificios
     //Post:Verifica que exista el archivo ubicaciones.txt y los carga en una matriz
@@ -169,12 +167,10 @@ private:
     //Post:Devuelve la cantidad de edificios construidos
     // int edificios_construidos(std::string nombre, Jugador jugador);
 
-
-
-
     //Pre:Recibe coordenadas validas
     //Post:Devuelve si el jugador se encuentra alli
     bool casillero_ocupado(Jugador jugador, int coord_x, int coord_y);
+
 
     //Pre: -
     //Post: Reescribe la parte de materiales en ubicaciones.txt
@@ -195,6 +191,8 @@ private:
     //Pre: -
     //Post: Lee la parte de jugador en ubicaciones.txt
     void procesar_archivo_ubicaciones_jugador(ifstream & archivo, Jugador jugaor);
+
+
 };
 
 

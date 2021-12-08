@@ -8,15 +8,6 @@
 #include "utilidad.h"
 
 
-Mapa::Mapa(int filas, int columnas) {
-    Casillero*** casilla;
-    casilla = new Casillero**[filas];
-
-    for(int i = 0; i < filas; i++){
-        casilla[i] = new Casillero*[columnas];
-    }
-}
-
 Mapa::Mapa(ListaEdificios edificios){
     procesar_archivo_mapa();
     //procesar_archivo_ubicaciones(edificios);
@@ -64,12 +55,6 @@ Casillero* Mapa::devolver_casillero(int x, int y) {
     return matriz[x][y];
 }
 
-void Mapa::setear_casillero(int x, int y, Casillero* casillero) {
-    cout << "ED";
-    this->matriz[x][y] = casillero;
-    cout << "SAD";
-
-}
 
 /*FUNCION OBSOLETA
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
@@ -227,9 +212,29 @@ void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
 }
 
 
-void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
 
+void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
+    //hecho asi nomas, ver si se puede agregar las cosas de los casilleros
+    std::cout <<"Columna: ";
+    for(int k = 0 ;k < coordenada_y ;k++)
+        std::cout <<k <<" ";
+    std::cout<<std::endl;
+    for(int i = 0 ;i < coordenada_x ;i++){
+        if(i<10)
+            std::cout <<"Fila " <<i <<": ";
+        else
+            std::cout <<"Fila " <<i <<":";
+        for(int j = 0 ;j < coordenada_y ;j++){
+            if (recorrido->contiene(matriz[i][j]->obtener_id())) {
+               std::cout <<" \033[31;1m" << matriz[i][j]->devolver_tipo_camino() << "\033[0m";
+            } else {
+               std::cout << " " << matriz[i][j]->devolver_tipo_camino();
+            }
+        }
+        std::cout <<std::endl;
+    }
 }
+
 
 
 void Mapa::destruir(){
@@ -605,7 +610,8 @@ void Mapa::mover_jugador(Jugador jugador) {
             jugador.restar_energia(costo); //no funciona
             //cambiar de posicion del jugador en el mapa
             ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
-            mover->mostrar_recorrido_en_mapa(recorrido);
+            // mover->mostrar_recorrido_en_mapa(recorrido);
+            mostrar_recorrido(recorrido);
         } else {
             std::cout << "Operacion cancelada." << std::endl;
         }

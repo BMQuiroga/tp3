@@ -34,11 +34,19 @@ public:
     std::string devolver_nombre();
     //virtual void mostrar() = 0;
 
-    virtual void mostrar_progreso() = 0;
-    virtual void mostrar_objetivo() = 0;
-    virtual bool checkear() = 0;
-    virtual int calcular_progreso() = 0;
-    virtual void actualizar(int valor)=0;
+    //comente para que compile, faltan declaraciones
+
+    // virtual void mostrar_progreso() = 0;
+    // virtual void mostrar_objetivo() = 0;
+    // virtual bool checkear() = 0;
+    // virtual int calcular_progreso() = 0;
+    // virtual void actualizar(int valor)=0;
+
+    void mostrar_progreso();
+    void mostrar_objetivo();
+    bool checkear();
+    int calcular_progreso();
+    void actualizar(int valor);
 };
 
 /*
