@@ -20,7 +20,7 @@ public:
     Minero(/*ListaEdificios edificios, Mapa * mapa, Jugador * jugador*/);
     bool checkear();
     int calcular_progreso();
-    void actualizar(int valor_minero, int valor_minero_oro);
+    void actualizar(string nombre, int valor);
     //void actualizar_minero(int valor);
     //void actualizar_minero_oro(int valor_minero, int valor_minero_oro);
 };

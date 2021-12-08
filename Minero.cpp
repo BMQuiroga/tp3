@@ -22,9 +22,15 @@ bool Minero::checkear() {
     return this->cumplio;
 }
 
-void Minero::actualizar(int valor_minero, int valor_minero_oro) {
-    this->cantidad_minero += valor_minero;
-    this->cantidad_minero_oro += valor_minero_oro;
+void Minero::actualizar(string nombre, int valor ){
+
+    if (nombre == "minero"){
+
+        this->cantidad_minero += valor;
+    }else if (nombre == "minero oro"){
+
+        this->cantidad_minero_oro += valor;
+    }
 }
 
 void Minero::mostrar_progreso() {

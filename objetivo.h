@@ -50,6 +50,8 @@ public:
     bool checkear();
     int calcular_progreso();
     void actualizar(int valor);
+    void actualizar(std::string nombre, int valor);
+
     virtual ~Objetivo() = default;
 };
 
