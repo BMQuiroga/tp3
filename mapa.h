@@ -122,10 +122,13 @@ public:
 
     Casillero* devolver_casillero(int x, int y);
 
+    int generador_de_numeros_aleatorios(int min, int max);
+    
     //agregue estos dos para q no salte error
     int pedir_fila();
     int pedir_columna();
-    int generador_de_numeros_aleatorios(int min, int max);
+    
+    
   
 
     //Pre:-
