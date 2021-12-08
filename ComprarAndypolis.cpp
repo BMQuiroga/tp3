@@ -6,6 +6,7 @@
 ComprarAndypolis::ComprarAndypolis(){
     this->andycoins_juntadas = 0;
     this->cantidad_andycoins_objetivo = 100000;
+    this->cumplio = false;
 }
 
 void ComprarAndypolis::actualizar(int valor) {
@@ -14,7 +15,10 @@ void ComprarAndypolis::actualizar(int valor) {
 
 bool ComprarAndypolis::checkear() {
 
-    return (this->andycoins_juntadas >= this->cantidad_andycoins_objetivo);
+    if (this->andycoins_juntadas >= this->cantidad_andycoins_objetivo){
+        this->cumplio = true;
+    }
+    return cumplio;
 }
 
 void ComprarAndypolis::mostrar_progreso() {

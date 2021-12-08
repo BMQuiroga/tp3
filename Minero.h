@@ -9,13 +9,20 @@ private:
     ListaEdificios edificios;
     Mapa * mapa;
     Jugador * jugador;
+    int cantidad_minero;
+    int cantidad_minero_oro;
+    int cantidad_mineros_necesarios;
+    bool cumplio;
 public:
 
     void mostrar();
+    void mostrar_progreso();
     Minero(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
     bool checkear();
     int calcular_progreso();
-    void actualizar(int valor);
+    void actualizar(int valor_minero, int valor_minero_oro);
+    //void actualizar_minero(int valor);
+    //void actualizar_minero_oro(int valor_minero, int valor_minero_oro);
 };
 
 

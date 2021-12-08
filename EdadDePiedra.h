@@ -6,10 +6,14 @@
 class EdadDePiedra : public Objetivo {
 private:
     ListaMateriales materiales;
+    int cantidad_piedras;
+    int cantidad_piedras_necesarias;
+    bool cumplio;
 public:
-    EdadDePiedra(ListaMateriales materiales);
+    EdadDePiedra(ListaMateriales materiales, Jugador jugador);
 
     void mostrar();
+    void mostrar_progreso();
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);

@@ -9,6 +9,7 @@ class ComprarAndypolis : public Objetivo {
 private:
     int andycoins_juntadas;
     int cantidad_andycoins_objetivo;
+    bool cumplio;
 
 public:
     ComprarAndypolis();

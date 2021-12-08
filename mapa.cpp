@@ -240,7 +240,6 @@ void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
 void Mapa::destruir(){
     for(int i = 0; i < coordenada_x; i++){
     	for(int j = 0; j < coordenada_y; j++){
-
             delete matriz[i][j];
             matriz[i][j] = nullptr;// no es necesario pero buena practica.
         }

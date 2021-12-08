@@ -21,6 +21,8 @@ public:
 
     void alta(Objetivo *objetivo, int posicion);
 
+    void obtener_objetivos_aleatorios(Jugador jugador);
+
 };
 
 
