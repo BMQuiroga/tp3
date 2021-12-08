@@ -31,10 +31,6 @@ int Mapa::devolver_cantidad_columnas() {
     return this->coordenada_y;
 }
 
-int Mapa::generador_de_numeros_aleatorios(int min, int max){
-    return min + rand()%(max+1-min);
-}
-
 int Mapa::pedir_fila() {
     int fila;
     cout << "Ingrese la coordenada x [entre 0 - " << this->devolver_cantidad_filas() - 1 << "] -> ";    cin >> fila;
