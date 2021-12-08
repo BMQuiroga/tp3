@@ -4,6 +4,12 @@
 #include "objetivo.h"
 
 class Bombardero : public Objetivo {
+private:
+
+    int bombas_usadas;
+    int bombas_objetivos;
+    bool cumplio;
+
 public:
     Bombardero();
 
@@ -11,6 +17,7 @@ public:
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);
+    void mostrar_progreso();
 };
 
 

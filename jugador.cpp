@@ -108,12 +108,23 @@ void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materi
 }
 
 
-void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos, ListaEdificios edificios, ListaMateriales materiales, Mapa *mapa) {
+void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 
     int pos1, pos2, pos3;
 
     pos1 = rand() % 10;
+    pos2 =rand() % 10;
+    while (pos2 == pos1){
+        pos2 =rand() % 10;
+    }
+    pos3 =rand() % 10;
+    while(pos3 == pos2 || pos3 == pos1){
+        pos3 =rand() % 10;
+    }
 
+    //this->objetivo_secundario[0] = vector_objetivos[pos1];
+    //this->objetivo_secundario[1] = vector_objetivos[pos2];
+    //this->objetivo_secundario[2] = vector_objetivos[pos3];
 
 
 }
@@ -195,7 +206,17 @@ bool Jugador::cumplio_objetivo_principal() {
 }
 
 bool Jugador::cumplio_objetivo_secundario() {
-    return false;
+
+    int i = 0;
+    /*while (this->objetivo_secundario[i]->checkear() == true){
+        i++;
+    }*/
+    if (i == 2)
+        return true;
+    else{
+        return false;
+    }
+    //deberia hacer de la manera q una vez q se cumpla un objetivo secundario ya no lo chekea mas.
 }
 
 void Jugador::destruir(){

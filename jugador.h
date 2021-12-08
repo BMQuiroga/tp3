@@ -38,7 +38,7 @@ public:
     int devolver_coordenada_y();
     void asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
 
-    void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa);
+    void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos);
     void actualizar_objetivo(int numero_objetivo, int valor);
 
 

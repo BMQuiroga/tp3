@@ -22,7 +22,7 @@ int main(){
 
     ListaObjetivos vector_objetivos_completos1(jugador1, materiales1, edificios, mapa);
 
-    //jugador1.asignar_objetivos_aleatorios(vector_objetivos_completos1, edificios, materiales1, mapa);
+    jugador1.asignar_objetivos_aleatorios(vector_objetivos_completos1);
     //lista_objetivos1
     //lista_objetivos2
     //juegador1.asignar_objetivo(lista_objetivos)

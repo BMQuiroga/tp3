@@ -133,7 +133,7 @@ int generador_de_numeros_aleatorios(int min, int max){
 void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
     int opcion=0;
     while(opcion!=GUARDAR_Y_SALIR_PARTIDA){
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !u.ha_ganado()){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && j.devolver_energia()!=0 && !j.ha_ganado() && !u.ha_ganado()){
             mostrar_menu_partida();
             cin >> opcion;
             while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){
@@ -146,7 +146,7 @@ void partida(ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u){
         }
         j.sumar_energia(20);
         opcion=corregir_opcion(opcion);
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !j.ha_ganado()){
+        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && u.devolver_energia()!=0 && !j.ha_ganado() && !u.ha_ganado()){
             mostrar_menu_partida();
             cin >> opcion;
             while(!es_opcion_valida(opcion,GUARDAR_Y_SALIR_PARTIDA)){

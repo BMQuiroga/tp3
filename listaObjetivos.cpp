@@ -33,3 +33,8 @@ ListaObjetivos::ListaObjetivos( Jugador jugador, ListaMateriales materiales, Lis
 void ListaObjetivos::alta(Objetivo *objetivo, int posicion) {
     this->objetivos[posicion] = objetivo;
 }
+
+/*
+void ListaObjetivos::obtener_objetivos_aleatorios(Jugador jugador) {
+    jugador.
+}*/

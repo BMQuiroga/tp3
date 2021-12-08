@@ -9,13 +9,18 @@ private:
     ListaEdificios edificios;
     Mapa * mapa;
     Jugador * jugador;
+    int cantidad_escuelas_construidas;
+    int cantidad_escuela_maxima;
+    bool cumplio;
 public:
 
     void mostrar();
+    void mostrar_progreso();
     Letrado(ListaEdificios edificios, Mapa * mapa, Jugador * jugador);
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);
+
 
 };
 
