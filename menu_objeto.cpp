@@ -2,6 +2,8 @@
 #include "menu_objeto.h"
 #include <fstream>
 
+const int JUGADOR = 0;
+const int RIVAL =   1;
 
 Menu::Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugador2) {
     this->mapa = mapa;
@@ -52,23 +54,26 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
     int opcion = -1;
 
     Jugador* lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
-    Jugador jugador = lista_jugadores[0];
-    Jugador rival = lista_jugadores[1];
 
     while(opcion != GUARDAR_Y_SALIR_PARTIDA) {
-        while(opcion!=GUARDAR_Y_SALIR_PARTIDA && jugador.devolver_energia()!=0 && !rival.ha_ganado()) {
+        while  (opcion != GUARDAR_Y_SALIR_PARTIDA && 
+                opcion != FINALIZAR_TURNO && 
+                lista_jugadores[JUGADOR].devolver_energia() != 0  && 
+                !lista_jugadores[RIVAL].ha_ganado()) {
+
+            cout << "Es el turno del jugador numero " << lista_jugadores[JUGADOR].devolver_nombre() << endl;  
             mostrar_menu_partida();
             opcion = util.pedir_opcion();
-            procesar_opcion_partida(opcion, jugador, rival);
+            procesar_opcion_partida(opcion, lista_jugadores[JUGADOR], lista_jugadores[RIVAL]);
         }
-        jugador.sumar_energia(20);
+        lista_jugadores[JUGADOR].sumar_energia(20);
         cambiar_turno(lista_jugadores);
-        opcion = -1;
+
+        if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
     }
     
     delete [] lista_jugadores; //poner en otro lado
 }
-
 
 
 Jugador* Menu::crear_cola_jugadores(Jugador jugador1, Jugador jugador2) {   
