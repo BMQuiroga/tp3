@@ -28,6 +28,8 @@ void Letrado::actualizar(int valor) {
     this->cantidad_escuelas_construidas += valor;
 }
 
+int Letrado::calcular_progreso() {}
+
 /*
 void Letrado::mostrar_progreso() {
     cout << "La cantidad de escuelas construidas es: " << this->cantidad_escuelas_construidas << endl;

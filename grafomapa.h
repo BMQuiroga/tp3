@@ -32,6 +32,7 @@ public:
     //de prueba por ahora
     void mostrar_matriz();
 
+    //no va
     void mostrar_recorrido_en_mapa(ListaRecorrido* recorrido);
 
 
