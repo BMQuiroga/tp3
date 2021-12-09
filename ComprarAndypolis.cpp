@@ -27,7 +27,7 @@ void ComprarAndypolis::mostrar_progreso() {
 
 void ComprarAndypolis::mostrar(){
     cout << "Comprar andypolis: haber juntado 100.000 andycoins a lo largo de la partida (las monedas gastadas también cuentan para este objetivo)" << endl;
-    cout << "Monedas juntadas: " << calcular_progreso << "/100000" << endl;
-    if(checkear)
+    cout << "Monedas juntadas: " << calcular_progreso() << "/100000" << endl;
+    if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }

@@ -12,8 +12,8 @@ Letrado::Letrado(ListaEdificios edificios/*, Mapa *mapa, Jugador *jugador*/) {
 
 void Letrado::mostrar(){
     cout << "Letrado: haber construido el máximo posible de escuelas. " << endl;
-    cout << "Escuelas construidas: " << calcular_progreso << "/" << cantidad_escuela_maxima << endl;
-    if(checkear)
+    cout << "Escuelas construidas: " << calcular_progreso() << "/" << cantidad_escuela_maxima << endl;
+    if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
 

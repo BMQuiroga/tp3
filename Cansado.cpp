@@ -12,7 +12,7 @@ Cansado::Cansado(Jugador jugador) {
 
 void Cansado::mostrar(){
     cout << "Cansado: terminar un turno con 0 de energía." << endl;
-    if(checkear)
+    if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
 

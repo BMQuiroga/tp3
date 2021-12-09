@@ -12,8 +12,8 @@ Extremista::Extremista() {
 
 void Extremista::mostrar(){
     cout << "Extremista: haber comprado 500 bombas en una partida." << endl;
-    cout << "Bombas compradas: " << calcular_progreso << "/500" << endl;
-    if(checkear)
+    cout << "Bombas compradas: " << calcular_progreso() << "/500" << endl;
+    if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
 
