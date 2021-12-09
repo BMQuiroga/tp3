@@ -2,6 +2,7 @@
 #include "listamateriales.h"
 #include <fstream>
 
+using namespace std;
 ListaMateriales::ListaMateriales() {
     primero = 0;
     cantidad = 0;

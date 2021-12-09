@@ -24,11 +24,11 @@ void CasilleroInaccesible::construir(Edificio edificio){
     std::cout <<"No se puede construir en un lago"<<std::endl;
 }
 
-void CasilleroInaccesible::recolectar_material(Jugador jugador){
+void CasilleroInaccesible::recolectar_material(Jugador* jugador){
     
 }
 
-void CasilleroInaccesible::demoler(Jugador jugador){
+void CasilleroInaccesible::demoler(Jugador* jugador){
     
 }
 
@@ -48,7 +48,7 @@ bool CasilleroInaccesible::atacar(){
     return false;
 }
 
-void CasilleroInaccesible::reparar(Jugador jugador){
+void CasilleroInaccesible::reparar(Jugador* jugador){
     
 }
 

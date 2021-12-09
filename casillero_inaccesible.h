@@ -36,11 +36,11 @@ public:
 
     //Pre:
     //Post: No hace nada
-    void recolectar_material(Jugador jugador);
+    void recolectar_material(Jugador* jugador);
     
     //Pre:
     //Post: No hace nada
-    void demoler(Jugador jugador);
+    void demoler(Jugador* jugador);
 
     //Pre:
     //Post: No hace nada
@@ -56,7 +56,7 @@ public:
 
     //Pre:
     //Post: No hace nada
-    void reparar(Jugador jugador);
+    void reparar(Jugador* jugador);
 
     //Pre:
     //Post: Muestra "soy un casillero inaccesible y me encuentro vacio"

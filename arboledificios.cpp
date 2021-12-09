@@ -63,8 +63,6 @@ void ArbolEdificios::procesar_archivo_edificios(){
                 Edificio edificio(nombre,piedra,madera,metal,max);
                 this->raiz= new RamaEdificios(edificio);
             }
-                
-            
         }
     }
     archivo_edificios.close();
@@ -75,8 +73,8 @@ bool ArbolEdificios::es_edificio_valido(std::string nombre){
 }
 
 void ArbolEdificios::destruir(){
-        this->raiz->destruir();
-        delete this->raiz;
+    this->raiz->destruir();
+    delete this->raiz;
 }
 
 Edificio* ArbolEdificios::devolver_todo(){

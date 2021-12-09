@@ -11,7 +11,7 @@ class Jugador{
 
 private:
     int nombre;
-    ListaMateriales materiales;
+    ListaMateriales* materiales;
     GrafoMapa* grafo;
     int energia;
     int coordenada_x,coordenada_y;
@@ -22,21 +22,23 @@ private:
 
 public:
     Jugador() /*{}*/;
-    Jugador(int x, int y, int numero, ListaEdificios edificios, Mapa * mapa);
+    Jugador(int x, int y, int numero, ListaEdificios* edificios, Mapa * mapa);
     void mover();
     void mover_gratis(int x, int y);
     void sumar_energia(int cantidad);
     void restar_energia(int cantidad);
     int devolver_energia();
     void mostrar_objetivos();
-    void asignar_lista_materiales(ListaMateriales materiales);
+    void asignar_lista_materiales(ListaMateriales *materiales);
     void comprar_bombas();
-    ListaMateriales devolver_materiales();
+    // ListaMateriales devolver_materiales();
+    ListaMateriales* devolver_materiales();
+
     bool checkear_objetivos();
     int devolver_nombre();
     int devolver_coordenada_x();
     int devolver_coordenada_y();
-    void asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
+    void asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa, Jugador* jugador);
 
     void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos);
     void actualizar_objetivo(int numero_objetivo, int valor);

@@ -2,13 +2,15 @@
 #include <iostream>
 #include "grafomapa.h"
 
-Jugador::Jugador(int x,int y,int numero, ListaEdificios edificios, Mapa * mapa){
+Jugador::Jugador() {}
+
+Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa){
     //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
     this->energia = 50;
     this->nombre = numero;
     this->crear_grafo(mapa);
-    this->asignar_objetivos(edificios, materiales, mapa, *this);
+    this->asignar_objetivos(edificios, materiales, mapa, this);
 }
 
 
@@ -27,8 +29,8 @@ int Jugador::devolver_energia(){
 }
 
 void Jugador::comprar_bombas(){
-    int indice=this->materiales.buscar_indice("andycoins");
-    int cantidad_andycoins = this->materiales.consulta(indice).devolver_cantidad();
+    int indice=this->materiales->buscar_indice("andycoins");
+    int cantidad_andycoins = this->materiales->consulta(indice).devolver_cantidad();
     int bombas=0;
     std::cout<<"Posee "<< cantidad_andycoins <<" andycoins, cuantas bombas desea comprar?"<<std::endl;
     std::cin>>bombas;
@@ -39,8 +41,8 @@ void Jugador::comprar_bombas(){
     }
 
     // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
-    this->materiales.obtener_nodo(materiales.buscar_indice("bombas"))->obtener_dato().operator+(bombas);
-    this->materiales.obtener_nodo(materiales.buscar_indice("andycoins"))->obtener_dato().operator-(bombas*100);
+    this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato().operator+(bombas);
+    this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato().operator-(bombas*100);
     this->energia-=5;
 
 }
@@ -50,13 +52,13 @@ GrafoMapa* Jugador::movimiento() {
     return grafo;
 }
 
-// ListaMateriales* Jugador::devolver_materiales(){
-//     return this->materiales;
-// }
-
-ListaMateriales Jugador::devolver_materiales() {
+ListaMateriales* Jugador::devolver_materiales(){
     return this->materiales;
 }
+
+// ListaMateriales Jugador::devolver_materiales() {
+//     return this->materiales;
+// }
 
 int Jugador::devolver_nombre(){
     return this->nombre;
@@ -77,8 +79,8 @@ int Jugador::devolver_coordenada_y(){
            (objetivo_principal->checkear()));
 }*/
 
-void Jugador::asignar_lista_materiales(ListaMateriales materiales){
-    this->materiales=materiales;
+void Jugador::asignar_lista_materiales(ListaMateriales *materiales){
+    this->materiales = materiales;
 }
 
 void Jugador::sumar_energia(int numero){
@@ -90,7 +92,7 @@ void Jugador::restar_energia(int numero){
 }
 
 
-void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
+void Jugador::asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa, Jugador* jugador) {
     //int a=0;
     //int b=0;
     //int c=0;
@@ -207,5 +209,5 @@ bool Jugador::cumplio_objetivo_secundario() {
 }
 
 void Jugador::destruir(){
-    this->materiales.destruir();
+    this->materiales->destruir();
 }

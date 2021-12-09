@@ -6,7 +6,6 @@
 #include "arboledificios.h"
 #include "listamateriales.h"
 #include "jugador.h"
-#include "mapa.h"
 #include <iostream>
 
 const int OBJ_COMPRAR_ANDYPOLIS = 1;

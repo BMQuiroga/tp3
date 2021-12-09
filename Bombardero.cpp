@@ -28,3 +28,5 @@ bool Bombardero::checkear() {
     }
     return this->cumplio;
 }
+
+int Bombardero::calcular_progreso() {}

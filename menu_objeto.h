@@ -31,15 +31,15 @@ const int GUARDAR_Y_SALIR_PARTIDA = 13;
 
 class Menu{
 private:
-    Jugador jugador1;
-    Jugador jugador2;
-    Mapa mapa;
-    ListaEdificios edificios;
+    Jugador* jugador1;
+    Jugador* jugador2;
+    Mapa* mapa;
+    ListaEdificios* edificios;
 
 public:
     //Pre: mapa, edificio y jugadores ya cargados
     //Post: Menu principal del juego
-    Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugador2);
+    Menu(Mapa* mapa, ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2);
 
 
     //Pre: -
@@ -56,16 +56,16 @@ public:
 
     //Pre: 1 <= opcion <= 13
     //Post: procesa la opcion ingresada por el usuario
-    void procesar_opcion_partida(int opcion_elegida, Jugador jugador, Jugador rival);
+    void procesar_opcion_partida(int opcion_elegida, Jugador *jugador, Jugador *rival);
 
     
     void guardar();
     void partida();
     void reescribir_materiales();
-    Jugador* crear_cola_jugadores(Jugador jugador1, Jugador jugador2);
-    void cambiar_turno(Jugador* lista_jugadores);
-    bool checkear_si_gano(Jugador jugador);
-    void secuencia_victoria(Jugador jugador);
+    Jugador** crear_cola_jugadores(Jugador *jugador1, Jugador *jugador2);
+    void cambiar_turno(Jugador** lista_jugadores);
+    bool checkear_si_gano(Jugador* jugador);
+    void secuencia_victoria(Jugador* jugador);
     
 };
 

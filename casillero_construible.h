@@ -39,11 +39,11 @@ public:
 
     //Pre: Recibe la lista de materiales
     //Post: Suma los materiales producidos por la mina, aserradero y fabrica a la lista de materiales.
-    void recolectar_material(Jugador jugador);
+    void recolectar_material(Jugador* jugador);
 
     //Pre: Recibe la lista de materiales
     //Post: Realiza la destruccion, modificando la cantidad de materiales   
-    void demoler(Jugador jugador);
+    void demoler(Jugador* jugador);
 
     //Pre: -
     //Post: - 
@@ -63,7 +63,7 @@ public:
 
     //Pre:
     //Post: Le suma 1 de vida al edificio, si tiene 2 de vida maxima
-    void reparar(Jugador jugador);
+    void reparar(Jugador* jugador);
 
     //Pre:
     //Post: muestra "soy un casillero construible" y si tiene_material_o_edificio()

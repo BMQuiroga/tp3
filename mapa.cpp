@@ -93,17 +93,18 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
 }
 */
 
-void Mapa::llamar_lluvia(Jugador jugador1, Jugador jugador2){
+void Mapa::llamar_lluvia(Jugador* jugador1, Jugador* jugador2){
+    Utilidad util;
     srand((unsigned)time(0));
-    int cantidad_material_piedra = generador_de_numeros_aleatorios(1,2);//1+rand()%1;
-    int cantidad_material_madera = generador_de_numeros_aleatorios(0,1);//rand()%1;
-    int cantidad_material_metal = generador_de_numeros_aleatorios(2,4);//2+rand()%2;
-    int cantidad_material_andycoins = generador_de_numeros_aleatorios(0,1);
+    int cantidad_material_piedra = util.generador_de_numeros_aleatorios(1,2);//1+rand()%1;
+    int cantidad_material_madera = util.generador_de_numeros_aleatorios(0,1);//rand()%1;
+    int cantidad_material_metal = util.generador_de_numeros_aleatorios(2,4);//2+rand()%2;
+    int cantidad_material_andycoins = util.generador_de_numeros_aleatorios(0,1);
     //std::cout<<cantidad_material_piedra<<" "<<cantidad_material_madera<<" "<<cantidad_material_metal<<std::endl;
-    int j1_x = jugador1.devolver_coordenada_x();
-    int j1_y = jugador1.devolver_coordenada_y();
-    int j2_x = jugador2.devolver_coordenada_x();
-    int j2_y = jugador2.devolver_coordenada_y();
+    int j1_x = jugador1->devolver_coordenada_x();
+    int j1_y = jugador1->devolver_coordenada_y();
+    int j2_x = jugador2->devolver_coordenada_x();
+    int j2_y = jugador2->devolver_coordenada_y();
     lluvia(cantidad_material_piedra, "piedra",j1_x,j1_y,j2_x,j2_y);
     lluvia(cantidad_material_madera, "madera",j1_x,j1_y,j2_x,j2_y);
     lluvia(cantidad_material_metal, "metal",j1_x,j1_y,j2_x,j2_y);
@@ -130,28 +131,28 @@ void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2
     }
 }
 
-void Mapa::recolectar(Jugador jugador){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN LAGO Y CAMINO PERO NO HACER NADA
+void Mapa::recolectar(Jugador* jugador){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN LAGO Y CAMINO PERO NO HACER NADA
     for(int i = 0; i < coordenada_x; i++){
         for(int j = 0; j < coordenada_y; j++){
-            if(matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_jugador() == jugador.devolver_nombre())
+            if(matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_jugador() == jugador->devolver_nombre())
                 matriz[i][j]->recolectar_material(jugador); //MANDAR PARAMETRO PIEDRA METAL MADERA
         }
     }
-    jugador.restar_energia(20);
+    jugador->restar_energia(20);
 }
 
-void Mapa::demoler(ListaEdificios edificios, int coord_x,int coord_y,Jugador jugador){
+void Mapa::demoler(ListaEdificios* edificios, int coord_x, int coord_y, Jugador* jugador){
     if (matriz[coord_x][coord_y] -> tiene_material_o_edificio() && matriz[coord_x][coord_y]->devolver_tipo() == 'T'){
         //HAY QUE HACERLA DEVUELTA CON LAS LISTAS DE MATERIALES
         /*int piedra=devolver_indice_materiales(materiales,"piedra");
         int madera=devolver_indice_materiales(materiales,"madera");
         int metal=devolver_indice_materiales(materiales,"metal");*/
 
-        if (jugador.devolver_nombre() == matriz[coord_x][coord_y]->devolver_jugador()) {
+        if (jugador->devolver_nombre() == matriz[coord_x][coord_y]->devolver_jugador()) {
             std::cout << matriz[coord_x][coord_y]->devolver_material_o_edificio() << " demolido/a satisfactoriamente." << std::endl;
             matriz[coord_x][coord_y] -> demoler(jugador);
             matriz[coord_x][coord_y] -> cambiar_jugador(0);
-            jugador.restar_energia(15);  
+            jugador->restar_energia(15);  
         } else {
             std::cout << "No podes demoler un edificio que no es tuyo." << std::endl;
         }
@@ -160,7 +161,7 @@ void Mapa::demoler(ListaEdificios edificios, int coord_x,int coord_y,Jugador jug
         std::cout<<"No hay ningun edificio en este casillero!"<<std::endl;
 }
 
-void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador jugador1, Jugador jugador2){
+void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador* jugador1, Jugador* jugador2){
     if(matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "piedra")
         std::cout << PIEDRA ;//⛏️ amarillo
     else if(matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "madera")
@@ -171,9 +172,9 @@ void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador
         std::cout << ANDYCOINS ;//⚙️ amarillo
     else{
         //SETEA EL COLOR DEPENDIENDO DE QUIEN SEA EL EDIFICIO, SI NO ES UN MATERIAL
-        if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador1.devolver_nombre())
+        if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador1->devolver_nombre())
             std::cout << COLOR_ROJO ; //ROJO PARA J1
-        if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador2.devolver_nombre())
+        if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador2->devolver_nombre())
             std::cout << COLOR_VIOLETA ; //VIOLETA PARA J2
 
 
@@ -196,7 +197,7 @@ void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador
     }
 }   
 
-void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
+void Mapa::mostrar_mapa(Jugador* jugador1, Jugador* jugador2){
     std::cout <<"Ademas de los mencionados en el pdf, se usan: R para camino, T para terreno y L para lago"<<std::endl;
     std::cout <<"Columna: ";
     for(int k = 0 ;k < coordenada_y ;k++)
@@ -210,9 +211,9 @@ void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
         //std::cout<<coordenada_y<<std::endl;
         for(int j = 0 ;j < coordenada_y ;j++){
             //std::cout<<"ENTRA"<<std::endl;
-            if(i == jugador1.devolver_coordenada_x() && j == jugador1.devolver_coordenada_y())
+            if(i == jugador1->devolver_coordenada_x() && j == jugador1->devolver_coordenada_y())
                 std::cout << JUGADOR_1 ; //J en rojo
-            else if(i == jugador2.devolver_coordenada_x() && j == jugador2.devolver_coordenada_y())
+            else if(i == jugador2->devolver_coordenada_x() && j == jugador2->devolver_coordenada_y())
                 std::cout << JUGADOR_2 ; //U en violeta
             else if (matriz[i][j]->tiene_material_o_edificio())
                 mostrar_mapa_edificios_y_materiales(i ,j ,jugador1 ,jugador2);
@@ -309,13 +310,13 @@ void Mapa::procesar_archivo_mapa(){
         this->matriz = casilla;
     }
 }
-bool Mapa::casillero_ocupado(Jugador jugador, int coord_x, int coord_y){
-    return(matriz[jugador.devolver_coordenada_x()][jugador.devolver_coordenada_y()] == matriz[coord_x][coord_y]);
+bool Mapa::casillero_ocupado(Jugador* jugador, int coord_x, int coord_y){
+    return(matriz[jugador->devolver_coordenada_x()][jugador->devolver_coordenada_y()] == matriz[coord_x][coord_y]);
 
 }
 
 
-void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
+void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival){
     std::string edificio, ingreso;
     int coord_x, coord_y;
     std::cout <<"Ingrese el nombre del edificio que desea construir -> ";
@@ -338,7 +339,7 @@ void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
                 if(coord_x >= 0 && coord_x < coordenada_x && coord_y >= 0 && coord_y < coordenada_y){
                     if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T'){
                         realizar_construccion(edificios,coord_x,coord_y,edificio,jugador);
-                        matriz[coord_x][coord_y] -> cambiar_jugador(jugador.devolver_nombre());
+                        matriz[coord_x][coord_y] -> cambiar_jugador(jugador->devolver_nombre());
                     }
                     else
                         std::cout <<"No se puede construir en esa coordenada!"<<std::endl;
@@ -350,10 +351,10 @@ void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
     }
 }
 
-bool Mapa::se_puede_construir(ListaEdificios edificios, std::string nombre, Jugador jugador){
+bool Mapa::se_puede_construir(ListaEdificios* edificios, std::string nombre, Jugador* jugador){
     bool es_valido_construir = false;
     //int indice_edificio = edificios.buscar_indice(nombre);
-    Edificio edificio = edificios.consulta(nombre);
+    Edificio edificio = edificios->consulta(nombre);
     if(edificio.devolver_maximos_permitidos() == 0){
         std::cout <<"No existe un edificio con ese nombre!" <<std::endl;
         return false;
@@ -361,18 +362,18 @@ bool Mapa::se_puede_construir(ListaEdificios edificios, std::string nombre, Juga
     // int indice_piedra=jugador.devolver_materiales()->buscar_indice("piedra");
     // int indice_madera=jugador.devolver_materiales()->buscar_indice("madera");
     // int indice_metal=jugador.devolver_materiales()->buscar_indice("metal");
-    int indice_piedra = jugador.devolver_materiales().buscar_indice("piedra");
-    int indice_madera = jugador.devolver_materiales().buscar_indice("madera");
-    int indice_metal = jugador.devolver_materiales().buscar_indice("metal");
+    int indice_piedra = jugador->devolver_materiales()->buscar_indice("piedra");
+    int indice_madera = jugador->devolver_materiales()->buscar_indice("madera");
+    int indice_metal = jugador->devolver_materiales()->buscar_indice("metal");
     
     bool hay_piedra = false, hay_madera = false, hay_metal = false;
     
     // hay_piedra=(jugador.devolver_materiales()->consulta(indice_piedra).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_piedra());
     // hay_madera=(jugador.devolver_materiales()->consulta(indice_madera).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_madera());
     // hay_metal=(jugador.devolver_materiales()->consulta(indice_metal).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_metal());
-    hay_piedra = (jugador.devolver_materiales().consulta(indice_piedra).devolver_cantidad() >= edificio.devolver_piedra());
-    hay_madera = (jugador.devolver_materiales().consulta(indice_madera).devolver_cantidad() >= edificio.devolver_madera());
-    hay_metal = (jugador.devolver_materiales().consulta(indice_metal).devolver_cantidad() >= edificio.devolver_metal());
+    hay_piedra = (jugador->devolver_materiales()->consulta(indice_piedra).devolver_cantidad() >= edificio.devolver_piedra());
+    hay_madera = (jugador->devolver_materiales()->consulta(indice_madera).devolver_cantidad() >= edificio.devolver_madera());
+    hay_metal = (jugador->devolver_materiales()->consulta(indice_metal).devolver_cantidad() >= edificio.devolver_metal());
 
     if(hay_madera && hay_piedra && hay_metal){
         if(edificio.devolver_maximos_permitidos()>edificios_construidos(nombre,jugador)){
@@ -388,11 +389,11 @@ bool Mapa::se_puede_construir(ListaEdificios edificios, std::string nombre, Juga
     return es_valido_construir;
 }
 
-int Mapa::edificios_construidos(std::string nombre,Jugador jugador){
+int Mapa::edificios_construidos(std::string nombre, Jugador* jugador){
     int contador = 0;
     for (int i = 0; i < coordenada_x; i++){
         for(int j = 0; j<coordenada_y; j++){
-            if(matriz[i][j]->devolver_material_o_edificio() == nombre && matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_jugador() == jugador.devolver_nombre())
+            if(matriz[i][j]->devolver_material_o_edificio() == nombre && matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_jugador() == jugador->devolver_nombre())
                 contador++;
         }
     }
@@ -417,28 +418,28 @@ int Mapa::edificios_construidos(std::string nombre,Jugador jugador){
     return indice;
 }*/
 
-void Mapa::realizar_construccion(ListaEdificios edificios, int coord_x, int coord_y, std::string nombre, Jugador jugador){
+void Mapa::realizar_construccion(ListaEdificios* edificios, int coord_x, int coord_y, std::string nombre, Jugador* jugador){
     // int indice_piedra=jugador.devolver_materiales()->buscar_indice("piedra");
     // int indice_madera=jugador.devolver_materiales()->buscar_indice("madera");
     // int indice_metal=jugador.devolver_materiales()->buscar_indice("metal");
-    int indice_piedra = jugador.devolver_materiales().buscar_indice("piedra");
-    int indice_madera = jugador.devolver_materiales().buscar_indice("madera");
-    int indice_metal = jugador.devolver_materiales().buscar_indice("metal");
+    int indice_piedra = jugador->devolver_materiales()->buscar_indice("piedra");
+    int indice_madera = jugador->devolver_materiales()->buscar_indice("madera");
+    int indice_metal = jugador->devolver_materiales()->buscar_indice("metal");
 
     // jugador.devolver_materiales()->obtener_nodo(indice_piedra)->restar_cantidad(edificios.consulta(indice_edificio).devolver_piedra());
     // jugador.devolver_materiales()->obtener_nodo(indice_madera)->restar_cantidad(edificios.consulta(indice_edificio).devolver_madera());
     // jugador.devolver_materiales()->obtener_nodo(indice_metal)->restar_cantidad(edificios.consulta(indice_edificio).devolver_metal());
-    jugador.devolver_materiales().obtener_nodo(indice_piedra) -> restar_cantidad(edificios.consulta(nombre).devolver_piedra());
-    jugador.devolver_materiales().obtener_nodo(indice_madera) -> restar_cantidad(edificios.consulta(nombre).devolver_madera());
-    jugador.devolver_materiales().obtener_nodo(indice_metal) -> restar_cantidad(edificios.consulta(nombre).devolver_metal());
+    jugador->devolver_materiales()->obtener_nodo(indice_piedra) -> restar_cantidad(edificios->consulta(nombre).devolver_piedra());
+    jugador->devolver_materiales()->obtener_nodo(indice_madera) -> restar_cantidad(edificios->consulta(nombre).devolver_madera());
+    jugador->devolver_materiales()->obtener_nodo(indice_metal) -> restar_cantidad(edificios->consulta(nombre).devolver_metal());
 
-    matriz[coord_x][coord_y] -> construir(edificios.consulta(nombre));
+    matriz[coord_x][coord_y] -> construir(edificios->consulta(nombre));
     std::cout <<nombre <<" construido/a satisfactoriamente!" <<std::endl;
 }
 
-void Mapa::listar_edificios_construidos(ListaEdificios edificios, Jugador jugador){
-    Edificio* array_edificios = edificios.devolver_todo();
-    for(int i = 0 ; i < edificios.devolver_cantidad() ; i++){//
+void Mapa::listar_edificios_construidos(ListaEdificios* edificios, Jugador* jugador){
+    Edificio* array_edificios = edificios->devolver_todo();
+    for(int i = 0 ; i < edificios->devolver_cantidad() ; i++){//
         std::string nombre = array_edificios[i].devolver_nombre();
         int construidos = edificios_construidos(nombre, jugador);
         if (construidos && nombre != "0"){
@@ -450,17 +451,17 @@ void Mapa::listar_edificios_construidos(ListaEdificios edificios, Jugador jugado
     }
 }
 
-void Mapa::mostrar_coordenadas(std::string nombre, Jugador jugador){
+void Mapa::mostrar_coordenadas(std::string nombre, Jugador* jugador){
     for(int i = 0; i < coordenada_x; i++){
         for(int j = 0; j<coordenada_y; j++){
-            if(matriz[i][j] -> devolver_material_o_edificio() == nombre && matriz[i][j] -> devolver_jugador() == jugador.devolver_nombre())
+            if(matriz[i][j] -> devolver_material_o_edificio() == nombre && matriz[i][j] -> devolver_jugador() == jugador->devolver_nombre())
                 std::cout<<" ("<<i<<", "<<j<<") ";
         }
     }
     std::cout <<"\n-------------------------------------------------" <<std::endl;
 }
 
-void Mapa::menu_demoler(ListaEdificios edificios, Jugador jugador){
+void Mapa::menu_demoler(ListaEdificios* edificios, Jugador* jugador){
     int coord_x, coord_y;
     // std::cout <<"Ingrese la coordenada x"<<std::endl;
     // std::cin >>coord_x;
@@ -495,9 +496,9 @@ void Mapa::menu_consultar_coordenada(){
     //     std::cout <<"Posicion elegida fuera de rango!" <<std::endl;
 }
 
-void Mapa::listar_todos_los_edificios(ListaEdificios edificios, Jugador jugador1, Jugador jugador2){
-    Edificio* array_edificios = edificios.devolver_todo();
-    for(int i = 0; i < edificios.devolver_cantidad() ; i++){
+void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2){
+    Edificio* array_edificios = edificios->devolver_todo();
+    for(int i = 0; i < edificios->devolver_cantidad() ; i++){
         Edificio edificio = array_edificios[i];
         std::string nombre = edificio.devolver_nombre();
         int construidos1 = edificios_construidos(nombre, jugador1);
@@ -534,7 +535,7 @@ void Mapa::reescribir_ubicaciones(){
     }
 }*/
 
-void Mapa::menu_atacar(Jugador jugador, Jugador rival){
+void Mapa::menu_atacar(Jugador* jugador, Jugador* rival){
     bool destruido;
     int coord_x, coord_y;
     // std::cout <<"Ingrese la coordenada x del edificio enemigo que desea atacar" <<std::endl;
@@ -544,15 +545,15 @@ void Mapa::menu_atacar(Jugador jugador, Jugador rival){
     coord_x = pedir_fila();
     coord_y = pedir_columna();
 
-    if(matriz[coord_x][coord_y] -> devolver_jugador() == rival.devolver_nombre() && matriz[coord_x][coord_y] -> tiene_material_o_edificio()){
-        if(jugador.devolver_energia() >= 30){
-            if(jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).devolver_cantidad() >= 1){
+    if(matriz[coord_x][coord_y] -> devolver_jugador() == rival->devolver_nombre() && matriz[coord_x][coord_y] -> tiene_material_o_edificio()){
+        if(jugador->devolver_energia() >= 30){
+            if(jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("bombas")).devolver_cantidad() >= 1){
                 destruido = matriz[coord_x][coord_y] -> atacar();
                 if(destruido)
                     matriz[coord_x][coord_y]->cambiar_jugador(0);
-                jugador.restar_energia(30);
-                jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).sumar_cantidad(-1);
-                jugador.actualizar_objetivo(1, 1);
+                jugador->restar_energia(30);
+                jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("bombas")).sumar_cantidad(-1);
+                jugador->actualizar_objetivo(1, 1);
             }
             else
                 std::cout<<"No tienes bombas!" <<std::endl;
@@ -566,7 +567,7 @@ void Mapa::menu_atacar(Jugador jugador, Jugador rival){
 
 }
 
-void Mapa::menu_reparar(Jugador jugador){
+void Mapa::menu_reparar(Jugador* jugador){
     int coord_x, coord_y;
     // std::cout <<"Ingrese la coordenada x del edificio que desea reparar" <<std::endl;
     // std::cin >>coord_x;
@@ -575,7 +576,7 @@ void Mapa::menu_reparar(Jugador jugador){
     coord_x = pedir_fila();
     coord_y = pedir_columna();
 
-    if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador.devolver_nombre() && matriz[coord_x][coord_y] -> tiene_material_o_edificio()){
+    if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador->devolver_nombre() && matriz[coord_x][coord_y] -> tiene_material_o_edificio()){
         if((matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "mina" || matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "fabrica")){
             matriz[coord_x][coord_y] -> reparar(jugador);
         }
@@ -587,13 +588,13 @@ void Mapa::menu_reparar(Jugador jugador){
 }
 
 
-bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
+bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador* jugador) {
     int i = 0;
     int j = 0;
 
     while (i < coordenada_x) {
         while (j < coordenada_x) {
-            if(matriz[i][j] -> devolver_tipo() == 'T' && matriz[i][j] -> devolver_material_o_edificio() == nombre_edificio && matriz[i][j] -> devolver_jugador() == jugador.devolver_nombre()) {
+            if(matriz[i][j] -> devolver_tipo() == 'T' && matriz[i][j] -> devolver_material_o_edificio() == nombre_edificio && matriz[i][j] -> devolver_jugador() == jugador->devolver_nombre()) {
                 return true;
             } j++;
         } i++;
@@ -603,9 +604,9 @@ bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador jugador) {
 
 
 
-void Mapa::mover_jugador(Jugador jugador) {
+void Mapa::mover_jugador(Jugador* jugador) {
     int origen_x, origen_y, destino_x, destino_y;
-    GrafoMapa* mover = jugador.movimiento();
+    GrafoMapa* mover = jugador->movimiento();
     Utilidad util;
 
     // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
@@ -620,11 +621,11 @@ void Mapa::mover_jugador(Jugador jugador) {
     int costo = mover->devolver_costo(origen_x, origen_y, destino_x, destino_y);
 
     std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
-    std::cout << "Tenes " << jugador.devolver_energia() << " de energia." << std::endl;
+    std::cout << "Tenes " << jugador->devolver_energia() << " de energia." << std::endl;
 
-    if (jugador.devolver_energia() >= costo) {
+    if (jugador->devolver_energia() >= costo) {
         if (util.pedir_confirmacion()) {
-            jugador.restar_energia(costo); //no funciona
+            jugador->restar_energia(costo); //no funciona
             //cambiar de posicion del jugador en el mapa
             ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
             // mover->mostrar_recorrido_en_mapa(recorrido);
@@ -638,7 +639,7 @@ void Mapa::mover_jugador(Jugador jugador) {
     std::cout << std::endl; 
 }  
 
-void Mapa::reescribir_ubicaciones(Jugador j, Jugador u){
+void Mapa::reescribir_ubicaciones(Jugador* j, Jugador* u){
     std::ofstream archivo_ubicaciones;
     
     archivo_ubicaciones.open("ubicaciones.txt");
@@ -647,9 +648,9 @@ void Mapa::reescribir_ubicaciones(Jugador j, Jugador u){
     }
     else{
         reescribir_materiales(archivo_ubicaciones);
-        archivo_ubicaciones << "1 (" << j.devolver_coordenada_x() << ", " << j.devolver_coordenada_y() << ")" << std::endl;
+        archivo_ubicaciones << "1 (" << j->devolver_coordenada_x() << ", " << j->devolver_coordenada_y() << ")" << std::endl;
         reescribir_jugador(archivo_ubicaciones,1);
-        archivo_ubicaciones << "2 (" << u.devolver_coordenada_x() << ", " << u.devolver_coordenada_y() << ")" << std::endl;
+        archivo_ubicaciones << "2 (" << u->devolver_coordenada_x() << ", " << u->devolver_coordenada_y() << ")" << std::endl;
         reescribir_jugador(archivo_ubicaciones,2);
     }
     archivo_ubicaciones.close();
@@ -679,7 +680,7 @@ void Mapa::reescribir_jugador(ofstream & archivo_ubicaciones, int numero_jugador
     }   
 }
 
-bool Mapa::procesar_archivo_ubicaciones(ListaEdificios edificios,Jugador j, Jugador u){
+bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, Jugador* u){
     std::string nombre;
     int coord_x;
     int coord_y;
@@ -726,7 +727,7 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
     return archivo_en_blanco;
 }
 
-void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios edificios, int numero_jugador){
+void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios* edificios, int numero_jugador){
     std::string nombre;
     bool archivo_en_blanco;
     std::string aux;
@@ -748,14 +749,14 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
         coord_x = stoi(aux);
         archivo >> aux;
         coord_y = stoi(aux);
-        Edificio edificio = edificios.consulta(nombre);
+        Edificio edificio = edificios->consulta(nombre);
         matriz[coord_x][coord_y]->construir(edificio);
         matriz[coord_x][coord_y]->cambiar_jugador(numero_jugador);
     };
 }
 
 
-void Mapa::procesar_archivo_ubicaciones_jugador(ifstream & archivo,  Jugador jugador){
+void Mapa::procesar_archivo_ubicaciones_jugador(ifstream & archivo,  Jugador* jugador){
     std::string aux;
     int coord_x,coord_y;
     getline(archivo,aux,'(');
@@ -763,6 +764,6 @@ void Mapa::procesar_archivo_ubicaciones_jugador(ifstream & archivo,  Jugador jug
     coord_x = stoi(aux);
     archivo >> aux;
     coord_y = stoi(aux);
-    jugador.mover_gratis(coord_x,coord_y);
+    jugador->mover_gratis(coord_x,coord_y);
 
 }

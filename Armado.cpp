@@ -5,7 +5,7 @@
 #include "Armado.h"
 
 Armado::Armado(/*ListaMateriales materiales, */Jugador jugador) {
-    this->cantidad_bombas = jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("bombas")).devolver_cantidad();
+    this->cantidad_bombas = jugador.devolver_materiales()->consulta(jugador.devolver_materiales()->buscar_indice("bombas")).devolver_cantidad();
     this->cantidad_bombas_necesarias = 10;
     this->cumplio = false;
 }

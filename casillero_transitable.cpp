@@ -45,11 +45,11 @@ void CasilleroTransitable::construir(Edificio edificio){
 
 }
 
-void CasilleroTransitable::recolectar_material(Jugador jugador){
+void CasilleroTransitable::recolectar_material(Jugador* jugador){
     
 }
 
-void CasilleroTransitable::demoler(Jugador jugador){
+void CasilleroTransitable::demoler(Jugador* jugador){
     
 }
 
@@ -69,7 +69,7 @@ bool CasilleroTransitable::atacar(){
     return false;
 }
 
-void CasilleroTransitable::reparar(Jugador jugador){
+void CasilleroTransitable::reparar(Jugador* jugador){
     
 }
 

@@ -31,3 +31,5 @@ void ComprarAndypolis::mostrar(){
     if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
+
+int ComprarAndypolis::calcular_progreso() {}

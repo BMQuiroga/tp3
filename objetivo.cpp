@@ -30,6 +30,8 @@ std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
 };
 
 
+bool Objetivo::checkear(){}
+
 /*
 void Objetivo::mostrar() {
     std::cout << this->nombre << " ------> ( " << calcular_progreso() << " / " << objetivo << " )" << std::endl;

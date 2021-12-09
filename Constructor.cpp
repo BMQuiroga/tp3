@@ -115,7 +115,7 @@ int Constructor::calcular_progreso(){
     Edificio* array_edificios = edificios->devolver_todo();
     for (int i = 0; i < edificios->devolver_cantidad(); i++) {
         nombre = array_edificios[i].devolver_nombre();
-        resultado = mapa->tiene_edificio(nombre, *jugador);   
+        resultado = mapa->tiene_edificio(nombre, jugador);   
         if (resultado) {
             contador++;
         }

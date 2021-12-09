@@ -3,6 +3,7 @@
 //
 
 #include "Minero.h"
+#include "mapa.h"
 Minero::Minero(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
 
     this->cantidad_minero = 0;
@@ -42,9 +43,9 @@ void Minero::mostrar_progreso() {
 int Minero::calcular_progreso(){
     int contador = 0;
     bool resultado = true;
-    if(this->mapa->tiene_edificio("mina",*jugador))
+    if(this->mapa->tiene_edificio("mina",jugador))
         contador++;
-    if(this->mapa->tiene_edificio("mina oro",*jugador))
+    if(this->mapa->tiene_edificio("mina oro",jugador))
         contador++;
     return contador;
 }

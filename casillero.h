@@ -55,11 +55,11 @@ public:
     
     //Pre:Recibe la lista de materiales cargada
     //Post:Suma los materiales producidos por la mina, aserradero y fabrica a la lista de materiales.
-    virtual void recolectar_material(Jugador jugador) = 0;
+    virtual void recolectar_material(Jugador* jugador) = 0;
 
     //Pre::Recibe la lista de materiales cargada
     //Post:Realiza la destruccion, modificando la cantidad de materiales
-    virtual void demoler(Jugador jugador)=0;
+    virtual void demoler(Jugador* jugador)=0;
 
     //Pre:
     //Post:Retorna el jugador que es el dueño del edificio
@@ -75,7 +75,7 @@ public:
 
     //Pre:
     //Post: Le suma 1 de vida al edificio, si tiene 2 de vida maxima
-    virtual void reparar(Jugador jugador) = 0;
+    virtual void reparar(Jugador* jugador) = 0;
 
     //Pre:
     //Post: muestra el tipo de casillero y si tiene_material_o_edificio()
