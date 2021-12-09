@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <ctime>
 #include <cstdlib>
 #include "mapa.h"
@@ -8,19 +7,28 @@
 #include "utilidad.h"
 
 
-Mapa::Mapa(ListaEdificios edificios){
-    procesar_archivo_mapa();
-    //procesar_archivo_ubicaciones(edificios);
+// Mapa::Mapa(ListaEdificios edificios){
+//     procesar_archivo_mapa();
+//     //procesar_archivo_ubicaciones(edificios);
+// }
+
+Mapa::Mapa(int filas, int columnas) {
+    this->definir(filas, columnas);
+
+    Casillero*** casilla;
+    casilla = new Casillero**[filas];
+    
+    for(int i = 0; i < filas; i++){
+        casilla[i] = new Casillero*[columnas];
+    }
+
+    this->matriz = casilla;
 }
+
 
 void Mapa::definir(int coordenada_x,int coordenada_y){
     this -> coordenada_x = coordenada_x;
     this -> coordenada_y = coordenada_y;
-    /*Casillero **aux=new Casillero*[coordenada_x];
-    for(int i=0;i<coordenada_x;i++)
-        aux[i]=new Casillero [coordenada_y];
-    matriz=aux;*/
-
 }
 
 int Mapa::devolver_cantidad_filas() {
@@ -55,6 +63,10 @@ Casillero* Mapa::devolver_casillero(int x, int y) {
     return matriz[x][y];
 }
 
+void Mapa::setear_casillero(int x, int y, Casillero* casillero) {
+    this->matriz[x][y] = casillero;
+}
+
 
 /*FUNCION OBSOLETA
 void Mapa::consultar_coordenadas(int coord_x,int coord_y){
@@ -82,10 +94,11 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
 */
 
 void Mapa::llamar_lluvia(){
+    Utilidad util;
     srand((unsigned)time(0));
-    int cantidad_material_piedra = generador_de_numeros_aleatorios(1,2);//1+rand()%1;
-    int cantidad_material_madera = generador_de_numeros_aleatorios(0,1);//rand()%1;
-    int cantidad_material_metal = generador_de_numeros_aleatorios(2,4);//2+rand()%2;
+    int cantidad_material_piedra = util.generador_de_numeros_aleatorios(1,2);//1+rand()%1;
+    int cantidad_material_madera = util.generador_de_numeros_aleatorios(0,1);//rand()%1;
+    int cantidad_material_metal = util.generador_de_numeros_aleatorios(2,4);//2+rand()%2;
     //std::cout<<cantidad_material_piedra<<" "<<cantidad_material_madera<<" "<<cantidad_material_metal<<std::endl;
     lluvia(cantidad_material_piedra, "piedra");
     lluvia(cantidad_material_madera, "madera");
@@ -702,7 +715,7 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
         coord_x=stoi(aux);
         archivo>>aux;
         coord_y=stoi(aux);
-        Material material(nombre,diccionario_materiales(nombre));
+        Material material(nombre, diccionario_materiales(nombre));
         matriz[coord_x][coord_y]->poner_material(material);
     }
     return archivo_en_blanco;

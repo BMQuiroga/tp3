@@ -14,7 +14,7 @@
 
 class ListaRecorrido;
 
-class Mapa{
+class Mapa {
 
 //Atributos
 private:
@@ -128,7 +128,7 @@ public:
     int pedir_columna();
     
     
-  
+    void setear_casillero(int x, int y, Casillero* casillero);
 
     //Pre:-
     //Post:Verifica que exista el archivo mapa.txt y los carga en una matriz

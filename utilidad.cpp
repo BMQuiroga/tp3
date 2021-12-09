@@ -8,6 +8,7 @@ string Utilidad::minuscula(string palabra) {
     return palabra;
 }
 
+
 string Utilidad::capitalizar(string palabra) {
     palabra[0] = (char) toupper(palabra[0]);
 
@@ -18,12 +19,14 @@ string Utilidad::capitalizar(string palabra) {
     return palabra;
 }
 
+
 string Utilidad::mayuscula(string palabra) {
     for (unsigned int i = 0; i < palabra.length(); i++) {
         palabra[i] = (char) toupper(palabra[i]);
     }
     return palabra;
 }
+
 
 bool Utilidad::es_numero(string numero) {
     bool validacion = true;
@@ -35,6 +38,7 @@ bool Utilidad::es_numero(string numero) {
 
     return validacion;
 }
+
 
 bool Utilidad::pedir_confirmacion() {
     string opcion;
@@ -49,6 +53,7 @@ bool Utilidad::pedir_confirmacion() {
     return this->minuscula(opcion) == "si";
 }
 
+
 int Utilidad::pedir_opcion() {
     std::string opcion;
 
@@ -61,4 +66,9 @@ int Utilidad::pedir_opcion() {
         std::cin >> opcion;
     }
     return stoi(opcion);
+}
+
+
+int Utilidad::generador_de_numeros_aleatorios(int min, int max){
+    return min + rand()%(max+1-min);
 }
