@@ -13,7 +13,7 @@ private:
 public:
 
     void mostrar();
-    Armado(ListaMateriales materiales, Jugador jugador);
+    Armado(Jugador jugador);
     int calcular_progreso();
     bool checkear();
     void actualizar();

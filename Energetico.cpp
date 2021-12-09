@@ -14,7 +14,7 @@ Energetico::Energetico(Jugador jugador) {
 
 void Energetico::mostrar(){
     cout << "Energético: haber terminado un turno con 100 puntos de energía. " << endl;
-    if(checkear)
+    if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
 

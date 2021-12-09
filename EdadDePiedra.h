@@ -5,12 +5,12 @@
 
 class EdadDePiedra : public Objetivo {
 private:
-    ListaMateriales materiales;
+    //ListaMateriales materiales;
     int cantidad_piedras;
     int cantidad_piedras_necesarias;
     bool cumplio;
 public:
-    EdadDePiedra(ListaMateriales materiales, Jugador jugador);
+    EdadDePiedra(/*ListaMateriales materiales, */Jugador jugador);
 
     void mostrar();
     int calcular_progreso();

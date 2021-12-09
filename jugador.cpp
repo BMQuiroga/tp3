@@ -110,21 +110,7 @@ void Jugador::asignar_objetivos(ListaEdificios edificios, ListaMateriales materi
 
 void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 
-    int pos1, pos2, pos3;
-
-    pos1 = rand() % 10;
-    pos2 =rand() % 10;
-    while (pos2 == pos1){
-        pos2 =rand() % 10;
-    }
-    pos3 =rand() % 10;
-    while(pos3 == pos2 || pos3 == pos1){
-        pos3 =rand() % 10;
-    }
-
-    //this->objetivo_secundario[0] = *vector_objetivos.obtener_objetivo(pos1);
-    //this->objetivo_secundario[1] = vector_objetivos[pos2];
-    //this->objetivo_secundario[2] = vector_objetivos[pos3];
+    //this->objetivo_secundario = vector_objetivos;
 
 
 }

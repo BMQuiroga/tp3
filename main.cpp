@@ -20,10 +20,9 @@ int main(){
 
     Menu menu(*mapa, edificios, jugador1, jugador2);
 
-    ListaObjetivos vector_objetivos_completos1(jugador1, materiales1, edificios, mapa);
-
-
-    jugador1.asignar_objetivos_aleatorios(vector_objetivos_completos1);
+    //ListaObjetivos vector_objetivos_completos1(jugador1, materiales1, edificios, mapa);
+    //jugador1.asignar_objetivos_aleatorios(ListaObjetivos::obtener_objetivos_aleatorios())
+    //jugador1.asignar_objetivos_aleatorios(vector_objetivos_completos1);
     //lista_objetivos1
     //lista_objetivos2
     //juegador1.asignar_objetivo(lista_objetivos)

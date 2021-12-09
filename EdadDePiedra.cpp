@@ -4,9 +4,9 @@
 
 #include "EdadDePiedra.h"
 
-EdadDePiedra::EdadDePiedra(ListaMateriales materiales, Jugador jugador) {
+EdadDePiedra::EdadDePiedra(/*ListaMateriales materiales, */Jugador jugador) {
 
-    this->materiales = materiales;
+    //this->materiales = materiales;
     this->cantidad_piedras = jugador.devolver_materiales().consulta(jugador.devolver_materiales().buscar_indice("piedras")).devolver_cantidad();
     this->cantidad_piedras_necesarias = 50000;
     this->cumplio = false;
@@ -15,8 +15,8 @@ EdadDePiedra::EdadDePiedra(ListaMateriales materiales, Jugador jugador) {
 
 void EdadDePiedra::mostrar(){
     cout << "Edad de piedra: tener en el inventario 50000 piedras" << endl;
-    cout << "Piedra obtenida: " << calcular_progreso << "/50000" << endl;
-    if(checkear)
+    cout << "Piedra obtenida: " << calcular_progreso() << "/50000" << endl;
+    if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
 
@@ -30,7 +30,7 @@ bool EdadDePiedra::checkear() {
 }
 
 void EdadDePiedra::actualizar(int valor) {
-    this->cantidad_piedras += valor;
+    this->cantidad_piedras = valor;
 }
 
 /*
