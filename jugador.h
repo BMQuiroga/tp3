@@ -21,7 +21,7 @@ private:
     Objetivo* objetivo_3;
 
 public:
-    Jugador() {};
+    Jugador() /*{}*/;
     Jugador(int x, int y, int numero, ListaEdificios edificios, Mapa * mapa);
     void mover();
     void mover_gratis(int x, int y);

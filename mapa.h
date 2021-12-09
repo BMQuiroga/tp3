@@ -8,9 +8,13 @@
 #include "material.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
-#include "jugador.h"
+//#include "jugador.h"
 #include <string>
+#include <fstream>
 
+class Casillero;
+
+class Jugador;
 
 class ListaRecorrido;
 
@@ -178,23 +182,23 @@ private:
 
     //Pre: -
     //Post: Reescribe la parte de materiales en ubicaciones.txt
-    void reescribir_materiales(ofstream & archivo);
+    void reescribir_materiales(std::ofstream & archivo);
 
     //Pre: -
     //Post: Reescribe la parte de edificios del jugador en ubicaciones.txt
-    void reescribir_jugador(ofstream & archivo, int numero_jugador);
+    void reescribir_jugador(std::ofstream & archivo, int numero_jugador);
 
     //Pre: -
     //Post: Lee la parte de materiales del jugador en ubicaciones.txt
-    bool procesar_archivo_ubicaciones_materiales(ifstream & archivo);
+    bool procesar_archivo_ubicaciones_materiales(std::ifstream & archivo);
 
     //Pre: -
     //Post: Lee la parte de edificios del jugador en ubicaciones.txt
-    void procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios edificios, int numero_jugador);
+    void procesar_archivo_ubicaciones_edificios(std::ifstream & archivo, ListaEdificios edificios, int numero_jugador);
 
     //Pre: -
     //Post: Lee la parte de jugador en ubicaciones.txt
-    void procesar_archivo_ubicaciones_jugador(ifstream & archivo, Jugador jugaor);
+    void procesar_archivo_ubicaciones_jugador(std::ifstream & archivo, Jugador jugaor);
 
 
 };

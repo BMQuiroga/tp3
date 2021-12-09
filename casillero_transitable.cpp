@@ -1,5 +1,6 @@
 #include <iostream>
 #include "casillero_transitable.h"
+//#include "casillero.h"
 
 /*void CasilleroTransitable::recolectar_material(){
     //En esta linea le sumo la cantidad material a nuestro array de recursos disponibles

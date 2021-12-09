@@ -3,6 +3,8 @@
 //
 
 #include "Constructor.h"
+#include <iostream>
+
 Constructor::Constructor(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
 
     
@@ -24,10 +26,11 @@ Constructor::Constructor(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugado
 }
 
 void Constructor::mostrar(){
-    cout << "Constructor: construir un edificio de cada tipo. " << endl;
-    cout << "Edificios construidos: " << calcular_progreso << "/" << edificios_requeridos << endl;
+    int numero = calcular_progreso();
+    std::cout << "Constructor: construir un edificio de cada tipo. " << std::endl;
+    std::cout << "Edificios construidos: " << numero << "/" << edificios_requeridos << std::endl;
     if(checkear())
-        cout << "Este objetivo ha sido completado" << endl;
+        std::cout << "Este objetivo ha sido completado" << std::endl;
 }
 
 bool Constructor::checkear() {

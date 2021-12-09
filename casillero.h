@@ -6,6 +6,15 @@
 #include "jugador.h"
 
 
+
+//class CasilleroConstruible;
+
+//class CasilleroTransitable;
+
+//class CasilleroInaccesible;
+
+class Jugador;
+
 class Casillero{
 
 protected:
