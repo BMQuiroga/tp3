@@ -16,7 +16,7 @@ public:
     Armado(ListaMateriales materiales, Jugador jugador);
     int calcular_progreso();
     bool checkear();
-    void actualizar(int valor);
+    void actualizar();
 
 };
 

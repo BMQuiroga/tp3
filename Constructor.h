@@ -7,9 +7,11 @@
 
 class Constructor : public Objetivo {
 private:
-    ListaEdificios edificios;
+    ListaEdificios * edificios;
     Mapa * mapa;
     Jugador * jugador;
+    int edificios_construidos;
+    int edificios_requeridos;
     /*
     int cantidad_yacimiento;
     int cantidad_mina;
@@ -29,7 +31,7 @@ public:
     Constructor(/*ListaEdificios edificios, Mapa * mapa, Jugador * jugador*/);
     int calcular_progreso();
     bool checkear();
-    void actualizar(string nombre, int valor);
+    void actualizar();
     /*
     void actualizar_yacimiento(int valor);
     void actualizar_mina(int valor);

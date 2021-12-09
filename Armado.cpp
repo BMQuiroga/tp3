@@ -24,6 +24,10 @@ bool Armado::checkear() {
     return this->cumplio;
 }
 
-void Armado::actualizar(int valor) {
-    this->cantidad_bombas = valor;
+void Armado::actualizar(){
+    this->calcular_progreso();
+}
+
+int Armado::calcular_progreso(){
+    return(this->materiales.consulta(this->materiales.buscar_indice("bombas"))).devolver_cantidad();
 }
