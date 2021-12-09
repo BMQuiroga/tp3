@@ -12,6 +12,32 @@
 #include <string>
 #include <fstream>
 
+const string PIEDRA = " \033[33;1mS\033[0m";
+const string MADERA = " \033[33;1mW\033[0m";
+const string METAL = " \033[33;1mI\033[0m";
+const string ANDYCOINS = " \033[33;1mC\033[0m";
+
+const string COLOR_ROJO = "\033[31;1m";
+const string COLOR_VIOLETA = "\033[35;1m";
+const string COLOR_BLANCO = "\033[0m";
+
+const string PLANTA_ELECTRICA = "P\033[0m";
+const string OBELISCO = "O\033[0m";
+const string ESCUELA = "E\033[0m";
+const string FABRICA = "F\033[0m";
+const string ASERRADERO = "A\033[0m";
+const string MINA = "M\033[0m";
+const string MINA_ORO = "G\033[0m";
+
+const string DESCONOCIDO = "#\033[0m";
+
+const string JUGADOR_1 = " \033[31;1mJ\033[0m";
+const string JUGADOR_2 = " \033[35;1mU\033[0m";
+
+const string CAMINO = " \033[1;38;5;136mR\033[0m";
+const string TERRENO = " \033[32;1mT\033[0m";
+const string LAGO = " \033[34;1mL\033[0m";
+
 class Casillero;
 
 class Jugador;
