@@ -12,6 +12,8 @@
 #include <string>
 #include <fstream>
 
+using namespace std;
+
 const string PIEDRA = " \033[33;1mS\033[0m";
 const string MADERA = " \033[33;1mW\033[0m";
 const string METAL = " \033[33;1mI\033[0m";
