@@ -232,3 +232,31 @@ void procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2){
     archivo.close();
     }
 }
+
+void borrar_archivo_ubicaciones(){
+    std::ofstream archivo("ubicaciones.txt");
+    if(!archivo.is_open()){ //no existe el archivo
+        std::cout <<"No se encontro el archivo ubicaciones" <<std::endl;
+    }else{
+        archivo << "";
+        }
+    
+    archivo.close();
+}
+
+void resetear_archivo_materiales(Jugador jugador){
+    std::ofstream archivo("ubicaciones.txt");
+    if(!archivo.is_open()){ //no existe el archivo
+        std::cout <<"No se encontro el archivo ubicaciones" <<std::endl;
+    }
+    else
+    {
+        for ( int i = 0; i < jugador.devolver_materiales().devolver_cantidad() ; i++){
+            archivo << jugador.devolver_materiales().consulta(i+1).devolver_nombre();
+            archivo << " 0 0";
+            archivo << std::endl;
+        }
+    }
+    
+    archivo.close();
+}

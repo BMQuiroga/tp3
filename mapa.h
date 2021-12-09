@@ -58,7 +58,7 @@ public:
     //     piedra(entre 1 y 2)
     //     madera(entre 0 y 1)
     //     metal(entre 2 y 4)
-    void llamar_lluvia();
+    void llamar_lluvia(Jugador jugador1, Jugador jugador2);
 
     //Pre:-
     //Post:Muestra por pantalla el mapa con su tipo de casillero
@@ -147,7 +147,7 @@ private:
 
     //Pre: Recibe la cantidad aleatoria y el nombre del material
     //Post:posiciona en forma aleatoria el material en el tipo de casillero Camino
-    void lluvia(int cantidad, std::string material);
+    void lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y);
 
     //Pre:Recibe 2 coordenadas y la lista de materiales
     //Post:Evalua si hay edificio para demoler, destruyendolo y sumando la mitad de los materiales

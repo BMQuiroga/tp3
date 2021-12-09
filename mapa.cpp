@@ -81,27 +81,33 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
 }
 */
 
-void Mapa::llamar_lluvia(){
+void Mapa::llamar_lluvia(Jugador jugador1, Jugador jugador2){
     srand((unsigned)time(0));
     int cantidad_material_piedra = generador_de_numeros_aleatorios(1,2);//1+rand()%1;
     int cantidad_material_madera = generador_de_numeros_aleatorios(0,1);//rand()%1;
     int cantidad_material_metal = generador_de_numeros_aleatorios(2,4);//2+rand()%2;
+    int cantidad_material_andycoins = generador_de_numeros_aleatorios(0,1);
     //std::cout<<cantidad_material_piedra<<" "<<cantidad_material_madera<<" "<<cantidad_material_metal<<std::endl;
-    lluvia(cantidad_material_piedra, "piedra");
-    lluvia(cantidad_material_madera, "madera");
-    lluvia(cantidad_material_metal, "metal");
+    int j1_x = jugador1.devolver_coordenada_x();
+    int j1_y = jugador1.devolver_coordenada_y();
+    int j2_x = jugador2.devolver_coordenada_x();
+    int j2_y = jugador2.devolver_coordenada_y();
+    lluvia(cantidad_material_piedra, "piedra",j1_x,j1_y,j2_x,j2_y);
+    lluvia(cantidad_material_madera, "madera",j1_x,j1_y,j2_x,j2_y);
+    lluvia(cantidad_material_metal, "metal",j1_x,j1_y,j2_x,j2_y);
+    lluvia(cantidad_material_andycoins,"andycoins",j1_x,j1_y,j2_x,j2_y);
     std::cout <<"Lluvia llamada satisfactoriamente" <<std::endl;
     std::cout <<"-------------------------------------------------" <<std::endl;
 }
 
-void Mapa::lluvia(int cantidad, std::string material){
+void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y){
     int error = 0;//Para evitar while true, cuando se queda sin casilleros transitables vacios
     while(cantidad){
         error++;
         int coord_x = rand()%coordenada_x;
         int coord_y = rand()%coordenada_y;
-        if (matriz[coord_x][coord_y]->devolver_tipo() == 'C' && (!matriz[coord_x][coord_y]->tiene_material_o_edificio())){
-            Material mat(material, 1);
+        if ((matriz[coord_x][coord_y]->devolver_tipo() == 'C') && (!matriz[coord_x][coord_y]->tiene_material_o_edificio()) && (coord_x!=j1_x && coord_y!=j1_y) && (coord_x!=j2_x && coord_y!=j2_y)){
+            Material mat(material, diccionario_materiales(material));
             matriz[coord_x][coord_y]->poner_material(mat);
             cantidad--;
         }

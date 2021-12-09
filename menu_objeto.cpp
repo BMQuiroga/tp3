@@ -2,6 +2,7 @@
 #include "menu_objeto.h"
 #include <fstream>
 
+using namespace std;
 
 Menu::Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugador2) {
     this->mapa = mapa;
@@ -62,6 +63,10 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
             procesar_opcion_partida(opcion, jugador, rival);
         }
         jugador.sumar_energia(20);
+        if(jugador.devolver_nombre()==2)
+            mapa.llamar_lluvia(jugador1,jugador2);
+        if(checkear_si_gano(jugador))
+            secuencia_victoria(jugador);
         cambiar_turno(lista_jugadores);
         opcion = -1;
     }
@@ -174,4 +179,14 @@ void Menu::reescribir_materiales(){
         }
     archivo_materiales.close();
     }
+}
+
+bool Menu::checkear_si_gano(Jugador jugador){
+    return ( (mapa.tiene_edificio("obelisco",jugador)) || (jugador.cumplio_objetivo_secundario()) );
+}
+
+void Menu::secuencia_victoria(Jugador jugador){
+    std::cout << "El jugador " << jugador.devolver_nombre() << " ha ganado el partido" << endl;
+    borrar_archivo_ubicaciones();
+    resetear_archivo_materiales(jugador);
 }
