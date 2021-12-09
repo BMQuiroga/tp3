@@ -31,3 +31,5 @@ void Extremista::actualizar(int valor) {
 void Extremista::mostrar_progreso() {
     cout << "la cantidad de bombas comprada es: " << this->bombas_compradas << endl;
 }
+
+int Extremista::calcular_progreso() {}
