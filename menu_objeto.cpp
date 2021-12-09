@@ -5,6 +5,8 @@
 const int JUGADOR = 0;
 const int RIVAL =   1;
 
+using namespace std;
+
 Menu::Menu(Mapa mapa, ListaEdificios edificios, Jugador jugador1, Jugador jugador2) {
     this->mapa = mapa;
     this->edificios = edificios;
@@ -66,7 +68,11 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
             opcion = util.pedir_opcion();
             procesar_opcion_partida(opcion, lista_jugadores[JUGADOR], lista_jugadores[RIVAL]);
         }
-        lista_jugadores[JUGADOR].sumar_energia(20);
+        jugador.sumar_energia(20);
+        if(jugador.devolver_nombre()==2)
+            mapa.llamar_lluvia(jugador1,jugador2);
+        if(checkear_si_gano(jugador))
+            secuencia_victoria(jugador);
         cambiar_turno(lista_jugadores);
 
         if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
@@ -179,4 +185,14 @@ void Menu::reescribir_materiales(){
         }
     archivo_materiales.close();
     }
+}
+
+bool Menu::checkear_si_gano(Jugador jugador){
+    return ( (mapa.tiene_edificio("obelisco",jugador)) || (jugador.cumplio_objetivo_secundario()) );
+}
+
+void Menu::secuencia_victoria(Jugador jugador){
+    std::cout << "El jugador " << jugador.devolver_nombre() << " ha ganado el partido" << endl;
+    borrar_archivo_ubicaciones();
+    resetear_archivo_materiales(jugador);
 }

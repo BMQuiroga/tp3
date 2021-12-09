@@ -93,28 +93,33 @@ void Mapa::consultar_coordenadas(int coord_x,int coord_y){
 }
 */
 
-void Mapa::llamar_lluvia(){
-    Utilidad util;
+void Mapa::llamar_lluvia(Jugador jugador1, Jugador jugador2){
     srand((unsigned)time(0));
-    int cantidad_material_piedra = util.generador_de_numeros_aleatorios(1,2);//1+rand()%1;
-    int cantidad_material_madera = util.generador_de_numeros_aleatorios(0,1);//rand()%1;
-    int cantidad_material_metal = util.generador_de_numeros_aleatorios(2,4);//2+rand()%2;
+    int cantidad_material_piedra = generador_de_numeros_aleatorios(1,2);//1+rand()%1;
+    int cantidad_material_madera = generador_de_numeros_aleatorios(0,1);//rand()%1;
+    int cantidad_material_metal = generador_de_numeros_aleatorios(2,4);//2+rand()%2;
+    int cantidad_material_andycoins = generador_de_numeros_aleatorios(0,1);
     //std::cout<<cantidad_material_piedra<<" "<<cantidad_material_madera<<" "<<cantidad_material_metal<<std::endl;
-    lluvia(cantidad_material_piedra, "piedra");
-    lluvia(cantidad_material_madera, "madera");
-    lluvia(cantidad_material_metal, "metal");
+    int j1_x = jugador1.devolver_coordenada_x();
+    int j1_y = jugador1.devolver_coordenada_y();
+    int j2_x = jugador2.devolver_coordenada_x();
+    int j2_y = jugador2.devolver_coordenada_y();
+    lluvia(cantidad_material_piedra, "piedra",j1_x,j1_y,j2_x,j2_y);
+    lluvia(cantidad_material_madera, "madera",j1_x,j1_y,j2_x,j2_y);
+    lluvia(cantidad_material_metal, "metal",j1_x,j1_y,j2_x,j2_y);
+    lluvia(cantidad_material_andycoins,"andycoins",j1_x,j1_y,j2_x,j2_y);
     std::cout <<"Lluvia llamada satisfactoriamente" <<std::endl;
     std::cout <<"-------------------------------------------------" <<std::endl;
 }
 
-void Mapa::lluvia(int cantidad, std::string material){
+void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y){
     int error = 0;//Para evitar while true, cuando se queda sin casilleros transitables vacios
     while(cantidad){
         error++;
         int coord_x = rand()%coordenada_x;
         int coord_y = rand()%coordenada_y;
-        if (matriz[coord_x][coord_y]->devolver_tipo() == 'C' && (!matriz[coord_x][coord_y]->tiene_material_o_edificio())){
-            Material mat(material, 1);
+        if ((matriz[coord_x][coord_y]->devolver_tipo() == 'C') && (!matriz[coord_x][coord_y]->tiene_material_o_edificio()) && (coord_x!=j1_x && coord_y!=j1_y) && (coord_x!=j2_x && coord_y!=j2_y)){
+            Material mat(material, diccionario_materiales(material));
             matriz[coord_x][coord_y]->poner_material(mat);
             cantidad--;
         }
@@ -157,37 +162,37 @@ void Mapa::demoler(ListaEdificios edificios, int coord_x,int coord_y,Jugador jug
 
 void Mapa::mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador jugador1, Jugador jugador2){
     if(matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "piedra")
-        std::cout <<" \033[33;1mS\033[0m";//⛏️
+        std::cout << PIEDRA ;//⛏️ amarillo
     else if(matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "madera")
-        std::cout <<" \033[33;1mW\033[0m";//🪓
+        std::cout << MADERA ;//🪓 amarillo
     else if(matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "metal")
-        std::cout <<" \033[33;1mI\033[0m";//⚙️
+        std::cout << METAL ;//⚙️ amarillo
     else if(matriz[coord_x][coord_y] -> devolver_material_o_edificio() == "andycoins")
-        std::cout <<" \033[33;1mC\033[0m";//⚙️
+        std::cout << ANDYCOINS ;//⚙️ amarillo
     else{
         //SETEA EL COLOR DEPENDIENDO DE QUIEN SEA EL EDIFICIO, SI NO ES UN MATERIAL
         if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador1.devolver_nombre())
-            std::cout <<"\033[31;1m"; //ROJO PARA J1
+            std::cout << COLOR_ROJO ; //ROJO PARA J1
         if(matriz[coord_x][coord_y] -> devolver_jugador() == jugador2.devolver_nombre())
-            std::cout <<"\033[35;1m"; //VIOLETA PARA J2
+            std::cout << COLOR_VIOLETA ; //VIOLETA PARA J2
 
 
         if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "planta electrica")
-            std::cout <<"P\033[0m";
+            std::cout << PLANTA_ELECTRICA ;
         else if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "obelisco")
-            std::cout <<"O\033[0m";
+            std::cout << OBELISCO ;
         else if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "escuela")
-            std::cout <<"E\033[0m";
+            std::cout << ESCUELA ;
         else if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "fabrica")
-            std::cout <<"F\033[0m";
+            std::cout << FABRICA ;
         else if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "aserradero")
-            std::cout <<"A\033[0m";
+            std::cout << ASERRADERO ;
         else if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "mina")
-            std::cout <<"M\033[0m";
+            std::cout << MINA ;
         else if(matriz[coord_x][coord_y]->devolver_material_o_edificio() == "mina oro")
-            std::cout <<"\033[0m";
+            std::cout << MINA_ORO ;
         else
-            std::cout <<"#\033[0m";
+            std::cout << DESCONOCIDO ;
     }
 }   
 
@@ -206,18 +211,18 @@ void Mapa::mostrar_mapa(Jugador jugador1, Jugador jugador2){
         for(int j = 0 ;j < coordenada_y ;j++){
             //std::cout<<"ENTRA"<<std::endl;
             if(i == jugador1.devolver_coordenada_x() && j == jugador1.devolver_coordenada_y())
-                std::cout <<" \033[31;1mJ\033[0m";
+                std::cout << JUGADOR_1 ; //J en rojo
             else if(i == jugador2.devolver_coordenada_x() && j == jugador2.devolver_coordenada_y())
-                std::cout <<" \033[31;1mU\033[0m";
+                std::cout << JUGADOR_2 ; //U en violeta
             else if (matriz[i][j]->tiene_material_o_edificio())
                 mostrar_mapa_edificios_y_materiales(i ,j ,jugador1 ,jugador2);
             else {
                 if (matriz[i][j]->devolver_tipo() == 'C')
-                    std::cout <<" \033[1;38;5;136mR\033[0m";
+                    std::cout << CAMINO ; // R naranja
                 else if (matriz[i][j]->devolver_tipo() == 'T')
-                    std::cout <<" \033[32;1mT\033[0m";
+                    std::cout << TERRENO ; // T verde
                 else
-                    std::cout <<" \033[34;1mL\033[0m";
+                    std::cout << LAGO ; //L celeste
             }
         }
         std::cout <<std::endl;
@@ -239,7 +244,7 @@ void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
             std::cout <<"Fila " <<i <<":";
         for(int j = 0 ;j < coordenada_y ;j++){
             if (recorrido->contiene(matriz[i][j]->obtener_id())) {
-               std::cout <<" \033[31;1m" << matriz[i][j]->devolver_tipo_camino() << "\033[0m";
+               std::cout << COLOR_ROJO << matriz[i][j]->devolver_tipo_camino() << COLOR_BLANCO ;
             } else {
                std::cout << " " << matriz[i][j]->devolver_tipo_camino();
             }
@@ -325,7 +330,7 @@ void Mapa::construir(ListaEdificios edificios, Jugador jugador, Jugador rival){
     if(se_puede_construir(edificios, edificio, jugador)){
         std::cout <<"Se puede construir el edificio, desea hacerlo?\n1. Construir el edificio\n2. Salir al menú" <<std::endl;
         std::cin >>ingreso;
-        if(ingreso=="1"){
+        if(ingreso == "1"){
             coord_x = pedir_fila();
             coord_y = pedir_columna();
 
@@ -705,17 +710,17 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
     bool archivo_en_blanco;
     std::string aux;
     int coord_x,coord_y;
-    while(archivo>>nombre){
+    while(archivo >> nombre){
         archivo_en_blanco=false;
-        if (nombre=="1"){
+        if (nombre == "1"){
             return archivo_en_blanco;
         }
         getline(archivo,aux,'(');
-        archivo>>aux;
-        coord_x=stoi(aux);
-        archivo>>aux;
-        coord_y=stoi(aux);
-        Material material(nombre, diccionario_materiales(nombre));
+        archivo >> aux;
+        coord_x = stoi(aux);
+        archivo >> aux;
+        coord_y = stoi(aux);
+        Material material(nombre,diccionario_materiales(nombre));
         matriz[coord_x][coord_y]->poner_material(material);
     }
     return archivo_en_blanco;
@@ -727,22 +732,22 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
     std::string aux;
     int coord_x,coord_y;
    while (archivo>>nombre){
-        if (nombre=="planta"){
-            archivo>>nombre;
-            nombre="planta electrica";
+        if (nombre == "planta"){
+            archivo >> nombre;
+            nombre = "planta electrica";
         }
-        if (nombre=="2"){
+        if (nombre == "2"){
             return;
         }
         getline(archivo,aux,'(');
         //if (aux.length()>1){
-        if (aux=="oro "){
-            nombre="mina oro";
+        if (aux == "oro "){
+            nombre = "mina oro";
         }
-        archivo>>aux;
-        coord_x=stoi(aux);
-        archivo>>aux;
-        coord_y=stoi(aux);
+        archivo >> aux;
+        coord_x = stoi(aux);
+        archivo >> aux;
+        coord_y = stoi(aux);
         Edificio edificio = edificios.consulta(nombre);
         matriz[coord_x][coord_y]->construir(edificio);
         matriz[coord_x][coord_y]->cambiar_jugador(numero_jugador);
@@ -754,10 +759,10 @@ void Mapa::procesar_archivo_ubicaciones_jugador(ifstream & archivo,  Jugador jug
     std::string aux;
     int coord_x,coord_y;
     getline(archivo,aux,'(');
-    archivo>>aux;
-    coord_x=stoi(aux);
-    archivo>>aux;
-    coord_y=stoi(aux);
+    archivo >> aux;
+    coord_x = stoi(aux);
+    archivo >> aux;
+    coord_y = stoi(aux);
     jugador.mover_gratis(coord_x,coord_y);
 
 }

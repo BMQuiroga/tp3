@@ -1,5 +1,6 @@
 #include <iostream>
 #include "casillero_inaccesible.h"
+//#include "casillero.h"
 
 
 CasilleroInaccesible::CasilleroInaccesible(){

@@ -4,6 +4,10 @@
 #ifndef CASILLEROTRANSITABLE_H
 #define CASILLEROTRANSITABLE_H
 
+class Casillero;
+
+class Jugador;
+
 class CasilleroTransitable : public Casillero{//Camino
 
 private:

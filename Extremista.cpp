@@ -3,6 +3,9 @@
 //
 
 #include "Extremista.h"
+#include <iostream>
+
+
 Extremista::Extremista() {
 
     this->bombas_compradas = 0;
@@ -11,10 +14,10 @@ Extremista::Extremista() {
 }
 
 void Extremista::mostrar(){
-    cout << "Extremista: haber comprado 500 bombas en una partida." << endl;
-    cout << "Bombas compradas: " << calcular_progreso() << "/500" << endl;
+    std::cout << "Extremista: haber comprado 500 bombas en una partida." << std::endl;
+    std::cout << "Bombas compradas: " << calcular_progreso() << "/500" << std::endl;
     if(checkear())
-        cout << "Este objetivo ha sido completado" << endl;
+        std::cout << "Este objetivo ha sido completado" << std::endl;
 }
 
 bool Extremista::checkear() {
@@ -28,8 +31,9 @@ void Extremista::actualizar(int valor) {
     this->bombas_compradas += valor;
 }
 
+/*
 void Extremista::mostrar_progreso() {
     cout << "la cantidad de bombas comprada es: " << this->bombas_compradas << endl;
-}
+}*/
 
 int Extremista::calcular_progreso() {}

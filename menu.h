@@ -56,4 +56,9 @@ void procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2);
 
 int diccionario_materiales(std::string material);
 
+void borrar_archivo_ubicaciones();
+
+void resetear_archivo_materiales(Jugador jugador);
+
+
 #endif 

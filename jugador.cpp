@@ -198,7 +198,7 @@ bool Jugador::cumplio_objetivo_secundario() {
             i++;
         }
     }
-    if (i == 2)
+    if (i >= 2)
         return true;
     else{
         return false;

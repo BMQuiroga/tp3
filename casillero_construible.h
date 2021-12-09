@@ -9,6 +9,9 @@
 #include "listamateriales.h"
 #include "arboledificios.h"
 
+class Casillero;
+
+class Jugador;
 
 class CasilleroConstruible : public Casillero {//Terreno
 

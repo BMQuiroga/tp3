@@ -8,9 +8,41 @@
 #include "material.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
-#include "jugador.h"
+//#include "jugador.h"
 #include <string>
+#include <fstream>
 
+using namespace std;
+
+const string PIEDRA = " \033[33;1mS\033[0m";
+const string MADERA = " \033[33;1mW\033[0m";
+const string METAL = " \033[33;1mI\033[0m";
+const string ANDYCOINS = " \033[33;1mC\033[0m";
+
+const string COLOR_ROJO = "\033[31;1m";
+const string COLOR_VIOLETA = "\033[35;1m";
+const string COLOR_BLANCO = "\033[0m";
+
+const string PLANTA_ELECTRICA = "P\033[0m";
+const string OBELISCO = "O\033[0m";
+const string ESCUELA = "E\033[0m";
+const string FABRICA = "F\033[0m";
+const string ASERRADERO = "A\033[0m";
+const string MINA = "M\033[0m";
+const string MINA_ORO = "G\033[0m";
+
+const string DESCONOCIDO = "#\033[0m";
+
+const string JUGADOR_1 = " \033[31;1mJ\033[0m";
+const string JUGADOR_2 = " \033[35;1mU\033[0m";
+
+const string CAMINO = " \033[1;38;5;136mR\033[0m";
+const string TERRENO = " \033[32;1mT\033[0m";
+const string LAGO = " \033[34;1mL\033[0m";
+
+class Casillero;
+
+class Jugador;
 
 class ListaRecorrido;
 
@@ -54,7 +86,7 @@ public:
     //     piedra(entre 1 y 2)
     //     madera(entre 0 y 1)
     //     metal(entre 2 y 4)
-    void llamar_lluvia();
+    void llamar_lluvia(Jugador jugador1, Jugador jugador2);
 
     //Pre:-
     //Post:Muestra por pantalla el mapa con su tipo de casillero
@@ -143,7 +175,7 @@ private:
 
     //Pre: Recibe la cantidad aleatoria y el nombre del material
     //Post:posiciona en forma aleatoria el material en el tipo de casillero Camino
-    void lluvia(int cantidad, std::string material);
+    void lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y);
 
     //Pre:Recibe 2 coordenadas y la lista de materiales
     //Post:Evalua si hay edificio para demoler, destruyendolo y sumando la mitad de los materiales
@@ -178,23 +210,23 @@ private:
 
     //Pre: -
     //Post: Reescribe la parte de materiales en ubicaciones.txt
-    void reescribir_materiales(ofstream & archivo);
+    void reescribir_materiales(std::ofstream & archivo);
 
     //Pre: -
     //Post: Reescribe la parte de edificios del jugador en ubicaciones.txt
-    void reescribir_jugador(ofstream & archivo, int numero_jugador);
+    void reescribir_jugador(std::ofstream & archivo, int numero_jugador);
 
     //Pre: -
     //Post: Lee la parte de materiales del jugador en ubicaciones.txt
-    bool procesar_archivo_ubicaciones_materiales(ifstream & archivo);
+    bool procesar_archivo_ubicaciones_materiales(std::ifstream & archivo);
 
     //Pre: -
     //Post: Lee la parte de edificios del jugador en ubicaciones.txt
-    void procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios edificios, int numero_jugador);
+    void procesar_archivo_ubicaciones_edificios(std::ifstream & archivo, ListaEdificios edificios, int numero_jugador);
 
     //Pre: -
     //Post: Lee la parte de jugador en ubicaciones.txt
-    void procesar_archivo_ubicaciones_jugador(ifstream & archivo, Jugador jugaor);
+    void procesar_archivo_ubicaciones_jugador(std::ifstream & archivo, Jugador jugaor);
 
 
 };

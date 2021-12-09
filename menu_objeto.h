@@ -64,6 +64,8 @@ public:
     void reescribir_materiales();
     Jugador* crear_cola_jugadores(Jugador jugador1, Jugador jugador2);
     void cambiar_turno(Jugador* lista_jugadores);
+    bool checkear_si_gano(Jugador jugador);
+    void secuencia_victoria(Jugador jugador);
     
 };
 

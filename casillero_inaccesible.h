@@ -2,6 +2,10 @@
 #ifndef CASILLEROINACCESIBLE_H
 #define CASILLEROINACCESIBLE_H
 
+class Casillero;
+
+class Jugador;
+
 class CasilleroInaccesible : public Casillero{//Lago
 //Atributos
 private:
