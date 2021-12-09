@@ -11,26 +11,6 @@
 // #include "objetivo.h"
 //#include "arboledificios.h"
 
-const int MODIFICAR_EDIFICIO = 1;
-const int LISTAR_TODOS_LOS_EDIFICIOS = 2;
-const int MOSTRAR_MAPA = 3;
-const int COMENZAR_PARTIDA = 4;
-const int GUARDAR_Y_SALIR_MENU = 5;
-
-const int CONSTRUIR_EDIFICIO = 1;
-const int LISTAR_EDIFICIOS_CONSTRUIDOS = 2;
-const int DEMOLER_EDIFICIO = 3;
-const int ATACAR_EDIFICIO = 4;
-const int REPARAR_EDIFICIO = 5;
-const int COMPRAR_BOMBAS = 6;
-const int CONSULTAR_COORDENADA = 7;
-const int MOSTRAR_INVENTARIO = 8;
-const int MOSTRAR_OBJETIVOS = 9;
-const int RECOLECTAR_RECURSOS = 10;
-const int MOVERSE = 11;
-const int FINALIZAR_TURNO = 12;
-const int GUARDAR_Y_SALIR_PARTIDA = 13;
-
 
 
 //pre:-
