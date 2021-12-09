@@ -14,7 +14,6 @@ public:
 
     void mostrar();
     Energetico(Jugador jugador);
-    void mostrar_progreso();
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);

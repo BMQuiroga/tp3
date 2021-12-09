@@ -13,6 +13,9 @@ Bombardero::Bombardero() {
 
 void Bombardero::mostrar(){
     cout << "Bombardero: haber usado 5 bombas." << endl;
+    cout << "Bombas usadas: " << calcular_progreso << "/5" << endl;
+    if(checkear)
+        cout << "Este objetivo ha sido completado" << endl;
 }
 
 void Bombardero::actualizar(int valor) {
@@ -24,8 +27,4 @@ bool Bombardero::checkear() {
         this->cumplio = true;
     }
     return this->cumplio;
-}
-
-void Bombardero::mostrar_progreso() {
-    cout << "Bombas usadas a lo largo del partido es: " << bombas_usadas << endl;
 }

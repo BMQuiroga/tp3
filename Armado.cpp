@@ -12,6 +12,9 @@ Armado::Armado(/*ListaMateriales materiales, */Jugador jugador) {
 
 void Armado::mostrar(){
     cout << "Armado: tener 10 bombas en el inventario." << endl;
+    cout << "Bombas en el inventario: " << calcular_progreso << "/10" << endl;
+    if(checkear)
+        cout << "Este objetivo ha sido completado" << endl;
 }
 
 bool Armado::checkear() {
@@ -23,8 +26,4 @@ bool Armado::checkear() {
 
 void Armado::actualizar(int valor) {
     this->cantidad_bombas = valor;
-}
-
-void Armado::mostrar_progreso() {
-    cout << "La cantidad de bombas obtenida es: " << this->cantidad_bombas << endl;
 }

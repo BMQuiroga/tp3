@@ -14,7 +14,6 @@ private:
 public:
     ComprarAndypolis();
     int calcular_progreso();
-    void mostrar_progreso();
     void mostrar();
     bool checkear();
     void actualizar(int valor);

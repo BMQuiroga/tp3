@@ -12,7 +12,6 @@ private:
 public:
 
     void mostrar();
-    void mostrar_progreso();
     Cansado(Jugador jugador);
     int calcular_progreso();
     bool checkear();

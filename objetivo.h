@@ -6,6 +6,7 @@
 #include "arboledificios.h"
 #include "listamateriales.h"
 #include "jugador.h"
+#include "mapa.h"
 #include <iostream>
 
 const int OBJ_COMPRAR_ANDYPOLIS = 1;
@@ -45,8 +46,7 @@ public:
     // virtual int calcular_progreso() = 0;
     // virtual void actualizar(int valor)=0;
 
-    void mostrar_progreso();
-    void mostrar_objetivo();
+    void mostrar();
     bool checkear();
     int calcular_progreso();
     void actualizar(int valor);
