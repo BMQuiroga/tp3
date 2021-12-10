@@ -8,6 +8,7 @@ Cansado::Cansado(Jugador * jugador) {
     this->energia = jugador->devolver_energia();
     this->energia_minima = 0;
     this->cumplio = false;
+    this->jugador = jugador;
 
 }
 

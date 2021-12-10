@@ -10,6 +10,9 @@ Minero::Minero(ListaEdificios * edificios, Mapa *mapa, Jugador *jugador) {
     this->existe_mina_oro=false;
     this->nombre="Minero";
     this->cumplio = false;
+    this->edificios = edificios;
+    this->jugador = jugador;
+    this->mapa = mapa;
     if(edificios->es_edificio_valido("mina")){
         existe_mina=true;
         cantidad_minas_necesarias++;
