@@ -124,48 +124,48 @@ void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 }
 
 
-Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
-    Objetivo* nuevo_objetivo = new Objetivo;
-    return nuevo_objetivo; // hay que cambiarlo, es para que no tire warning
-    // switch (numero_objetivo)
-    // {
-    // case OBJ_COMPRAR_ANDYPOLIS:
-    //     nuevo_objetivo = new Comprar_Andypolis();
-    //     break;
-    // case OBJ_CONSTRUCTOR:
-    //     nuevo_objetivo = new Constructor(edificios, mapa, jugador);
-    //     break;
-    // case OBJ_BOMBARDERO:
-    //     nuevo_objetivo = new Bombardero();
-    //     break;
-    // case OBJ_EDAD_PIEDRA:
-    //     nuevo_objetivo = new Edad_De_Piedra(materiales);
-    //     break;
-    // case OBJ_ENERGICO:
-    //     nuevo_objetivo = new Energetico(jugador);
-    //     break;
-    // case OBJ_LETRADO:
-    //     nuevo_objetivo = new Letrado(edificios, mapa, jugador);
-    //     break;
-    // case OBJ_MINERO:
-    //     nuevo_objetivo = new Minero(edificios, mapa, jugador);
-    //     break;
-    // case OBJ_CANSADO:
-    //     nuevo_objetivo = new Cansado(jugador);
-    //     break;
-    // case OBJ_ARMADO:
-    //     nuevo_objetivo = new Armado(materiales);
-    //     break;
-    // case OBJ_EXTREMISTA:
-    //     nuevo_objetivo = new Extremista();
-    //     break;
-    // case OBJ_OBELISCO:
-    //     nuevo_objetivo = new Principal(mapa, jugador);
-    //     break;
-    // default:
-    //     break;
-    // }
-}
+// Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
+//     Objetivo** nuevo_objetivo = new Objetivo*;
+//     return nuevo_objetivo; // hay que cambiarlo, es para que no tire warning
+//     // switch (numero_objetivo)
+//     // {
+//     // case OBJ_COMPRAR_ANDYPOLIS:
+//     //     nuevo_objetivo = new Comprar_Andypolis();
+//     //     break;
+//     // case OBJ_CONSTRUCTOR:
+//     //     nuevo_objetivo = new Constructor(edificios, mapa, jugador);
+//     //     break;
+//     // case OBJ_BOMBARDERO:
+//     //     nuevo_objetivo = new Bombardero();
+//     //     break;
+//     // case OBJ_EDAD_PIEDRA:
+//     //     nuevo_objetivo = new Edad_De_Piedra(materiales);
+//     //     break;
+//     // case OBJ_ENERGICO:
+//     //     nuevo_objetivo = new Energetico(jugador);
+//     //     break;
+//     // case OBJ_LETRADO:
+//     //     nuevo_objetivo = new Letrado(edificios, mapa, jugador);
+//     //     break;
+//     // case OBJ_MINERO:
+//     //     nuevo_objetivo = new Minero(edificios, mapa, jugador);
+//     //     break;
+//     // case OBJ_CANSADO:
+//     //     nuevo_objetivo = new Cansado(jugador);
+//     //     break;
+//     // case OBJ_ARMADO:
+//     //     nuevo_objetivo = new Armado(materiales);
+//     //     break;
+//     // case OBJ_EXTREMISTA:
+//     //     nuevo_objetivo = new Extremista();
+//     //     break;
+//     // case OBJ_OBELISCO:
+//     //     nuevo_objetivo = new Principal(mapa, jugador);
+//     //     break;
+//     // default:
+//     //     break;
+//     // }
+// }
 
 void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
    
@@ -216,6 +216,7 @@ bool Jugador::cumplio_objetivo_secundario() {
 
 void Jugador::destruir(){
     this->materiales->destruir();
+    //ACA SE DESTRUYEN LOS OBJETIVOS EN MEMORIA DINAMICA
 }
 
 

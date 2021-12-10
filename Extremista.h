@@ -14,7 +14,6 @@ public:
     bool checkear();
     void actualizar(int valor);
     void mostrar();
-    void mostrar_progreso();
 };
 
 

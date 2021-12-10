@@ -3,9 +3,9 @@
 //
 
 #include "Cansado.h"
-Cansado::Cansado(Jugador jugador) {
+Cansado::Cansado(Jugador * jugador) {
     this->nombre="Cansado";
-    this->energia = jugador.devolver_energia();
+    this->energia = jugador->devolver_energia();
     this->energia_minima = 0;
     this->cumplio = false;
 
@@ -17,12 +17,8 @@ void Cansado::mostrar(){
         cout << "Este objetivo ha sido completado" << endl;
 }
 
-void Cansado::actualizar(int valor) {
-    this->energia = valor;
-}
-
 bool Cansado::checkear() {
-    if (this->energia == this->energia_minima){
+    if (this->jugador->devolver_energia() == this->energia_minima){
         this->cumplio = true;
     }
     return this->cumplio;

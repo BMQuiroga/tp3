@@ -4,9 +4,10 @@
 
 #include "Armado.h"
 
-Armado::Armado(/*ListaMateriales materiales, */Jugador jugador) {
+Armado::Armado(Jugador *jugador) {
     this->nombre="Armado";
-    this->cantidad_bombas = jugador.devolver_materiales()->consulta(jugador.devolver_materiales()->buscar_indice("bombas"))->devolver_cantidad();
+    this->cantidad_bombas = 0;
+    this->jugador=jugador;
     this->cantidad_bombas_necesarias = 10;
     this->cumplio = false;
 }
@@ -18,9 +19,6 @@ bool Armado::checkear() {
     return this->cumplio;
 }
 
-void Armado::actualizar(){
-    this->calcular_progreso();
-}
 
 void Armado::mostrar(){
     cout << "Armado: tener 10 bombas en el inventario." << endl;
@@ -34,5 +32,6 @@ void Armado::actualizar(int valor) {
 }
 */
 int Armado::calcular_progreso(){
-    return(this->materiales.consulta(this->materiales.buscar_indice("bombas")))->devolver_cantidad();
+    cantidad_bombas = this->jugador->devolver_materiales()->consulta(this->jugador->devolver_materiales()->buscar_indice("bombas"))->devolver_cantidad();
+    return cantidad_bombas;
 }

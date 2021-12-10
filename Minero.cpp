@@ -4,48 +4,43 @@
 
 #include "Minero.h"
 #include "mapa.h"
-Minero::Minero(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
+Minero::Minero(ListaEdificios * edificios, Mapa *mapa, Jugador *jugador) {
+    this->cantidad_minas_necesarias=0;
+    this->existe_mina=false;
+    this->existe_mina_oro=false;
     this->nombre="Minero";
-    this->cantidad_minero = 0;
-    this->cantidad_minero_oro = 0;
-    this->cantidad_mineros_necesarios = 1;
     this->cumplio = false;
+    if(edificios->es_edificio_valido("mina")){
+        existe_mina=true;
+        cantidad_minas_necesarias++;
+    }
+    if(edificios->es_edificio_valido("mina oro")){
+        existe_mina_oro=true; 
+        cantidad_minas_necesarias++;
+    }
 }
 
 void Minero::mostrar(){
     cout << "Minero: haber construido una mina de cada tipo. " << endl;
-    cout << "Tipos de minas construidas: " << calcular_progreso() << "/2" << endl;
+    cout << "Tipos de minas construidas: " << calcular_progreso() << "/" << cantidad_minas_necesarias << endl;
+    if(checkear())
+        cout << "Este objetivo ha sido completado" << endl;
 }
 
-bool Minero::checkear() {
-    if (this->cantidad_minero >= this->cantidad_mineros_necesarios && this->cantidad_minero_oro >= this->cantidad_mineros_necesarios){
+bool Minero::checkear(){
+    if (cantidad_minas_construidas==cantidad_minas_necesarias){
         this->cumplio = true;
     }
     return this->cumplio;
 }
 
-void Minero::actualizar(string nombre, int valor ){
-
-    if (nombre == "minero"){
-
-        this->cantidad_minero += valor;
-    }else if (nombre == "minero oro"){
-
-        this->cantidad_minero_oro += valor;
-    }
-}
-
-/*
-void Minero::mostrar_progreso() {
-    cout << "La cantidad de minero contruido es: " << this->cantidad_minero << " y la cantidad de minero de oro contruido es: " << this->cantidad_minero_oro << endl;
-}*/
-
 int Minero::calcular_progreso(){
     int contador = 0;
-    // bool resultado = true;
-    if(this->mapa->tiene_edificio("mina",jugador))
+    //bool resultado = true;
+    if(this->mapa->tiene_edificio("mina",jugador) && existe_mina)
         contador++;
-    if(this->mapa->tiene_edificio("mina oro",jugador))
+    if(this->mapa->tiene_edificio("mina oro",jugador) && existe_mina_oro)
         contador++;
+    cantidad_minas_construidas = contador;
     return contador;
 }

@@ -34,7 +34,7 @@ void ListaObjetivos::alta(Objetivo *objetivo, int posicion) {
     this->objetivos[posicion] = objetivo;
 }
 
-Objetivo** ListaObjetivos::obtener_objetivos_aleatorios(Jugador jugador, ListaEdificios edificios) {
+Objetivo** ListaObjetivos::obtener_objetivos_aleatorios(Jugador* jugador, ListaEdificios edificios) {
     int pos1, pos2, pos3;
 
     pos1 = rand() % 10;
@@ -52,7 +52,7 @@ Objetivo** ListaObjetivos::obtener_objetivos_aleatorios(Jugador jugador, ListaEd
 }
 
 
-void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int pos3, Jugador jugador, ListaEdificios edificios) {
+void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int pos3, Jugador* jugador, ListaEdificios edificios) {
 
     int pos;
     for (int i = 0; i < 3; ++i) {
@@ -86,7 +86,7 @@ void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int 
                 break;
 
             case 5:
-                objetivos[i] = new Minero(/*edificios, mapa, jugador*/);
+                //objetivos[i] = new Minero(/*edificios, mapa, jugador*/);
                 break;
 
             case 6:
@@ -94,7 +94,7 @@ void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int 
                 break;
 
             case 7:
-                objetivos[i] = new Constructor(/*edificios, mapa, jugador*/);
+                //objetivos[i] = new Constructor(/*edificios, mapa, jugador*/);
                 break;
 
             case 8:
