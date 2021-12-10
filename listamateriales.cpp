@@ -12,7 +12,7 @@ bool ListaMateriales::vacia() {
     return (cantidad == 0);
 }
 
-void ListaMateriales::alta(Material d /*, int pos */) {
+void ListaMateriales::alta(Material* d /*, int pos */) {
     NodoMateriales* nuevo = new NodoMateriales(d);
     NodoMateriales* siguiente = primero;
 
@@ -43,7 +43,7 @@ void ListaMateriales::baja(int pos) {
     delete baja;
 }
 
-Material ListaMateriales::consulta(int pos) {
+Material* ListaMateriales::consulta(int pos) {
     NodoMateriales* aux = obtener_nodo(pos);
     return aux->obtener_dato();
 }
@@ -64,7 +64,7 @@ NodoMateriales* ListaMateriales::obtener_nodo(int pos) {
 int ListaMateriales::buscar_indice(std::string nombre){
     NodoMateriales* aux = primero;
     for (int i = 1; i < this->cantidad+1; i++){
-        if(aux->obtener_dato().devolver_nombre()==nombre)
+        if(aux->obtener_dato()->devolver_nombre()==nombre)
             return i;
         aux = aux->obtener_siguiente();
     }
@@ -76,7 +76,7 @@ void ListaMateriales::mostrar() {
     NodoMateriales* aux = primero;
     
     while (aux) {
-        std::cout <<"Material: "<< aux->obtener_dato().devolver_nombre() << ", Cantidad: "<<aux->obtener_dato().devolver_cantidad()<<std::endl;
+        std::cout <<"Material: "<< aux->obtener_dato()->devolver_nombre() << ", Cantidad: "<<aux->obtener_dato()->devolver_cantidad()<<std::endl;
         aux = aux->obtener_siguiente();
     }
     std::cout<<"-------------------------------------------------"<<std::endl;

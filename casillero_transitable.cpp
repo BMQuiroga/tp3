@@ -8,18 +8,18 @@
 
 }*/
 
-void CasilleroTransitable::poner_material(Material mat){
+void CasilleroTransitable::poner_material(Material* mat){
     this->material = mat;
     
 
 }
 
 bool CasilleroTransitable::tiene_material_o_edificio(){
-    return (this->material.devolver_nombre() != "0");
+    return (this->material->devolver_nombre() != "0");
 }
 
 std::string CasilleroTransitable::devolver_material_o_edificio(){
-    return this->material.devolver_nombre();
+    return this->material->devolver_nombre();
 }
 
 /*char CasilleroTransitable::devolver_tipo(){
@@ -27,7 +27,7 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
 }*/
 
 CasilleroTransitable::CasilleroTransitable(std::string camino){
-    Material material;
+    Material* material; //revisar
     this->material = material;
     this->tipo = 'C';
     this->tipo_de_camino=camino;
@@ -41,15 +41,15 @@ CasilleroTransitable::CasilleroTransitable(std::string camino){
     }
 }
 
-void CasilleroTransitable::construir(Edificio edificio){
+void CasilleroTransitable::construir(Edificio* edificio){
 
 }
 
 void CasilleroTransitable::recolectar_material(Jugador* jugador){
-    std::string nombre = this->material.devolver_nombre();
-    int cantidad = this->material.devolver_cantidad();
-    this->material.borrar();
-    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice(nombre)).sumar_cantidad(cantidad);
+    std::string nombre = this->material->devolver_nombre();
+    int cantidad = this->material->devolver_cantidad();
+    material->borrar();
+    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice(nombre))->sumar_cantidad(cantidad);
     if(nombre=="andycoins")
         jugador->actualizar_andycoins_juntadas(cantidad);
 

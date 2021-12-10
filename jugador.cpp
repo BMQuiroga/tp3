@@ -30,7 +30,7 @@ int Jugador::devolver_energia(){
 
 void Jugador::comprar_bombas(){
     int indice=this->materiales->buscar_indice("andycoins");
-    int cantidad_andycoins = this->materiales->consulta(indice).devolver_cantidad();
+    int cantidad_andycoins = this->materiales->consulta(indice)->devolver_cantidad();
     int bombas=0;
     std::cout<<"Posee "<< cantidad_andycoins <<" andycoins, cuantas bombas desea comprar?"<<std::endl;
     std::cin>>bombas;
@@ -41,13 +41,18 @@ void Jugador::comprar_bombas(){
     }
 
     // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
-    this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato().operator+(bombas);
-    this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato().operator-(bombas*100);
-    this->actualizar_bombas_compradas(bombas);
+    this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(bombas);
+    this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(bombas*100);
+    actualizar_bombas_compradas(bombas);
     this->energia-=5;
 
 }
 
+
+// void Jugador::operacion_bombas(int valor) {
+//     this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato().operator+(valor);
+
+// }
 
 GrafoMapa* Jugador::movimiento() {
     return grafo;

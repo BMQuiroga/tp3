@@ -25,7 +25,7 @@ public:
 
     //PRE: que el edificio exista
     //POS: devuelve el edificio
-    Edificio consulta(std::string edificio);
+    Edificio* consulta(std::string edificio);
 
     //PRE: -
     //POST: Devuelve la cantidad de edificios
@@ -45,11 +45,11 @@ public:
 
     //PRE: -
     //POST: Devuelve un array con todos los edificios
-    Edificio* devolver_todo();
+    Edificio** devolver_todo();
 
     //PRE: -
     //POST: Cambia el edificio por otro con el mismo nombre
-    void cambiar_nodo(Edificio edificio);
+    void cambiar_nodo(Edificio* edificio);
 
     //PRE: -
     //POST: Reescribe el archivo edificios

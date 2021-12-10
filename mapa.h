@@ -61,12 +61,20 @@ private:
 public:
     Mapa() {};
 
+    //Pre: -
+    //Post: Crea instancia de mapa con filas y columnas 
     Mapa(int filas, int columnas);
+
     //Pre: Recibe la lista de edificios.
     //Post: Procesa los archivos mapa.txt y ubicaciones.txt
     Mapa(ListaEdificios edificios);
 
+    //Pre: -
+    //Post: Devuelve cantidad de filas 
     int devolver_cantidad_filas();
+
+    //Pre: -
+    //Post: Devuelve cantidad de columnas 
     int devolver_cantidad_columnas();
 
     //Pre: Recibe la cantidad de filas y la cant de columnas

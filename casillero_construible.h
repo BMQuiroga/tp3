@@ -16,13 +16,13 @@ class Jugador;
 class CasilleroConstruible : public Casillero {//Terreno
 
 private:
-    Edificio edificio;
+    Edificio* edificio; 
     int jugador;
     
 public:
     //Pre: Recibe el objeto edificio
     //Post: Asigna nombre, piedra, madera, metal, max a edificio
-    void construir(Edificio edificio);//Usado cuando se lee el archivo ubicacines y cuando se construye desde el menu
+    void construir(Edificio* edificio);//Usado cuando se lee el archivo ubicacines y cuando se construye desde el menu
     
     //Pre:-
     //Post: Crea un objeto, asignando los atributos  
@@ -47,7 +47,7 @@ public:
 
     //Pre: -
     //Post: - 
-    void poner_material(Material material);
+    void poner_material(Material* material);
 
     //Pre:
     //Post:Retorna el jugador que es el dueño del edificio 

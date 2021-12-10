@@ -60,6 +60,7 @@ public:
     void actualizar_andycoins_juntadas(int cantidad);
 
 private:
+    void operacion_bombas(int valor);
     Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
     void crear_grafo(Mapa * mapa);
 };
