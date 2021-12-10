@@ -111,19 +111,14 @@ void RamaEdificios::destruir(){
 }
 
 int RamaEdificios::devolver_todo(Edificio** array, int contador){
-    std::cout << "NOMBNRE" ;
-    if (valor) {
-        std::cout << valor->devolver_nombre();
-        array[contador] = this->valor;
-        contador++;
-        if(nodo_der)
-            contador = this->nodo_der->devolver_todo(array,contador);
-        if(nodo_izq)
-            contador = this->nodo_izq->devolver_todo(array,contador);
-        return contador;
-    } else {
-        return 0; //revisar
-    }
+    array[contador] = this->valor;
+    contador++;
+    if(nodo_der)
+        contador = this->nodo_der->devolver_todo(array,contador);
+    if(nodo_izq)
+        contador = this->nodo_izq->devolver_todo(array,contador);
+    return contador;
+    
 }
 
 

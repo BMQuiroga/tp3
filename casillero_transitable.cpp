@@ -10,8 +10,6 @@
 
 void CasilleroTransitable::poner_material(Material* mat){
     this->material = mat;
-    
-
 }
 
 bool CasilleroTransitable::tiene_material_o_edificio(){
@@ -29,6 +27,7 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
 CasilleroTransitable::CasilleroTransitable(std::string camino){
     // Material* material; //revisar
     // this->material = material;
+    this->material = new Material; 
     this->tipo = 'C';
     this->tipo_de_camino=camino;
 

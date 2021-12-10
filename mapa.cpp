@@ -500,7 +500,9 @@ void Mapa::menu_consultar_coordenada(){
 
 void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2){
     Edificio** array_edificios = edificios->devolver_todo();
-    for(int i = 0; i < 7 ; i++){
+    cout << edificios->devolver_cantidad();
+    for(int i = 0; i < edificios->devolver_cantidad() ; i++){
+
         Edificio* edificio = array_edificios[i];
         std::string nombre = edificio->devolver_nombre();
         int construidos1 = edificios_construidos(nombre, jugador1);
@@ -508,6 +510,7 @@ void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugado
         int maximos_permitidos = edificio->devolver_maximos_permitidos();
         
         std::cout <<"Nombre: " <<edificio->devolver_nombre() <<std::endl;
+
         std::cout <<"Para construirlo se requieren " << edificio->devolver_piedra() <<" de piedra, " <<edificio->devolver_madera() <<" de madera y " <<edificio->devolver_metal() <<" de metal." <<std::endl;
         std::cout <<"El jugador 1 construyó "<<construidos1 <<" y puede construir " << maximos_permitidos - construidos1 <<" mas antes de llegar al limite." <<std::endl;
         std::cout <<"El jugador 2 construyó "<<construidos2 <<" y puede construir " << maximos_permitidos - construidos2 <<" mas antes de llegar al limite." <<std::endl;
