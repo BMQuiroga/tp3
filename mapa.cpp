@@ -684,8 +684,8 @@ void Mapa::reescribir_jugador(ofstream & archivo_ubicaciones, int numero_jugador
 
 bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, Jugador* u){
     std::string nombre;
-    int coord_x;
-    int coord_y;
+    //int coord_x;
+    // int coord_y;
     std::string aux;
     bool archivo_en_blanco;
     std::ifstream archivo_ubicaciones("ubicaciones.txt",std::ios::in);
@@ -731,10 +731,10 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
 
 void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios* edificios, int numero_jugador){
     std::string nombre;
-    bool archivo_en_blanco;
+    //bool archivo_en_blanco;
     std::string aux;
     int coord_x,coord_y;
-   while (archivo>>nombre){
+    while (archivo>>nombre){
         if (nombre == "planta"){
             archivo >> nombre;
             nombre = "planta electrica";

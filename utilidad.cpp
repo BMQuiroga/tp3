@@ -31,7 +31,7 @@ string Utilidad::mayuscula(string palabra) {
 bool Utilidad::es_numero(string numero) {
     bool validacion = true;
     int contador = 0;
-    while (validacion && contador < numero.length()) {
+    while (validacion && contador < (int) numero.length()) {
         validacion = isdigit(numero[contador]);
         contador++;
     }

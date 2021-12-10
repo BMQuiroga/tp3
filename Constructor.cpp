@@ -8,7 +8,7 @@
 
 Constructor::Constructor(/*ListaEdificios edificios, Mapa *mapa, Jugador *jugador*/) {
 
-    this->nombre="Constructor"
+    this->nombre="Constructor";
     this->edificios = edificios;
     /*
     this->cantidad_yacimiento = 0;

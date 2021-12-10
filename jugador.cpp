@@ -125,7 +125,7 @@ void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 
 
 Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
-    Objetivo* nuevo_objetivo;
+    Objetivo* nuevo_objetivo = new Objetivo;
     return nuevo_objetivo; // hay que cambiarlo, es para que no tire warning
     // switch (numero_objetivo)
     // {

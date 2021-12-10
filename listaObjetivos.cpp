@@ -15,17 +15,17 @@
 #include "Extremista.h"
 
 /*
-ListaObjetivos::ListaObjetivos( Jugador jugador, /*ListaMateriales materiales,*/ /*ListaEdificios edificios*//*, Mapa * mapa){
+ListaObjetivos::ListaObjetivos( Jugador jugador, ListaMateriales materiales, ListaEdificios edificios, Mapa * mapa){
 
      objetivos[0] = new ComprarAndypolis;
      objetivos[1] = new EdadDePiedra(jugador);
      objetivos[2] = new Bombardero;
      objetivos[3] = new Energetico(jugador);
-     objetivos[4] = new Letrado(edificios/*, mapa, jugador);
-     objetivos[5] = new Minero(/*edificios, mapa, jugador);
+     objetivos[4] = new Letrado(edificios, mapa, jugador);
+     objetivos[5] = new Minero(edificios, mapa, jugador);
      objetivos[6] = new Cansado(jugador);
-     objetivos[7] = new Constructor(/*edificios, mapa, jugador);
-     objetivos[8] = new Armado(/*materiales, jugador);
+     objetivos[7] = new Constructor(edificios, mapa, jugador);
+     objetivos[8] = new Armado(materiales, jugador);
      objetivos[9] = new Extremista;
 
 }*/

@@ -27,8 +27,8 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
 }*/
 
 CasilleroTransitable::CasilleroTransitable(std::string camino){
-    Material* material; //revisar
-    this->material = material;
+    // Material* material; //revisar
+    // this->material = material;
     this->tipo = 'C';
     this->tipo_de_camino=camino;
 
@@ -39,6 +39,10 @@ CasilleroTransitable::CasilleroTransitable(std::string camino){
     } else if (camino == "Muelle") {
         this->letra = 'M';
     }
+}
+
+CasilleroTransitable::~CasilleroTransitable() {
+    //delete material; va aca o en mapa?
 }
 
 void CasilleroTransitable::construir(Edificio* edificio){

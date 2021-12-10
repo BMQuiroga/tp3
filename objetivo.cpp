@@ -30,16 +30,23 @@ std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
 };
 
 
-bool Objetivo::checkear(){}
+bool Objetivo::checkear(){
+    return false;
+}
+
+std::string Objetivo::devolver_nombre() {
+    return this->nombre;
+}
+
+void Objetivo::actualizar(int valor) {
+    
+}
 
 /*
 void Objetivo::mostrar() {
     std::cout << this->nombre << " ------> ( " << calcular_progreso() << " / " << objetivo << " )" << std::endl;
 }
 
-std::string Objetivo::devolver_nombre() {
-    return this->nombre;
-}
 
 
 Comprar_Andypolis::Comprar_Andypolis() {

@@ -33,7 +33,9 @@ void EdadDePiedra::actualizar(int valor) {
     this->cantidad_piedras = valor;
 }
 
-int EdadDePiedra::calcular_progreso() {}
+int EdadDePiedra::calcular_progreso() {
+    return 0;
+}
 
 /*
 void EdadDePiedra::mostrar_progreso() {

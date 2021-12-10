@@ -28,7 +28,9 @@ void Letrado::actualizar(int valor) {
     this->cantidad_escuelas_construidas += valor;
 }
 
-int Letrado::calcular_progreso() {}
+int Letrado::calcular_progreso() {
+    return 0;   
+}
 
 /*
 void Letrado::mostrar_progreso() {

@@ -27,7 +27,7 @@ public:
     //Pre:-
     //Post: Crea un objeto, asignando los atributos  
     CasilleroConstruible();
-    ~CasilleroConstruible() {};
+    ~CasilleroConstruible();
 
     //Pre:
     //Post: Devuelve true si los max_permitidos es != 0   

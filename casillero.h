@@ -27,7 +27,7 @@ public:
 
     Casillero() {};
     // virtual ~Casillero()=0;
-    // virtual ~Casillero() = 0;
+    virtual ~Casillero() {};
 
     //Pre:
     //Post:Retorna el tipo de casillero

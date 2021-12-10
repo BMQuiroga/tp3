@@ -15,7 +15,6 @@ private:
     std::string tipo_de_camino;
 
 public:
-    ~CasilleroTransitable() {};
     //Pre:Recibe el nombre del material
     //Post:Asigna al atributo material el que le pasan
     void poner_material(Material* material);//Se usa en la lluvia de materiales
@@ -28,6 +27,7 @@ public:
     //Post: Crea un objeto, asignandole "C" al tipo
     CasilleroTransitable(std::string camino);
     
+    ~CasilleroTransitable();
 
     //Pre:
     //Post: No hace nada

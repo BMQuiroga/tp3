@@ -21,6 +21,9 @@ CasilleroConstruible::CasilleroConstruible(){
     this->letra = 'T';
 }
 
+CasilleroConstruible::~CasilleroConstruible() {
+    //delete edificio; va aca o en mapa?
+}
 
 
 std::string CasilleroConstruible::devolver_material_o_edificio(){

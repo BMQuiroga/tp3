@@ -8,6 +8,11 @@ CasilleroInaccesible::CasilleroInaccesible(){
     this->letra = 'L';
 }
 
+
+CasilleroInaccesible::~CasilleroInaccesible() {
+    
+}
+
 bool CasilleroInaccesible::tiene_material_o_edificio(){
     return false;
 }

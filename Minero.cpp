@@ -42,7 +42,7 @@ void Minero::mostrar_progreso() {
 
 int Minero::calcular_progreso(){
     int contador = 0;
-    bool resultado = true;
+    // bool resultado = true;
     if(this->mapa->tiene_edificio("mina",jugador))
         contador++;
     if(this->mapa->tiene_edificio("mina oro",jugador))
