@@ -52,7 +52,6 @@ void Menu::mostrar_menu_partida(){
 }
 
 void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/){
-    Utilidad util;
     int opcion = -1;
 
     Jugador** lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
@@ -65,7 +64,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
 
             cout << "Es el turno del jugador numero " << lista_jugadores[JUGADOR]->devolver_nombre() << endl;  
             mostrar_menu_partida();
-            opcion = util.pedir_opcion();
+            opcion = utilidad.pedir_opcion();
             procesar_opcion_partida(opcion, lista_jugadores[JUGADOR], lista_jugadores[RIVAL]);
         }
         lista_jugadores[JUGADOR]->sumar_energia(20);
@@ -74,7 +73,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
         // if(checkear_si_gano(lista_jugadores[JUGADOR]))
         //     secuencia_victoria(lista_jugadores[JUGADOR]);
         cambiar_turno(lista_jugadores);
-
+        utilidad.limpiar_pantalla();
         if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
     }
     
@@ -98,7 +97,7 @@ void Menu::cambiar_turno(Jugador** lista_jugadores) {
 
 
 void Menu::procesar_opcion_menu(int opcion_elegida){
-    system(CLR_SCREEN);
+    utilidad.limpiar_pantalla();
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
             //no esta testeado
@@ -122,38 +121,60 @@ void Menu::procesar_opcion_menu(int opcion_elegida){
 }
 
 void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador* rival){
-    system(CLR_SCREEN);
+    utilidad.limpiar_pantalla();
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
+            cout << "CONSTRUIR EDIFICIO POR NOMBRE" << endl;
+            cout << "---------------------------------" << endl;
             mapa->construir(edificios,jugador,rival); 
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
+            cout << "LISTAR EDIFICIOS CONSTRUIDOS" << endl;
+            cout << "---------------------------------" << endl;
             mapa->listar_edificios_construidos(edificios,jugador);
             break;
         case DEMOLER_EDIFICIO:
+            cout << "DEMOLER EDIFICIO POR COORDENADAS" << endl;
+            cout << "---------------------------------" << endl;
             mapa->menu_demoler(edificios,jugador);
             break;
         case ATACAR_EDIFICIO:
+            cout << "ATACAR EDIFICIO POR COORDENADA" << endl;
+            cout << "---------------------------------" << endl;
             mapa->menu_atacar(jugador,rival);
             break;
         case REPARAR_EDIFICIO:
+            cout << "REPARAR EDIFICIO POR COORDENADA" << endl;
+            cout << "---------------------------------" << endl;
             mapa->menu_reparar(jugador);
             break;
         case COMPRAR_BOMBAS:
+            cout << "COMPRAR BOMBAS" << endl;
+            cout << "---------------------------------" << endl;
             jugador->comprar_bombas();
             break; 
         case CONSULTAR_COORDENADA:
+            cout << "CONSULTAR COORDENADA" << endl;
+            cout << "---------------------------------" << endl;
             mapa->menu_consultar_coordenada();
             break;
         case MOSTRAR_INVENTARIO:
+            cout << "MOSTRAR INVENTARIO" << endl;
+            cout << "---------------------------------" << endl;
             jugador->devolver_materiales()->mostrar();
             break;
         case MOSTRAR_OBJETIVOS:
+            cout << "MOSTRAR OBJETIVOS" << endl;
+            cout << "---------------------------------" << endl;
             break;
         case RECOLECTAR_RECURSOS:
+            cout << "RECOLECTAR RECURSOS" << endl;
+            cout << "---------------------------------" << endl;
             mapa->recolectar(jugador);
             break;
         case MOVERSE:
+            cout << "MOVER JUGADOR" << endl;
+            cout << "---------------------------------" << endl;
             mapa->mover_jugador(jugador);
             break;
         case FINALIZAR_TURNO:
@@ -163,8 +184,11 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
             guardar();
             break;
         default:
-        cout<< "Error: opcion invalida";
+            cout<< "Error: opcion invalida";
+            break;
     }
+    utilidad.pausa();    
+    utilidad.limpiar_pantalla();
 }
 
 void Menu::reescribir_materiales(){

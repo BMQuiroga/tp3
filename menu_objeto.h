@@ -31,6 +31,7 @@ const int GUARDAR_Y_SALIR_PARTIDA = 13;
 
 class Menu{
 private:
+    Utilidad utilidad;
     Jugador* jugador1;
     Jugador* jugador2;
     Mapa* mapa;
