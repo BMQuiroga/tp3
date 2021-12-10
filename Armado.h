@@ -6,18 +6,16 @@
 
 class Armado : public Objetivo {
 private:
-    ListaMateriales materiales;
+    Jugador * jugador;
     int cantidad_bombas;
     int cantidad_bombas_necesarias;
     bool cumplio;
 public:
 
     void mostrar();
-    Armado(Jugador jugador);
+    Armado(Jugador * jugador);
     int calcular_progreso();
     bool checkear();
-    void actualizar();
-
 };
 
 

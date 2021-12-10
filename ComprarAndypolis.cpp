@@ -33,4 +33,6 @@ void ComprarAndypolis::mostrar(){
         cout << "Este objetivo ha sido completado" << endl;
 }
 
-int ComprarAndypolis::calcular_progreso() {}
+int ComprarAndypolis::calcular_progreso(){
+    return this->andycoins_juntadas;
+}

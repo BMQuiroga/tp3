@@ -6,17 +6,20 @@
 
 class Minero : public Objetivo {
 private:
-    ListaEdificios edificios;
+    ListaEdificios * edificios;
     Mapa * mapa;
     Jugador * jugador;
-    int cantidad_minero;
-    int cantidad_minero_oro;
-    int cantidad_mineros_necesarios;
+    bool existe_mina;
+    bool existe_mina_oro;
+    bool hay_mina;
+    bool hay_mina_oro;
     bool cumplio;
+    int cantidad_minas_necesarias;
+    int cantidad_minas_construidas;
 public:
 
     void mostrar();
-    Minero(/*ListaEdificios edificios, Mapa * mapa, Jugador * jugador*/);
+    Minero(ListaEdificios * edificios, Mapa * mapa, Jugador * jugador);
     bool checkear();
     int calcular_progreso();
     void actualizar(string nombre, int valor);

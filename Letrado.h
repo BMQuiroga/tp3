@@ -3,6 +3,7 @@
 #define TP3_2021_2C_LETRADO_H
 
 #include "objetivo.h"
+#include "mapa.h"
 
 class Letrado : public Objetivo {
 private:
@@ -15,11 +16,9 @@ private:
 public:
 
     void mostrar();
-    Letrado(ListaEdificios* edificios/*, Mapa * mapa, Jugador * jugador*/);
+    Letrado(ListaEdificios* edificios, Mapa * mapa, Jugador * jugador);
     int calcular_progreso();
     bool checkear();
-    void actualizar(int valor);
-
 
 };
 

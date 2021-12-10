@@ -3,8 +3,10 @@
 //
 
 #include "Letrado.h"
-Letrado::Letrado(ListaEdificios* edificios/*, Mapa *mapa, Jugador *jugador*/) {
+Letrado::Letrado(ListaEdificios * edificios, Mapa * mapa, Jugador * jugador) {
     this->nombre="Letrado";
+    this->edificios = edificios;
+    this->mapa = mapa;
     this->cantidad_escuelas_construidas = 0; //
     this->cantidad_escuela_maxima = edificios->consulta("escuela")->devolver_maximos_permitidos();
     this->cumplio = false;
@@ -24,11 +26,10 @@ bool Letrado::checkear() {
     return cumplio;
 }
 
-void Letrado::actualizar(int valor) {
-    this->cantidad_escuelas_construidas += valor;
+int Letrado::calcular_progreso(){
+    cantidad_escuelas_construidas = (mapa->edificios_construidos("escuela",jugador));
+    return cantidad_escuelas_construidas;
 }
-
-int Letrado::calcular_progreso() {}
 
 /*
 void Letrado::mostrar_progreso() {

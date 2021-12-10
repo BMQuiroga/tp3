@@ -4,10 +4,10 @@
 
 #include "Energetico.h"
 
-Energetico::Energetico(Jugador jugador) {
+Energetico::Energetico(Jugador * jugador) {
     this->nombre="Energetico";
-    //this->jugador = jugador;
-    this->energia = jugador.devolver_energia();
+    this->jugador = jugador;
+    this->energia = jugador->devolver_energia();
     this->energia_maxima = 100;
     this->cumplio = false;
 }
@@ -18,17 +18,16 @@ void Energetico::mostrar(){
         cout << "Este objetivo ha sido completado" << endl;
 }
 
-void Energetico::actualizar(int valor) {
-    this->energia = valor;
-}
-
 bool Energetico::checkear() {
-    if (this->energia == this->energia_maxima){
+    if (jugador->devolver_energia() >= this->energia_maxima){
         this->cumplio = true;
     }
     return this->cumplio;
 }
 
+int Energetico::calcular_progreso(){
+    return 0;
+}
 /*
 void Energetico::mostrar_progreso() {
     if (this->cumplio){

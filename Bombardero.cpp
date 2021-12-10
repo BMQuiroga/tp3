@@ -30,4 +30,6 @@ bool Bombardero::checkear() {
     return this->cumplio;
 }
 
-int Bombardero::calcular_progreso() {}
+int Bombardero::calcular_progreso(){
+    return bombas_usadas;
+}

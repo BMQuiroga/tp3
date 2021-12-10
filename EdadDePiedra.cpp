@@ -4,10 +4,10 @@
 
 #include "EdadDePiedra.h"
 
-EdadDePiedra::EdadDePiedra(/*ListaMateriales materiales, */Jugador jugador) {
+EdadDePiedra::EdadDePiedra(Jugador * jugador) {
     this->nombre="EdadDePiedra";
-    //this->materiales = materiales;
-    this->cantidad_piedras = jugador.devolver_materiales()->consulta(jugador.devolver_materiales()->buscar_indice("piedras"))->devolver_cantidad();
+    this->jugador=jugador;
+    this->cantidad_piedras = jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("piedras"))->devolver_cantidad();
     this->cantidad_piedras_necesarias = 50000;
     this->cumplio = false;
     //this->cantidad_piedras = materiales.obtener_nodo(materiales.buscar_indice("piedras"))->obtener_dato()
@@ -29,11 +29,10 @@ bool EdadDePiedra::checkear() {
     return this->cumplio;
 }
 
-void EdadDePiedra::actualizar(int valor) {
-    this->cantidad_piedras = valor;
+int EdadDePiedra::calcular_progreso(){
+    cantidad_piedras = (this->jugador->devolver_materiales()->consulta(this->jugador->devolver_materiales()->buscar_indice("piedra"))->devolver_cantidad());
+    return cantidad_piedras;
 }
-
-int EdadDePiedra::calcular_progreso() {}
 
 /*
 void EdadDePiedra::mostrar_progreso() {

@@ -45,9 +45,9 @@ public:
     // virtual int calcular_progreso() = 0;
     // virtual void actualizar(int valor)=0;
 
-    void mostrar();
-    bool checkear();
-    int calcular_progreso();
+    virtual void mostrar() =0;
+    virtual bool checkear() =0;
+    virtual int calcular_progreso() =0;
     void actualizar(int valor);
     void actualizar(std::string nombre, int valor);
 
