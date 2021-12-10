@@ -53,7 +53,7 @@
 
 // bool esta_terminado(Jugador* jugador);
 
-void procesar_archivo_materiales(ListaMateriales* j1, ListaMateriales* j2);
+// void procesar_archivo_materiales(ListaMateriales* j1, ListaMateriales* j2);
 
 int diccionario_materiales(std::string material);
 

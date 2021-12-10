@@ -16,7 +16,7 @@ std::string CasilleroInaccesible::devolver_material_o_edificio(){
     return "0";
 }
 
-void CasilleroInaccesible::poner_material(Material material){
+void CasilleroInaccesible::poner_material(Material* material){
     
 }
 

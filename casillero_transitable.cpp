@@ -8,18 +8,18 @@
 
 }*/
 
-void CasilleroTransitable::poner_material(Material mat){
+void CasilleroTransitable::poner_material(Material* mat){
     this->material = mat;
     
 
 }
 
 bool CasilleroTransitable::tiene_material_o_edificio(){
-    return (this->material.devolver_nombre() != "0");
+    return (this->material->devolver_nombre() != "0");
 }
 
 std::string CasilleroTransitable::devolver_material_o_edificio(){
-    return this->material.devolver_nombre();
+    return this->material->devolver_nombre();
 }
 
 /*char CasilleroTransitable::devolver_tipo(){
@@ -27,7 +27,7 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
 }*/
 
 CasilleroTransitable::CasilleroTransitable(std::string camino){
-    Material material;
+    Material* material; //revisar
     this->material = material;
     this->tipo = 'C';
     this->tipo_de_camino=camino;

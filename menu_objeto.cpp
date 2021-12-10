@@ -176,11 +176,11 @@ void Menu::reescribir_materiales(){
     }else{
         for (int i=0 ; i<this->jugador1->devolver_materiales()->devolver_cantidad() ; i++){
             //std::cout<<this->consulta(i+1).devolver_nombre()<<std::endl;
-            archivo_materiales<<this->jugador1->devolver_materiales()->consulta(i+1).devolver_nombre();
+            archivo_materiales<<this->jugador1->devolver_materiales()->consulta(i+1)->devolver_nombre();
             archivo_materiales<<" ";
-            archivo_materiales<<this->jugador1->devolver_materiales()->consulta(i+1).devolver_cantidad();
+            archivo_materiales<<this->jugador1->devolver_materiales()->consulta(i+1)->devolver_cantidad();
             archivo_materiales<<" ";
-            archivo_materiales<<this->jugador2->devolver_materiales()->consulta(i+1).devolver_cantidad();
+            archivo_materiales<<this->jugador2->devolver_materiales()->consulta(i+1)->devolver_cantidad();
             archivo_materiales<<std::endl;
         }
     archivo_materiales.close();

@@ -24,7 +24,7 @@ public:
 
     //Pre:
     //Post: No hace nada
-    void poner_material(Material material);//Se usa en la lluvia de materiales
+    void poner_material(Material* material);//Se usa en la lluvia de materiales
     
     //Pre:
     //Post: No hace nada

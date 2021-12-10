@@ -43,7 +43,7 @@ public:
 
     //Pre:Recibe el nombre del material
     //Post:Asigna al atributo material el que le pasan
-    virtual void poner_material(Material material) = 0;//Se usa en la lluvia de materiales  
+    virtual void poner_material(Material* material) = 0;//Se usa en la lluvia de materiales  
 
     //Pre:
     //Post:Chequea si en el casillero hay material o edificio

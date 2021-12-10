@@ -17,8 +17,6 @@ std::string Material::devolver_nombre(){
 
 int Material::devolver_cantidad(){
     return this->cantidad;
-
-
 }
 
 Material::Material(std::string nombre,int cantidad){

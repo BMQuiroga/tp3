@@ -16,7 +16,7 @@ class Jugador;
 class CasilleroConstruible : public Casillero {//Terreno
 
 private:
-    Edificio edificio;
+    Edificio* edificio; 
     int jugador;
     
 public:
@@ -47,7 +47,7 @@ public:
 
     //Pre: -
     //Post: - 
-    void poner_material(Material material);
+    void poner_material(Material* material);
 
     //Pre:
     //Post:Retorna el jugador que es el dueño del edificio 

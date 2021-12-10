@@ -68,8 +68,8 @@ void Archivo::procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& 
         while(getline(archivo, nombre, ' ')) {
             getline(archivo, numero1, ' ');
             getline(archivo, numero2);
-            Material material1(nombre,stoi(numero1));
-            Material material2(nombre,stoi(numero2));
+            Material* material1 = new Material(nombre,stoi(numero1));
+            Material* material2 = new Material(nombre,stoi(numero2));
             cout << "primera alta";
             j1.alta(material1);
             cout << "segunda algtaa";
