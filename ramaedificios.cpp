@@ -2,7 +2,7 @@
 #include "ramaedificios.h"
 #include "arboledificios.h"
 
-RamaEdificios::RamaEdificios(Edificio edificio){
+RamaEdificios::RamaEdificios(Edificio*edificio){
     this -> valor = edificio;
     /*Edificio *edificio2=new Edificio;
     edificio2->cambiar_todo(
@@ -12,11 +12,14 @@ RamaEdificios::RamaEdificios(Edificio edificio){
         edificio.devolver_metal(),
         edificio.devolver_maximos_permitidos());
     this->valor=edificio2;*/
-    this -> clave = edificio.devolver_nombre();
+    this -> clave = edificio->devolver_nombre();
+    this->nodo_der = NULL;
+    this->nodo_izq = NULL;
+
 }
 
-void RamaEdificios::asignar_nodo(Edificio edificio){
-    if(edificio.devolver_nombre() > this->clave){
+void RamaEdificios::asignar_nodo(Edificio* edificio){
+    if(edificio->devolver_nombre() > this->clave){
         if(!nodo_der){
             RamaEdificios *nuevo = new RamaEdificios(edificio);
             //RamaEdificios *p=&nuevo;
@@ -37,7 +40,7 @@ void RamaEdificios::asignar_nodo(Edificio edificio){
 
 }
 
-Edificio RamaEdificios::buscar_edificio(std::string edificio){
+Edificio* RamaEdificios::buscar_edificio(std::string edificio){
     if(edificio > this->clave){
         return(this->nodo_der->buscar_edificio(edificio));
     }
@@ -48,7 +51,8 @@ Edificio RamaEdificios::buscar_edificio(std::string edificio){
         if(edificio == this->clave)
             return valor;
         else{
-            Edificio aux("0",0,0,0,0);
+            Edificio* aux = new Edificio("0",0,0,0,0);
+            // Edificio aux("0",0,0,0,0);
             return aux;
         }
     }     
@@ -106,40 +110,44 @@ void RamaEdificios::destruir(){
     }
 }
 
-int RamaEdificios::devolver_todo(Edificio array[], int contador){
-    array[contador]=this->valor;
-    contador++;
-    if(nodo_der)
-        contador = this->nodo_der->devolver_todo(array,contador);
-    if(nodo_izq)
-        contador = this->nodo_izq->devolver_todo(array,contador);
-    return contador;
+int RamaEdificios::devolver_todo(Edificio** array, int contador){
+    std::cout << "NOMBNRE" ;
+    if (valor) {
+        std::cout << valor->devolver_nombre();
+        array[contador] = this->valor;
+        contador++;
+        if(nodo_der)
+            contador = this->nodo_der->devolver_todo(array,contador);
+        if(nodo_izq)
+            contador = this->nodo_izq->devolver_todo(array,contador);
+        return contador;
+    }
 }
 
 
-void RamaEdificios::cambiar_edificio(Edificio edificio){
-    if(edificio.devolver_nombre() == this->clave){
+void RamaEdificios::cambiar_edificio(Edificio* edificio){
+    if(edificio->devolver_nombre() == this->clave){
         this->valor = edificio;
-        this->clave = edificio.devolver_nombre();
+        this->clave = edificio->devolver_nombre();
     }
-    else if(edificio.devolver_nombre() > this->clave){
+    else if(edificio->devolver_nombre() > this->clave){
         this->nodo_der->cambiar_edificio(edificio);
     }
-    else if(edificio.devolver_nombre() < this->clave){
+    else if(edificio->devolver_nombre() < this->clave){
         this->nodo_izq->cambiar_edificio(edificio);
     }
 }
 
 void RamaEdificios::guardar(std::ofstream & archivo){
-    archivo<<this->valor.devolver_nombre();
+    archivo<<this->valor->devolver_nombre();
     archivo<<" ";
-    archivo<<this->valor.devolver_piedra();
+    archivo<<this->valor->devolver_piedra();
     archivo<<" ";
-    archivo<<this->valor.devolver_madera();
+    archivo<<this->valor->devolver_madera();
     archivo<<" ";
-    archivo<<this->valor.devolver_metal();
+    archivo<<this->valor->devolver_metal();
     archivo<<" ";
-    archivo<<this->valor.devolver_maximos_permitidos();
+    archivo<<this->valor->devolver_maximos_permitidos();
     archivo<<std::endl;
 }
 

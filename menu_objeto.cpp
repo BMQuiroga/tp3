@@ -31,7 +31,7 @@ void Menu::mostrar_menu(){
     cout << "2. Listar todos los edificios"<<endl;
     cout << "3. Mostrar mapa"<<endl;
     cout << "4. Comenzar partida"<<endl;
-    cout << "5. Guardar y salír"<<endl;
+    cout << "5. Guardar y salir"<<endl;
 }
 
 
@@ -48,7 +48,7 @@ void Menu::mostrar_menu_partida(){
     cout << "10. Recolectar recursos producidos"<<endl;
     cout << "11. Moverse a una coordenada"<<endl;
     cout << "12. Finalizar Turno"<<endl;
-    cout << "13. Guardar y salír"<<endl;
+    cout << "13. Guardar y salir"<<endl;
 }
 
 void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/){
@@ -73,7 +73,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
         //     mapa->llamar_lluvia(jugador1,jugador2);
         // if(checkear_si_gano(lista_jugadores[JUGADOR]))
         //     secuencia_victoria(lista_jugadores[JUGADOR]);
-        // cambiar_turno(lista_jugadores);
+        cambiar_turno(lista_jugadores);
 
         if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
     }

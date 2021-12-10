@@ -31,7 +31,7 @@ public:
 
     //Pre:
     //Post: No hace nada
-    void construir(Edificio edificio);
+    void construir(Edificio* edificio);
     
     //Pre:
     //Post: Devuelve el nombre del material

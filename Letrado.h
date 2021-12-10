@@ -6,7 +6,7 @@
 
 class Letrado : public Objetivo {
 private:
-    ListaEdificios edificios;
+    ListaEdificios* edificios;
     Mapa * mapa;
     Jugador * jugador;
     int cantidad_escuelas_construidas;
@@ -15,7 +15,7 @@ private:
 public:
 
     void mostrar();
-    Letrado(ListaEdificios edificios/*, Mapa * mapa, Jugador * jugador*/);
+    Letrado(ListaEdificios* edificios/*, Mapa * mapa, Jugador * jugador*/);
     int calcular_progreso();
     bool checkear();
     void actualizar(int valor);

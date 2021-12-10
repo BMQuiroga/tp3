@@ -12,11 +12,11 @@ ArbolEdificios::ArbolEdificios(/*Edificio edificio*/){
 }
 
 void ArbolEdificios::alta(std::string nombre, int piedra, int madera, int metal, int maximos){
-    Edificio edificio(nombre,piedra,madera,metal,maximos);
+    Edificio* edificio = new Edificio(nombre,piedra,madera,metal,maximos);
     this->raiz->asignar_nodo(edificio);
 }
 
-Edificio ArbolEdificios::consulta(std::string edificio){
+Edificio* ArbolEdificios::consulta(std::string edificio){
     return(this->raiz->buscar_edificio(edificio));
 
 }
@@ -60,7 +60,7 @@ void ArbolEdificios::procesar_archivo_edificios(){
             if(contador!=1)
                 alta(nombre,piedra,madera,metal,max);
             else{
-                Edificio edificio(nombre,piedra,madera,metal,max);
+                Edificio* edificio = new Edificio(nombre,piedra,madera,metal,max);
                 this->raiz= new RamaEdificios(edificio);
             }
         }
@@ -77,14 +77,13 @@ void ArbolEdificios::destruir(){
     delete this->raiz;
 }
 
-Edificio* ArbolEdificios::devolver_todo(){
-    // Edificio array[devolver_cantidad()];         //depende del compilador te va a tirar error asi
-    Edificio* array = new Edificio [devolver_cantidad()];//esto no pierde memoria?
+Edificio** ArbolEdificios::devolver_todo(){
+    Edificio** array = new Edificio *[devolver_cantidad()];//esto no pierde memoria?
     this->raiz->devolver_todo(array,0);
     return array;
 }
 
-void ArbolEdificios::cambiar_nodo(Edificio edificio){
+void ArbolEdificios::cambiar_nodo(Edificio* edificio){
     this->raiz->cambiar_edificio(edificio);
 }
 

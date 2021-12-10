@@ -51,7 +51,7 @@ public:
 
     //Pre:Recibe el objeto edificio
     //Post:Asigna nombre, piedra, madera, metal, max a los atributos respectivos de edificio
-    virtual void construir(Edificio edificio) = 0;//Usado cuando se lee el archivo ubicacines y cuando se construye desde el menu
+    virtual void construir(Edificio* edificio) = 0;//Usado cuando se lee el archivo ubicacines y cuando se construye desde el menu
     
     //Pre:Recibe la lista de materiales cargada
     //Post:Suma los materiales producidos por la mina, aserradero y fabrica a la lista de materiales.

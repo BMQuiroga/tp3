@@ -82,7 +82,7 @@ void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int 
                 break;
 
             case 4:
-                objetivos[i] = new Letrado(edificios/*, mapa, jugador*/);
+                //objetivos[i] = new Letrado(edificios/*, mapa, jugador*/);
                 break;
 
             case 5:

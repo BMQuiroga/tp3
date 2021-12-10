@@ -41,7 +41,7 @@ CasilleroTransitable::CasilleroTransitable(std::string camino){
     }
 }
 
-void CasilleroTransitable::construir(Edificio edificio){
+void CasilleroTransitable::construir(Edificio* edificio){
 
 }
 

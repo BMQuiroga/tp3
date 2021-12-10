@@ -20,7 +20,7 @@ void CasilleroInaccesible::poner_material(Material material){
     
 }
 
-void CasilleroInaccesible::construir(Edificio edificio){
+void CasilleroInaccesible::construir(Edificio* edificio){
     std::cout <<"No se puede construir en un lago"<<std::endl;
 }
 

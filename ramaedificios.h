@@ -9,21 +9,21 @@ class RamaEdificios{
 
 private:
     std::string clave;
-    Edificio valor;
+    Edificio* valor;
     RamaEdificios* nodo_izq;
     RamaEdificios* nodo_der;
 
 public:
 
-    RamaEdificios(Edificio edificio);
+    RamaEdificios(Edificio* edificio);
 
     //PRE: -
     //POST: Devuelve un edificio, lo busca por nombre
-    Edificio buscar_edificio(std::string edificio);
+    Edificio* buscar_edificio(std::string edificio);
 
     //PRE: -
     //POST: Crea un nuevo nodo
-    void asignar_nodo(/*RamaEdificios* rama,*/ Edificio edificio);
+    void asignar_nodo(/*RamaEdificios* rama,*/ Edificio* edificio);
 
     //PRE: -
     //POST: Devuelve la cantidad de edificios
@@ -47,11 +47,11 @@ public:
 
     //PRE: -
     //POST: Añade al array su edificio, y llama a la funcion en sus 2 hijas, si existen
-    int devolver_todo(Edificio array[], int contador);
+    int devolver_todo(Edificio** array, int contador);
 
     //PRE: -
     //POST: Busca el nodo con el mismo nombre y lo cambia por el nuevo edificio
-    void cambiar_edificio(Edificio edificio);
+    void cambiar_edificio(Edificio* edificio);
 
     //PRE: -
     //POST: guarda el edificio a edificios.txt

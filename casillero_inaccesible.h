@@ -32,7 +32,7 @@ public:
 
     //Pre:
     //Post: Muestra por pantalla el mensaje que no se puede construir
-    void construir(Edificio edificio);//Usado cuando se lee el archivo ubicacines y cuando se construye desde el menu
+    void construir(Edificio* edificio);//Usado cuando se lee el archivo ubicacines y cuando se construye desde el menu
 
     //Pre:
     //Post: No hace nada

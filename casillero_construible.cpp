@@ -3,14 +3,14 @@
 #include "arboledificios.h"
 //#include "casillero.h"
 
-void CasilleroConstruible::construir(Edificio edificio){
+void CasilleroConstruible::construir(Edificio* edificio){
     //this->edificio=edificio;
     this -> edificio.cambiar_todo(
-    edificio.devolver_nombre(),
-    edificio.devolver_piedra(),
-    edificio.devolver_madera(),
-    edificio.devolver_metal(),
-    edificio.devolver_maximos_permitidos()
+    edificio->devolver_nombre(),
+    edificio->devolver_piedra(),
+    edificio->devolver_madera(),
+    edificio->devolver_metal(),
+    edificio->devolver_maximos_permitidos()
     );
 }
 

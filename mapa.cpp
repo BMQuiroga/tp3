@@ -354,8 +354,8 @@ void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival
 bool Mapa::se_puede_construir(ListaEdificios* edificios, std::string nombre, Jugador* jugador){
     bool es_valido_construir = false;
     //int indice_edificio = edificios.buscar_indice(nombre);
-    Edificio edificio = edificios->consulta(nombre);
-    if(edificio.devolver_maximos_permitidos() == 0){
+    Edificio* edificio = edificios->consulta(nombre);
+    if(edificio->devolver_maximos_permitidos() == 0){
         std::cout <<"No existe un edificio con ese nombre!" <<std::endl;
         return false;
     }
@@ -371,12 +371,12 @@ bool Mapa::se_puede_construir(ListaEdificios* edificios, std::string nombre, Jug
     // hay_piedra=(jugador.devolver_materiales()->consulta(indice_piedra).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_piedra());
     // hay_madera=(jugador.devolver_materiales()->consulta(indice_madera).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_madera());
     // hay_metal=(jugador.devolver_materiales()->consulta(indice_metal).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_metal());
-    hay_piedra = (jugador->devolver_materiales()->consulta(indice_piedra).devolver_cantidad() >= edificio.devolver_piedra());
-    hay_madera = (jugador->devolver_materiales()->consulta(indice_madera).devolver_cantidad() >= edificio.devolver_madera());
-    hay_metal = (jugador->devolver_materiales()->consulta(indice_metal).devolver_cantidad() >= edificio.devolver_metal());
+    hay_piedra = (jugador->devolver_materiales()->consulta(indice_piedra).devolver_cantidad() >= edificio->devolver_piedra());
+    hay_madera = (jugador->devolver_materiales()->consulta(indice_madera).devolver_cantidad() >= edificio->devolver_madera());
+    hay_metal = (jugador->devolver_materiales()->consulta(indice_metal).devolver_cantidad() >= edificio->devolver_metal());
 
     if(hay_madera && hay_piedra && hay_metal){
-        if(edificio.devolver_maximos_permitidos()>edificios_construidos(nombre,jugador)){
+        if(edificio->devolver_maximos_permitidos() > edificios_construidos(nombre,jugador)){
             es_valido_construir = true;
         }
         else{
@@ -429,20 +429,21 @@ void Mapa::realizar_construccion(ListaEdificios* edificios, int coord_x, int coo
     // jugador.devolver_materiales()->obtener_nodo(indice_piedra)->restar_cantidad(edificios.consulta(indice_edificio).devolver_piedra());
     // jugador.devolver_materiales()->obtener_nodo(indice_madera)->restar_cantidad(edificios.consulta(indice_edificio).devolver_madera());
     // jugador.devolver_materiales()->obtener_nodo(indice_metal)->restar_cantidad(edificios.consulta(indice_edificio).devolver_metal());
-    jugador->devolver_materiales()->obtener_nodo(indice_piedra) -> restar_cantidad(edificios->consulta(nombre).devolver_piedra());
-    jugador->devolver_materiales()->obtener_nodo(indice_madera) -> restar_cantidad(edificios->consulta(nombre).devolver_madera());
-    jugador->devolver_materiales()->obtener_nodo(indice_metal) -> restar_cantidad(edificios->consulta(nombre).devolver_metal());
+    jugador->devolver_materiales()->obtener_nodo(indice_piedra) -> restar_cantidad(edificios->consulta(nombre)->devolver_piedra());
+    jugador->devolver_materiales()->obtener_nodo(indice_madera) -> restar_cantidad(edificios->consulta(nombre)->devolver_madera());
+    jugador->devolver_materiales()->obtener_nodo(indice_metal) -> restar_cantidad(edificios->consulta(nombre)->devolver_metal());
 
     matriz[coord_x][coord_y] -> construir(edificios->consulta(nombre));
     std::cout <<nombre <<" construido/a satisfactoriamente!" <<std::endl;
 }
 
 void Mapa::listar_edificios_construidos(ListaEdificios* edificios, Jugador* jugador){
-    Edificio* array_edificios = edificios->devolver_todo();
+    Edificio** array_edificios = edificios->devolver_todo();
     for(int i = 0 ; i < edificios->devolver_cantidad() ; i++){//
-        std::string nombre = array_edificios[i].devolver_nombre();
+        std::string nombre = array_edificios[i]->devolver_nombre();
+        cout << "nombre: " << nombre << endl;
         int construidos = edificios_construidos(nombre, jugador);
-        if (construidos && nombre != "0"){
+        if (construidos){
             std::cout <<"Nombre: " <<nombre<<", Cantidad construida: " <<construidos <<std::endl;
             std::cout <<"Coordenadas:";
             mostrar_coordenadas(nombre, jugador);
@@ -497,19 +498,19 @@ void Mapa::menu_consultar_coordenada(){
 }
 
 void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2){
-    Edificio* array_edificios = edificios->devolver_todo();
-    for(int i = 0; i < edificios->devolver_cantidad() ; i++){
-        Edificio edificio = array_edificios[i];
-        std::string nombre = edificio.devolver_nombre();
+    Edificio** array_edificios = edificios->devolver_todo();
+    for(int i = 0; i < 7 ; i++){
+        Edificio* edificio = array_edificios[i];
+        std::string nombre = edificio->devolver_nombre();
         int construidos1 = edificios_construidos(nombre, jugador1);
         int construidos2 = edificios_construidos(nombre, jugador2);
-        int maximos_permitidos = edificio.devolver_maximos_permitidos();
+        int maximos_permitidos = edificio->devolver_maximos_permitidos();
         
-        std::cout <<"Nombre: " <<edificio.devolver_nombre() <<std::endl;
-        std::cout <<"Para construirlo se requieren " <<edificio.devolver_piedra() <<" de piedra, " <<edificio.devolver_madera() <<" de madera y " <<edificio.devolver_metal() <<" de metal." <<std::endl;
+        std::cout <<"Nombre: " <<edificio->devolver_nombre() <<std::endl;
+        std::cout <<"Para construirlo se requieren " <<edificio->devolver_piedra() <<" de piedra, " <<edificio->devolver_madera() <<" de madera y " <<edificio->devolver_metal() <<" de metal." <<std::endl;
         std::cout <<"El jugador 1 construyó "<<construidos1 <<" y puede construir " << maximos_permitidos - construidos1 <<" mas antes de llegar al limite." <<std::endl;
         std::cout <<"El jugador 2 construyó "<<construidos2 <<" y puede construir " << maximos_permitidos - construidos2 <<" mas antes de llegar al limite." <<std::endl;
-        edificio.imprimir_brinda_materiales();
+        edificio->imprimir_brinda_materiales();
         std::cout <<"-------------------------------------------------" <<std::endl;
     }
 }
@@ -749,7 +750,7 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
         coord_x = stoi(aux);
         archivo >> aux;
         coord_y = stoi(aux);
-        Edificio edificio = edificios->consulta(nombre);
+        Edificio* edificio = edificios->consulta(nombre);
         matriz[coord_x][coord_y]->construir(edificio);
         matriz[coord_x][coord_y]->cambiar_jugador(numero_jugador);
     };
