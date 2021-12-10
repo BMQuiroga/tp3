@@ -450,6 +450,7 @@ void Mapa::listar_edificios_construidos(ListaEdificios* edificios, Jugador* juga
             
         }
     }
+    delete[] array_edificios;
 }
 
 void Mapa::mostrar_coordenadas(std::string nombre, Jugador* jugador){
@@ -513,6 +514,7 @@ void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugado
         edificio->imprimir_brinda_materiales();
         std::cout <<"-------------------------------------------------" <<std::endl;
     }
+    delete[] array_edificios;
 }
 
 /*
