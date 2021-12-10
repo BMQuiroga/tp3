@@ -117,7 +117,8 @@ void Menu::procesar_opcion_menu(int opcion_elegida){
             //falta
             break;
     }
-
+    utilidad.pausa();
+    utilidad.limpiar_pantalla();
 }
 
 void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador* rival){
@@ -178,6 +179,9 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
             mapa->mover_jugador(jugador);
             break;
         case FINALIZAR_TURNO:
+            cout << "CAMBIO DE TURNO" << endl;
+            cout << "---------------------------------" << endl;
+            cout << "Le toca al jugador numero " << rival->devolver_nombre() << "." << endl;
             //no hace nada
             break;
         case GUARDAR_Y_SALIR_PARTIDA:

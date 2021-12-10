@@ -25,7 +25,6 @@ Mapa* Archivo::procesar_archivo_mapa(){
         archivo_mapa >> coordenaday;
 
         mapa = new Mapa(coordenadax, coordenaday);    
-        cout << coordenadax << coordenaday;
 
         for(int i = 0; i < coordenadax; i++){
             for(int j = 0; j < coordenaday; j++){

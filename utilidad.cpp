@@ -85,6 +85,21 @@ int Utilidad::generador_de_numeros_aleatorios(int min, int max){
 }
 
 
+int Utilidad::convertir_a_entero(std::string numero) {
+    int numero_convertido;
+    if (es_numero(numero))
+        numero_convertido = stoi(numero);
+    else {
+        while(!es_numero(numero))  {
+            std::cout << "Entrada invalida. Ingrese un entero: ";
+            std::cin >> numero;
+        }
+        numero_convertido = stoi(numero);
+    }
+    return numero_convertido;
+}
+
+
 void Utilidad::limpiar_pantalla() {
     system(CLEAR);
 }

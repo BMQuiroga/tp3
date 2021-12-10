@@ -36,6 +36,10 @@ public:
     //post: Devuelve un numero aleatorio entre los valores seleccionados (no incluye el max)
     int generador_de_numeros_aleatorios(int min, int max);
 
+
+    int convertir_a_entero(std::string numero);
+
+
     void limpiar_pantalla();
 
 

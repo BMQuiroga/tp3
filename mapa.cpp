@@ -702,20 +702,13 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, J
     }
     else{
         archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
-        cout << "Hasta aca llego";
         if(archivo_en_blanco)
             return true;
         else{
-
-            cout << "1";
             getline(archivo_ubicaciones,aux,'(');
-            cout << "2";
             procesar_archivo_ubicaciones_jugador(archivo_ubicaciones,j);
-            cout << "3";
             procesar_archivo_ubicaciones_edificios(archivo_ubicaciones, edificios,1);
-            cout << "4";
             procesar_archivo_ubicaciones_jugador(archivo_ubicaciones,u);
-            cout << "5";
             procesar_archivo_ubicaciones_edificios(archivo_ubicaciones,edificios,2);
         }
     }
@@ -749,7 +742,6 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
     std::string aux;
     int coord_x,coord_y;
     while (archivo>>nombre){
-        cout << nombre << ", ";
         if (nombre == "planta"){
             archivo >> nombre;
             nombre = "planta electrica";

@@ -33,22 +33,22 @@ void Jugador::comprar_bombas(){
     Utilidad util;
     int indice=this->materiales->buscar_indice("andycoins");
     int cantidad_andycoins = this->materiales->consulta(indice)->devolver_cantidad();
-    int bombas=0;
+    std::string bombas;
     std::cout<<"Posee "<< cantidad_andycoins <<" andycoins, cuantas bombas desea comprar?"<<std::endl;
     std::cin>>bombas;
 
-    while(bombas>cantidad_andycoins/100){ // falta el caso de que bombas sea string creo
-        std::cout<<"No alcanzan las andycoins, inserte un numero valido"<<std::endl;
+    while(util.convertir_a_entero(bombas) > cantidad_andycoins / 100){ // falta el caso de que bombas sea string creo
+        std::cout<<"No alcanzan las andycoins, inserte un numero valido: "<<std::endl;
         std::cin>>bombas; 
     }
 
     if(util.pedir_confirmacion()) {
-        if (bombas == 1) std::cout << "Compraste " << bombas << " bomba." << std::endl;
-                    else std::cout << "Compraste " << bombas << " bombas" << std::endl;
-                    
+        if (util.convertir_a_entero(bombas) == 1)   std::cout << "Compraste " << bombas << " bomba." << std::endl;
+        else                                        std::cout << "Compraste " << bombas << " bombas" << std::endl;
+
         // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
-        this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(bombas);
-        this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(bombas*100);
+        this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(util.convertir_a_entero(bombas));
+        this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(util.convertir_a_entero(bombas) * 100);
         //actualizar_bombas_compradas(bombas);    //tirA SEG FAULT
         this->energia-=5;
     } else {
