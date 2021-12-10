@@ -216,6 +216,7 @@ bool Jugador::cumplio_objetivo_secundario() {
 
 void Jugador::destruir(){
     this->materiales->destruir();
+    //ACA SE DESTRUYEN LOS OBJETIVOS EN MEMORIA DINAMICA
 }
 
 

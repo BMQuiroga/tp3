@@ -10,6 +10,8 @@ Constructor::Constructor(ListaEdificios * edificios, Mapa * mapa, Jugador * juga
 
     this->nombre="Constructor";
     this->edificios = edificios;
+    this->mapa=mapa;
+    this->jugador=jugador;
     this->cumplio = false;
     this->edificios_requeridos=edificios->devolver_cantidad();
     this->edificios_construidos=0;
