@@ -1,4 +1,15 @@
 #include "utilidad.h"
+#include <cstdlib>
+
+#ifdef WINDOWS
+    #define CLEAR "cls"
+    #define PAUSE "pause"
+#else
+    // Assume POSIX
+    #define CLEAR "clear"
+    #define PAUSE "read -p 'Press Enter to continue...' var"
+
+#endif
 
 string Utilidad::minuscula(string palabra) {
     for (unsigned int i = 0; i < palabra.length(); i++) {
@@ -71,4 +82,13 @@ int Utilidad::pedir_opcion() {
 
 int Utilidad::generador_de_numeros_aleatorios(int min, int max){
     return min + rand()%(max+1-min);
+}
+
+
+void Utilidad::limpiar_pantalla() {
+    system(CLEAR);
+}
+
+void Utilidad::pausa() {
+    system(PAUSE);
 }

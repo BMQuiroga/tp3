@@ -35,6 +35,14 @@ public:
     //pre: -
     //post: Devuelve un numero aleatorio entre los valores seleccionados (no incluye el max)
     int generador_de_numeros_aleatorios(int min, int max);
+
+    void limpiar_pantalla();
+
+
+    void pausa();
+
+
+    void dormir();
 };
 
 
