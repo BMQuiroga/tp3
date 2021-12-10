@@ -114,6 +114,12 @@ void Edificio::imprimir_brinda_materiales(){
         std::cout <<"Brinda 25 de madera" <<std::endl;
     if(this->nombre == "fabrica")
         std::cout <<"Brinda 40 de metal" <<std::endl;
+    if(this->nombre == "escuela")
+        std::cout <<"Brinda 25 andycoins" <<std::endl;
+    if(this->nombre == "planta electrica")
+        std::cout <<"Brinda 15 de energia" <<std::endl;
+    if(this->nombre == "mina oro")
+        std::cout <<"Brinda 50 andycoins" <<std::endl;    
 }
 
 void Edificio::modificar_datos() {
