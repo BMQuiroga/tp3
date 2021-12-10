@@ -5,7 +5,7 @@
 #include "EdadDePiedra.h"
 
 EdadDePiedra::EdadDePiedra(/*ListaMateriales materiales, */Jugador jugador) {
-
+    this->nombre="EdadDePiedra";
     //this->materiales = materiales;
     this->cantidad_piedras = jugador.devolver_materiales()->consulta(jugador.devolver_materiales()->buscar_indice("piedras")).devolver_cantidad();
     this->cantidad_piedras_necesarias = 50000;

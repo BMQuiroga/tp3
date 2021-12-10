@@ -4,6 +4,7 @@
 
 #include "Cansado.h"
 Cansado::Cansado(Jugador jugador) {
+    this->nombre="Cansado";
     this->energia = jugador.devolver_energia();
     this->energia_minima = 0;
     this->cumplio = false;

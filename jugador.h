@@ -53,6 +53,12 @@ public:
 
     void destruir();
 
+    void actualizar_bombas_compradas(int cantidad);
+
+    void actualizar_bombas_usadas();
+
+    void actualizar_andycoins_juntadas(int cantidad);
+
 private:
     Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
     void crear_grafo(Mapa * mapa);

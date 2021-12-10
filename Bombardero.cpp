@@ -5,6 +5,7 @@
 #include "Bombardero.h"
 
 Bombardero::Bombardero() {
+    this->nombre="Bombardero";
     this->bombas_usadas = 0;
     this->bombas_objetivos = 5;
     this->cumplio = false;

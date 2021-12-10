@@ -46,7 +46,13 @@ void CasilleroTransitable::construir(Edificio edificio){
 }
 
 void CasilleroTransitable::recolectar_material(Jugador* jugador){
-    
+    std::string nombre = this->material.devolver_nombre();
+    int cantidad = this->material.devolver_cantidad();
+    this->material.borrar();
+    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice(nombre)).sumar_cantidad(cantidad);
+    if(nombre=="andycoins")
+        jugador->actualizar_andycoins_juntadas(cantidad);
+
 }
 
 void CasilleroTransitable::demoler(Jugador* jugador){

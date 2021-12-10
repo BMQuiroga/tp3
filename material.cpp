@@ -42,3 +42,8 @@ void Material::modificar_nombre(std::string nombre){
 void Material::sumar_cantidad(int cantidad){
     this->cantidad+=cantidad;
 }
+
+void Material::borrar(){
+    this->nombre="0";
+    this->cantidad=0;
+}

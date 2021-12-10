@@ -43,6 +43,7 @@ void Jugador::comprar_bombas(){
     // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
     this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato().operator+(bombas);
     this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato().operator-(bombas*100);
+    this->actualizar_bombas_compradas(bombas);
     this->energia-=5;
 
 }
@@ -211,3 +212,28 @@ bool Jugador::cumplio_objetivo_secundario() {
 void Jugador::destruir(){
     this->materiales->destruir();
 }
+
+
+void Jugador::actualizar_bombas_compradas(int cantidad){
+    for (int i=0; i<3; i++){
+        if(objetivo_secundario[i]->devolver_nombre()=="Extremista")
+            objetivo_secundario[i]->actualizar(cantidad);
+    }
+
+}
+
+void Jugador::actualizar_bombas_usadas(){
+    for (int i=0; i<3; i++){
+        if(objetivo_secundario[i]->devolver_nombre()=="Bombardero")
+            objetivo_secundario[i]->actualizar(1);
+    }
+
+}
+
+void Jugador::actualizar_andycoins_juntadas(int cantidad){
+    for (int i=0; i<3; i++){
+        if(objetivo_secundario[i]->devolver_nombre()=="ComprarAndypolis")
+            objetivo_secundario[i]->actualizar(cantidad);
+    }
+}
+

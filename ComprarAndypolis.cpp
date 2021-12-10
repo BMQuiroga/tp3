@@ -4,6 +4,7 @@
 
 #include "ComprarAndypolis.h"
 ComprarAndypolis::ComprarAndypolis(){
+    this->nombre="ComprarAndypolis";
     this->andycoins_juntadas = 0;
     this->cantidad_andycoins_objetivo = 100000;
     this->cumplio = false;

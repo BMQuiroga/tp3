@@ -5,7 +5,7 @@
 #include "Energetico.h"
 
 Energetico::Energetico(Jugador jugador) {
-
+    this->nombre="Energetico";
     //this->jugador = jugador;
     this->energia = jugador.devolver_energia();
     this->energia_maxima = 100;

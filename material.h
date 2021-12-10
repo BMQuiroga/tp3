@@ -43,6 +43,10 @@ public:
     //Pre:
     //Post: Suma el numero que le pasan al artibuto cantidad
     void sumar_cantidad(int cantidad);
+
+    //Pre:
+    //Post: cambia el nombre a "0" y la cantidad a 0
+    void borrar();
 };
 
 #endif

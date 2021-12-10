@@ -7,7 +7,7 @@
 
 
 Extremista::Extremista() {
-
+    this->nombre="Extremista";
     this->bombas_compradas = 0;
     this->bombas_necesarias = 500;
     this->cumplio = false;

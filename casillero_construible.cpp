@@ -81,6 +81,7 @@ void CasilleroConstruible::recolectar_material(Jugador* jugador){
     if (this->edificio.devolver_nombre() == "escuela"){
         indice = jugador->devolver_materiales()->buscar_indice("andycoins");
         jugador->devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(25);
+        jugador->actualizar_andycoins_juntadas(25);
         std::cout << "Recolectados 25 andycoins" << std::endl;
     }
     if (this->edificio.devolver_nombre() == "planta electrica"){
@@ -90,6 +91,7 @@ void CasilleroConstruible::recolectar_material(Jugador* jugador){
     if (this->edificio.devolver_nombre() == "mina oro"){
         indice = jugador->devolver_materiales()->buscar_indice("andycoins");
         jugador->devolver_materiales()->obtener_nodo(indice)->sumar_cantidad(50);
+        jugador->actualizar_andycoins_juntadas(50);
         std::cout << "Recolectados 50 andycoins" << std::endl;
     }
 }
