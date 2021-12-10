@@ -1,13 +1,14 @@
 #include "jugador.h"
 #include <iostream>
 #include "grafomapa.h"
+#include "utilidad.h"
 
 Jugador::Jugador() {}
 
 Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa){
     //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
-    this->energia = 50;
+    this->energia = 150;
     this->nombre = numero;
     this->crear_grafo(mapa);
     this->asignar_objetivos(edificios, materiales, mapa, this);
@@ -29,6 +30,7 @@ int Jugador::devolver_energia(){
 }
 
 void Jugador::comprar_bombas(){
+    Utilidad util;
     int indice=this->materiales->buscar_indice("andycoins");
     int cantidad_andycoins = this->materiales->consulta(indice)->devolver_cantidad();
     int bombas=0;
@@ -40,11 +42,19 @@ void Jugador::comprar_bombas(){
         std::cin>>bombas; 
     }
 
-    // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
-    this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(bombas);
-    this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(bombas*100);
-    actualizar_bombas_compradas(bombas);
-    this->energia-=5;
+    if(util.pedir_confirmacion()) {
+        if (bombas == 1) std::cout << "Compraste " << bombas << " bomba." << std::endl;
+                    else std::cout << "Compraste " << bombas << " bombas" << std::endl;
+                    
+        // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
+        this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(bombas);
+        this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(bombas*100);
+        //actualizar_bombas_compradas(bombas);    //tirA SEG FAULT
+        this->energia-=5;
+    } else {
+        std::cout << "Compra cancelada" << std::endl;
+    }
+
 
 }
 
