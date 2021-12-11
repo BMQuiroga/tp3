@@ -23,7 +23,7 @@ private:
 public:
     Jugador() /*{}*/;
     Jugador(int x, int y, int numero, ListaEdificios* edificios, Mapa * mapa);
-    void mover();
+    void mover_jugador(Mapa* mapa);
     void mover_gratis(int x, int y);
     void sumar_energia(int cantidad);
     void restar_energia(int cantidad);
