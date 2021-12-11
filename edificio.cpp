@@ -123,21 +123,21 @@ void Edificio::imprimir_brinda_materiales(){
 }
 
 void Edificio::modificar_datos() {
-    int piedra, madera, metal, max;
+    int piedra=1, madera=1, metal=1, max=1;
     std::cout << "Ingrese los datos nuevos para el edificio: " << std::endl;
-    std::cout << "Piedra necesaria para construir: "; std::cin >> piedra;
+    std::cout << "Piedra necesaria para construir: Actual: " << this->devolver_piedra() << ", Nueva: "; std::cin >> piedra;
     while (piedra < 0 || piedra > 50000) {
         std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> piedra; 
     }
-    std::cout << "Madera necesaria para construir: "; std::cin >> madera;
+    std::cout << "Madera necesaria para construir: Actual: " << this->devolver_madera() << ", Nueva: "; std::cin >> madera;
     while (madera < 0 || madera > 50000) {
         std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> madera; 
     }
-    std::cout << "Metal necesario para construir: "; std::cin >> metal;
+    std::cout << "Metal necesario para construir: Actual: " << this->devolver_metal() << ", Nuevo: "; std::cin >> metal;
     while (metal < 0 || metal > 50000) {
         std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> metal; 
-    std::cout << "Maximos permitidos: "; std::cin >> max; 
-    } 
+    }
+    std::cout << "Maximos permitidos: Actuales: " << this->devolver_maximos_permitidos() << ", Nueva: "; std::cin >> max; 
     while (max < 0 || max > 50000) {
         std::cout << "El valor debe estar entre 0 y 50000: ";  std::cin >> max; 
     } 

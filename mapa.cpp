@@ -777,7 +777,7 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
         Edificio* edificio = edificios->consulta(nombre);
         
         //std::cout <<edificio->devolver_nombre() <<edificio->devolver_madera() <<edificio->devolver_piedra() <<edificio->devolver_metal() << std::endl;
-        matriz[coord_x][coord_y]->mostrar();
+        //matriz[coord_x][coord_y]->mostrar();
         matriz[coord_x][coord_y]->construir(edificio);
        
         matriz[coord_x][coord_y]->cambiar_jugador(numero_jugador);

@@ -20,9 +20,9 @@ int main(){
 
     Jugador* jugador1 = new Jugador(1,1,1, edificios, mapa);
     Jugador* jugador2 = new Jugador(2,2,2, edificios, mapa);
-    std::cout << "aca" << std::endl;
+    //std::cout << "aca" << std::endl;
     mapa->procesar_archivo_ubicaciones(edificios, jugador1, jugador2);
-    std::cout << "aca" << std::endl;
+    //std::cout << "aca" << std::endl;
     jugador1->asignar_lista_materiales(&materiales1);
     jugador2->asignar_lista_materiales(&materiales2);
     // Jugador jugador1(1,1,1, edificios, mapa);

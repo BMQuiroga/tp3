@@ -191,38 +191,6 @@
 // }
 
 
-// void modificar_datos_edificio(ListaEdificios edificios) {
-//     // no probe si funciona, por ahi tiene algun error boludo
-//     std::string nombre;
-//     bool resultado = false;
-//     Edificio edificio;
-//     int indice = 0;
-
-//     cout << "Ingrese el nombre del edificio que quiere modificar o \"fin\" para cancelar: ";
-//     cin >> nombre;
-
-//     while (!resultado && nombre != "fin") {
-//         edificio = edificios.consulta(nombre);
-
-//         if (edificio.devolver_maximos_permitidos()==0) {
-//             cout << "No se encontro el edificio ingresado. Intente de nuevo: ";
-//             cin >> nombre;
-
-//         } else {
-            
-//             if (edificio.devolver_nombre() != "obelisco") {
-//                 cout << "Se encontro el edificio " << edificio.devolver_nombre() << "." << endl;
-//                 edificio.modificar_datos();
-//                 edificios.cambiar_nodo(edificio);
-//             } else {
-//                 cout << "No se puede cambiar los datos del obelisco." << endl;
-//             }
-
-//             resultado = true;
-//         }
-//     }
-// }
-
 int diccionario_materiales(std::string material){
     if (material=="andycoin")
         return 250;
