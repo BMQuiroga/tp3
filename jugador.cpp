@@ -253,3 +253,11 @@ void Jugador::actualizar_andycoins_juntadas(int cantidad){
     }
 }
 
+void Jugador::mostrar_objetivos(){
+    this->objetivo_principal->mostrar();
+    this->objetivo_secundario[0]->mostrar();
+    this->objetivo_secundario[1]->mostrar();
+    this->objetivo_secundario[2]->mostrar();
+
+
+}

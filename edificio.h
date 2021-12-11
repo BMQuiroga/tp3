@@ -37,7 +37,7 @@ public:
 
     //Pre: Recibe la lista de materiales cargada
     //Post: Suma la mitad de materiales que fueron usados para la construccion a la lista y asigna a los atributos del edificio destruido en 0. 
-    // void demoler(Jugador jugador);
+    //void demoler(Jugador jugador);
 
     //Pre:-
     //Post: Asigna nombre, piedra, madera, metal, max a los atributos respectivos de edificio

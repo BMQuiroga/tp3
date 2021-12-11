@@ -167,6 +167,7 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
         case MOSTRAR_OBJETIVOS:
             cout << "MOSTRAR OBJETIVOS" << endl;
             cout << "---------------------------------" << endl;
+            jugador->mostrar_objetivos();
             break;
         case RECOLECTAR_RECURSOS:
             cout << "RECOLECTAR RECURSOS" << endl;
