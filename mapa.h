@@ -170,6 +170,7 @@ public:
     
     void setear_casillero(int x, int y, Casillero* casillero);
 
+    void mostrar_recorrido(ListaRecorrido* recorrido);
     //Pre:-
     //Post:Verifica que exista el archivo mapa.txt y los carga en una matriz
     void procesar_archivo_mapa();
@@ -193,7 +194,6 @@ private:
     //Post: imprime un caracter, usado en la funcion mostrar mapa
     void mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador* jugador1, Jugador* jugador2);
 
-    void mostrar_recorrido(ListaRecorrido* recorrido);
 
     //Pre:Recibe la lista de edificios, materiales y el nombre del edificio
     //Post:Verifica que haya la cantidad suficiente de materiales para poder construir

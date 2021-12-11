@@ -268,6 +268,8 @@ void Mapa::destruir(){
     delete[] matriz;
 }
 
+
+
 void Mapa::procesar_archivo_mapa(){
     char letra;
     int coordenadax, coordenaday;
@@ -611,40 +613,40 @@ bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador* jugador) {
 
 
 
-void Mapa::mover_jugador(Jugador* jugador) {
-    int origen_x, origen_y, destino_x, destino_y;
-    GrafoMapa* mover = jugador->movimiento();
-    Utilidad util;
+// void Mapa::mover_jugador(Jugador* jugador) {
+//     int origen_x, origen_y, destino_x, destino_y;
+//     GrafoMapa* mover = jugador->movimiento();
+//     Utilidad util;
 
-    // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
+//     // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
 
-    std::cout << "Casillero de origen" << std::endl; 
-    origen_x = pedir_fila();
-    origen_y = pedir_columna();                                 std::cout << std::endl;
-    std::cout << "Casillero de destino" << std::endl; 
-    destino_x = pedir_fila();
-    destino_y = pedir_columna();                                std::cout << std::endl;
+//     std::cout << "Casillero de origen" << std::endl; 
+//     origen_x = pedir_fila();
+//     origen_y = pedir_columna();                                 std::cout << std::endl;
+//     std::cout << "Casillero de destino" << std::endl; 
+//     destino_x = pedir_fila();
+//     destino_y = pedir_columna();                                std::cout << std::endl;
 
-    int costo = mover->devolver_costo(origen_x, origen_y, destino_x, destino_y);
+//     int costo = mover->devolver_costo(origen_x, origen_y, destino_x, destino_y);
 
-    std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
-    std::cout << "Tenes " << jugador->devolver_energia() << " de energia." << std::endl;
+//     std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
+//     std::cout << "Tenes " << jugador->devolver_energia() << " de energia." << std::endl;
 
-    if (jugador->devolver_energia() >= costo) {
-        if (util.pedir_confirmacion()) {
-            jugador->restar_energia(costo); //no funciona
-            //cambiar de posicion del jugador en el mapa
-            ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
-            // mover->mostrar_recorrido_en_mapa(recorrido);
-            mostrar_recorrido(recorrido);
-        } else {
-            std::cout << "Operacion cancelada." << std::endl;
-        }
-    } else {
-        std::cout << "No tenes energia suficiente." << std::endl;
-    }
-    std::cout << std::endl; 
-}  
+//     if (jugador->devolver_energia() >= costo) {
+//         if (util.pedir_confirmacion()) {
+//             jugador->restar_energia(costo); //no funciona
+//             //cambiar de posicion del jugador en el mapa
+//             ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
+//             // mover->mostrar_recorrido_en_mapa(recorrido);
+//             mostrar_recorrido(recorrido);
+//         } else {
+//             std::cout << "Operacion cancelada." << std::endl;
+//         }
+//     } else {
+//         std::cout << "No tenes energia suficiente." << std::endl;
+//     }
+//     std::cout << std::endl; 
+// }  
 
 void Mapa::reescribir_ubicaciones(Jugador* j, Jugador* u){
     std::ofstream archivo_ubicaciones;
@@ -763,6 +765,7 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
             nombre = "planta electrica";
         }
         
+        cout << "Nombre: " << aux;
         archivo >> aux;
        
         coord_x = stoi(aux);

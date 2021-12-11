@@ -177,7 +177,7 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
         case MOVERSE:
             cout << "MOVER JUGADOR" << endl;
             cout << "---------------------------------" << endl;
-            mapa->mover_jugador(jugador);
+            jugador->mover_jugador(mapa);
             break;
         case FINALIZAR_TURNO:
             cout << "CAMBIO DE TURNO" << endl;
