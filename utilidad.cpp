@@ -1,7 +1,7 @@
 #include "utilidad.h"
 #include <cstdlib>
 
-#ifdef WINDOWS
+#ifdef _WIN32
     #define CLEAR "cls"
     #define PAUSE "pause"
 #else
