@@ -67,6 +67,7 @@ public:
     void cambiar_turno(Jugador** lista_jugadores);
     bool checkear_si_gano(Jugador* jugador);
     void secuencia_victoria(Jugador* jugador);
+    void modificar_datos_edificio();
     
 };
 

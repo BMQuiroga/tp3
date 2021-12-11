@@ -101,8 +101,7 @@ void Menu::procesar_opcion_menu(int opcion_elegida){
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
             //no esta testeado
-            //modificar_datos_edificio(edificios);
-            
+            modificar_datos_edificio();
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
             mapa->listar_todos_los_edificios(edificios,jugador1,jugador2);
@@ -225,3 +224,33 @@ void Menu::secuencia_victoria(Jugador* jugador){
     // borrar_archivo_ubicaciones();
     // resetear_archivo_materiales(jugador);
 }
+
+void Menu::modificar_datos_edificio(){
+    std::string nombre;
+    bool resultado = false;
+    Edificio * edificio;
+    int indice = 0;
+
+    cout << "Ingrese el nombre del edificio que quiere modificar o \"fin\" para cancelar: ";
+    cin >> nombre;
+
+    while (!resultado && nombre != "fin") {
+        if (!edificios->es_edificio_valido(nombre)) {
+             cout << "No se encontro el edificio ingresado. Intente de nuevo: ";
+             cin >> nombre;
+
+        } else {
+            
+            if (nombre != "obelisco") {
+                edificio = edificios->consulta(nombre);
+                cout << "Se encontro el edificio " << edificio->devolver_nombre() << "." << endl;
+                edificio->modificar_datos();
+                //edificios.cambiar_nodo(edificio);
+            } else {
+                cout << "No se puede cambiar los datos del obelisco." << endl;
+            }
+
+            resultado = true;
+        }
+    }
+ }

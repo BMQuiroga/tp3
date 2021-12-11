@@ -5,7 +5,7 @@
 
 void CasilleroConstruible::construir(Edificio* edificio_nuevo){
     //this->edificio=edificio;
-    std::cout << edificio_nuevo->devolver_nombre() << "Edificio" << std::endl;
+    //std::cout << edificio_nuevo->devolver_nombre() << "Edificio" << std::endl;
     this -> edificio->cambiar_todo(
                 edificio_nuevo->devolver_nombre(),
                 edificio_nuevo->devolver_piedra(),
