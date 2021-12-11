@@ -35,6 +35,7 @@ public:
     //no va
     void mostrar_recorrido_en_mapa(ListaRecorrido* recorrido);
 
+    bool es_recorrido_valido(int origen_x, int origen_y, int destino_x, int destino_y, int costo);
 
     //pre: 1 <= x < filas; 1 <= y < columnas
     //pos: devuelve el costo del camino
@@ -44,10 +45,14 @@ public:
     //pos: devuelve los casilleros recorridos
     ListaRecorrido* mover_jugador(int origen_x, int origen_y, int destino_x, int destino_y);
 
+
+
 private:
     //pre: 1 <= posicicion < filas * columnas, origen != destino
     //pos: devuelve vector con los nodos visitados (falta parte de devolver int*)
     ListaRecorrido* camino_minimo(int origen, int destino);
+
+    void agregar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
 
     //pre: 1 <= posicicion < filas * columnas
     //pos: agrega a matriz_adyacencia el peso de ir de origen a destino

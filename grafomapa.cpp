@@ -5,18 +5,11 @@
 #include <string>
 
 
-// GrafoMapa::GrafoMapa(Jugador* jugador) {
-//     this->jugador = jugador;
-//     generar_caminos();
-// }
-
-
 GrafoMapa::GrafoMapa(Jugador* jugador, Mapa* mapa) {
     this->jugador = jugador;
     this->mapa = mapa;
     this->filas = mapa->devolver_cantidad_filas();
     this->columnas = mapa->devolver_cantidad_columnas();
-    generar_caminos();
 }
 
 
@@ -64,43 +57,38 @@ void GrafoMapa::inicializar_matriz_adyacencia() {
 }
 
 
-void GrafoMapa::inicializar_caminos() {
-    int peso;
-    Casillero* casillero;
+bool GrafoMapa::es_recorrido_valido(int origen_x, int origen_y, int destino_x, int destino_y, int costo){
+    bool es_valida = true;
+    if (origen_x == destino_x && origen_y == destino_y)     es_valida = false;
+    if (costo == INFINITO)                                  es_valida = false;
+    return es_valida;
+}
 
+
+void GrafoMapa::inicializar_caminos() {
     for (int coord_x = 0; coord_x < filas; coord_x++) {
         for (int coord_y = 0; coord_y < columnas; coord_y++) {
-
-            int posicion_inicial = this->mapa->devolver_casillero(coord_x, coord_y)->obtener_id();
-
-            if (coord_y != 0) {
-                casillero = this->mapa->devolver_casillero(coord_x, coord_y - 1);
-                int posicion_final = casillero->obtener_id();
-                peso = generar_peso(casillero);
-                agregar_camino(posicion_inicial, posicion_final, peso);
-            }
-
-            if (coord_y != this->columnas - 1) {
-                casillero = this->mapa->devolver_casillero(coord_x, coord_y + 1);
-                int posicion_final = casillero->obtener_id();
-                peso = generar_peso(casillero);
-                agregar_camino(posicion_inicial, posicion_final, peso);
-            }
-
-            if (coord_x != 0) {
-                casillero = this->mapa->devolver_casillero(coord_x - 1, coord_y);
-                int posicion_final = casillero->obtener_id();
-                peso = generar_peso(casillero);
-                agregar_camino(posicion_inicial, posicion_final, peso);
-            }
-
-            if (coord_x != this->filas - 1) {
-                casillero = this->mapa->devolver_casillero(coord_x + 1, coord_y);
-                int posicion_final = casillero->obtener_id();
-                peso = generar_peso(casillero);
-                agregar_camino(posicion_inicial, posicion_final, peso);
-            }
+            if (coord_y != 0)                   agregar_camino(coord_x, coord_y, coord_x, coord_y - 1);
+            if (coord_y != this->columnas - 1)  agregar_camino(coord_x, coord_y, coord_x, coord_y + 1);
+            if (coord_x != 0)                   agregar_camino(coord_x, coord_y, coord_x - 1, coord_y);
+            if (coord_x != this->filas - 1)     agregar_camino(coord_x, coord_y, coord_x + 1, coord_y);
         }
+    }
+}
+
+
+void GrafoMapa::agregar_camino(int origen_x, int origen_y, int destino_x, int destino_y) {
+    Casillero* casillero_origen = this->mapa->devolver_casillero(origen_x, origen_y);
+    Casillero* casillero_destino = this->mapa->devolver_casillero(destino_x, destino_y);
+
+    int posicion_origen = casillero_origen->obtener_id();
+    int posicion_final = casillero_destino->obtener_id();
+
+    if(casillero_destino->devolver_tipo() == 'T' && casillero_destino->tiene_material_o_edificio()) {
+        agregar_camino(posicion_origen, posicion_final, INFINITO);
+    } else {
+        int peso = generar_peso(casillero_destino);
+        agregar_camino(posicion_origen, posicion_final, peso);
     }
 }
 
@@ -116,7 +104,9 @@ int GrafoMapa::calcular_costo(int origen, int destino) {
 
 
 int GrafoMapa::devolver_costo(int origen_x, int origen_y, int destino_x, int destino_y) {
-    int casillero_origen = mapa->devolver_casillero(origen_x, origen_y)->obtener_id();
+    generar_caminos();
+
+    int casillero_origen =  mapa->devolver_casillero(origen_x, origen_y)->obtener_id();
     int casillero_destino = mapa->devolver_casillero(destino_x, destino_y)->obtener_id();
 
     return this->calcular_costo(casillero_origen, casillero_destino);
@@ -124,7 +114,7 @@ int GrafoMapa::devolver_costo(int origen_x, int origen_y, int destino_x, int des
 
 
 ListaRecorrido* GrafoMapa::mover_jugador(int origen_x, int origen_y, int destino_x, int destino_y) {
-    int casillero_origen = mapa->devolver_casillero(origen_x, origen_y)->obtener_id();
+    int casillero_origen =  mapa->devolver_casillero(origen_x, origen_y)->obtener_id();
     int casillero_destino = mapa->devolver_casillero(destino_x, destino_y)->obtener_id();
 
     return this->camino_minimo(casillero_origen, casillero_destino);
