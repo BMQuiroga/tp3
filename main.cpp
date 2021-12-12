@@ -40,8 +40,8 @@ int main(){
     //lista_objetivos2
     //juegador1.asignar_objetivo(lista_objetivos)
 
-    bool archivo_en_blanco = false;
-    //bool archivo_en_blanco=mapa->procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
+    //bool archivo_en_blanco = false;
+    bool archivo_en_blanco=mapa->procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
     
     if(archivo_en_blanco)
         menu.partida(/*edificios,*mapa,jugador1,jugador2*/);
