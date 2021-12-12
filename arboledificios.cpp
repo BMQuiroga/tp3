@@ -11,6 +11,10 @@ ArbolEdificios::ArbolEdificios(/*Edificio edificio*/){
     this->raiz = NULL;
 }
 
+ArbolEdificios::~ArbolEdificios() {
+    destruir();
+}
+
 void ArbolEdificios::alta(std::string nombre, int piedra, int madera, int metal, int maximos){
     Edificio* edificio = new Edificio(nombre,piedra,madera,metal,maximos);
     this->raiz->asignar_nodo(edificio);

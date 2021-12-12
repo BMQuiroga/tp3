@@ -69,6 +69,8 @@ public:
     //Post: Procesa los archivos mapa.txt y ubicaciones.txt
     Mapa(ListaEdificios edificios);
 
+    ~Mapa();
+
     //Pre: -
     //Post: Devuelve cantidad de filas 
     int devolver_cantidad_filas();
@@ -170,7 +172,7 @@ public:
     
     void setear_casillero(int x, int y, Casillero* casillero);
 
-    void mostrar_recorrido(ListaRecorrido* recorrido);
+    void mostrar_recorrido(ListaRecorrido* recorrido, Jugador* jugador);
     //Pre:-
     //Post:Verifica que exista el archivo mapa.txt y los carga en una matriz
     void procesar_archivo_mapa();

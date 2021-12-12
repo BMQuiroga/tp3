@@ -15,10 +15,12 @@ Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa)
     this->asignar_objetivos(edificios, materiales, mapa, this);
 }
 
+Jugador::~Jugador() {
+    // delete grafo;
+}
 
 void Jugador::crear_grafo(Mapa * mapa) {
     this->grafo = new GrafoMapa(this, mapa);
-    
 }
 
 void Jugador::mover_gratis(int x, int y){
@@ -47,7 +49,7 @@ void Jugador::mover_jugador(Mapa* mapa) {
         if (devolver_energia() >= costo) {
             if (util.pedir_confirmacion()) {
                 ListaRecorrido* recorrido = grafo->mover_jugador(this->coordenada_x, this->coordenada_y, destino_x, destino_y);
-                mapa->mostrar_recorrido(recorrido);
+                mapa->mostrar_recorrido(recorrido, this);
                 restar_energia(costo);
                 mover_gratis(destino_x, destino_y);
             } else {

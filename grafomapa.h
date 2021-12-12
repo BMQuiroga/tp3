@@ -28,6 +28,7 @@ public:
     //pre: jugador con nombre asignado
     //pos: crea un GrafoMapa asociado con el jugador
     GrafoMapa(Jugador* jugador, Mapa* mapa);
+    ~GrafoMapa();
 
     //de prueba por ahora
     void mostrar_matriz();
@@ -85,6 +86,9 @@ private:
     //pre: -
     //pos: completa las matrices adyacencia y vertices usando el algoritmo de floyd
     void floyd();
+
+
+    void liberar_memoria();
 };
 
 #endif

@@ -24,7 +24,7 @@ CasilleroConstruible::CasilleroConstruible(){
 }
 
 CasilleroConstruible::~CasilleroConstruible() {
-    //delete edificio; va aca o en mapa?
+    delete edificio;
 }
 
 
