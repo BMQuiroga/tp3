@@ -14,10 +14,10 @@
 
 using namespace std;
 
-const string PIEDRA = " \033[33;1mS\033[0m";
-const string MADERA = " \033[33;1mW\033[0m";
-const string METAL = " \033[33;1mI\033[0m";
-const string ANDYCOINS = " \033[33;1mC\033[0m";
+const string PIEDRA = "\033[33;1mS\033[0m";
+const string MADERA = "\033[33;1mW\033[0m";
+const string METAL = "\033[33;1mI\033[0m";
+const string ANDYCOINS = "\033[33;1mC\033[0m";
 
 const string COLOR_ROJO = "\033[31;1m";
 const string COLOR_VIOLETA = "\033[35;1m";

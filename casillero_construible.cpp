@@ -14,6 +14,11 @@ void CasilleroConstruible::construir(Edificio* edificio_nuevo){
                 edificio_nuevo->devolver_metal(),
                 edificio_nuevo->devolver_maximos_permitidos()
             );*/
+    std::string nombre = this->edificio->devolver_nombre();
+    if(nombre=="mina" ||  nombre=="fabrica")
+        this->vida=2;
+    else
+        this->vida=1;
 }
 
 CasilleroConstruible::CasilleroConstruible(){
@@ -99,7 +104,16 @@ int CasilleroConstruible::devolver_jugador(){
 }
 
 bool CasilleroConstruible::atacar(){
-    return (this->edificio->restar_vida(1));
+    this->vida-=1;
+    if(vida==0){
+        std::cout<<"El "<< this->edificio->devolver_nombre() <<" ha sido destruido"<<std::endl;
+        this->edificio = nullptr;
+        return true;
+    }
+    else{
+        std::cout<<"La "<< this->edificio->devolver_nombre() <<" ha sido dañada"<<std::endl;
+        return false;
+    }
 }
 
 void CasilleroConstruible::reparar(Jugador* jugador){
@@ -109,16 +123,18 @@ void CasilleroConstruible::reparar(Jugador* jugador){
     int piedra = (this->edificio->devolver_piedra())/4;
     int madera = (this->edificio->devolver_madera())/4;
     int metal = (this->edificio->devolver_metal())/4;
-    if(this->edificio->devolver_vida() == 1){
+    if(this->vida == 1){
         if(jugador->devolver_energia() >= 25){
             hay_piedra = (piedra <= jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("piedra"))->devolver_cantidad());
             hay_madera = (madera <= jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("madera"))->devolver_cantidad());
             hay_metal = (metal <= jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("metal"))->devolver_cantidad());
             if(hay_piedra && hay_madera && hay_metal){
-                this->edificio->restar_vida(-1);            //creo q esta mal
+                this->vida=2;            //creo q esta mal
                 jugador->devolver_materiales()->obtener_nodo(jugador->devolver_materiales()->buscar_indice("piedra"))->restar_cantidad(piedra);
                 jugador->devolver_materiales()->obtener_nodo(jugador->devolver_materiales()->buscar_indice("madera"))->restar_cantidad(madera);
                 jugador->devolver_materiales()->obtener_nodo(jugador->devolver_materiales()->buscar_indice("metal"))->restar_cantidad(metal);
+                jugador->restar_energia(25);
+                std::cout << "La " << this->edificio->devolver_nombre() << " ha sido reparada satisfactoriamente" << std::endl;
             }
             else
                 std::cout <<"No alcanzan los materiales para reparar el edificio!"<<std::endl;

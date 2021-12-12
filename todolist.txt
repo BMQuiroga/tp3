@@ -1,7 +1,7 @@
-funciones del menu partida
-funciones del menu principal
-edificios como arbol binario
 funcion moverse
-destructor edificios
-archivo_en_blanco tira seg fault
-hay un tema con jugador: no puedo restar energia, no me suma bombas, no me saca andycoins usando las respectivas funciones
+
+hay un tema con jugador: no puedo restar energia,
+
+uml
+
+tira error en listar todos los edificios si se destruyo un edificio atacandolo o demoliendolo

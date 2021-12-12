@@ -18,6 +18,7 @@ class CasilleroConstruible : public Casillero {//Terreno
 private:
     Edificio* edificio; 
     int jugador;
+    int vida;
     
 public:
     //Pre: Recibe el objeto edificio

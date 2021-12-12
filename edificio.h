@@ -10,7 +10,7 @@
 class Edificio{
 
 private:
-    int vida;
+    //int vida;
     std::string nombre;
     int cantidad_piedra;
     int cantidad_madera;
@@ -69,11 +69,11 @@ public:
 
     //Pre:-
     //Post: Devuelve la vida del edificio, 1 o 2
-    int devolver_vida();
+    //int devolver_vida();
 
     //Pre:-
     //Post: Le resta 1 de vida al edificio, devuelve si lo destruyó
-    bool restar_vida(int numero);
+    //bool restar_vida(int numero);
 };
 
 

@@ -38,7 +38,7 @@ int Constructor::calcular_progreso(){
     bool resultado = true;
     std::string nombre;
     Edificio** array_edificios = edificios->devolver_todo();
-    for (int i = 0; i < edificios->devolver_cantidad(); i++) {
+    for (int i = 0; i < edificios->devolver_cantidad()-1; i++) {
         nombre = array_edificios[i]->devolver_nombre();
         resultado = mapa->tiene_edificio(nombre, jugador);   
         if (resultado) {

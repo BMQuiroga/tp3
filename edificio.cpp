@@ -28,10 +28,11 @@ Edificio::Edificio(std::string nombre, int piedra, int madera, int metal, int ma
     this->cantidad_madera = madera;
     this->cantidad_metal = metal;
     this->maximos_permitidos = max;
+    /*
     if(nombre=="mina" ||  nombre=="fabrica")
         this->vida=2;
     else
-        this->vida=1;
+        this->vida=1;*/
 }
 
 std::string Edificio::devolver_nombre(){
@@ -57,29 +58,6 @@ Edificio::Edificio(){
     this->maximos_permitidos = 0;
 }
 
-// void Edificio::demoler(Jugador jugador){
-//     int indice;
-//     // indice = jugador.devolver_materiales()->buscar_indice("piedra");
-//     // jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_piedra)/2);
-//     // indice = jugador.devolver_materiales()->buscar_indice("madera");
-//     // jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_madera)/2);
-//     // indice = jugador.devolver_materiales()->buscar_indice("metal");
-//     // jugador.devolver_materiales()->obtener_nodo(indice)->sumar_cantidad((this->cantidad_metal)/2);
-
-//     indice = jugador.devolver_materiales().buscar_indice("piedra");
-//     jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad((this->cantidad_piedra)/2);
-//     indice = jugador.devolver_materiales().buscar_indice("madera");
-//     jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad((this->cantidad_madera)/2);
-//     indice = jugador.devolver_materiales().buscar_indice("metal");
-//     jugador.devolver_materiales().obtener_nodo(indice)->sumar_cantidad((this->cantidad_metal)/2);
-
-//     this->nombre = "0";
-//     this->cantidad_piedra = 0;
-//     this->cantidad_madera = 0;
-//     this->cantidad_metal = 0;
-//     this->maximos_permitidos = 0;
-// }
-
 void Edificio::cambiar_todo(std::string nombre, int piedra, int madera, int metal, int max){
     this->nombre = nombre;
     this->cantidad_piedra = piedra;
@@ -87,10 +65,11 @@ void Edificio::cambiar_todo(std::string nombre, int piedra, int madera, int meta
     this->cantidad_metal = metal;
     this->maximos_permitidos = max;
 
+    /*
     if(nombre=="mina" ||  nombre=="fabrica")
         this->vida=2;
     else
-        this->vida=1;
+        this->vida=1;*/
 
 }
 
@@ -149,10 +128,12 @@ void Edificio::modificar_datos() {
     );
 }
 
+/*
 int Edificio::devolver_vida(){
     return this->vida;
-}
+}*/
 
+/*
 bool Edificio::restar_vida(int numero){
     this->vida-=numero;
     if(vida==0){
@@ -165,4 +146,4 @@ bool Edificio::restar_vida(int numero){
         return false;
     }
 
-}
+}*/

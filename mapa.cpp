@@ -68,31 +68,6 @@ void Mapa::setear_casillero(int x, int y, Casillero* casillero) {
 }
 
 
-/*FUNCION OBSOLETA
-void Mapa::consultar_coordenadas(int coord_x,int coord_y){
-    if(matriz[coord_x][coord_y]->devolver_tipo()=='C' || matriz[coord_x][coord_y]->devolver_tipo()=='B'||matriz[coord_x][coord_y]->devolver_tipo()=='M'){
-        if (matriz[coord_x][coord_y]->tiene_material_o_edificio()){
-            std::cout<<"Soy un casillero transitable y no me encuentro vacio"<<std::endl;
-            std::cout<<"Soy un(a) "<<matriz[coord_x][coord_y]->devolver_material_o_edificio()<<" y me encuentro en el casillero consultado"<<std::endl;
-        }
-        else if (!matriz[coord_x][coord_y]->tiene_material_o_edificio())
-            std::cout<<"Soy un casillero transitable y me encuentro vacio"<<std::endl;
-
-    }
-    else if(matriz[coord_x][coord_y]->devolver_tipo()=='T'){
-        if (matriz[coord_x][coord_y]->tiene_material_o_edificio()){
-            std::cout<<"Soy un casillero construible y no me encuentro vacio"<<std::endl;
-            std::cout<<"Soy un(a) "<<matriz[coord_x][coord_y]->devolver_material_o_edificio()<<" y me encuentro en el casillero consultado"<<std::endl;
-            std::cout<<"Soy un edificio del jugador "<<matriz[coord_x][coord_y]->devolver_jugador()<<std::endl;
-        }
-        else if (!matriz[coord_x][coord_y]->tiene_material_o_edificio())
-            std::cout<<"Soy un casillero construible y me encuentro vacio"<<std::endl;
-    }
-    else 
-        std::cout<<"Soy un casillero intransitable y me encuentro vacio"<<std::endl;
-}
-*/
-
 void Mapa::llamar_lluvia(Jugador* jugador1, Jugador* jugador2){
     Utilidad util;
     srand((unsigned)time(0));
@@ -350,44 +325,37 @@ void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival
 }
 
 bool Mapa::se_puede_construir(ListaEdificios* edificios, std::string nombre, Jugador* jugador){
-    bool es_valido_construir = true;
-    // cout << "antes";
-    // bool es_valido_construir = false;
-    // //int indice_edificio = edificios.buscar_indice(nombre);
+    //bool es_valido_construir = true;
+    //cout << "antes";
+    bool es_valido_construir = false;
 
-    // Edificio* edificio = edificios->consulta(nombre);
-    // cout << "despues";
-    // if(edificio->devolver_maximos_permitidos() == 0){
-    //     std::cout <<"No existe un edificio con ese nombre!" <<std::endl;
-    //     return false;
-    // }
-    // // int indice_piedra=jugador.devolver_materiales()->buscar_indice("piedra");
-    // // int indice_madera=jugador.devolver_materiales()->buscar_indice("madera");
-    // // int indice_metal=jugador.devolver_materiales()->buscar_indice("metal");
-    // int indice_piedra = jugador->devolver_materiales()->buscar_indice("piedra");
-    // int indice_madera = jugador->devolver_materiales()->buscar_indice("madera");
-    // int indice_metal = jugador->devolver_materiales()->buscar_indice("metal");
+    Edificio* edificio = edificios->consulta(nombre);
+    //cout << "despues";
+    if(!edificios->es_edificio_valido(nombre)){
+        std::cout <<"No existe un edificio con ese nombre!" <<std::endl;
+        return false;
+    }
+    int indice_piedra = jugador->devolver_materiales()->buscar_indice("piedra");
+    int indice_madera = jugador->devolver_materiales()->buscar_indice("madera");
+    int indice_metal = jugador->devolver_materiales()->buscar_indice("metal");
     
-    // bool hay_piedra = false, hay_madera = false, hay_metal = false;
+    bool hay_piedra = false, hay_madera = false, hay_metal = false;
     
-    // // hay_piedra=(jugador.devolver_materiales()->consulta(indice_piedra).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_piedra());
-    // // hay_madera=(jugador.devolver_materiales()->consulta(indice_madera).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_madera());
-    // // hay_metal=(jugador.devolver_materiales()->consulta(indice_metal).devolver_cantidad()>=edificios.consulta(indice_edificio).devolver_metal());
-    // hay_piedra = (jugador->devolver_materiales()->consulta(indice_piedra)->devolver_cantidad() >= edificio->devolver_piedra());
-    // hay_madera = (jugador->devolver_materiales()->consulta(indice_madera)->devolver_cantidad() >= edificio->devolver_madera());
-    // hay_metal = (jugador->devolver_materiales()->consulta(indice_metal)->devolver_cantidad() >= edificio->devolver_metal());
+    hay_piedra=(jugador->devolver_materiales()->consulta(indice_piedra)->devolver_cantidad()>= edificios->consulta(nombre)->devolver_piedra());
+    hay_madera=(jugador->devolver_materiales()->consulta(indice_madera)->devolver_cantidad()>= edificios->consulta(nombre)->devolver_madera());
+    hay_metal=(jugador->devolver_materiales()->consulta(indice_metal)->devolver_cantidad()>= edificios->consulta(nombre)->devolver_metal());
 
-    // if(hay_madera && hay_piedra && hay_metal){
-    //     if(edificio->devolver_maximos_permitidos() > edificios_construidos(nombre,jugador)){
-    //         es_valido_construir = true;
-    //     }
-    //     else{
-    //         std::cout <<"Ya se alcanzo el limite para ese edificio!"<<std::endl;
-    //     }
-    // }
-    // else{
-    //     std::cout <<"No alcanzan los materiales!"<<std::endl;
-    // }
+    if(hay_madera && hay_piedra && hay_metal){
+        if(edificio->devolver_maximos_permitidos() > edificios_construidos(nombre,jugador)){
+            es_valido_construir = true;
+        }
+        else{
+            std::cout <<"Ya se alcanzo el limite para ese edificio!"<<std::endl;
+        }
+    }
+    else{
+        std::cout <<"No alcanzan los materiales!"<<std::endl;
+    }
     return es_valido_construir;
 }
 
@@ -420,7 +388,7 @@ void Mapa::realizar_construccion(ListaEdificios* edificios, int coord_x, int coo
 void Mapa::listar_edificios_construidos(ListaEdificios* edificios, Jugador* jugador){
     Edificio** array_edificios = edificios->devolver_todo();
 
-    for(int i = 0 ; i < edificios->devolver_cantidad() ; i++){//
+    for(int i = 0 ; i < edificios->devolver_cantidad()-1 ; i++){//
         std::string nombre = array_edificios[i]->devolver_nombre();
         int construidos = edificios_construidos(nombre, jugador);
         if (construidos){
@@ -481,7 +449,7 @@ void Mapa::menu_consultar_coordenada(){
 void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2){
     Edificio** array_edificios = edificios->devolver_todo();
     cout << edificios->devolver_cantidad();
-    for(int i = 0; i < edificios->devolver_cantidad() ; i++){
+    for(int i = 0; i < edificios->devolver_cantidad()-1 ; i++){
 
         Edificio* edificio = array_edificios[i];
         std::string nombre = edificio->devolver_nombre();
@@ -519,7 +487,7 @@ void Mapa::menu_atacar(Jugador* jugador, Jugador* rival){
                 jugador->restar_energia(30);
                 jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("bombas"))->sumar_cantidad(-1);
                 //jugador->actualizar_objetivo(1, 1);
-                jugador->actualizar_bombas_usadas();//le suma 1 por defecto
+                //jugador->actualizar_bombas_usadas();//le suma 1 por defecto
             }
             else
                 std::cout<<"No tienes bombas!" <<std::endl;

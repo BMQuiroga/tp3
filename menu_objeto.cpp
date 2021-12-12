@@ -64,6 +64,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
 
             cout << "Es el turno del jugador numero " << lista_jugadores[JUGADOR]->devolver_nombre() << endl;  
             cout << "Tienes " << lista_jugadores[JUGADOR]->devolver_energia() << " de energia" << endl;
+            cout << "Posicion actual: (" << lista_jugadores[JUGADOR]->devolver_coordenada_x() << " ," << lista_jugadores[JUGADOR]->devolver_coordenada_y() << ")"<<std::endl;
             mostrar_menu_partida();
             opcion = utilidad.pedir_opcion();
             procesar_opcion_partida(opcion, lista_jugadores[JUGADOR], lista_jugadores[RIVAL]);
