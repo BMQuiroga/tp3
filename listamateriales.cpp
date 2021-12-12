@@ -8,6 +8,10 @@ ListaMateriales::ListaMateriales() {
     cantidad = 0;
 }
 
+ListaMateriales::~ListaMateriales() {
+    destruir();
+}
+
 bool ListaMateriales::vacia() {
     return (cantidad == 0);
 }
@@ -39,7 +43,7 @@ void ListaMateriales::baja(int pos) {
     }
     cantidad--;
     //std::cout << "Libero memoria en: " << baja << std::endl;
-
+    baja->baja();
     delete baja;
 }
 

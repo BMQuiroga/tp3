@@ -16,6 +16,8 @@ public:
     //POS:Crea el constructor y el siguiente lo deja en nulo
     NodoMateriales(Material* d);
 
+    // ~NodoMateriales();
+
     //PRE:-
     //POS:Asigna d a dato
     void cambiar_dato(Material* d);
@@ -44,6 +46,8 @@ public:
     //POS: A la cantidad del material, le resta un numero
     void restar_cantidad(int d);
 
+
+    void baja();
 };
 
 
