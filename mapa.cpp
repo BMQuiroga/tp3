@@ -242,7 +242,7 @@ void Mapa::destruir(){
     for(int i = 0; i < coordenada_x; i++){
     	for(int j = 0; j < coordenada_y; j++){
             delete matriz[i][j];
-            matriz[i][j] = nullptr;// no es necesario pero buena practica.
+            //matriz[i][j] = nullptr;// no es necesario pero buena practica. 12/12/2021(buena practica pero tira error, asi que se va)
         }
 
         delete[] matriz[i];

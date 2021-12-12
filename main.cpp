@@ -56,13 +56,11 @@ int main(){
         }while(opcion_elegida!=GUARDAR_Y_SALIR_MENU);
         
     }
-    //}
-        //guardar_archivo_materiales(materiales, tope_material);
-        //guardar_archivo_edificios(edificios, tope_edificio);
-
+    menu.guardar();
     delete jugador1;
     delete jugador2;
     delete edificios;
+
     return 0;
 }
 

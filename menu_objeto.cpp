@@ -16,13 +16,21 @@ Menu::Menu(Mapa* mapa, ListaEdificios* edificios, Jugador* jugador1, Jugador* ju
 
 
 void Menu::guardar(){
-    // edificios.reescribir();
-    // reescribir_materiales();
-    // mapa.reescribir_ubicaciones(jugador1,jugador2);
-    // edificios.destruir();
-    // mapa.destruir();
-    // jugador1.destruir();
-    // jugador2.destruir();
+    //std::cout << "aca1" << std::endl;
+    edificios->reescribir();
+    //std::cout << "aca2" << std::endl;
+    reescribir_materiales();
+    //std::cout << "aca3" << std::endl;
+    mapa->reescribir_ubicaciones(jugador1,jugador2);
+    //std::cout << "aca4" << std::endl;
+    edificios->destruir();
+    //std::cout << "aca5" << std::endl;
+    mapa->destruir();
+    //std::cout << "aca6" << std::endl;
+    jugador1->destruir();
+    //std::cout << "aca7" << std::endl;
+    jugador2->destruir();
+    //std::cout << "aca8" << std::endl;
 }
 
 
@@ -187,7 +195,7 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
             //no hace nada
             break;
         case GUARDAR_Y_SALIR_PARTIDA:
-            guardar();
+            //guardar();
             break;
         default:
             cout<< "Error: opcion invalida";
