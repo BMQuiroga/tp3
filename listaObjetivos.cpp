@@ -15,17 +15,17 @@
 #include "Extremista.h"
 
 /*
-ListaObjetivos::ListaObjetivos( Jugador jugador, ListaMateriales materiales, ListaEdificios edificios, Mapa * mapa){
+ListaObjetivos::ListaObjetivos( Jugador jugador, /*ListaMateriales materiales,*/ /*ListaEdificios edificios*//*, Mapa * mapa){
 
      objetivos[0] = new ComprarAndypolis;
      objetivos[1] = new EdadDePiedra(jugador);
      objetivos[2] = new Bombardero;
      objetivos[3] = new Energetico(jugador);
-     objetivos[4] = new Letrado(edificios, mapa, jugador);
-     objetivos[5] = new Minero(edificios, mapa, jugador);
+     objetivos[4] = new Letrado(edificios/*, mapa, jugador);
+     objetivos[5] = new Minero(/*edificios, mapa, jugador);
      objetivos[6] = new Cansado(jugador);
-     objetivos[7] = new Constructor(edificios, mapa, jugador);
-     objetivos[8] = new Armado(materiales, jugador);
+     objetivos[7] = new Constructor(/*edificios, mapa, jugador);
+     objetivos[8] = new Armado(/*materiales, jugador);
      objetivos[9] = new Extremista;
 
 }*/
@@ -34,7 +34,7 @@ void ListaObjetivos::alta(Objetivo *objetivo, int posicion) {
     this->objetivos[posicion] = objetivo;
 }
 
-Objetivo** ListaObjetivos::obtener_objetivos_aleatorios(Jugador* jugador, ListaEdificios edificios) {
+ListaObjetivos::ListaObjetivos(Jugador* jugador, ListaEdificios edificios, Mapa* mapa) {
     int pos1, pos2, pos3;
 
     pos1 = rand() % 10;
@@ -46,15 +46,33 @@ Objetivo** ListaObjetivos::obtener_objetivos_aleatorios(Jugador* jugador, ListaE
     while(pos3 == pos2 || pos3 == pos1){
         pos3 =rand() % 10;
     }
-    asignar_objetivos_correspondientes(pos1, pos2, pos3, jugador, edificios);
+    asignar_objetivos_correspondientes(pos1, pos2, pos3, *jugador, edificios, *mapa);
+
+}
+
+
+Objetivo** ListaObjetivos::obtener_objetivos_aleatorios(Jugador* jugador, ListaEdificios edificios, Mapa* mapa) {
+    int pos1, pos2, pos3;
+
+    pos1 = rand() % 10;
+    pos2 =rand() % 10;
+    while (pos2 == pos1){
+        pos2 =rand() % 10;
+    }
+    pos3 =rand() % 10;
+    while(pos3 == pos2 || pos3 == pos1){
+        pos3 =rand() % 10;
+    }
+    asignar_objetivos_correspondientes(pos1, pos2, pos3, *jugador, edificios, *mapa);
 
     return this->objetivos;
 }
 
 
-void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int pos3, Jugador* jugador, ListaEdificios edificios) {
+void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int pos3, Jugador jugador, ListaEdificios edificios, Mapa mapa ) {
 
     int pos;
+
     for (int i = 0; i < 3; ++i) {
 
         if (i == 0){
@@ -70,7 +88,7 @@ void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int 
                 break;
 
             case 1:
-                objetivos[i] = new EdadDePiedra(jugador);
+                objetivos[i] = new EdadDePiedra(&jugador);
                 break;
 
             case 2:
@@ -78,27 +96,27 @@ void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int 
                 break;
 
             case 3:
-                objetivos[i] = new Energetico(jugador);
+                objetivos[i] = new Energetico(&jugador);
                 break;
 
             case 4:
-                //objetivos[i] = new Letrado(edificios/*, mapa, jugador*/);
+                objetivos[i] = new Letrado(&edificios, &mapa, &jugador);
                 break;
 
             case 5:
-                //objetivos[i] = new Minero(/*edificios, mapa, jugador*/);
+                objetivos[i] = new Minero(&edificios, &mapa, &jugador);
                 break;
 
             case 6:
-                objetivos[i] = new Cansado(jugador);
+                objetivos[i] = new Cansado(&jugador);
                 break;
 
             case 7:
-                //objetivos[i] = new Constructor(/*edificios, mapa, jugador*/);
+                objetivos[i] = new Constructor(&edificios, &jugador);
                 break;
 
             case 8:
-                objetivos[i] = new Armado(jugador);
+                objetivos[i] = new Armado(&jugador);
                 break;
 
             case 9:
@@ -107,6 +125,12 @@ void ListaObjetivos::asignar_objetivos_correspondientes(int pos1, int pos2, int 
         }
     }
 
+}
+
+void ListaObjetivos::mostrar_objetivos() {
+    this->objetivos[0]->mostrar();
+    this->objetivos[1]->mostrar();
+    this->objetivos[2]->mostrar();
 }
 
 /*

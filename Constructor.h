@@ -27,10 +27,11 @@ private:
 public:
 
     void mostrar();
-    Constructor(ListaEdificios * edificios, Mapa * mapa, Jugador * jugador);
+    void mostrar_progreso();
+    Constructor(ListaEdificios *edificios, Jugador * jugador);
     int calcular_progreso();
     bool checkear();
-
+    void actualizar();
     /*
     void actualizar_yacimiento(int valor);
     void actualizar_mina(int valor);

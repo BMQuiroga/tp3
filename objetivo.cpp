@@ -13,7 +13,10 @@ const int OBJ_ARMADO = 9;
 const int OBJ_EXTREMISTA = 10;
 const int OBJ_OBELISCO = 11;
  */
-
+/*
+string Objetivo::devolver_nombre() {
+    return this->nombre;
+}*/
 
 std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
     "Comprar andypolis: haber juntado 100.000 andycoins a lo largo de la partida",
@@ -33,6 +36,7 @@ std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
 bool Objetivo::checkear(){
     return false;
 }
+
 
 std::string Objetivo::devolver_nombre() {
     return this->nombre;

@@ -34,7 +34,7 @@ protected:
     int progreso;
     int objetivo;
 public:
-    std::string devolver_nombre();
+    std::string devolver_nombre(); //me tira error
     //virtual void mostrar() = 0;
 
     //comente para que compile, faltan declaraciones
@@ -45,9 +45,9 @@ public:
     // virtual int calcular_progreso() = 0;
     // virtual void actualizar(int valor)=0;
 
-    virtual void mostrar() =0;
-    virtual bool checkear() =0;
-    virtual int calcular_progreso() =0;
+    void mostrar();
+    bool checkear();
+    int calcular_progreso();
     void actualizar(int valor);
     void actualizar(std::string nombre, int valor);
 
