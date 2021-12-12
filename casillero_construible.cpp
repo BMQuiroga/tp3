@@ -6,13 +6,14 @@
 void CasilleroConstruible::construir(Edificio* edificio_nuevo){
     //this->edificio=edificio;
     //std::cout << edificio_nuevo->devolver_nombre() << "Edificio" << std::endl;
-    this -> edificio->cambiar_todo(
+    this->edificio = edificio_nuevo;
+    /*this -> edificio->cambiar_todo(
                 edificio_nuevo->devolver_nombre(),
                 edificio_nuevo->devolver_piedra(),
                 edificio_nuevo->devolver_madera(),
                 edificio_nuevo->devolver_metal(),
                 edificio_nuevo->devolver_maximos_permitidos()
-            );
+            );*/
 }
 
 CasilleroConstruible::CasilleroConstruible(){
@@ -33,9 +34,9 @@ std::string CasilleroConstruible::devolver_material_o_edificio(){
 
 void CasilleroConstruible::demoler(Jugador* jugador){
     //this->edificio->demoler(jugador);
-    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("piedra"))->sumar_cantidad(this->edificio->devolver_piedra());
-    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("madera"))->sumar_cantidad(this->edificio->devolver_madera());
-    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("metal"))->sumar_cantidad(this->edificio->devolver_metal());
+    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("piedra"))->sumar_cantidad(this->edificio->devolver_piedra()/2);
+    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("madera"))->sumar_cantidad(this->edificio->devolver_madera()/2);
+    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("metal"))->sumar_cantidad(this->edificio->devolver_metal()/2);
     this->edificio=nullptr;
 }
 

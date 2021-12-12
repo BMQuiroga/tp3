@@ -230,7 +230,7 @@ void Menu::modificar_datos_edificio(){
     std::string nombre;
     bool resultado = false;
     Edificio * edificio;
-    int indice = 0;
+    //int indice = 0;
 
     cout << "Ingrese el nombre del edificio que quiere modificar o \"fin\" para cancelar: ";
     cin >> nombre;

@@ -402,41 +402,19 @@ int Mapa::edificios_construidos(std::string nombre, Jugador* jugador){
     return contador;
 }
 
-/*int Mapa::devolver_indice_edificios(Edificio edificios[],std::string nombre){//VA A PASAR A SER PARTE DE LISTAEDIFICIOS.CPP
-    int indice=-1;
-    for(int i=0;i<100;i++){
-        if (edificios[i].devolver_nombre()==nombre)
-            indice=i;
-    }
-    return indice;
-}*/
-
-/*int Mapa::devolver_indice_materiales(Material materiales[],std::string nombre){//VA A PASAR A SER PARTE DE LISTAMATERIALES.CPP
-    int indice=-1;
-    for(int i=0;i<100;i++){
-        if (materiales[i].devolver_nombre()==nombre)
-            indice=i;
-    }
-    return indice;
-}*/
-
 void Mapa::realizar_construccion(ListaEdificios* edificios, int coord_x, int coord_y, std::string nombre, Jugador* jugador){
-    // int indice_piedra=jugador.devolver_materiales()->buscar_indice("piedra");
-    // int indice_madera=jugador.devolver_materiales()->buscar_indice("madera");
-    // int indice_metal=jugador.devolver_materiales()->buscar_indice("metal");
+   
     int indice_piedra = jugador->devolver_materiales()->buscar_indice("piedra");
     int indice_madera = jugador->devolver_materiales()->buscar_indice("madera");
     int indice_metal = jugador->devolver_materiales()->buscar_indice("metal");
 
-    // jugador.devolver_materiales()->obtener_nodo(indice_piedra)->restar_cantidad(edificios.consulta(indice_edificio).devolver_piedra());
-    // jugador.devolver_materiales()->obtener_nodo(indice_madera)->restar_cantidad(edificios.consulta(indice_edificio).devolver_madera());
-    // jugador.devolver_materiales()->obtener_nodo(indice_metal)->restar_cantidad(edificios.consulta(indice_edificio).devolver_metal());
     jugador->devolver_materiales()->obtener_nodo(indice_piedra) -> restar_cantidad(edificios->consulta(nombre)->devolver_piedra());
     jugador->devolver_materiales()->obtener_nodo(indice_madera) -> restar_cantidad(edificios->consulta(nombre)->devolver_madera());
     jugador->devolver_materiales()->obtener_nodo(indice_metal) -> restar_cantidad(edificios->consulta(nombre)->devolver_metal());
 
     matriz[coord_x][coord_y] -> construir(edificios->consulta(nombre));
     std::cout <<nombre <<" construido/a satisfactoriamente!" <<std::endl;
+    jugador->restar_energia(15);
 }
 
 void Mapa::listar_edificios_construidos(ListaEdificios* edificios, Jugador* jugador){
@@ -521,27 +499,6 @@ void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugado
     }
     delete[] array_edificios;
 }
-
-/*
-void Mapa::reescribir_ubicaciones(){
-    std::ofstream archivo_ubicaciones;
-    std::string material_o_edificio;
-    archivo_ubicaciones.open("ubicaciones.txt");
-    if(!archivo_ubicaciones.is_open()){ //no existe el archivo
-        std::cout <<"No se encontro el archivo ubicaciones" <<std::endl;
-    }
-    else{
-        for(int i = 0; i < coordenada_x; i++){
-            for(int j = 0; j < coordenada_y; j++){
-                if(matriz[i][j] -> tiene_material_o_edificio()){
-                    material_o_edificio = matriz[i][j] -> devolver_material_o_edificio();
-                    archivo_ubicaciones <<material_o_edificio <<" (" <<i <<", " <<j <<")"<<std::endl;
-                }
-            }
-        }
-    archivo_ubicaciones.close();
-    }
-}*/
 
 void Mapa::menu_atacar(Jugador* jugador, Jugador* rival){
     bool destruido;
@@ -765,7 +722,7 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
             nombre = "planta electrica";
         }
         
-        cout << "Nombre: " << aux;
+        //cout << "Nombre: " << aux;
         archivo >> aux;
        
         coord_x = stoi(aux);
