@@ -2,13 +2,14 @@
 #include <iostream>
 #include "grafomapa.h"
 #include "utilidad.h"
+#include "mapa.h"
 
 Jugador::Jugador() {}
 
 Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa){
     //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
-    this->energia = 150;
+    this->energia = 2000;
     this->nombre = numero;
     this->crear_grafo(mapa);
     this->asignar_objetivos(edificios, materiales, mapa, this);
@@ -21,9 +22,47 @@ void Jugador::crear_grafo(Mapa * mapa) {
 }
 
 void Jugador::mover_gratis(int x, int y){
-    this->coordenada_x=x;
-    this->coordenada_y=y;
+    this->coordenada_x = x;
+    this->coordenada_y = y;
 }
+
+
+void Jugador::mover_jugador(Mapa* mapa) {
+    Utilidad util;
+    int destino_x, destino_y;
+
+    // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
+
+    std::cout << "Ingrese el casillero de destino" << std::endl; 
+    destino_x = mapa->pedir_fila();
+    destino_y = mapa->pedir_columna();                          std::cout << std::endl;
+
+    int costo = grafo->devolver_costo(this->coordenada_x, this->coordenada_y, destino_x, destino_y);
+    bool recorrido_valido = grafo->es_recorrido_valido(this->coordenada_x, this->coordenada_y, destino_x, destino_y, costo);
+
+    if (recorrido_valido) {
+        std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
+        std::cout << "Tenes " << devolver_energia() << " de energia." << std::endl;
+
+        if (devolver_energia() >= costo) {
+            if (util.pedir_confirmacion()) {
+                ListaRecorrido* recorrido = grafo->mover_jugador(this->coordenada_x, this->coordenada_y, destino_x, destino_y);
+                mapa->mostrar_recorrido(recorrido);
+                restar_energia(costo);
+                mover_gratis(destino_x, destino_y);
+            } else {
+                std::cout << "Operacion cancelada." << std::endl;
+            }
+        } else {
+            std::cout << "No tenes energia suficiente." << std::endl;
+        }
+    } else {
+        std::cout << "No podes moverte a la coordenada ingresada." << std::endl;
+    }
+
+    std::cout << std::endl; 
+}
+
 
 int Jugador::devolver_energia(){
     return this->energia;
