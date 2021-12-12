@@ -43,7 +43,8 @@ void CasilleroConstruible::demoler(Jugador* jugador){
     jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("piedra"))->sumar_cantidad(this->edificio->devolver_piedra()/2);
     jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("madera"))->sumar_cantidad(this->edificio->devolver_madera()/2);
     jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("metal"))->sumar_cantidad(this->edificio->devolver_metal()/2);
-    this->edificio=nullptr;
+    delete edificio;
+    this->edificio=new Edificio;
 }
 
 void CasilleroConstruible::recolectar_material(Jugador* jugador){
@@ -108,7 +109,8 @@ bool CasilleroConstruible::atacar(){
     this->vida-=1;
     if(vida==0){
         std::cout<<"El "<< this->edificio->devolver_nombre() <<" ha sido destruido"<<std::endl;
-        this->edificio = nullptr;
+        delete edificio;
+        this->edificio = new Edificio;
         return true;
     }
     else{
