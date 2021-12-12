@@ -108,6 +108,7 @@ void RamaEdificios::destruir(){
         this->nodo_izq->destruir();
         delete nodo_izq;
     }
+    delete valor;
 }
 
 int RamaEdificios::devolver_todo(Edificio** array, int contador){

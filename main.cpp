@@ -60,6 +60,10 @@ int main(){
     //}
         //guardar_archivo_materiales(materiales, tope_material);
         //guardar_archivo_edificios(edificios, tope_edificio);
+
+    delete jugador1;
+    delete jugador2;
+    delete edificios;
     return 0;
 }
 

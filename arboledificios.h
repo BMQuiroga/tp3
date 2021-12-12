@@ -19,6 +19,8 @@ public:
     //POS: -
     ArbolEdificios(/*Edificio edificio*/);
 
+    ~ArbolEdificios();
+
     //PRE: -
     //POS: agrega el edificio al arbol
     void alta(std::string nombre, int piedra, int madera, int metal, int maximos);

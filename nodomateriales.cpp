@@ -7,6 +7,13 @@ NodoMateriales::NodoMateriales(Material* d) {
     siguiente = 0;
 }
 
+
+void NodoMateriales::baja() {
+    delete dato;
+    dato = NULL;
+    siguiente = NULL;
+}
+
 void NodoMateriales::cambiar_dato(Material* d) {
     dato = d;
 }

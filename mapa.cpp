@@ -25,6 +25,12 @@ Mapa::Mapa(int filas, int columnas) {
     this->matriz = casilla;
 }
 
+Mapa::~Mapa() {
+    for (int i = 0; i < devolver_cantidad_filas(); i++) {
+        delete [] matriz[i];
+    }
+    delete [] matriz;
+}
 
 void Mapa::definir(int coordenada_x,int coordenada_y){
     this -> coordenada_x = coordenada_x;
@@ -207,7 +213,7 @@ void Mapa::mostrar_mapa(Jugador* jugador1, Jugador* jugador2){
 
 
 
-void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
+void Mapa::mostrar_recorrido(ListaRecorrido* recorrido, Jugador * jugador) {
     //hecho asi nomas, ver si se puede agregar las cosas de los casilleros
     std::cout <<"Columna: ";
     for(int k = 0 ;k < coordenada_y ;k++)
@@ -220,9 +226,10 @@ void Mapa::mostrar_recorrido(ListaRecorrido* recorrido) {
             std::cout <<"Fila " <<i <<":";
         for(int j = 0 ;j < coordenada_y ;j++){
             if (recorrido->contiene(matriz[i][j]->obtener_id())) {
-               std::cout << " " << COLOR_ROJO << matriz[i][j]->devolver_tipo_camino() << COLOR_BLANCO ;
+                matriz[i][j]->recolectar_material(jugador);
+                std::cout << " " << COLOR_ROJO << matriz[i][j]->devolver_tipo_camino() << COLOR_BLANCO ;
             } else {
-               std::cout << " " << matriz[i][j]->devolver_tipo_camino();
+                std::cout << " " << matriz[i][j]->devolver_tipo_camino();
             }
         }
         std::cout <<std::endl;
@@ -538,41 +545,6 @@ bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador* jugador) {
 
 
 
-// void Mapa::mover_jugador(Jugador* jugador) {
-//     int origen_x, origen_y, destino_x, destino_y;
-//     GrafoMapa* mover = jugador->movimiento();
-//     Utilidad util;
-
-//     // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
-
-//     std::cout << "Casillero de origen" << std::endl; 
-//     origen_x = pedir_fila();
-//     origen_y = pedir_columna();                                 std::cout << std::endl;
-//     std::cout << "Casillero de destino" << std::endl; 
-//     destino_x = pedir_fila();
-//     destino_y = pedir_columna();                                std::cout << std::endl;
-
-//     int costo = mover->devolver_costo(origen_x, origen_y, destino_x, destino_y);
-
-//     std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
-//     std::cout << "Tenes " << jugador->devolver_energia() << " de energia." << std::endl;
-
-//     if (jugador->devolver_energia() >= costo) {
-//         if (util.pedir_confirmacion()) {
-//             jugador->restar_energia(costo); //no funciona
-//             //cambiar de posicion del jugador en el mapa
-//             ListaRecorrido* recorrido = mover->mover_jugador(origen_x, origen_y, destino_x, destino_y);
-//             // mover->mostrar_recorrido_en_mapa(recorrido);
-//             mostrar_recorrido(recorrido);
-//         } else {
-//             std::cout << "Operacion cancelada." << std::endl;
-//         }
-//     } else {
-//         std::cout << "No tenes energia suficiente." << std::endl;
-//     }
-//     std::cout << std::endl; 
-// }  
-
 void Mapa::reescribir_ubicaciones(Jugador* j, Jugador* u){
     std::ofstream archivo_ubicaciones;
     
@@ -628,7 +600,8 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, J
         std::cout<<"No se ha encontrado el archivo ubicaciones, comenzando nueva partida..."<<std::endl;
     }
     else{
-        archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
+        archivo_en_blanco = true;
+        //archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
         if(archivo_en_blanco)
             return true;
         else{

@@ -15,6 +15,7 @@ public:
     //POS: tope = 0
     ListaMateriales();
 
+    ~ListaMateriales();
     //PRE: 1 <= pos <= cantidad + 1
     //POS: agrega d arriba de la pila e incrementa tope en 1
     void alta(Material* d /*, int pos */);

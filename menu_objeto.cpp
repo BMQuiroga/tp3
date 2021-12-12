@@ -238,11 +238,11 @@ void Menu::modificar_datos_edificio(){
 
     while (!resultado && nombre != "fin") {
         if (!edificios->es_edificio_valido(nombre)) {
-             cout << "No se encontro el edificio ingresado. Intente de nuevo: ";
-             cin >> nombre;
+            cout << "No se encontro el edificio ingresado. Intente de nuevo: ";
+            cin >> nombre;
 
         } else {
-            
+
             if (nombre != "obelisco") {
                 edificio = edificios->consulta(nombre);
                 cout << "Se encontro el edificio " << edificio->devolver_nombre() << "." << endl;

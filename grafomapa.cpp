@@ -12,6 +12,10 @@ GrafoMapa::GrafoMapa(Jugador* jugador, Mapa* mapa) {
     this->columnas = mapa->devolver_cantidad_columnas();
 }
 
+GrafoMapa::~GrafoMapa(){
+    liberar_memoria();
+}
+
 
 void GrafoMapa::generar_caminos() {
     inicializar_matriz_adyacencia();
@@ -269,3 +273,17 @@ void GrafoMapa::mostrar_matriz() {
     // }
 }
 
+void GrafoMapa::liberar_memoria() {
+    int largo_matriz = filas * columnas;
+
+    for (int i = 0; i < largo_matriz; i++) {
+        delete [] matriz_vertices [i];
+        delete [] matriz_adyacencia[i];
+        matriz_vertices [i] = NULL;
+        matriz_adyacencia [i] = NULL;
+    }
+    delete [] matriz_vertices;
+    delete [] matriz_adyacencia;
+    matriz_vertices = NULL;
+    matriz_adyacencia = NULL;
+}

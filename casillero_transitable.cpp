@@ -41,7 +41,7 @@ CasilleroTransitable::CasilleroTransitable(std::string camino){
 }
 
 CasilleroTransitable::~CasilleroTransitable() {
-    //delete material; va aca o en mapa?
+    delete material;
 }
 
 void CasilleroTransitable::construir(Edificio* edificio){

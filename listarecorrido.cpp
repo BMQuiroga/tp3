@@ -49,7 +49,7 @@ bool ListaRecorrido::contiene(Dato dato) {
 }
 
 void ListaRecorrido::liberar_memoria() {
-    delete [] this->lista;
+    delete [] lista;
 }
 
 ListaRecorrido::~ListaRecorrido() {
