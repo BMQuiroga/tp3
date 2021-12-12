@@ -55,8 +55,8 @@ void CasilleroTransitable::recolectar_material(Jugador* jugador){
     int indice = jugador->devolver_materiales()->buscar_indice(nombre);
     if (indice!= -1 )
         jugador->devolver_materiales()->consulta(indice)->sumar_cantidad(cantidad);
-    //if(nombre=="andycoins")
-        //jugador->actualizar_andycoins_juntadas(cantidad);
+    if(nombre=="andycoins")
+        jugador->actualizar_andycoins_juntadas(cantidad);
     //std::cout << "Recolectados del suelo " << cantidad << " de " << nombre << std::endl;
     
 

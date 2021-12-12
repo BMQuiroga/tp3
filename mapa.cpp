@@ -493,8 +493,7 @@ void Mapa::menu_atacar(Jugador* jugador, Jugador* rival){
                     matriz[coord_x][coord_y]->cambiar_jugador(0);
                 jugador->restar_energia(30);
                 jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("bombas"))->sumar_cantidad(-1);
-                //jugador->actualizar_objetivo(1, 1);
-                //jugador->actualizar_bombas_usadas();//le suma 1 por defecto
+                jugador->actualizar_bombas_usadas();//le suma 1 por defecto
             }
             else
                 std::cout<<"No tienes bombas!" <<std::endl;
@@ -600,8 +599,8 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, J
         std::cout<<"No se ha encontrado el archivo ubicaciones, comenzando nueva partida..."<<std::endl;
     }
     else{
-        archivo_en_blanco = true;
-        //archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
+        //archivo_en_blanco = true;
+        archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
         if(archivo_en_blanco)
             return true;
         else{

@@ -87,10 +87,9 @@ void Jugador::comprar_bombas(){
         if (util.convertir_a_entero(bombas) == 1)   std::cout << "Compraste " << bombas << " bomba." << std::endl;
         else                                        std::cout << "Compraste " << bombas << " bombas" << std::endl;
 
-        // this->actualizar_objetivo(OBJ_COMPRAR_ANDYPOLIS, bombas * 100);
         this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(util.convertir_a_entero(bombas));
         this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(util.convertir_a_entero(bombas) * 100);
-        //actualizar_bombas_compradas(bombas);    //tirA SEG FAULT
+        actualizar_bombas_compradas(util.convertir_a_entero(bombas));    //tirA SEG FAULT
         this->energia-=5;
     } else {
         std::cout << "Compra cancelada" << std::endl;
@@ -279,26 +278,26 @@ void Jugador::actualizar_bombas_compradas(int cantidad){
 
 }
 
-void Jugador::actualizar_bombas_usadas(){
+void Jugador::actualizar_bombas_usadas(){/*
     for (int i=0; i<3; i++){
         if(objetivo_secundario[i]->devolver_nombre()=="Bombardero")
             objetivo_secundario[i]->actualizar(1);
     }
-
+    */
 }
 
-void Jugador::actualizar_andycoins_juntadas(int cantidad){
+void Jugador::actualizar_andycoins_juntadas(int cantidad){/*
     for (int i=0; i<3; i++){
         if(objetivo_secundario[i]->devolver_nombre()=="ComprarAndypolis")
             objetivo_secundario[i]->actualizar(cantidad);
-    }
+    }*/
 }
 
-void Jugador::mostrar_objetivos(){
+void Jugador::mostrar_objetivos(){/*
     this->objetivo_principal->mostrar();
     this->objetivo_secundario[0]->mostrar();
     this->objetivo_secundario[1]->mostrar();
     this->objetivo_secundario[2]->mostrar();
 
-
+*/
 }

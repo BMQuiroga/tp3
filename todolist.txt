@@ -10,3 +10,6 @@ objetivos, en general
 
 reimplementar los objetivos actualizar cuando esten hechos
 
+lluvia de recursos 
+
+guardar
