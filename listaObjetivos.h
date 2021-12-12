@@ -21,11 +21,15 @@ public:
 
     void alta(Objetivo *objetivo, int posicion);
 
-    void obtener_objetivos_aleatorios(Jugador* jugador);
+    void obtener_objetivos_aleatorios(Jugador jugador);
 
-    Objetivo** obtener_objetivos_aleatorios(Jugador* jugador, ListaEdificios edificios);
+    Objetivo** obtener_objetivos_aleatorios(Jugador* jugador, ListaEdificios edificios, Mapa* mapa);
 
-    void asignar_objetivos_correspondientes(int pos1, int pos2, int pos3, Jugador* jugador, ListaEdificios edificios);
+    void asignar_objetivos_correspondientes(int pos1, int pos2, int pos3, Jugador jugador, ListaEdificios edificios, Mapa mapa);
+
+    ListaObjetivos(Jugador* jugador, ListaEdificios edificios, Mapa* mapa);
+
+    void mostrar_objetivos();
 };
 
 
