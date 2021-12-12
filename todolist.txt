@@ -5,3 +5,8 @@ hay un tema con jugador: no puedo restar energia,
 uml
 
 tira error en listar todos los edificios si se destruyo un edificio atacandolo o demoliendolo
+
+objetivos, en general
+
+reimplementar los objetivos actualizar cuando esten hechos
+

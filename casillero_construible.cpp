@@ -22,7 +22,8 @@ void CasilleroConstruible::construir(Edificio* edificio_nuevo){
 }
 
 CasilleroConstruible::CasilleroConstruible(){
-    this->edificio = new Edificio();
+    //Edificio edificio_vacio;
+    this->edificio = new Edificio;//&edificio_vacio;
     this->tipo = 'T';
     this->jugador=0;
     this->letra = 'T';

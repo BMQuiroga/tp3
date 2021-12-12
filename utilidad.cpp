@@ -107,3 +107,12 @@ void Utilidad::limpiar_pantalla() {
 void Utilidad::pausa() {
     system(PAUSE);
 }
+
+int Utilidad::diccionario_materiales(std::string material){
+    if (material=="andycoins")
+        return 250;
+    if (material=="piedra")
+        return 100;
+    else
+        return 50;
+}

@@ -25,7 +25,7 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
 }*/
 
 CasilleroTransitable::CasilleroTransitable(std::string camino){
-    // Material* material; //revisar
+    //Material material_vacio; //revisar
     // this->material = material;
     this->material = new Material; 
     this->tipo = 'C';
@@ -51,10 +51,14 @@ void CasilleroTransitable::construir(Edificio* edificio){
 void CasilleroTransitable::recolectar_material(Jugador* jugador){
     std::string nombre = this->material->devolver_nombre();
     int cantidad = this->material->devolver_cantidad();
-    material->borrar();
-    jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice(nombre))->sumar_cantidad(cantidad);
-    if(nombre=="andycoins")
-        jugador->actualizar_andycoins_juntadas(cantidad);
+    this->material->borrar();
+    int indice = jugador->devolver_materiales()->buscar_indice(nombre);
+    if (indice!= -1 )
+        jugador->devolver_materiales()->consulta(indice)->sumar_cantidad(cantidad);
+    //if(nombre=="andycoins")
+        //jugador->actualizar_andycoins_juntadas(cantidad);
+    //std::cout << "Recolectados del suelo " << cantidad << " de " << nombre << std::endl;
+    
 
 }
 

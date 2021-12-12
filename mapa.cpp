@@ -2,7 +2,6 @@
 #include <ctime>
 #include <cstdlib>
 #include "mapa.h"
-#include "menu.h"
 #include "grafomapa.h"
 #include "utilidad.h"
 
@@ -96,12 +95,13 @@ void Mapa::llamar_lluvia(Jugador* jugador1, Jugador* jugador2){
 
 void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y){
     int error = 0;//Para evitar while true, cuando se queda sin casilleros transitables vacios
+    Utilidad util;
     while(cantidad){
         error++;
         int coord_x = rand()%coordenada_x;
         int coord_y = rand()%coordenada_y;
         if ((matriz[coord_x][coord_y]->devolver_tipo() == 'C') && (!matriz[coord_x][coord_y]->tiene_material_o_edificio()) && (coord_x!=j1_x && coord_y!=j1_y) && (coord_x!=j2_x && coord_y!=j2_y)){
-            Material* mat = new Material(material, diccionario_materiales(material));
+            Material* mat = new Material(material, util.diccionario_materiales(material));
             matriz[coord_x][coord_y]->poner_material(mat);
             cantidad--;
         }
@@ -622,6 +622,7 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, J
 }
 
 bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
+    Utilidad util;
     std::string nombre;
     bool archivo_en_blanco;
     std::string aux;
@@ -638,7 +639,7 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
         coord_x = stoi(aux);
         archivo >> aux;
         coord_y = stoi(aux);
-        Material* material = new Material(nombre,diccionario_materiales(nombre));
+        Material* material = new Material(nombre,util.diccionario_materiales(nombre));
         matriz[coord_x][coord_y]->poner_material(material);
     }
     return archivo_en_blanco;

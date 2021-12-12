@@ -47,6 +47,9 @@ public:
 
 
     void dormir();
+
+    
+    int diccionario_materiales(std::string material);
 };
 
 
