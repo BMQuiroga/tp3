@@ -78,8 +78,10 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
             procesar_opcion_partida(opcion, lista_jugadores[JUGADOR], lista_jugadores[RIVAL]);
         }
         lista_jugadores[JUGADOR]->sumar_energia(20);
-        // if(lista_jugadores[JUGADOR]->devolver_nombre()==2)
-        //     mapa->llamar_lluvia(jugador1,jugador2);
+        if(lista_jugadores[JUGADOR]->devolver_nombre()==2){
+            mapa->llamar_lluvia(jugador1,jugador2);
+            std::cout << "lluvia" << std::endl;
+        }
         // if(checkear_si_gano(lista_jugadores[JUGADOR]))
         //     secuencia_victoria(lista_jugadores[JUGADOR]);
         cambiar_turno(lista_jugadores);

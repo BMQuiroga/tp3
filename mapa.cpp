@@ -98,8 +98,8 @@ void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2
     Utilidad util;
     while(cantidad){
         error++;
-        int coord_x = rand()%coordenada_x;
-        int coord_y = rand()%coordenada_y;
+        int coord_x = util.generador_de_numeros_aleatorios(0,coordenada_x-1);
+        int coord_y = util.generador_de_numeros_aleatorios(0,coordenada_y-1);
         if ((matriz[coord_x][coord_y]->devolver_tipo() == 'C') && (!matriz[coord_x][coord_y]->tiene_material_o_edificio()) && (coord_x!=j1_x && coord_y!=j1_y) && (coord_x!=j2_x && coord_y!=j2_y)){
             Material* mat = new Material(material, util.diccionario_materiales(material));
             matriz[coord_x][coord_y]->poner_material(mat);

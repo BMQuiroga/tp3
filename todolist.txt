@@ -1,15 +1,8 @@
-funcion moverse
-
-hay un tema con jugador: no puedo restar energia,
-
 uml
-
-tira error en listar todos los edificios si se destruyo un edificio atacandolo o demoliendolo
 
 objetivos, en general
 
 reimplementar los objetivos actualizar cuando esten hechos
 
-lluvia de recursos 
+2 jugadores pueden moverse al mismo casillero
 
-guardar
