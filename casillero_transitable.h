@@ -70,6 +70,9 @@ public:
     //pre: -
     //pos: devuelve el tipo de camino
     std::string devolver_tipo_camino();
+
+
+    void liberar_memoria();
 };
 
 #endif 

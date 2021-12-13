@@ -28,7 +28,7 @@ CasilleroTransitable::CasilleroTransitable(std::string camino){
 }
 
 CasilleroTransitable::~CasilleroTransitable() {
-    delete material;
+    liberar_memoria();
 }
 
 void CasilleroTransitable::construir(Edificio* edificio){
@@ -80,3 +80,7 @@ void CasilleroTransitable::mostrar(){
         std::cout<<"Soy un casillero transitable y me encuentro vacio"<<std::endl;
 }
 
+void CasilleroTransitable::liberar_memoria() {
+    delete material;
+    material = NULL;
+}

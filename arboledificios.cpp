@@ -79,6 +79,7 @@ bool ArbolEdificios::es_edificio_valido(std::string nombre){
 void ArbolEdificios::destruir(){
     this->raiz->destruir();
     delete this->raiz;
+    this->raiz = NULL;
 }
 
 Edificio** ArbolEdificios::devolver_todo(){

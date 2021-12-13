@@ -15,7 +15,15 @@ RamaEdificios::RamaEdificios(Edificio*edificio){
     this -> clave = edificio->devolver_nombre();
     this->nodo_der = NULL;
     this->nodo_izq = NULL;
+}
 
+RamaEdificios::~RamaEdificios() {
+    // std::cout << "DESTRUCTOR " << valor->devolver_nombre() << std::endl;
+    // ROMPE TODO
+    // if (valor != NULL) {
+    //     delete valor;
+    //     valor = NULL;
+    // }
 }
 
 void RamaEdificios::asignar_nodo(Edificio* edificio){
@@ -108,7 +116,6 @@ void RamaEdificios::destruir(){
         this->nodo_izq->destruir();
         delete nodo_izq;
     }
-    delete valor;
 }
 
 int RamaEdificios::devolver_todo(Edificio** array, int contador){
@@ -157,6 +164,10 @@ void RamaEdificios::modificar(std::ofstream & archivo){
     if(nodo_izq){
         this->nodo_izq->modificar(archivo);
     }
+}
+
+void RamaEdificios::liberar_memoria() {
+
 }
 
 

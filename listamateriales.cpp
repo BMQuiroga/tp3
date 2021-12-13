@@ -45,6 +45,7 @@ void ListaMateriales::baja(int pos) {
     //std::cout << "Libero memoria en: " << baja << std::endl;
     baja->baja();
     delete baja;
+    baja = NULL;
 }
 
 Material* ListaMateriales::consulta(int pos) {

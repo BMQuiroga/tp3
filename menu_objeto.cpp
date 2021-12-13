@@ -34,14 +34,14 @@ void Menu::guardar(){
     //std::cout << "aca3" << std::endl;
     mapa->reescribir_ubicaciones(jugador1,jugador2);
     //std::cout << "aca4" << std::endl;
-    edificios->destruir();
-    //std::cout << "aca5" << std::endl;
-    mapa->destruir();
-    //std::cout << "aca6" << std::endl;
-    jugador1->destruir();
-    //std::cout << "aca7" << std::endl;
-    jugador2->destruir();
-    //std::cout << "aca8" << std::endl;
+    // edificios->destruir();
+    // //std::cout << "aca5" << std::endl;
+    // mapa->destruir();
+    // //std::cout << "aca6" << std::endl;
+    // jugador1->destruir();
+    // //std::cout << "aca7" << std::endl;
+    // jugador2->destruir();
+    // //std::cout << "aca8" << std::endl;
 }
 
 

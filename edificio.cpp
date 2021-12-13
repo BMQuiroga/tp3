@@ -35,6 +35,10 @@ Edificio::Edificio(std::string nombre, int piedra, int madera, int metal, int ma
         this->vida=1;*/
 }
 
+Edificio::~Edificio() {
+    this->nombre = "";
+}
+
 std::string Edificio::devolver_nombre(){
     
     return this->nombre;
@@ -50,7 +54,7 @@ Edificio Edificio::operator=(Edificio construccion){
     return Edificio(construccion.nombre, construccion.cantidad_piedra, construccion.cantidad_madera, construccion.cantidad_metal,construccion.maximos_permitidos);
 }
 
-Edificio::Edificio(){
+Edificio::Edificio() {
     this->nombre = "0";
     this->cantidad_piedra = 0;
     this->cantidad_madera = 0;
