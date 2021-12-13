@@ -58,7 +58,7 @@ Casillero* Archivo::asignar_casillero(char letra) {     //pasable a mapa?
 }
 
 
-void Archivo::procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& j2){
+void Archivo::procesar_archivo_materiales(ListaMateriales* j1, ListaMateriales* j2){
     std::string nombre,numero1,numero2;
     // int num1 = 0, num2 = 0;
     
@@ -72,8 +72,8 @@ void Archivo::procesar_archivo_materiales(ListaMateriales& j1, ListaMateriales& 
             getline(archivo, numero2);
             Material* material1 = new Material(nombre,stoi(numero1));
             Material* material2 = new Material(nombre,stoi(numero2));
-            j1.alta(material1);
-            j2.alta(material2);
+            j1->alta(material1);
+            j2->alta(material2);
         }
     
     archivo.close();
