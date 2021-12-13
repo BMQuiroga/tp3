@@ -13,15 +13,14 @@ int main(){
     edificios->procesar_archivo_edificios();      
 
     ListaMateriales materiales1, materiales2;
+
     archivo.procesar_archivo_materiales(materiales1,materiales2);   //tuve que hacerlo asi porque sino perdia scope las variables y me devolvia 0 el primer puntero
     
     Mapa* mapa = archivo.procesar_archivo_mapa();
 
     Jugador* jugador1 = new Jugador(1,1,1, edificios, mapa);
     Jugador* jugador2 = new Jugador(2,2,2, edificios, mapa);
-    //std::cout << "aca" << std::endl;
     mapa->procesar_archivo_ubicaciones(edificios, jugador1, jugador2);
-    //std::cout << "aca" << std::endl;
     jugador1->asignar_lista_materiales(&materiales1);
     jugador2->asignar_lista_materiales(&materiales2);
     // Jugador jugador1(1,1,1, edificios, mapa);
@@ -32,7 +31,7 @@ int main(){
 
     Menu menu(mapa, edificios, jugador1, jugador2);
 
-    ListaObjetivos vector1(jugador1, *edificios, mapa);
+    //ListaObjetivos vector1(jugador1, *edificios, mapa);
     //vector1.mostrar_objetivos();
 
 

@@ -77,6 +77,9 @@ public:
     void cambiar_turno(Jugador** lista_jugadores);
 
 
+    void mostrar_resumen(Jugador** cola);
+
+
     bool checkear_si_gano(Jugador* jugador);
     void secuencia_victoria(Jugador* jugador);
     void modificar_datos_edificio();

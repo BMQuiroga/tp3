@@ -50,6 +50,9 @@ public:
     //pos: pausa el juego
     void pausa();
 
+    void encuadrar(std::string texto);
+
+    void linea();
     
     int diccionario_materiales(std::string material);
 };

@@ -44,15 +44,15 @@ void Menu::mostrar_menu(){
 
 
 void Menu::mostrar_menu_partida(){
-    cout << "1. Construir edificio por nombre"<<endl;
-    cout << "2. Listar mis edificios construidos" <<endl;
-    cout << "3. Demoler un edificio por coordenada"<<endl;
-    cout << "4. Atacar un edificio por coordenada"<<endl;
-    cout << "5. Reparar un edificio por coordenada"<<endl;
-    cout << "6. Comprar bombas"<<endl;
-    cout << "7. Consultar coordenada"<<endl;
-    cout << "8. Mostrar inventario"<<endl;
-    cout << "9. Mostrar objetivos"<<endl;
+    cout << " 1. Construir edificio por nombre"<<endl;
+    cout << " 2. Listar mis edificios construidos" <<endl;
+    cout << " 3. Demoler un edificio por coordenada"<<endl;
+    cout << " 4. Atacar un edificio por coordenada"<<endl;
+    cout << " 5. Reparar un edificio por coordenada"<<endl;
+    cout << " 6. Comprar bombas"<<endl;
+    cout << " 7. Consultar coordenada"<<endl;
+    cout << " 8. Mostrar inventario"<<endl;
+    cout << " 9. Mostrar objetivos"<<endl;
     cout << "10. Recolectar recursos producidos"<<endl;
     cout << "11. Moverse a una coordenada"<<endl;
     cout << "12. Finalizar Turno"<<endl;
@@ -70,9 +70,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
                 lista_jugadores[JUGADOR]->devolver_energia() != 0  && 
                 !lista_jugadores[RIVAL]->ha_ganado()) {
 
-            cout << "Es el turno del jugador numero " << lista_jugadores[JUGADOR]->devolver_nombre() << endl;  
-            cout << "Tienes " << lista_jugadores[JUGADOR]->devolver_energia() << " de energia" << endl;
-            cout << "Posicion actual: (" << lista_jugadores[JUGADOR]->devolver_coordenada_x() << " ," << lista_jugadores[JUGADOR]->devolver_coordenada_y() << ")"<<std::endl;
+            mostrar_resumen(lista_jugadores);
             mostrar_menu_partida();
             opcion = utilidad.pedir_opcion();
             procesar_opcion_partida(opcion, lista_jugadores[JUGADOR], lista_jugadores[RIVAL]);
@@ -92,6 +90,13 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
     delete [] lista_jugadores; //poner en otro lado
 }
 
+void Menu::mostrar_resumen(Jugador** lista_jugadores) {
+    int numero = lista_jugadores[JUGADOR]->devolver_nombre();
+    utilidad.encuadrar("Es el turno del jugador numero " + to_string(numero));
+    cout << " Tienes " << lista_jugadores[JUGADOR]->devolver_energia() << " de energia" << endl;
+    cout << " Posicion actual: (" << lista_jugadores[JUGADOR]->devolver_coordenada_x() << " ," << lista_jugadores[JUGADOR]->devolver_coordenada_y() << ")"<<std::endl;
+    cout << endl;
+}
 
 Jugador** Menu::crear_cola_jugadores(Jugador *jugador1, Jugador* jugador2) {   
     Jugador ** lista_jugadores = new Jugador*[2];
@@ -112,20 +117,26 @@ void Menu::procesar_opcion_menu(int opcion_elegida){
     utilidad.limpiar_pantalla();
     switch(opcion_elegida){
         case MODIFICAR_EDIFICIO:
-            //no esta testeado
+            utilidad.encuadrar("MODIFICAR EDIFICIO");
             modificar_datos_edificio();
             break;
         case LISTAR_TODOS_LOS_EDIFICIOS:
+            utilidad.encuadrar("LISTAR TODOS LOS EDIFICIOS");
             mapa->listar_todos_los_edificios(edificios,jugador1,jugador2);
             break;
         case MOSTRAR_MAPA:
+            utilidad.encuadrar("MOSTRAR MAPA");
             mapa->mostrar_mapa(jugador1,jugador2);
             break;
         case COMENZAR_PARTIDA:
             partida();
             break;
         case GUARDAR_Y_SALIR_MENU:
-            //falta
+            utilidad.encuadrar("GRACIAS POR JUGAR");
+            break;
+        default:
+            cout << "Opcion fuera de rango." << endl;
+            utilidad.linea();
             break;
     }
     utilidad.pausa();
@@ -136,63 +147,51 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
     utilidad.limpiar_pantalla();
     switch(opcion_elegida){
         case CONSTRUIR_EDIFICIO:
-            cout << "CONSTRUIR EDIFICIO POR NOMBRE" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("CONSTRUIR EDIFICIO POR NOMBRE");
             mapa->construir(edificios,jugador,rival); 
             break;
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
-            cout << "LISTAR EDIFICIOS CONSTRUIDOS" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("LISTAR EDIFICIOS CONSTRUIDOS");
             mapa->listar_edificios_construidos(edificios,jugador);
             break;
         case DEMOLER_EDIFICIO:
-            cout << "DEMOLER EDIFICIO POR COORDENADAS" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("DEMOLER EDIFICIO POR COORDENADAS");
             mapa->menu_demoler(edificios,jugador);
             break;
         case ATACAR_EDIFICIO:
-            cout << "ATACAR EDIFICIO POR COORDENADA" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("ATACAR EDIFICIO POR COORDENADA");
             mapa->menu_atacar(jugador,rival);
             break;
         case REPARAR_EDIFICIO:
-            cout << "REPARAR EDIFICIO POR COORDENADA" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("REPARAR EDIFICIO POR COORDENADA");
             mapa->menu_reparar(jugador);
             break;
         case COMPRAR_BOMBAS:
-            cout << "COMPRAR BOMBAS" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("COMPRAR BOMBAS");
             jugador->comprar_bombas();
             break; 
         case CONSULTAR_COORDENADA:
-            cout << "CONSULTAR COORDENADA" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("CONSULTAR COORDENADA");
             mapa->menu_consultar_coordenada();
             break;
         case MOSTRAR_INVENTARIO:
-            cout << "MOSTRAR INVENTARIO" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("MOSTRAR INVENTARIO");
             jugador->devolver_materiales()->mostrar();
             break;
         case MOSTRAR_OBJETIVOS:
-            cout << "MOSTRAR OBJETIVOS" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("MOSTRAR OBJETIVOS");
             jugador->mostrar_objetivos();
             break;
         case RECOLECTAR_RECURSOS:
-            cout << "RECOLECTAR RECURSOS" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("RECOLECTAR RECURSOS");
             mapa->recolectar(jugador);
             break;
         case MOVERSE:
-            cout << "MOVER JUGADOR" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("MOVER JUGADOR");
             jugador->mover_jugador(mapa, rival);
             break;
         case FINALIZAR_TURNO:
-            cout << "CAMBIO DE TURNO" << endl;
-            cout << "---------------------------------" << endl;
+            utilidad.encuadrar("CAMBIO DE TURNO");
             cout << "Le toca al jugador numero " << rival->devolver_nombre() << "." << endl;
             //no hace nada
             break;
