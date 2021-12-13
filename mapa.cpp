@@ -323,17 +323,17 @@ void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival
             coord_x = pedir_fila();
             coord_y = pedir_columna();
 
-            if(!casillero_ocupado(jugador, coord_x, coord_y) && !casillero_ocupado(rival, coord_x, coord_y)){
-                if(coord_x >= 0 && coord_x < coordenada_x && coord_y >= 0 && coord_y < coordenada_y){
-                    if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T'){
+            if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T'){
+                if( !casillero_ocupado(jugador, coord_x, coord_y) && 
+                    !casillero_ocupado(rival, coord_x, coord_y) && 
+                    !matriz[coord_x][coord_y]->tiene_material_o_edificio()){
                         realizar_construccion(edificios,coord_x,coord_y,edificio,jugador);
                         matriz[coord_x][coord_y] -> cambiar_jugador(jugador->devolver_nombre());
-                    }
-                    else
-                        std::cout <<"No se puede construir en esa coordenada!"<<std::endl;
                 }
                 else
-                    std::cout <<"Coordenadas fuera de rango!"<<std::endl;
+                    std::cout <<"El casillero esta ocupado!"<<std::endl;
+            } else {
+                std::cout <<"No se puede construir en esa coordenada!"<<std::endl;
             }
         }
     }
