@@ -242,6 +242,7 @@ void Mapa::mostrar_recorrido(ListaRecorrido* recorrido, Jugador * jugador) {
         }
         std::cout <<std::endl;
     }
+    delete recorrido;
 }
 
 
@@ -260,48 +261,48 @@ void Mapa::destruir(){
 
 
 
-void Mapa::procesar_archivo_mapa(){
-    char letra;
-    int coordenadax, coordenaday;
-    int contador = 0;
-    std::ifstream archivo_mapa("mapa.txt" ,std::ios::in);
-    if(!archivo_mapa)
-        std::cout <<"El archivo no se abrio correctamente"<<std::endl;
-    else{
-        archivo_mapa >> coordenadax;
-        archivo_mapa >> coordenaday;
+// void Mapa::procesar_archivo_mapa(){
+//     char letra;
+//     int coordenadax, coordenaday;
+//     int contador = 0;
+//     std::ifstream archivo_mapa("mapa.txt" ,std::ios::in);
+//     if(!archivo_mapa)
+//         std::cout <<"El archivo no se abrio correctamente"<<std::endl;
+//     else{
+//         archivo_mapa >> coordenadax;
+//         archivo_mapa >> coordenaday;
         
-        definir(coordenadax, coordenaday);
+//         definir(coordenadax, coordenaday);
         
-        //std::cout<<coordenada_x<<" "<<coordenada_y<<std::endl;
+//         //std::cout<<coordenada_x<<" "<<coordenada_y<<std::endl;
 
-        Casillero*** casilla;
-        casilla = new Casillero**[coordenada_x];
-        for(int i = 0; i < coordenada_x; i++){
-            casilla[i] = new Casillero*[coordenada_y];
-            for(int j = 0; j < coordenada_y; j++){
-                archivo_mapa >> letra;
-                //std::cout<<i<<" "<<j<<std::endl;
-                if(letra == 'T')
-                    casilla[i][j] = new CasilleroConstruible();
-                else if(letra == 'C')
-                    casilla[i][j] = new CasilleroTransitable("Camino");
-                else if(letra == 'B')
-                    casilla[i][j] = new CasilleroTransitable("Betun");
-                else if(letra == 'M')
-                    casilla[i][j] = new CasilleroTransitable("Muelle");
-                else if(letra == 'L')
-                    casilla[i][j] = new CasilleroInaccesible();
-                else
-                    std::cout<<"ERROR";
+//         Casillero*** casilla;
+//         casilla = new Casillero**[coordenada_x];
+//         for(int i = 0; i < coordenada_x; i++){
+//             casilla[i] = new Casillero*[coordenada_y];
+//             for(int j = 0; j < coordenada_y; j++){
+//                 archivo_mapa >> letra;
+//                 //std::cout<<i<<" "<<j<<std::endl;
+//                 if(letra == 'T')
+//                     casilla[i][j] = new CasilleroConstruible();
+//                 else if(letra == 'C')
+//                     casilla[i][j] = new CasilleroTransitable("Camino");
+//                 else if(letra == 'B')
+//                     casilla[i][j] = new CasilleroTransitable("Betun");
+//                 else if(letra == 'M')
+//                     casilla[i][j] = new CasilleroTransitable("Muelle");
+//                 else if(letra == 'L')
+//                     casilla[i][j] = new CasilleroInaccesible();
+//                 else
+//                     std::cout<<"ERROR";
 
-                casilla[i][j]->setear_id(contador);
-                contador++;
-            }     
-        }
-        this->matriz = casilla;
-    }
-}
+//                 casilla[i][j]->setear_id(contador);
+//                 contador++;
+//             }     
+//         }
+//         this->matriz = casilla;
+//     }
+// }
 bool Mapa::casillero_ocupado(Jugador* jugador, int coord_x, int coord_y){
     return(matriz[jugador->devolver_coordenada_x()][jugador->devolver_coordenada_y()] == matriz[coord_x][coord_y]);
 
@@ -314,7 +315,6 @@ void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival
     std::cout <<"Ingrese el nombre del edificio que desea construir -> ";
     cin.ignore();
     getline(cin, edificio);
-    std::cout <<"Ingresaste  (es para probar espacios) -> " << edificio << std::endl;
 
     if(se_puede_construir(edificios, edificio, jugador)){
         std::cout <<"Se puede construir el edificio, desea hacerlo?\n1. Construir el edificio\n2. Salir al menú" <<std::endl;
@@ -343,13 +343,12 @@ bool Mapa::se_puede_construir(ListaEdificios* edificios, std::string nombre, Jug
     //bool es_valido_construir = true;
     //cout << "antes";
     bool es_valido_construir = false;
-
-    Edificio* edificio = edificios->consulta(nombre);
     //cout << "despues";
     if(!edificios->es_edificio_valido(nombre)){
         std::cout <<"No existe un edificio con ese nombre!" <<std::endl;
         return false;
     }
+    Edificio* edificio = edificios->consulta(nombre);
     int indice_piedra = jugador->devolver_materiales()->buscar_indice("piedra");
     int indice_madera = jugador->devolver_materiales()->buscar_indice("madera");
     int indice_metal = jugador->devolver_materiales()->buscar_indice("metal");
