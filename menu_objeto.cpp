@@ -12,9 +12,10 @@
 #include "Letrado.h"
 #include "Minero.h"
 #include "Obelisco.h"
-#include <cstdlib>
-#include <ctime>
-#include <cmath>
+//#include <cstdlib>
+//#include <ctime>
+//#include <cmath>
+//#include <fstream>
 
 const int JUGADOR = 0;
 const int RIVAL =   1;
@@ -30,21 +31,9 @@ Menu::Menu(Mapa* mapa, ListaEdificios* edificios, Jugador* jugador1, Jugador* ju
 
 
 void Menu::guardar(){
-    //std::cout << "aca1" << std::endl;
     edificios->reescribir();
-    //std::cout << "aca2" << std::endl;
     reescribir_materiales();
-    //std::cout << "aca3" << std::endl;
     mapa->reescribir_ubicaciones(jugador1,jugador2);
-    //std::cout << "aca4" << std::endl;
-    // edificios->destruir();
-    // //std::cout << "aca5" << std::endl;
-    // mapa->destruir();
-    // //std::cout << "aca6" << std::endl;
-    // jugador1->destruir();
-    // //std::cout << "aca7" << std::endl;
-    // jugador2->destruir();
-    // //std::cout << "aca8" << std::endl;
 }
 
 
@@ -78,7 +67,8 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
 
     Jugador** lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
 
-    while(opcion != GUARDAR_Y_SALIR_PARTIDA) {
+    while(opcion != GUARDAR_Y_SALIR_PARTIDA && !lista_jugadores[RIVAL]->checkear_objetivos()) {
+        if (lista_jugadores[JUGADOR]->devolver_energia()>100) {lista_jugadores[JUGADOR]->restar_energia(lista_jugadores[JUGADOR]->devolver_energia()-100);}
         while  (opcion != GUARDAR_Y_SALIR_PARTIDA && 
                 opcion != FINALIZAR_TURNO && 
                 lista_jugadores[JUGADOR]->devolver_energia() != 0  && 
@@ -94,13 +84,19 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
             mapa->llamar_lluvia(jugador1,jugador2);
             std::cout << "lluvia" << std::endl;
         }
-        if(lista_jugadores[JUGADOR]->checkear_objetivos())
-            secuencia_victoria(lista_jugadores[JUGADOR]);
         cambiar_turno(lista_jugadores);
         utilidad.limpiar_pantalla();
         if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
     }
     
+    if(lista_jugadores[RIVAL]->checkear_objetivos()){
+        secuencia_victoria(lista_jugadores[RIVAL]);
+        edificios->reescribir();
+    }
+    else{
+        guardar();
+    }
+
     delete [] lista_jugadores; //poner en otro lado
 }
 
@@ -239,15 +235,12 @@ void Menu::reescribir_materiales(){
     archivo_materiales.close();
     }
 }
-/*
-bool Menu::checkear_si_gano(Jugador* jugador){
-    return ( (mapa->tiene_edificio("obelisco",jugador)) || (jugador->cumplio_objetivo_secundario()) );
-}*/
+
 
 void Menu::secuencia_victoria(Jugador* jugador){
     std::cout << "El jugador " << jugador->devolver_nombre() << " ha ganado el partido" << endl;
-    // borrar_archivo_ubicaciones();
-    // resetear_archivo_materiales(jugador);
+    borrar_archivo_ubicaciones();
+    resetear_archivo_materiales();
 }
 
 void Menu::modificar_datos_edificio(){
@@ -366,4 +359,23 @@ Objetivo* Menu::crear_objetivo(int numero, int numero_jugador) {
         break;
     }
     return nuevo_objetivo;
+}
+
+void Menu::borrar_archivo_ubicaciones(){
+    std::ofstream archivo;
+    archivo.open("ubicaciones.txt");
+
+    archivo << "1 (" << jugador1->devolver_coordenada_x() << ", " << jugador1->devolver_coordenada_y() << ")" << std::endl;
+    archivo << "2 (" << jugador2->devolver_coordenada_x() << ", " << jugador2->devolver_coordenada_y() << ")" << std::endl;
+    archivo.close();
+}
+
+void Menu::resetear_archivo_materiales(){
+    std::ofstream archivo;
+    archivo.open("materiales.txt");
+
+    //jugador1->devolver_materiales()->devolver_cantidad()
+    for (int i=0;i<jugador1->devolver_materiales()->devolver_cantidad();i++)
+        archivo << jugador1->devolver_materiales()->consulta(i+1)->devolver_nombre() << " 0 0" << std::endl;
+    archivo.close();
 }

@@ -28,6 +28,7 @@ public:
     //Pos: Chequea que la cant de piedras sea mayor o igual que 5000
     bool checkear();
 
+    void actualizar(int v);
 };
 
 

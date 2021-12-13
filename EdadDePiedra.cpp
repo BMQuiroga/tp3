@@ -37,3 +37,7 @@ int EdadDePiedra::calcular_progreso(){
 void EdadDePiedra::mostrar_progreso() {
     cout << "La cantidad de piedras obtenida es: " << this->cantidad_piedras << endl;
 }*/
+
+void EdadDePiedra::actualizar(int valor){
+    
+}

@@ -69,6 +69,7 @@ int main(){
 
     cout << "Limpieza" << endl;
     std::cout << "aca " <<std::endl;
+
     delete jugador1;
     delete jugador2;
     std::cout << "aca1 " <<std::endl;

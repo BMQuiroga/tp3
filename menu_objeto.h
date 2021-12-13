@@ -83,7 +83,8 @@ public:
     void asignar_objetivos();
     Objetivo* crear_objetivo(int numero_objetivo, int numero_jugador);
 
-
+    void borrar_archivo_ubicaciones();
+    void resetear_archivo_materiales();
     void mostrar_resumen(Jugador** cola);
 };
 

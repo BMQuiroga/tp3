@@ -29,12 +29,13 @@ void Armado::mostrar(){
     if(checkear())
         cout << "Este objetivo ha sido completado" << endl;
 }
-/*
+
 void Armado::actualizar(int valor) {
-    this->cantidad_bombas = valor;
 }
-*/
+
 int Armado::calcular_progreso(){
+    //std::cout << "calculo" << std::endl;
     cantidad_bombas = this->jugador->devolver_materiales()->consulta(this->jugador->devolver_materiales()->buscar_indice("bombas"))->devolver_cantidad();
     return cantidad_bombas;
 }
+

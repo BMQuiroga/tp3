@@ -27,6 +27,8 @@ public:
     //Pre:-
     //Pos:Devuelve true si la cant de obeliscos es 1
     bool checkear();
+
+    void actualizar(int valor);
 };
 
 

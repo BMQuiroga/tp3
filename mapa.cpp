@@ -539,21 +539,6 @@ void Mapa::menu_reparar(Jugador* jugador){
 }
 
 
-bool Mapa::tiene_edificio(std::string nombre_edificio, Jugador* jugador) {
-    int i = 0;
-    int j = 0;
-
-    while (i < coordenada_x) {
-        while (j < coordenada_x) {
-            if(matriz[i][j] -> devolver_tipo() == 'T' && matriz[i][j] -> devolver_material_o_edificio() == nombre_edificio && matriz[i][j] -> devolver_jugador() == jugador->devolver_nombre()) {
-                return true;
-            } j++;
-        } i++;
-    }
-    return false;
-}
-
-
 
 void Mapa::reescribir_ubicaciones(Jugador* j, Jugador* u){
     std::ofstream archivo_ubicaciones;

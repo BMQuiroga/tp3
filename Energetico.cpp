@@ -37,3 +37,7 @@ void Energetico::mostrar_progreso() {
         cout << "Todavia no terminaste tu turno con 100 puntos de energia" << endl;
     }
 }*/
+
+void Energetico::actualizar(int valor){
+    
+}

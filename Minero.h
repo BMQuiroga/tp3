@@ -40,6 +40,8 @@ public:
 
     //void actualizar_minero(int valor);
     //void actualizar_minero_oro(int valor_minero, int valor_minero_oro);
+
+    void actualizar(int valor);
 };
 
 
