@@ -51,7 +51,7 @@ public:
     int devolver_nombre();
     int devolver_coordenada_x();
     int devolver_coordenada_y();
-    void asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa);
+    void asignar_objetivos(ListaEdificios* edificios, Mapa * mapa);
 
     //void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos);
     void actualizar_objetivo(int numero_objetivo, int valor);
@@ -71,6 +71,14 @@ public:
     void actualizar_bombas_usadas();
 
     void actualizar_andycoins_juntadas(int cantidad);
+
+    void asignar_objetivo_1(Objetivo * objetivo);
+
+    void asignar_objetivo_2(Objetivo * objetivo);
+
+    void asignar_objetivo_3(Objetivo * objetivo);
+
+    void asignar_objetivo_4(Objetivo * objetivo);
 
 private:
     void operacion_bombas(int valor);

@@ -23,7 +23,7 @@ Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa)
     this->energia = 2000;
     this->nombre = numero;
     this->crear_grafo(mapa);
-    this->asignar_objetivos(edificios, materiales, mapa);
+    //this->asignar_objetivos(edificios, mapa);
 }
 
 Jugador::~Jugador() {
@@ -159,7 +159,7 @@ void Jugador::restar_energia(int numero){
 }
 
 
-void Jugador::asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa) {
+void Jugador::asignar_objetivos(ListaEdificios* edificios, Mapa * mapa) {
     int a=0;
     int b=0;
     int c=0;
@@ -347,4 +347,20 @@ bool Jugador::checkear_objetivos(){
     obj3=objetivo_3->checkear();
     obj4=objetivo_4->checkear();
     return( obj1 || (obj2 && obj3) || (obj2 && obj4) || (obj3 && obj4) );
+}
+
+void Jugador::asignar_objetivo_1(Objetivo * objetivo){
+    this->objetivo_1 = objetivo;
+}
+
+void Jugador::asignar_objetivo_2(Objetivo * objetivo){
+    this->objetivo_2 = objetivo;
+}
+
+void Jugador::asignar_objetivo_3(Objetivo * objetivo){
+    this->objetivo_3 = objetivo;
+}
+
+void Jugador::asignar_objetivo_4(Objetivo * objetivo){
+    this->objetivo_4 = objetivo;
 }

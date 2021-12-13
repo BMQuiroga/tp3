@@ -68,6 +68,8 @@ public:
     //bool checkear_si_gano(Jugador* jugador);
     void secuencia_victoria(Jugador* jugador);
     void modificar_datos_edificio();
+    void asignar_objetivos();
+    Objetivo* crear_objetivo(int numero_objetivo, int numero_jugador);
     
 };
 
