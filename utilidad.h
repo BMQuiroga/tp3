@@ -2,11 +2,8 @@
 #define UTILIDAD_H
 
 #include <iostream>
-//#include <ctime>
-//#include <cstdlib>
 
 using namespace std;
-
 
 class Utilidad {
 public:
@@ -50,10 +47,16 @@ public:
     //pos: pausa el juego
     void pausa();
 
+    //pre:-
+    //pos: encuadra el texto pasado por parametro
     void encuadrar(std::string texto);
 
+    //PRE: -
+    //POST: muestra una linea separadora
     void linea();
     
+    //PRE: -
+    //POST: diccionario de materiales
     int diccionario_materiales(std::string material);
 };
 

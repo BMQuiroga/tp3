@@ -8,7 +8,6 @@
 #include "material.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
-//#include "jugador.h"
 #include <string>
 #include <fstream>
 
@@ -51,10 +50,6 @@ class Mapa {
 //Atributos
 private:
     int coordenada_x,coordenada_y;
-    //CasilleroConstruible **matriz_terreno=nullptr;
-    //CasilleroTransitable **matriz_camino=nullptr;
-    //Casillero **matriz = new Casillero*[50];//=nullptr;
-    //Casillero **matriz;
     Casillero ***matriz;
 
 //Metodos
@@ -153,16 +148,8 @@ public:
     bool procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, Jugador* u);
 
     //Pre: Requiere un edificio valido
-    //Post: Devuelve si el jugador tiene al menos un edificio del tipo que recibe
-    //bool tiene_edificio(std::string nombre_edificio, Jugador* jugador);
-
-    //Pre: Requiere un edificio valido
     //Post: Devuelve la cantidad de edificios de ese tipo que tiene construidos ese jugador
     int edificios_construidos(std::string nombre, Jugador* jugador);
-
-
-    //void mover_jugador(Jugador* jugador);
-
 
     //pre: -
     //pos: devuelve el casillero de las coordenadas pasadas
@@ -189,11 +176,6 @@ public:
     void procesar_archivo_mapa();
 private:
     
-
-    //Pre:Recibe la lista de edificios
-    //Post:Verifica que exista el archivo ubicaciones.txt y los carga en una matriz
-    //void procesar_archivo_ubicaciones(ListaEdificios edificios);
-
     //Pre: Recibe la cantidad aleatoria y el nombre del material
     //Post:posiciona en forma aleatoria el material en el tipo de casillero Camino
     void lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y);
@@ -205,7 +187,6 @@ private:
     //Pre: Recibe coordenadas
     //Post: imprime un caracter, usado en la funcion mostrar mapa
     void mostrar_mapa_edificios_y_materiales(int coord_x, int coord_y, Jugador* jugador1, Jugador* jugador2);
-
 
     //Pre:Recibe la lista de edificios, materiales y el nombre del edificio
     //Post:Verifica que haya la cantidad suficiente de materiales para poder construir
@@ -219,14 +200,9 @@ private:
     //Post:Devuelve las coordanas del nombre ingresado
     void mostrar_coordenadas(std::string nombre,Jugador* jugador);
 
-    //Pre:Recibe el nombre del edificio
-    //Post:Devuelve la cantidad de edificios construidos
-    // int edificios_construidos(std::string nombre, Jugador jugador);
-
     //Pre:Recibe coordenadas validas
     //Post:Devuelve si el jugador se encuentra alli
     bool casillero_ocupado(Jugador* jugador, int coord_x, int coord_y);
-
 
     //Pre: -
     //Post: Reescribe la parte de materiales en ubicaciones.txt
@@ -247,8 +223,6 @@ private:
     //Pre: -
     //Post: Lee la parte de jugador en ubicaciones.txt
     void procesar_archivo_ubicaciones_jugador(std::ifstream & archivo, Jugador* jugaor);
-
-
 };
 
 

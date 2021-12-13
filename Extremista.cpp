@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "Extremista.h"
 #include <iostream>
 
@@ -28,14 +24,9 @@ bool Extremista::checkear() {
 }
 
 void Extremista::actualizar(int valor) {
-    //std::cout << "actualizo" <<std::endl;
     this->bombas_compradas += valor;
 }
 
-/*
-void Extremista::mostrar_progreso() {
-    cout << "la cantidad de bombas comprada es: " << this->bombas_compradas << endl;
-}*/
 
 int Extremista::calcular_progreso(){
     return this->bombas_compradas;

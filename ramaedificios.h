@@ -14,9 +14,12 @@ private:
     RamaEdificios* nodo_der;
 
 public:
-
+    //PRE: -
+    //POST: -
     RamaEdificios(Edificio* edificio);
-
+    
+    //PRE: -
+    //POST: -
     ~RamaEdificios();
 
     //PRE: -
@@ -63,7 +66,8 @@ public:
     //POST: recorre el arbol y va guardando los edificios en edificios.txt
     void modificar(std::ofstream & archivo);
 
-
+    //PRE: -
+    //POST: libera memoria
     void liberar_memoria();
 };
 

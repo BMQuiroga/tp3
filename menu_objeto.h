@@ -3,9 +3,6 @@
 #include "mapa.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
-//#include "listaObjetivos.h"
-//#define CLR_SCREEN "clear"//PARA LINUX
-#define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
 #include "utilidad.h"
 
@@ -77,14 +74,33 @@ public:
     //Pre: -
     //Post: cambia el turno de los jugadores
     void cambiar_turno(Jugador** lista_jugadores);
-    //bool checkear_si_gano(Jugador* jugador);
+
+    //pre: -
+    //pos: comienza proceso de reescribir los archivos
     void secuencia_victoria(Jugador* jugador);
+
+    //pre: -
+    //pos: modifica los valores iniciales de los edificios
     void modificar_datos_edificio();
+    
+    //pre: -
+    //pos: asigna los objetivos a los jugadores
     void asignar_objetivos();
+
+    //pre: -
+    //pos: devuelve un objetivo 
     Objetivo* crear_objetivo(int numero_objetivo, int numero_jugador);
 
+    //pre: -
+    //pos: escribe las coordenadas de los jugadores
     void borrar_archivo_ubicaciones();
+
+    //pre: -
+    //pos: escribe el archivo ubicaciones con materiales
     void resetear_archivo_materiales();
+
+    //pre: -
+    //pos: mensaje que resume tus estadisticas
     void mostrar_resumen(Jugador** cola);
 };
 

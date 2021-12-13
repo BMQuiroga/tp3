@@ -42,7 +42,6 @@ void ListaMateriales::baja(int pos) {
         anterior->cambiar_siguiente(baja->obtener_siguiente());
     }
     cantidad--;
-    //std::cout << "Libero memoria en: " << baja << std::endl;
     baja->baja();
     delete baja;
     baja = NULL;
@@ -54,7 +53,6 @@ Material* ListaMateriales::consulta(int pos) {
 }
 
 void ListaMateriales::destruir() {
-    //std::cout<<"LLAMO DESTRUCTOR MATERIALES"<<std::endl;
     while (! vacia())
         baja(1);
 }
@@ -90,55 +88,3 @@ void ListaMateriales::mostrar() {
 int ListaMateriales::devolver_cantidad(){
     return this->cantidad;
 }
-// void ListaMateriales::procesar_archivo_materiales(){
-//     std::string nombre,numero;
-//     int num = 0;
-
-//     std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
-
-//     if(!archivo.is_open()){ //no existe el archivo
-//         std::cout <<"No se encontro el archivo materiales" <<std::endl;
-//     }else{
-//         while(archivo >> nombre){ //voy guardando hasta un espacio
-//             archivo>>numero;
-//             num=stoi(numero);
-//             Material material(nombre,num);
-//             //std::cout<<cantidad<<std::endl;
-//             this->alta(material,cantidad+1);
-            
-//         }
-//     archivo.close();
-//     }
-// }
-
-
-/*void ListaMateriales::buscar_indice(){
-    NodoMateriales* aux = primero;
-    for (int i = 1; i < pos; i++)
-        aux = aux->obtener_siguiente();
-    return aux;
-
-
-
-}*/
-
-/*
-void ListaMateriales::reescribir_materiales(){
-    std::ofstream archivo_materiales;
-    archivo_materiales.open("materiales.txt");
-
-    if(!archivo_materiales.is_open()){ //no existe el archivo
-        std::cout <<"No se encontro el archivo materiales" <<std::endl;
-    }else{
-        for (int i=0;i<cantidad;i++){
-            //std::cout<<this->consulta(i+1).devolver_nombre()<<std::endl;
-            archivo_materiales<<this->consulta(i+1).devolver_nombre();
-            archivo_materiales<<" ";
-            archivo_materiales<<this->consulta(i+1).devolver_cantidad();
-            archivo_materiales<<std::endl;
-        }
-    archivo_materiales.close();
-    }
-}
-
-}*/

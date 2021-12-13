@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "Minero.h"
 #include "mapa.h"
 Minero::Minero(ListaEdificios * edificios, Mapa *mapa, Jugador *jugador) {
@@ -39,7 +35,6 @@ bool Minero::checkear(){
 
 int Minero::calcular_progreso(){
     int contador = 0;
-    //bool resultado = true;
     if(this->mapa->edificios_construidos("mina",jugador)>=1 && existe_mina)
         contador++;
     if(this->mapa->edificios_construidos("mina oro",jugador)>=1 && existe_mina_oro)

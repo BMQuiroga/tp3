@@ -16,7 +16,7 @@ int main(){
     ListaMateriales* materiales1 = new ListaMateriales; 
     ListaMateriales* materiales2 = new ListaMateriales;
 
-    archivo.procesar_archivo_materiales(materiales1,materiales2);   //tuve que hacerlo asi porque sino perdia scope las variables y me devolvia 0 el primer puntero
+    archivo.procesar_archivo_materiales(materiales1,materiales2);
     
     Mapa* mapa = archivo.procesar_archivo_mapa();
 
@@ -25,32 +25,16 @@ int main(){
     mapa->procesar_archivo_ubicaciones(edificios, jugador1, jugador2);
     jugador1->asignar_lista_materiales(materiales1);
     jugador2->asignar_lista_materiales(materiales2);
-    // Jugador jugador1(1,1,1, edificios, mapa);
-    // Jugador jugador2(2,2,2, edificios, mapa);
-    
 
-    // jugador2.devolver_coordenada_x(materiales2);
 
     Menu menu(mapa, edificios, jugador1, jugador2);
 
-    //ListaObjetivos vector1(jugador1, *edificios, mapa);
-    //vector1.mostrar_objetivos();
-
-
-    //ListaObjetivos vector_objetivos_completos1(jugador1, materiales1, edificios, mapa);
-    //jugador1.asignar_objetivos_aleatorios(ListaObjetivos::obtener_objetivos_aleatorios())
-    //jugador1.asignar_objetivos_aleatorios(vector_objetivos_completos1);
-    //lista_objetivos1
-    //lista_objetivos2
-    //juegador1.asignar_objetivo(lista_objetivos)
-
-    //bool archivo_en_blanco = false;
     bool archivo_en_blanco=mapa->procesar_archivo_ubicaciones(edificios,jugador1,jugador2);
 
     menu.asignar_objetivos();
     
     if(archivo_en_blanco)
-        menu.partida(/*edificios,*mapa,jugador1,jugador2*/);
+        menu.partida();
     else{
         int opcion_elegida;
         do{
@@ -67,23 +51,12 @@ int main(){
     }
     menu.guardar();
 
-    cout << "Limpieza" << endl;
-    std::cout << "aca " <<std::endl;
-
     delete jugador1;
     delete jugador2;
-    std::cout << "aca1 " <<std::endl;
-    //edificios->destruir();
-    std::cout << "aca2 " <<std::endl;
-    //mapa->destruir();
     delete edificios;
-    std::cout << "aca3 " <<std::endl;
     delete mapa;
-    std::cout << "aca4 " <<std::endl;
     delete materiales1;
-    std::cout << "aca5 " <<std::endl;
     delete materiales2;
-    std::cout << "ac6a " <<std::endl;
     return 0;
 }
 

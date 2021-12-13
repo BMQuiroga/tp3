@@ -1,24 +1,13 @@
 #include <iostream>
 #include "casillero_construible.h"
 #include "arboledificios.h"
-//#include "casillero.h"
 
 void CasilleroConstruible::construir(Edificio* edificio_nuevo){
-    //this->edificio=edificio;
-    //std::cout << edificio_nuevo->devolver_nombre() << "Edificio" << std::endl;
-
     if (jugador == 0 && this->edificio->devolver_nombre() == "0") {
         delete edificio;
     }
 
     this->edificio = edificio_nuevo;
-    /*this -> edificio->cambiar_todo(
-                edificio_nuevo->devolver_nombre(),
-                edificio_nuevo->devolver_piedra(),
-                edificio_nuevo->devolver_madera(),
-                edificio_nuevo->devolver_metal(),
-                edificio_nuevo->devolver_maximos_permitidos()
-            );*/
     std::string nombre = this->edificio->devolver_nombre();
     if(nombre=="mina" ||  nombre=="fabrica")
         this->vida=2;
@@ -27,8 +16,7 @@ void CasilleroConstruible::construir(Edificio* edificio_nuevo){
 }
 
 CasilleroConstruible::CasilleroConstruible(){
-    //Edificio edificio_vacio;
-    this->edificio = new Edificio;//&edificio_vacio;
+    this->edificio = new Edificio;
     this->tipo = 'T';
     this->jugador=0;
     this->letra = 'T';
@@ -87,20 +75,12 @@ void CasilleroConstruible::recolectar_material(Jugador* jugador){
     }
 }
 
-/*char CasilleroConstruible::devolver_tipo(){
-    return this->tipo;
-}*/
-
 bool CasilleroConstruible::tiene_material_o_edificio(){
     return (this->edificio->devolver_maximos_permitidos() != 0);
 }
 
-void CasilleroConstruible::poner_material(Material* material){
-    
-}
+void CasilleroConstruible::poner_material(Material* material){}
 
-//Casillero::~Casillero(){
-//}
 
 void CasilleroConstruible::cambiar_jugador(int numero){
     this->jugador = numero;
@@ -136,7 +116,7 @@ void CasilleroConstruible::reparar(Jugador* jugador){
             hay_madera = (madera <= jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("madera"))->devolver_cantidad());
             hay_metal = (metal <= jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("metal"))->devolver_cantidad());
             if(hay_piedra && hay_madera && hay_metal){
-                this->vida=2;            //creo q esta mal
+                this->vida=2;
                 jugador->devolver_materiales()->obtener_nodo(jugador->devolver_materiales()->buscar_indice("piedra"))->restar_cantidad(piedra);
                 jugador->devolver_materiales()->obtener_nodo(jugador->devolver_materiales()->buscar_indice("madera"))->restar_cantidad(madera);
                 jugador->devolver_materiales()->obtener_nodo(jugador->devolver_materiales()->buscar_indice("metal"))->restar_cantidad(metal);
@@ -152,10 +132,6 @@ void CasilleroConstruible::reparar(Jugador* jugador){
     else
         std::cout <<"Ese edificio no está dañado!"<<std::endl;
 }
-/*
-Casillero::~Casillero(){
-
-}*/
 
 void CasilleroConstruible::mostrar(){
     if (tiene_material_o_edificio()){

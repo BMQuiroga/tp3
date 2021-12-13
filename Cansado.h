@@ -35,4 +35,4 @@ public:
 };
 
 
-#endif //TP3_2021_2C_CANSADO_H
+#endif 

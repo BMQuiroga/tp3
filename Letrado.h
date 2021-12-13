@@ -32,8 +32,10 @@ public:
     //Pos:Devuelve true si la cant de escuelas construidas == cant escuelas maxima
     bool checkear();
 
+    //Pre:-
+    //Pos: actualiza el objetivo
     void actualizar(int valor);
 };
 
 
-#endif //TP3_2021_2C_LETRADO_H
+#endif

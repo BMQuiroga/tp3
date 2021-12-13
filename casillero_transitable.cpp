@@ -32,9 +32,7 @@ CasilleroTransitable::~CasilleroTransitable() {
     liberar_memoria();
 }
 
-void CasilleroTransitable::construir(Edificio* edificio){
-
-}
+void CasilleroTransitable::construir(Edificio* edificio){}
 
 void CasilleroTransitable::recolectar_material(Jugador* jugador){
     std::string nombre = this->material->devolver_nombre();
@@ -44,23 +42,15 @@ void CasilleroTransitable::recolectar_material(Jugador* jugador){
     if (indice!= -1 )
         jugador->devolver_materiales()->consulta(indice)->sumar_cantidad(cantidad);
     if(nombre=="andycoins")
-        jugador->actualizar_andycoins_juntadas(cantidad);
-    //std::cout << "Recolectados del suelo " << cantidad << " de " << nombre << std::endl;
-    
-
+        jugador->actualizar_andycoins_juntadas(cantidad);    
 }
 
-void CasilleroTransitable::demoler(Jugador* jugador){
-    
-}
+void CasilleroTransitable::demoler(Jugador* jugador){}
 
 
-void CasilleroTransitable::cambiar_jugador(int numero){
-    //this->jugador=numero;
-}
+void CasilleroTransitable::cambiar_jugador(int numero){}
 
 int CasilleroTransitable::devolver_jugador(){
-    //return this->jugador;
     return 0;
 }
 

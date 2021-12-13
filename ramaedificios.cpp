@@ -4,32 +4,20 @@
 
 RamaEdificios::RamaEdificios(Edificio*edificio){
     this -> valor = edificio;
-    /*Edificio *edificio2=new Edificio;
-    edificio2->cambiar_todo(
-        edificio.devolver_nombre(),
-        edificio.devolver_piedra(),
-        edificio.devolver_madera(),
-        edificio.devolver_metal(),
-        edificio.devolver_maximos_permitidos());
-    this->valor=edificio2;*/
     this -> clave = edificio->devolver_nombre();
     this->nodo_der = NULL;
     this->nodo_izq = NULL;
 }
 
 RamaEdificios::~RamaEdificios() {
-    // std::cout << "DESTRUCTOR " << valor->devolver_nombre() << std::endl;
-    // ROMPE TODO
     delete valor;
     valor = NULL;
-    
 }
 
 void RamaEdificios::asignar_nodo(Edificio* edificio){
     if(edificio->devolver_nombre() > this->clave){
         if(!nodo_der){
             RamaEdificios *nuevo = new RamaEdificios(edificio);
-            //RamaEdificios *p=&nuevo;
             this -> nodo_der = nuevo;
         }
         else
@@ -38,7 +26,6 @@ void RamaEdificios::asignar_nodo(Edificio* edificio){
     else{
         if(!nodo_izq){
             RamaEdificios *nuevo = new RamaEdificios(edificio);
-            //RamaEdificios *p=&nuevo;
             this -> nodo_izq = nuevo;
         }
         else
@@ -59,7 +46,6 @@ Edificio* RamaEdificios::buscar_edificio(std::string edificio){
             return valor;
         else{
             Edificio* aux = new Edificio("0",0,0,0,0);
-            // Edificio aux("0",0,0,0,0);
             return aux;
         }
     }     

@@ -2,12 +2,7 @@
 #include "arboledificios.h"
 #include <fstream>
 
-ArbolEdificios::ArbolEdificios(/*Edificio edificio*/){
-    //RamaEdificios *rama = new RamaEdificios(edificio);
-    //RamaEdificios nuevo(edificio);
-    //RamaEdificios *p=&nuevo;
-    //this->raiz=rama;
-    //procesar_archivo_edificios();
+ArbolEdificios::ArbolEdificios(){
     this->raiz = NULL;
 }
 
@@ -59,8 +54,7 @@ void ArbolEdificios::procesar_archivo_edificios(){
             metal=stoi(numero);
             archivo_edificios>>numero;
             max=stoi(numero);
-            //std::cout<<nombre<<" "<<piedra<<" "<<madera<<" "<<metal<<" "<<max<<std::endl;
-            //edificio.mostrar();
+
             if(contador!=1)
                 alta(nombre,piedra,madera,metal,max);
             else{

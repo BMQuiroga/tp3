@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "EdadDePiedra.h"
 #include "jugador.h"
 
@@ -33,10 +29,6 @@ int EdadDePiedra::calcular_progreso(){
     return cantidad_piedras;
 }
 
-/*
-void EdadDePiedra::mostrar_progreso() {
-    cout << "La cantidad de piedras obtenida es: " << this->cantidad_piedras << endl;
-}*/
 
 void EdadDePiedra::actualizar(int valor){
     

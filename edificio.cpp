@@ -2,37 +2,12 @@
 #include "edificio.h"
 
 
-/*bool Edificio::se_puede_construir(int longitud_mapa_x, int longitud_mapa_y){//me tira error cuando llamo a la otra funcion desde aca, no se por que
-    return (cantidad_construidos(longitud_mapa_x,longitud_mapa_y)>=maximos_permitidos);
-}*/
-
-/*int Edificio::cantidad_construidos(int longitud_mapa_x, int longitud_mapa_y, CasilleroConstruible mapa){
-    int contador=0;
-    for(int i=0;i<longitud_mapa_x;i++){
-        for(int j=0;j<longitud_mapa_y;i++)
-            if (mapa[i][j].mostrar_contenido==this->nombre)
-                contador++;//mi idea es que mapa sea una matriz de casilleros
-
-
-
-    }
-
-    return contador;
-}*/
-
-//Toda la funcion va a tener que ir en el main
-
 Edificio::Edificio(std::string nombre, int piedra, int madera, int metal, int max){
     this->nombre = nombre;
     this->cantidad_piedra = piedra;
     this->cantidad_madera = madera;
     this->cantidad_metal = metal;
     this->maximos_permitidos = max;
-    /*
-    if(nombre=="mina" ||  nombre=="fabrica")
-        this->vida=2;
-    else
-        this->vida=1;*/
 }
 
 Edificio::~Edificio() {
@@ -46,11 +21,6 @@ std::string Edificio::devolver_nombre(){
 }
 
 Edificio Edificio::operator=(Edificio construccion){
-    /*this->nombre=construccion.nombre;
-    this->cantidad_piedra=construccion.cantidad_piedra;
-    this->cantidad_madera=construccion.cantidad_madera;
-    this->cantidad_metal=construccion.cantidad_metal;
-    this->maximos_permitidos=construccion.maximos_permitidos;*/
     return Edificio(construccion.nombre, construccion.cantidad_piedra, construccion.cantidad_madera, construccion.cantidad_metal,construccion.maximos_permitidos);
 }
 
@@ -68,13 +38,6 @@ void Edificio::cambiar_todo(std::string nombre, int piedra, int madera, int meta
     this->cantidad_madera = madera;
     this->cantidad_metal = metal;
     this->maximos_permitidos = max;
-
-    /*
-    if(nombre=="mina" ||  nombre=="fabrica")
-        this->vida=2;
-    else
-        this->vida=1;*/
-
 }
 
 int Edificio::devolver_piedra(){
@@ -131,23 +94,3 @@ void Edificio::modificar_datos() {
         piedra, madera, metal, max
     );
 }
-
-/*
-int Edificio::devolver_vida(){
-    return this->vida;
-}*/
-
-/*
-bool Edificio::restar_vida(int numero){
-    this->vida-=numero;
-    if(vida==0){
-        std::cout<<"El "<<nombre<<" ha sido destruido"<<std::endl;
-        cambiar_todo("0",0,0,0,0);
-        return true;
-    }
-    else{
-        std::cout<<"La "<<nombre<<" ha sido dañada"<<std::endl;
-        return false;
-    }
-
-}*/

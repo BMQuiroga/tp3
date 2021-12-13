@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "Cansado.h"
 #include "jugador.h"
 
@@ -28,15 +24,6 @@ bool Cansado::checkear() {
     }
     return this->cumplio;
 }
-
-/*
-void Cansado::mostrar_progreso() {
-    if (this->cumplio){
-        cout << "Ya terminaste tu turno con 0 puntos de energia por lo menos una vez." << endl;
-    } else{
-        cout << "Todavia no terminaste tu turno con 0 puntos de energia" << endl;
-    }
-}*/
 
 int Cansado::calcular_progreso(){
     return 0;

@@ -5,14 +5,6 @@
 #include "arboledificios.h"
 #include "jugador.h"
 
-
-
-//class CasilleroConstruible;
-
-//class CasilleroTransitable;
-
-//class CasilleroInaccesible;
-
 class Jugador;
 
 class Casillero{
@@ -92,6 +84,8 @@ public:
     //pos: devuelve tipo de camino
     char devolver_tipo_camino();
 
+    //pre: -
+    //pos: libera la memoria
     virtual void liberar_memoria() = 0;
 };
 

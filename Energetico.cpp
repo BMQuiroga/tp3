@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "Energetico.h"
 #include "jugador.h"
 
@@ -29,15 +25,5 @@ bool Energetico::checkear() {
 int Energetico::calcular_progreso(){
     return 0;
 }
-/*
-void Energetico::mostrar_progreso() {
-    if (this->cumplio){
-        cout << "Ya terminaste tu turno con 100 puntos de energia por lo menos una vez." << endl;
-    } else{
-        cout << "Todavia no terminaste tu turno con 100 puntos de energia" << endl;
-    }
-}*/
 
-void Energetico::actualizar(int valor){
-    
-}
+void Energetico::actualizar(int valor){}

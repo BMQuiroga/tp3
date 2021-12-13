@@ -1,7 +1,6 @@
 #include "nodomateriales.h"
 #include "material.h"
 
-//Constructor
 NodoMateriales::NodoMateriales(Material* d) {
     dato = d;
     siguiente = 0;

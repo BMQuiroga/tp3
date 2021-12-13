@@ -16,8 +16,10 @@ public:
     //Post:Crea un objeto material con nombre, cant piedra, cant madera, cant metal, maximos permitidos asignados en 0.
     Material();
     
-
+    //pre: -
+    //pos: -
     ~Material();
+
     //Pre:
     //Post:Resta la cantidad de material con el numero que recibe
     void operator-(int numero);
@@ -33,7 +35,6 @@ public:
     //Pre:
     //Post:Devuelve la cantidad del material
     int devolver_cantidad();
-
 
     //Pre:
     //Post:Cambia el atributo cantidad por el que le pasan 

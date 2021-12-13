@@ -10,7 +10,6 @@
 class Edificio{
 
 private:
-    //int vida;
     std::string nombre;
     int cantidad_piedra;
     int cantidad_madera;
@@ -27,6 +26,8 @@ public:
     //Post:Crea un objeto edificio con nombre, cant piedra, cant madera, cant metal, maximos permitidos asignados en 0.
     Edificio();
 
+    //pre: -
+    //pos: destructor de edificio
     ~Edificio();
 
     //Pre:-
@@ -36,10 +37,6 @@ public:
     //Pre: Recibe el objeto construccion
     //Post:Devuelve el objeto cargado con nombre,cant piedra, cant madera, cant metal y maximos permitidos.
     Edificio operator=(Edificio construccion);
-
-    //Pre: Recibe la lista de materiales cargada
-    //Post: Suma la mitad de materiales que fueron usados para la construccion a la lista y asigna a los atributos del edificio destruido en 0. 
-    //void demoler(Jugador jugador);
 
     //Pre:-
     //Post: Asigna nombre, piedra, madera, metal, max a los atributos respectivos de edificio
@@ -68,14 +65,6 @@ public:
     //Pre:-
     //Post:Pide datos nuevos y modifica el edificio en cuestion
     void modificar_datos();
-
-    //Pre:-
-    //Post: Devuelve la vida del edificio, 1 o 2
-    //int devolver_vida();
-
-    //Pre:-
-    //Post: Le resta 1 de vida al edificio, devuelve si lo destruyó
-    //bool restar_vida(int numero);
 };
 
 

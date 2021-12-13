@@ -12,10 +12,6 @@
 #include "Letrado.h"
 #include "Minero.h"
 #include "Obelisco.h"
-//#include <cstdlib>
-//#include <ctime>
-//#include <cmath>
-//#include <fstream>
 
 const int JUGADOR = 0;
 const int RIVAL =   1;
@@ -62,7 +58,7 @@ void Menu::mostrar_menu_partida(){
     cout << "13. Guardar y salir"<<endl;
 }
 
-void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/){
+void Menu::partida(){
     int opcion = -1;
 
     Jugador** lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
@@ -97,7 +93,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
         guardar();
     }
 
-    delete [] lista_jugadores; //poner en otro lado
+    delete [] lista_jugadores;
 }
 
 void Menu::mostrar_resumen(Jugador** lista_jugadores) {
@@ -203,10 +199,8 @@ void Menu::procesar_opcion_partida(int opcion_elegida, Jugador* jugador, Jugador
         case FINALIZAR_TURNO:
             utilidad.encuadrar("CAMBIO DE TURNO");
             cout << "Le toca al jugador numero " << rival->devolver_nombre() << "." << endl;
-            //no hace nada
             break;
         case GUARDAR_Y_SALIR_PARTIDA:
-            //guardar();
             break;
         default:
             cout<< "Error: opcion invalida";
@@ -224,7 +218,6 @@ void Menu::reescribir_materiales(){
         std::cout <<"No se encontro el archivo materiales" <<std::endl;
     }else{
         for (int i=0 ; i<this->jugador1->devolver_materiales()->devolver_cantidad() ; i++){
-            //std::cout<<this->consulta(i+1).devolver_nombre()<<std::endl;
             archivo_materiales<<this->jugador1->devolver_materiales()->consulta(i+1)->devolver_nombre();
             archivo_materiales<<" ";
             archivo_materiales<<this->jugador1->devolver_materiales()->consulta(i+1)->devolver_cantidad();
@@ -247,7 +240,6 @@ void Menu::modificar_datos_edificio(){
     std::string nombre;
     bool resultado = false;
     Edificio * edificio;
-    //int indice = 0;
 
     cout << "Ingrese el nombre del edificio que quiere modificar o \"fin\" para cancelar: ";
     cin >> nombre;
@@ -263,7 +255,6 @@ void Menu::modificar_datos_edificio(){
                 edificio = edificios->consulta(nombre);
                 cout << "Se encontro el edificio " << edificio->devolver_nombre() << "." << endl;
                 edificio->modificar_datos();
-                //edificios.cambiar_nodo(edificio);
             } else {
                 cout << "No se puede cambiar los datos del obelisco." << endl;
             }
@@ -374,7 +365,6 @@ void Menu::resetear_archivo_materiales(){
     std::ofstream archivo;
     archivo.open("materiales.txt");
 
-    //jugador1->devolver_materiales()->devolver_cantidad()
     for (int i=0;i<jugador1->devolver_materiales()->devolver_cantidad();i++)
         archivo << jugador1->devolver_materiales()->consulta(i+1)->devolver_nombre() << " 0 0" << std::endl;
     archivo.close();

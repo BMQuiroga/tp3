@@ -8,7 +8,6 @@
     // Assume POSIX
     #define CLEAR "clear"
     #define PAUSE "read -p 'Press Enter to continue...' var"
-
 #endif
 
 string Utilidad::minuscula(string palabra) {
@@ -81,7 +80,6 @@ int Utilidad::pedir_opcion() {
 
 
 int Utilidad::generador_de_numeros_aleatorios(int min, int max){
-    //srand((unsigned)time(0));
     return min + rand()%(max+1-min);
 }
 

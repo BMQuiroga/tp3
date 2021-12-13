@@ -4,14 +4,11 @@
 
 
 class NodoMateriales {
-//Atributos
 private:
     Material* dato;
     NodoMateriales* siguiente;
 
-//Metodos
 public:
-    //constructor
     //PRE:Recibe la clase Material
     //POS:Crea el constructor y el siguiente lo deja en nulo
     NodoMateriales(Material* d);

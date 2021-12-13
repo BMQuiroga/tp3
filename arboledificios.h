@@ -14,7 +14,6 @@ private:
     RamaEdificios* raiz;
 
 public:
-    //Constructor
     //PRE: -
     //POS: -
     ArbolEdificios(/*Edificio edificio*/);

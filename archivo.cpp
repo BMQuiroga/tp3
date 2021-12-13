@@ -59,9 +59,7 @@ Casillero* Archivo::asignar_casillero(char letra) {     //pasable a mapa?
 
 
 void Archivo::procesar_archivo_materiales(ListaMateriales* j1, ListaMateriales* j2){
-    std::string nombre,numero1,numero2;
-    // int num1 = 0, num2 = 0;
-    
+    std::string nombre,numero1,numero2;    
     std::ifstream archivo("materiales.txt"); //abro el archivo modo lectura
 
     if(!archivo.is_open()){ //no existe el archivo

@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "ComprarAndypolis.h"
 ComprarAndypolis::ComprarAndypolis(){
     this->nombre="ComprarAndypolis";
@@ -21,10 +17,6 @@ bool ComprarAndypolis::checkear() {
     return cumplio;
 }
 
-/*
-void ComprarAndypolis::mostrar_progreso() {
-    cout << "Andycoins conseguidos a lo largo del partido es: " << this->andycoins_juntadas << endl;
-}*/
 
 void ComprarAndypolis::mostrar(){
     cout << "Comprar andypolis: haber juntado 100.000 andycoins a lo largo de la partida (las monedas gastadas también cuentan para este objetivo)" << endl;

@@ -7,11 +7,8 @@ class Casillero;
 class Jugador;
 
 class CasilleroInaccesible : public Casillero{//Lago
-//Atributos
 private:
-    //no se me ocurrio nada para ponerle a este
 
-//Metodos
 public:
     //Pre:-
     //Post:Al objeto le asigno tipo L
@@ -65,7 +62,8 @@ public:
     //Post: Muestra "soy un casillero inaccesible y me encuentro vacio"
     void mostrar();
 
-
+    //pre: -
+    //pos: libera la memoria
     void liberar_memoria();
 
 };

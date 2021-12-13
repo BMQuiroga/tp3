@@ -47,4 +47,4 @@ public:
 
 
 
-#endif //TP3_2021_2C_MINERO_H
+#endif

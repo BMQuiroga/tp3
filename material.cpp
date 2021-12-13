@@ -6,12 +6,10 @@ Material::~Material() {}
 
 void Material::operator+(int numero){
     this->cantidad = cantidad + numero;
-
 }
 
 void Material::operator-(int numero){
     this->cantidad = cantidad - numero;
-    
 }
 
 std::string Material::devolver_nombre(){

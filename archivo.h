@@ -27,7 +27,8 @@ private:
     //pos: cierra el archivo
     void cerrar_archivo(ifstream &archivo);
 
-    
+    //pre: -
+    //pos: devuelve el tipo de casillero
     Casillero* asignar_casillero(char letra);
 
 };

@@ -1,7 +1,3 @@
-//
-// Created by ydsas on 4/12/2021.
-//
-
 #include "Letrado.h"
 Letrado::Letrado(ListaEdificios * edificios, Mapa * mapa, Jugador * jugador) {
     this->nombre="Letrado";
@@ -32,11 +28,6 @@ int Letrado::calcular_progreso(){
     return cantidad_escuelas_construidas;
 }
 
-
-/*
-void Letrado::mostrar_progreso() {
-    cout << "La cantidad de escuelas construidas es: " << this->cantidad_escuelas_construidas << endl;
-}*/
 
 void Letrado::actualizar(int valor){
     

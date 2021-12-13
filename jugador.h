@@ -3,19 +3,6 @@
 #include "listamateriales.h"
 #include "arboledificios.h"
 #include "objetivo.h"
-//#include "listaObjetivos.h"
-/*
-#include "ComprarAndypolis.h"
-#include "Armado.h"
-#include "Bombardero.h"
-#include "Cansado.h"
-#include "Constructor.h"
-#include "EdadDePiedra.h"
-#include "Energetico.h"
-#include "Extremista.h"
-#include "Letrado.h"
-#include "Minero.h"
-#include "Obelisco.h"*/
 
 class GrafoMapa;
 
@@ -96,40 +83,39 @@ public:
     //pre: - 
     //pos: devuelve la coordenada y del jugador
     int devolver_coordenada_y();
-    //void asignar_objetivos(ListaEdificios* edificios, Mapa * mapa);
 
     //void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos);
-    void actualizar_objetivo(int numero_objetivo, int valor);
+    //void actualizar_objetivo(int numero_objetivo, int valor);
 
-
-    //bool ha_ganado();
-
-    bool cumplio_objetivo_principal();
-
-    //bool cumplio_objetivo_secundario();
-    GrafoMapa* movimiento();
-    //bool cumplio_objetivo_secundario();
-
-    void destruir();
-
+    //pre: -
+    //pos: actualiza la cantidad de bombas para Extremista
     void actualizar_bombas_compradas(int cantidad);
 
+    //pre: -
+    //pos: actualiza la cantidad de bombas para Bombardero
     void actualizar_bombas_usadas();
 
+    //pre: -
+    //pos: actualiza la cantidad de monedas para Comprar Andypolis
     void actualizar_andycoins_juntadas(int cantidad);
 
+    //pre: -
+    //pos: actualiza el objetivo 1
     void asignar_objetivo_1(Objetivo * objetivo);
 
+    //pre: -
+    //pos: actualiza el objetivo 2
     void asignar_objetivo_2(Objetivo * objetivo);
 
+    //pre: -
+    //pos: actualiza el objetivo 3
     void asignar_objetivo_3(Objetivo * objetivo);
 
+    //pre: -
+    //pos: actualiza el objetivo 4
     void asignar_objetivo_4(Objetivo * objetivo);
 
 private:
-    void operacion_bombas(int valor);
-    //Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios * edificios, Mapa * mapa);
-    //Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
 
     //pre: mapa valido
     //pos: inicializa el Grafo

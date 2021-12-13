@@ -93,7 +93,7 @@ void Jugador::comprar_bombas(){
         std::cout<<"Posee "<< cantidad_andycoins <<" andycoins, cuantas bombas desea comprar?"<<std::endl;
         std::cin>>bombas;
 
-        while(util.convertir_a_entero(bombas) > cantidad_andycoins / 100){ // falta el caso de que bombas sea string creo
+        while(util.convertir_a_entero(bombas) > cantidad_andycoins / 100){ 
             std::cout<<"No alcanzan las andycoins, inserte un numero valido: "<<std::endl;
             std::cin>>bombas; 
         }
@@ -104,7 +104,7 @@ void Jugador::comprar_bombas(){
 
             this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(util.convertir_a_entero(bombas));
             this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(util.convertir_a_entero(bombas) * 100);
-            actualizar_bombas_compradas(util.convertir_a_entero(bombas));    //tirA SEG FAULT
+            actualizar_bombas_compradas(util.convertir_a_entero(bombas));   
             this->energia-=5;
         } else {
             std::cout << "Compra cancelada" << std::endl;
@@ -147,14 +147,6 @@ void Jugador::restar_energia(int numero){
     } else {
         this->energia = 0;
     }
-}
-
-void Jugador::destruir(){
-    this->materiales->destruir();
-    delete this->objetivo_1;
-    delete this->objetivo_2;
-    delete this->objetivo_3;
-    delete this->objetivo_4;
 }
 
 

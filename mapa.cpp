@@ -6,11 +6,6 @@
 #include "utilidad.h"
 
 
-// Mapa::Mapa(ListaEdificios edificios){
-//     procesar_archivo_mapa();
-//     //procesar_archivo_ubicaciones(edificios);
-// }
-
 Mapa::Mapa() {}
 
 Mapa::Mapa(int filas, int columnas) {
@@ -26,18 +21,13 @@ Mapa::Mapa(int filas, int columnas) {
 }
 
 Mapa::~Mapa() {
-    cout << "Destructor mapa" << endl;
     for (int i = 0; i < coordenada_x; i++) {
         for(int j = 0; j < coordenada_y; j++) {
-            //cout << "Posicion: (" << i << ", " << j << ")" << endl;
-            //  matriz[i][j]->liberar_memoria();
             delete matriz[i][j];
         }
         delete [] matriz[i];
-        //matriz[i] = NULL;
     }
     delete [] matriz;
-    //matriz = NULL;
 }
 
 void Mapa::definir(int coordenada_x,int coordenada_y){
@@ -89,7 +79,6 @@ void Mapa::llamar_lluvia(Jugador* jugador1, Jugador* jugador2){
     int cantidad_material_madera = util.generador_de_numeros_aleatorios(0,1);//rand()%1;
     int cantidad_material_metal = util.generador_de_numeros_aleatorios(2,4);//2+rand()%2;
     int cantidad_material_andycoins = util.generador_de_numeros_aleatorios(0,1);
-    //std::cout<<cantidad_material_piedra<<" "<<cantidad_material_madera<<" "<<cantidad_material_metal<<std::endl;
     int j1_x = jugador1->devolver_coordenada_x();
     int j1_y = jugador1->devolver_coordenada_y();
     int j2_x = jugador2->devolver_coordenada_x();
@@ -103,7 +92,7 @@ void Mapa::llamar_lluvia(Jugador* jugador1, Jugador* jugador2){
 }
 
 void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2_x, int j2_y){
-    int error = 0;//Para evitar while true, cuando se queda sin casilleros transitables vacios
+    int error = 0;
     Utilidad util;
     while(cantidad){
         error++;
@@ -121,11 +110,11 @@ void Mapa::lluvia(int cantidad, std::string material, int j1_x, int j1_y, int j2
     }
 }
 
-void Mapa::recolectar(Jugador* jugador){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN LAGO Y CAMINO PERO NO HACER NADA
+void Mapa::recolectar(Jugador* jugador){
     for(int i = 0; i < coordenada_x; i++){
         for(int j = 0; j < coordenada_y; j++){
             if(matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_jugador() == jugador->devolver_nombre())
-                matriz[i][j]->recolectar_material(jugador); //MANDAR PARAMETRO PIEDRA METAL MADERA
+                matriz[i][j]->recolectar_material(jugador); 
         }
     }
     jugador->restar_energia(20);
@@ -133,11 +122,6 @@ void Mapa::recolectar(Jugador* jugador){//RECOLECTAR MATERIAL TIENE QUE ESTAR EN
 
 void Mapa::demoler(ListaEdificios* edificios, int coord_x, int coord_y, Jugador* jugador){
     if (matriz[coord_x][coord_y] -> tiene_material_o_edificio() && matriz[coord_x][coord_y]->devolver_tipo() == 'T'){
-        //HAY QUE HACERLA DEVUELTA CON LAS LISTAS DE MATERIALES
-        /*int piedra=devolver_indice_materiales(materiales,"piedra");
-        int madera=devolver_indice_materiales(materiales,"madera");
-        int metal=devolver_indice_materiales(materiales,"metal");*/
-
         if (jugador->devolver_nombre() == matriz[coord_x][coord_y]->devolver_jugador()) {
             std::cout << matriz[coord_x][coord_y]->devolver_material_o_edificio() << " demolido/a satisfactoriamente." << std::endl;
             matriz[coord_x][coord_y] -> demoler(jugador);
@@ -198,9 +182,7 @@ void Mapa::mostrar_mapa(Jugador* jugador1, Jugador* jugador2){
             std::cout <<"Fila " <<i <<": ";
         else
             std::cout <<"Fila " <<i <<":";
-        //std::cout<<coordenada_y<<std::endl;
         for(int j = 0 ;j < coordenada_y ;j++){
-            //std::cout<<"ENTRA"<<std::endl;
             if(i == jugador1->devolver_coordenada_x() && j == jugador1->devolver_coordenada_y())
                 std::cout << JUGADOR_1 ; //J en rojo
             else if(i == jugador2->devolver_coordenada_x() && j == jugador2->devolver_coordenada_y())
@@ -223,7 +205,6 @@ void Mapa::mostrar_mapa(Jugador* jugador1, Jugador* jugador2){
 
 
 void Mapa::mostrar_recorrido(ListaRecorrido* recorrido, Jugador * jugador) {
-    //hecho asi nomas, ver si se puede agregar las cosas de los casilleros
     std::cout <<"Columna: ";
     for(int k = 0 ;k < coordenada_y ;k++)
         std::cout <<k <<" ";
@@ -252,58 +233,13 @@ void Mapa::destruir(){
     for(int i = 0; i < coordenada_x; i++){
     	for(int j = 0; j < coordenada_y; j++){
             delete matriz[i][j];
-            //matriz[i][j] = nullptr;// no es necesario pero buena practica. 12/12/2021(buena practica pero tira error, asi que se va)
         }
-
         delete[] matriz[i];
     }
     delete[] matriz;
 }
 
 
-
-// void Mapa::procesar_archivo_mapa(){
-//     char letra;
-//     int coordenadax, coordenaday;
-//     int contador = 0;
-//     std::ifstream archivo_mapa("mapa.txt" ,std::ios::in);
-//     if(!archivo_mapa)
-//         std::cout <<"El archivo no se abrio correctamente"<<std::endl;
-//     else{
-//         archivo_mapa >> coordenadax;
-//         archivo_mapa >> coordenaday;
-        
-//         definir(coordenadax, coordenaday);
-        
-//         //std::cout<<coordenada_x<<" "<<coordenada_y<<std::endl;
-
-//         Casillero*** casilla;
-//         casilla = new Casillero**[coordenada_x];
-//         for(int i = 0; i < coordenada_x; i++){
-//             casilla[i] = new Casillero*[coordenada_y];
-//             for(int j = 0; j < coordenada_y; j++){
-//                 archivo_mapa >> letra;
-//                 //std::cout<<i<<" "<<j<<std::endl;
-//                 if(letra == 'T')
-//                     casilla[i][j] = new CasilleroConstruible();
-//                 else if(letra == 'C')
-//                     casilla[i][j] = new CasilleroTransitable("Camino");
-//                 else if(letra == 'B')
-//                     casilla[i][j] = new CasilleroTransitable("Betun");
-//                 else if(letra == 'M')
-//                     casilla[i][j] = new CasilleroTransitable("Muelle");
-//                 else if(letra == 'L')
-//                     casilla[i][j] = new CasilleroInaccesible();
-//                 else
-//                     std::cout<<"ERROR";
-
-//                 casilla[i][j]->setear_id(contador);
-//                 contador++;
-//             }     
-//         }
-//         this->matriz = casilla;
-//     }
-// }
 bool Mapa::casillero_ocupado(Jugador* jugador, int coord_x, int coord_y){
     return(matriz[jugador->devolver_coordenada_x()][jugador->devolver_coordenada_y()] == matriz[coord_x][coord_y]);
 
@@ -341,10 +277,7 @@ void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival
 }
 
 bool Mapa::se_puede_construir(ListaEdificios* edificios, std::string nombre, Jugador* jugador){
-    //bool es_valido_construir = true;
-    //cout << "antes";
     bool es_valido_construir = false;
-    //cout << "despues";
     if(!edificios->es_edificio_valido(nombre)){
         std::cout <<"No existe un edificio con ese nombre!" <<std::endl;
         return false;
@@ -431,37 +364,20 @@ void Mapa::mostrar_coordenadas(std::string nombre, Jugador* jugador){
 
 void Mapa::menu_demoler(ListaEdificios* edificios, Jugador* jugador){
     int coord_x, coord_y;
-    // std::cout <<"Ingrese la coordenada x"<<std::endl;
-    // std::cin >>coord_x;
-    // std::cout<<"Ingrese la coordenada y"<<std::endl;
-    // std::cin >>coord_y;
 
     coord_x = pedir_fila();
     coord_y = pedir_columna();
 
     demoler(edificios, coord_x,coord_y,jugador);
-
-    // if(coord_x < coordenada_x && coord_y < coordenada_y && coord_x >= 0 && coord_y >= 0)
-    //     demoler(edificios, coord_x,coord_y,jugador);
-    // else
-    //     std::cout<<"Posicion elegida fuera de rango!"<<std::endl;
 }
 
 void Mapa::menu_consultar_coordenada(){
     int coord_x,coord_y;
-    // std::cout <<"Ingrese la coordenada x"<<std::endl;
-    // std::cin >>coord_x;
-    // std::cout <<"Ingrese la coordenada y"<<std::endl;
-    // std::cin >>coord_y;
+
     coord_x = pedir_fila();
     coord_y = pedir_columna();
 
     this->matriz[coord_x][coord_y]->mostrar();
-
-    // if(coord_x < coordenada_x && coord_y<coordenada_y && coord_x >= 0 && coord_y >= 0)
-    //     this->matriz[coord_x][coord_y]->mostrar();
-    // else
-    //     std::cout <<"Posicion elegida fuera de rango!" <<std::endl;
 }
 
 void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2){
@@ -489,10 +405,7 @@ void Mapa::listar_todos_los_edificios(ListaEdificios* edificios, Jugador* jugado
 void Mapa::menu_atacar(Jugador* jugador, Jugador* rival){
     bool destruido;
     int coord_x, coord_y;
-    // std::cout <<"Ingrese la coordenada x del edificio enemigo que desea atacar" <<std::endl;
-    // std::cin >>coord_x;
-    // std::cout <<"Ingrese la coordenada y" <<std::endl;
-    // std::cin >>coord_y;
+
     coord_x = pedir_fila();
     coord_y = pedir_columna();
 
@@ -520,10 +433,7 @@ void Mapa::menu_atacar(Jugador* jugador, Jugador* rival){
 
 void Mapa::menu_reparar(Jugador* jugador){
     int coord_x, coord_y;
-    // std::cout <<"Ingrese la coordenada x del edificio que desea reparar" <<std::endl;
-    // std::cin >>coord_x;
-    // std::cout <<"Ingrese la coordenada y" <<std::endl;
-    // std::cin >>coord_y;
+
     coord_x = pedir_fila();
     coord_y = pedir_columna();
 
@@ -583,11 +493,9 @@ void Mapa::reescribir_jugador(ofstream & archivo_ubicaciones, int numero_jugador
 
 bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, Jugador* u){
     std::string nombre;
-    //int coord_x;
-    // int coord_y;
+
     std::string aux;
     bool archivo_en_blanco = true;
-
 
     std::ifstream archivo_ubicaciones("ubicaciones.txt",std::ios::in);
     if(!archivo_ubicaciones){
@@ -595,7 +503,6 @@ bool Mapa::procesar_archivo_ubicaciones(ListaEdificios* edificios, Jugador* j, J
         std::cout<<"No se ha encontrado el archivo ubicaciones, comenzando nueva partida..."<<std::endl;
     }
     else{
-        //archivo_en_blanco = true;
         archivo_en_blanco=procesar_archivo_ubicaciones_materiales(archivo_ubicaciones);
         if(archivo_en_blanco)
             return true;
@@ -624,11 +531,9 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
     int coord_x,coord_y;
     while(archivo >> nombre){
         archivo_en_blanco=false;
-        //std::cout << nombre << "nombre" << std::endl;
         if (nombre == "1"){
             return archivo_en_blanco;
         }
-        //std::cout << nombre << "nombre" << std::endl;
         getline(archivo,aux,'(');
         archivo >> aux;
         coord_x = stoi(aux);
@@ -642,7 +547,6 @@ bool Mapa::procesar_archivo_ubicaciones_materiales(ifstream & archivo){
 
 void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdificios* edificios, int numero_jugador){
     std::string nombre;
-    //bool archivo_en_blanco;
     std::string aux;
     int coord_x,coord_y;
     while (archivo>>nombre){
@@ -658,24 +562,14 @@ void Mapa::procesar_archivo_ubicaciones_edificios(ifstream & archivo, ListaEdifi
         if (aux == " electrica "){
             nombre = "planta electrica";
         }
-        
-        //cout << "Nombre: " << aux;
+        archivo >> aux;  
+        coord_x = stoi(aux); 
         archivo >> aux;
-       
-        coord_x = stoi(aux);
-        
-        archivo >> aux;
-       
         coord_y = stoi(aux);
-        
         Edificio* edificio = edificios->consulta(nombre);
         
-        //std::cout <<edificio->devolver_nombre() <<edificio->devolver_madera() <<edificio->devolver_piedra() <<edificio->devolver_metal() << std::endl;
-        //matriz[coord_x][coord_y]->mostrar();
         matriz[coord_x][coord_y]->construir(edificio);
-       
         matriz[coord_x][coord_y]->cambiar_jugador(numero_jugador);
-        
     };
 }
 
@@ -689,5 +583,4 @@ void Mapa::procesar_archivo_ubicaciones_jugador(ifstream & archivo,  Jugador* ju
     archivo >> aux;
     coord_y = stoi(aux);
     jugador->mover_gratis(coord_x,coord_y);
-    //std::cout <<"Jugador" << jugador->devolver_nombre() << " movido a: "<< coord_x << "," << coord_y << std::endl;
 }
