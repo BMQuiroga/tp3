@@ -26,17 +26,17 @@ Mapa::Mapa(int filas, int columnas) {
 
 Mapa::~Mapa() {
     cout << "Destructor mapa" << endl;
-    for (int i = 0; i < devolver_cantidad_filas(); i++) {
-        for(int j = 0; j < devolver_cantidad_columnas(); j++) {
+    for (int i = 0; i < coordenada_x; i++) {
+        for(int j = 0; j < coordenada_y; j++) {
             //cout << "Posicion: (" << i << ", " << j << ")" << endl;
             //  matriz[i][j]->liberar_memoria();
             delete matriz[i][j];
         }
         delete [] matriz[i];
-        matriz[i] = NULL;
+        //matriz[i] = NULL;
     }
     delete [] matriz;
-    matriz = NULL;
+    //matriz = NULL;
 }
 
 void Mapa::definir(int coordenada_x,int coordenada_y){

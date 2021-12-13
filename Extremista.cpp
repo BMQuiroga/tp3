@@ -37,5 +37,5 @@ void Extremista::mostrar_progreso() {
 }*/
 
 int Extremista::calcular_progreso(){
-    return 0;
+    return this->bombas_compradas;
 }

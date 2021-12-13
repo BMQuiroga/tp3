@@ -273,6 +273,11 @@ bool Jugador::cumplio_objetivo_secundario() {
 void Jugador::destruir(){
     this->materiales->destruir();
     //ACA SE DESTRUYEN LOS OBJETIVOS EN MEMORIA DINAMICA
+    //YES SIR
+    delete this->objetivo_1;
+    delete this->objetivo_2;
+    delete this->objetivo_3;
+    delete this->objetivo_4;
 }
 
 
@@ -323,10 +328,15 @@ void Jugador::mostrar_objetivos(){/*
     this->objetivo_secundario[2]->mostrar();
 
 */
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_1->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_2->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_3->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_4->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
 
 }
 

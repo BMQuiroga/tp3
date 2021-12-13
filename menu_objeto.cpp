@@ -12,6 +12,9 @@
 #include "Letrado.h"
 #include "Minero.h"
 #include "Obelisco.h"
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
 
 const int JUGADOR = 0;
 const int RIVAL =   1;
@@ -91,8 +94,8 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
             mapa->llamar_lluvia(jugador1,jugador2);
             std::cout << "lluvia" << std::endl;
         }
-        // if(checkear_si_gano(lista_jugadores[JUGADOR]))
-        //     secuencia_victoria(lista_jugadores[JUGADOR]);
+        if(lista_jugadores[JUGADOR]->checkear_objetivos())
+            secuencia_victoria(lista_jugadores[JUGADOR]);
         cambiar_turno(lista_jugadores);
         utilidad.limpiar_pantalla();
         if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
@@ -281,34 +284,27 @@ void Menu::modificar_datos_edificio(){
     int a=0;
     int b=0;
     int c=0;
+    int d=0;
+    int e=0;
+    int f=0;
     Utilidad util;
-
-    while (a==b || b==c || a==c){
+    //srand(time(0));
+    while (a==b || b==c || a==c || d==e || e==f || f==d ){
          a=util.generador_de_numeros_aleatorios(1,10);
          b=util.generador_de_numeros_aleatorios(1,10);
          c=util.generador_de_numeros_aleatorios(1,10);
+         d=util.generador_de_numeros_aleatorios(1,10);
+         e=util.generador_de_numeros_aleatorios(1,10);
+         f=util.generador_de_numeros_aleatorios(1,10);
     }
-    /*
-    this->objetivo_2 = crear_objetivo(a, edificios, mapa);
-    this->objetivo_3 = crear_objetivo(b, edificios, mapa);
-    this->objetivo_4 = crear_objetivo(c, edificios, mapa);
-    this->objetivo_1 = new Obelisco(edificios,mapa,this);*/
-
     jugador1->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador1));
     jugador1->asignar_objetivo_2(crear_objetivo(a,1));
     jugador1->asignar_objetivo_3(crear_objetivo(b,1));
     jugador1->asignar_objetivo_4(crear_objetivo(c,1));
-
-    while (a==b || b==c || a==c){
-         a=util.generador_de_numeros_aleatorios(1,10);
-         b=util.generador_de_numeros_aleatorios(1,10);
-         c=util.generador_de_numeros_aleatorios(1,10);
-    }
-    
     jugador2->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador2));
-    jugador2->asignar_objetivo_2(crear_objetivo(a,2));
-    jugador2->asignar_objetivo_3(crear_objetivo(b,2));
-    jugador2->asignar_objetivo_4(crear_objetivo(c,2));
+    jugador2->asignar_objetivo_2(crear_objetivo(d,2));
+    jugador2->asignar_objetivo_3(crear_objetivo(e,2));
+    jugador2->asignar_objetivo_4(crear_objetivo(f,2));
 }
 
 Objetivo* Menu::crear_objetivo(int numero, int numero_jugador) {
