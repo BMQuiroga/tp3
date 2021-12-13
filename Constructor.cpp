@@ -122,6 +122,7 @@ int Constructor::calcular_progreso(){
         }
     }
     edificios_construidos = contador;
+    delete [] array_edificios;
     return contador;
 }
 

@@ -28,6 +28,10 @@ Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa)
 
 Jugador::~Jugador() {
     delete grafo;
+    delete objetivo_1;
+    delete objetivo_2;
+    delete objetivo_3;
+    delete objetivo_4;
 }
 
 void Jugador::crear_grafo(Mapa * mapa) {

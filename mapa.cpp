@@ -11,9 +11,10 @@
 //     //procesar_archivo_ubicaciones(edificios);
 // }
 
+Mapa::Mapa() {}
+
 Mapa::Mapa(int filas, int columnas) {
     this->definir(filas, columnas);
-
     Casillero*** casilla;
     casilla = new Casillero**[filas];
     

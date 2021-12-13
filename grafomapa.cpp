@@ -14,12 +14,18 @@ GrafoMapa::GrafoMapa(Jugador* jugador, Mapa* mapa) {
 }
 
 GrafoMapa::~GrafoMapa(){
-    if (esta_inicializado) 
+    if (esta_inicializado) {
         liberar_memoria();
+        this->esta_inicializado = false;    
+    }
+
 }   
 
 
 void GrafoMapa::generar_caminos() {
+    if (esta_inicializado) {
+        liberar_memoria();
+    } 
     this->esta_inicializado = true;
     inicializar_matriz_adyacencia();
     inicializar_caminos();
@@ -138,7 +144,6 @@ ListaRecorrido* GrafoMapa::camino_minimo(int origen, int destino) {
         casillero_actual = matriz_vertices[casillero_actual][destino];
         recorrido->agregar(casillero_actual);
     }
-
     return recorrido;
 }
 

@@ -71,13 +71,13 @@ int main(){
     std::cout << "aca " <<std::endl;
     delete jugador1;
     delete jugador2;
-    delete mapa;
     std::cout << "aca1 " <<std::endl;
-    edificios->destruir();
+    //edificios->destruir();
     std::cout << "aca2 " <<std::endl;
-    mapa->destruir();
-    std::cout << "aca3 " <<std::endl;
+    //mapa->destruir();
     delete edificios;
+    std::cout << "aca3 " <<std::endl;
+    delete mapa;
     std::cout << "aca4 " <<std::endl;
     delete materiales1;
     std::cout << "aca5 " <<std::endl;

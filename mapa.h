@@ -59,7 +59,7 @@ private:
 
 //Metodos
 public:
-    Mapa() {};
+    Mapa();
 
     //Pre: -
     //Post: Crea instancia de mapa con filas y columnas 
