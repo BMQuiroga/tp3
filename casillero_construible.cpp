@@ -108,7 +108,6 @@ bool CasilleroConstruible::atacar(){
     this->vida-=1;
     if(vida==0){
         std::cout<<"El "<< this->edificio->devolver_nombre() <<" ha sido destruido"<<std::endl;
-        delete edificio;
         this->edificio = new Edificio;
         return true;
     }
