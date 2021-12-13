@@ -13,7 +13,8 @@ int main(){
     ListaEdificios* edificios = new ListaEdificios;
     edificios->procesar_archivo_edificios();      
 
-    ListaMateriales materiales1, materiales2;
+    ListaMateriales* materiales1 = new ListaMateriales; 
+    ListaMateriales* materiales2 = new ListaMateriales;
 
     archivo.procesar_archivo_materiales(materiales1,materiales2);   //tuve que hacerlo asi porque sino perdia scope las variables y me devolvia 0 el primer puntero
     
@@ -22,8 +23,8 @@ int main(){
     Jugador* jugador1 = new Jugador(1,1,1, edificios, mapa);
     Jugador* jugador2 = new Jugador(2,2,2, edificios, mapa);
     mapa->procesar_archivo_ubicaciones(edificios, jugador1, jugador2);
-    jugador1->asignar_lista_materiales(&materiales1);
-    jugador2->asignar_lista_materiales(&materiales2);
+    jugador1->asignar_lista_materiales(materiales1);
+    jugador2->asignar_lista_materiales(materiales2);
     // Jugador jugador1(1,1,1, edificios, mapa);
     // Jugador jugador2(2,2,2, edificios, mapa);
     
@@ -73,8 +74,8 @@ int main(){
     edificios->destruir();
     mapa->destruir();
     delete edificios;
-    materiales1.destruir();
-    materiales2.destruir();
+    delete materiales1;
+    delete materiales2;
     return 0;
 }
 

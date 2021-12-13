@@ -16,7 +16,7 @@ public:
 
     //pre: -
     //pos: carga los materiales de los jugadores
-    void procesar_archivo_materiales(ListaMateriales& jugador1, ListaMateriales& jugador2);
+    void procesar_archivo_materiales(ListaMateriales* jugador1, ListaMateriales* jugador2);
 
 private:
     //pre:
