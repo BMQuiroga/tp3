@@ -40,9 +40,9 @@ bool Minero::checkear(){
 int Minero::calcular_progreso(){
     int contador = 0;
     //bool resultado = true;
-    if(this->mapa->tiene_edificio("mina",jugador) && existe_mina)
+    if(this->mapa->edificios_construidos("mina",jugador)>=1 && existe_mina)
         contador++;
-    if(this->mapa->tiene_edificio("mina oro",jugador) && existe_mina_oro)
+    if(this->mapa->edificios_construidos("mina oro",jugador)>=1 && existe_mina_oro)
         contador++;
     cantidad_minas_construidas = contador;
     return contador;

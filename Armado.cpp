@@ -34,6 +34,7 @@ void Armado::actualizar(int valor) {
 }
 
 int Armado::calcular_progreso(){
+    //std::cout << "calculo" << std::endl;
     cantidad_bombas = this->jugador->devolver_materiales()->consulta(this->jugador->devolver_materiales()->buscar_indice("bombas"))->devolver_cantidad();
     return cantidad_bombas;
 }

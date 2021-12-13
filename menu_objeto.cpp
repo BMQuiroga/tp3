@@ -68,6 +68,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
     Jugador** lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
 
     while(opcion != GUARDAR_Y_SALIR_PARTIDA && !lista_jugadores[RIVAL]->checkear_objetivos()) {
+        if (lista_jugadores[JUGADOR]->devolver_energia()>100) {lista_jugadores[JUGADOR]->restar_energia(lista_jugadores[JUGADOR]->devolver_energia()-100);}
         while  (opcion != GUARDAR_Y_SALIR_PARTIDA && 
                 opcion != FINALIZAR_TURNO && 
                 lista_jugadores[JUGADOR]->devolver_energia() != 0  && 
@@ -95,7 +96,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
     else{
         guardar();
     }
-    
+
     delete [] lista_jugadores; //poner en otro lado
 }
 
@@ -234,15 +235,12 @@ void Menu::reescribir_materiales(){
     archivo_materiales.close();
     }
 }
-/*
-bool Menu::checkear_si_gano(Jugador* jugador){
-    return ( (mapa->tiene_edificio("obelisco",jugador)) || (jugador->cumplio_objetivo_secundario()) );
-}*/
+
 
 void Menu::secuencia_victoria(Jugador* jugador){
     std::cout << "El jugador " << jugador->devolver_nombre() << " ha ganado el partido" << endl;
-    borrar_archivo_ubicaciones();
-    resetear_archivo_materiales();
+    //borrar_archivo_ubicaciones();
+    //resetear_archivo_materiales();
 }
 
 void Menu::modificar_datos_edificio(){
@@ -293,13 +291,13 @@ void Menu::modificar_datos_edificio(){
          f=util.generador_de_numeros_aleatorios(1,10);
     }
     jugador1->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador1));
-    jugador1->asignar_objetivo_2(crear_objetivo(a,1));
-    jugador1->asignar_objetivo_3(crear_objetivo(b,1));
-    jugador1->asignar_objetivo_4(crear_objetivo(c,1));
+    jugador1->asignar_objetivo_2(crear_objetivo(3,1));
+    jugador1->asignar_objetivo_3(crear_objetivo(7,1));
+    jugador1->asignar_objetivo_4(crear_objetivo(2,1));
     jugador2->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador2));
-    jugador2->asignar_objetivo_2(crear_objetivo(d,2));
-    jugador2->asignar_objetivo_3(crear_objetivo(e,2));
-    jugador2->asignar_objetivo_4(crear_objetivo(f,2));
+    jugador2->asignar_objetivo_2(crear_objetivo(3,2));
+    jugador2->asignar_objetivo_3(crear_objetivo(7,2));
+    jugador2->asignar_objetivo_4(crear_objetivo(2,2));
 }
 
 Objetivo* Menu::crear_objetivo(int numero, int numero_jugador) {

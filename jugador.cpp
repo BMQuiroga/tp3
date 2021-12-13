@@ -20,7 +20,7 @@ Jugador::Jugador() {}
 Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa){
     //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
-    this->energia = 2000;
+    this->energia = 5;
     this->nombre = numero;
     this->crear_grafo(mapa);
     //this->asignar_objetivos(edificios, mapa);
@@ -164,7 +164,7 @@ void Jugador::destruir(){
 
 
 void Jugador::actualizar_bombas_compradas(int cantidad){
-    std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
+    //std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
     if (objetivo_2->devolver_nombre()=="Extremista")
         objetivo_2->actualizar(cantidad);
     else if (objetivo_3->devolver_nombre()=="Extremista")
@@ -174,7 +174,7 @@ void Jugador::actualizar_bombas_compradas(int cantidad){
 }
 
 void Jugador::actualizar_bombas_usadas(){
-    std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
+    //std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
     if (objetivo_2->devolver_nombre()=="Bombardero")
         objetivo_2->actualizar(1);
     else if (objetivo_3->devolver_nombre()=="Bombardero")
@@ -184,7 +184,7 @@ void Jugador::actualizar_bombas_usadas(){
 }
 
 void Jugador::actualizar_andycoins_juntadas(int cantidad){
-    std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
+    //std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
     if (objetivo_2->devolver_nombre()=="ComprarAndypolis")
         objetivo_2->actualizar(cantidad);
     else if (objetivo_3->devolver_nombre()=="ComprarAndypolis")

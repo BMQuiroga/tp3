@@ -8,7 +8,7 @@
 Cansado::Cansado(Jugador * jugador) {
     this->nombre="Cansado";
     this->energia = jugador->devolver_energia();
-    this->energia_minima = 0;
+    this->energia_minima = 20;//Se checkea dsp de terminar el turno, asi que el minimo es 20 de energia
     this->cumplio = false;
     this->jugador = jugador;
 

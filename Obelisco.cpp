@@ -21,7 +21,7 @@ void Obelisco::mostrar(){
 }
 
 int Obelisco::calcular_progreso(){
-    if(this->mapa->tiene_edificio("obelisco",jugador))
+    if(this->mapa->edificios_construidos("obelisco",jugador)>=1)
         obeliscos_construidos = 1;
     else
         obeliscos_construidos = 0;

@@ -1,5 +1,5 @@
-piedra 78137 19955
-bombas 4 2511
-andycoins 101102 499001
-metal 4443 1860
-madera 252 875
+piedra 99900 0
+metal 99890 0
+madera 99890 0
+bombas 4 2
+andycoins 999800 10000
