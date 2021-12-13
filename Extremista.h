@@ -9,10 +9,25 @@ private:
     int bombas_necesarias;
     bool cumplio;
 public:
+
+    //Pre:-
+    //Pos:Asigna los atributos, bombas_necesarias=500
     Extremista();
+
+    //Pre:
+    //Pos:
     int calcular_progreso();
+
+    //Pre:-
+    //Pos: Cheque que se haya comprado mayor o igual que 500 bombas
     bool checkear();
+
+    //Pre:Recibe una cant de bombas
+    //Pos: Actualiza la cant de bombas compradas sumandole el parametro
     void actualizar(int valor);
+
+    //Pre:-
+    //Pos:Muestra por pantalla el objetivo, y si lo cumple muestra que fue completado
     void mostrar();
 };
 

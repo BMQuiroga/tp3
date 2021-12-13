@@ -5,10 +5,10 @@
 #include "Minero.h"
 #include "mapa.h"
 Minero::Minero(ListaEdificios * edificios, Mapa *mapa, Jugador *jugador) {
-    this->cantidad_minas_necesarias=0;
-    this->existe_mina=false;
-    this->existe_mina_oro=false;
-    this->nombre="Minero";
+    this->cantidad_minas_necesarias = 0;
+    this->existe_mina = false;
+    this->existe_mina_oro = false;
+    this->nombre = "Minero";
     this->cumplio = false;
     this->edificios = edificios;
     this->jugador = jugador;
