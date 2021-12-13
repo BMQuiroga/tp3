@@ -69,6 +69,8 @@ public:
     //Post: Procesa los archivos mapa.txt y ubicaciones.txt
     Mapa(ListaEdificios edificios);
 
+    //pre: -
+    //pos: -
     ~Mapa();
 
     //Pre: -
@@ -158,25 +160,29 @@ public:
     //Post: Devuelve la cantidad de edificios de ese tipo que tiene construidos ese jugador
     int edificios_construidos(std::string nombre, Jugador* jugador);
 
-
-    void mover_jugador(Jugador* jugador);
-
-
+    //pre: -
+    //pos: devuelve el casillero de las coordenadas pasadas
     Casillero* devolver_casillero(int x, int y);
 
-
-    //agregue estos dos para q no salte error
-    int pedir_fila();
-    int pedir_columna();
-    
-    
+    //pre: -
+    //pos: asigna el casillero pasado por parametro a las coordenadas dadas
     void setear_casillero(int x, int y, Casillero* casillero);
 
+    //pre: -
+    //pos: pide fila y valida el dato
+    int pedir_fila();
+
+    //pre: -
+    //pos: pide columna y valida el dato
+    int pedir_columna();
+    
+    //pre: -
+    //pos: muestra el recorrido del jugador en el mapa
     void mostrar_recorrido(ListaRecorrido* recorrido, Jugador* jugador);
+
     //Pre:-
     //Post:Verifica que exista el archivo mapa.txt y los carga en una matriz
     void procesar_archivo_mapa();
-  
 private:
     
 

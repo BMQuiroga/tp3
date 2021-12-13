@@ -140,26 +140,6 @@ ListaRecorrido* GrafoMapa::camino_minimo(int origen, int destino) {
 }
 
 
-void GrafoMapa::mostrar_recorrido_en_mapa(ListaRecorrido* recorrido) {
-    cout << "Recorrido (provisorio)" << endl;
-    for (int coord_x = 0; coord_x < filas; coord_x++) {
-        for (int coord_y = 0; coord_y < columnas; coord_y++) {
-            string s(1,mapa->devolver_casillero(coord_x,coord_y)->devolver_tipo_camino());
-
-            if (recorrido->contiene(mapa->devolver_casillero(coord_x,coord_y)->obtener_id())) {
-                std::cout << "\"*\"";
-            } else {
-                std::cout << "\"" << s << "\"";
-            }
-            std::cout << " | ";
-        }
-        std::cout << std::endl;
-    }
-    cout << endl;
-}
-
-
-
 int GrafoMapa::generar_peso(Casillero* casillero) {
     int peso = 0;
     if (casillero->devolver_tipo_camino() == 'C') {
@@ -207,71 +187,6 @@ void GrafoMapa::floyd() {
 }
 
 
-
-
-void GrafoMapa::mostrar_matriz() {
-
-    //son de prueba, no hacen falta para la version final
-
-    cout << "Mapa" << endl;
-    for (int coord_x = 0; coord_x < filas; coord_x++) {
-        for (int coord_y = 0; coord_y < columnas; coord_y++) {
-            string s(1,mapa->devolver_casillero(coord_x,coord_y)->devolver_tipo_camino());
-            std::cout << "\"" << s << "\"";
-            std::cout << " | ";
-        }
-        std::cout << std::endl;
-    }
-    cout << endl;
-
-    cout << "Vertices" << endl;
-    for (int coord_x = 0; coord_x < filas; coord_x++) {
-        for (int coord_y = 0; coord_y < columnas; coord_y++) {
-            if (mapa->devolver_casillero(coord_x,coord_y)->obtener_id() < 10 ) {
-                std::cout << "\"" << std::to_string(mapa->devolver_casillero(coord_x,coord_y)->obtener_id()) << " " << "\"";
-                std::cout << " | ";
-            } else {
-                std::cout << "\"" << std::to_string(mapa->devolver_casillero(coord_x,coord_y)->obtener_id()) << "\"";
-                std::cout << " | ";
-            }
-
-        }
-        std::cout << std::endl;
-    }
-
-    cout << endl;
-
-    // cout << "Matriz de distancias" << endl;
-    // for (int coord_x = 0; coord_x < filas * columnas; coord_x++) {
-    //     for (int coord_y = 0; coord_y < filas * columnas; coord_y++) {
-    //         if (matriz_adyacencia[coord_x][coord_y] == INFINITO) {
-    //             std::cout << "\"" << " " << "\"";
-    //             std::cout << " | ";
-    //         } else {
-    //             std::cout << "\"" << std::to_string(matriz_adyacencia[coord_x][coord_y]) << "\"";
-    //             std::cout << " | ";
-    //         }
-    //     }
-    //     std::cout << std::endl;
-    // }
-
-    // cout << endl;
-
-    // cout << "Matriz de vertices" << endl;
-    // for (int i = 0; i < filas * columnas; i++) {
-    //     for (int j = 0; j < filas * columnas; j++) {
-    //         if (i == j) {
-    //             std::cout << "\"" << "-" << "\"";
-    //             std::cout << " | ";
-    //         } else {
-    //             std::cout << "\"" << matriz_vertices[i][j] << "\"";
-    //             std::cout << " | ";
-
-    //         }
-    //     }
-    //     cout << endl;
-    // }
-}
 
 void GrafoMapa::liberar_memoria() {
     int largo_matriz = filas * columnas;

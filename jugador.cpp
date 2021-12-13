@@ -99,22 +99,11 @@ void Jugador::comprar_bombas(){
 }
 
 
-// void Jugador::operacion_bombas(int valor) {
-//     this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato().operator+(valor);
-
-// }
-
-GrafoMapa* Jugador::movimiento() {
-    return grafo;
-}
-
 ListaMateriales* Jugador::devolver_materiales(){
     return this->materiales;
 }
 
-// ListaMateriales Jugador::devolver_materiales() {
-//     return this->materiales;
-// }
+
 
 int Jugador::devolver_nombre(){
     return this->nombre;

@@ -1,12 +1,5 @@
 #include <iostream>
 #include "casillero_transitable.h"
-//#include "casillero.h"
-
-/*void CasilleroTransitable::recolectar_material(){
-    //En esta linea le sumo la cantidad material a nuestro array de recursos disponibles
-    this->cantidad_material=0;
-
-}*/
 
 void CasilleroTransitable::poner_material(Material* mat){
     this->material = mat;
@@ -20,13 +13,7 @@ std::string CasilleroTransitable::devolver_material_o_edificio(){
     return this->material->devolver_nombre();
 }
 
-/*char CasilleroTransitable::devolver_tipo(){
-    return this->tipo;
-}*/
-
 CasilleroTransitable::CasilleroTransitable(std::string camino){
-    //Material material_vacio; //revisar
-    // this->material = material;
     this->material = new Material; 
     this->tipo = 'C';
     this->tipo_de_camino=camino;
@@ -66,8 +53,6 @@ void CasilleroTransitable::demoler(Jugador* jugador){
     
 }
 
-//Casillero::~Casillero(){
-//}
 
 void CasilleroTransitable::cambiar_jugador(int numero){
     //this->jugador=numero;

@@ -16,6 +16,9 @@ public:
     //Pre:-
     //Post:Al objeto le asigno tipo L
     CasilleroInaccesible();
+
+    //pre: -
+    //pos: -
     ~CasilleroInaccesible();
 
     //Pre:

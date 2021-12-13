@@ -9,6 +9,14 @@ private:
     int cantidad;
 public:
     //Pre:
+    //Post:Crea un objeto material con nombre y cantidad
+    Material(std::string nombre,int cantidad);
+
+    //Pre:
+    //Post:Crea un objeto material con nombre, cant piedra, cant madera, cant metal, maximos permitidos asignados en 0.
+    Material();
+    
+    //Pre:
     //Post:Resta la cantidad de material con el numero que recibe
     void operator-(int numero);
 
@@ -24,13 +32,6 @@ public:
     //Post:Devuelve la cantidad del material
     int devolver_cantidad();
 
-    //Pre:
-    //Post:Crea un objeto material con nombre y cantidad
-    Material(std::string nombre,int cantidad);
-
-    //Pre:
-    //Post:Crea un objeto material con nombre, cant piedra, cant madera, cant metal, maximos permitidos asignados en 0.
-    Material();
 
     //Pre:
     //Post:Cambia el atributo cantidad por el que le pasan 

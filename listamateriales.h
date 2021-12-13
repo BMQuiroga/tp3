@@ -15,7 +15,10 @@ public:
     //POS: tope = 0
     ListaMateriales();
 
+    //pre: -
+    //pos: -
     ~ListaMateriales();
+
     //PRE: 1 <= pos <= cantidad + 1
     //POS: agrega d arriba de la pila e incrementa tope en 1
     void alta(Material* d /*, int pos */);
@@ -24,13 +27,13 @@ public:
     //POS: devuelve el dato que esta arriba
     Material* consulta(int pos);
 
-    //Destructor
+    //pre: -
+    //pos: destruye los punteros
     void destruir();
 
     //PRE: -
     //POS: muestra todos los materiales y sus cantidades
     void mostrar();
-
 
     //PRE: -
     //POS: devuelve el indice del material

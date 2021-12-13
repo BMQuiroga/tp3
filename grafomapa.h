@@ -21,21 +21,17 @@ private:
     Jugador* jugador;
 
 public:
-    GrafoMapa();
-
-    //GrafoMapa(Jugador* jugador);
 
     //pre: jugador con nombre asignado
     //pos: crea un GrafoMapa asociado con el jugador
     GrafoMapa(Jugador* jugador, Mapa* mapa);
+
+    //Pre: -
+    //Post: Destruye matrices creadas 
     ~GrafoMapa();
-
-    //de prueba por ahora
-    void mostrar_matriz();
-
-    //no va
-    void mostrar_recorrido_en_mapa(ListaRecorrido* recorrido);
-
+    
+    //Pre: coordenadas validas
+    //Post: verifica si el recorrido es valido
     bool es_recorrido_valido(int origen_x, int origen_y, int destino_x, int destino_y, int costo);
 
     //pre: 1 <= x < filas; 1 <= y < columnas
@@ -46,13 +42,13 @@ public:
     //pos: devuelve los casilleros recorridos
     ListaRecorrido* mover_jugador(int origen_x, int origen_y, int destino_x, int destino_y);
 
-
-
 private:
     //pre: 1 <= posicicion < filas * columnas, origen != destino
     //pos: devuelve vector con los nodos visitados (falta parte de devolver int*)
     ListaRecorrido* camino_minimo(int origen, int destino);
 
+    //pre: 1 <= x < filas; 1 <= y < columnas
+    //pos: agrega el camino si es valido o no 
     void agregar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
 
     //pre: 1 <= posicicion < filas * columnas
@@ -87,7 +83,8 @@ private:
     //pos: completa las matrices adyacencia y vertices usando el algoritmo de floyd
     void floyd();
 
-
+    //pre: -
+    //pos: libera la memoria
     void liberar_memoria();
 };
 

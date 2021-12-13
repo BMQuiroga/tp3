@@ -42,7 +42,6 @@ public:
     //Post: Menu principal del juego
     Menu(Mapa* mapa, ListaEdificios* edificios, Jugador* jugador1, Jugador* jugador2);
 
-
     //Pre: -
     //Post: muestra el primer menu del juego
     void mostrar_menu();
