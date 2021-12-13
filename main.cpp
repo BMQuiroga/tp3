@@ -1,6 +1,7 @@
 #include <iostream>
 #include "menu_objeto.h"
 #include "archivo.h"
+#include "utilidad.h"
 
 using namespace std;
 
@@ -50,8 +51,10 @@ int main(){
     else{
         int opcion_elegida;
         do{
-            cout<< "Bienvenido a Andypolis :D !" << endl;
+            util.encuadrar("Bienvenido a Andypolis :D !");
+            cout << endl;
             cout << "Escriba una opcion" <<endl;
+            cout << endl;
             menu.mostrar_menu();
             opcion_elegida = util.pedir_opcion();
             menu.procesar_opcion_menu(opcion_elegida);
