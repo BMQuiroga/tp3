@@ -22,7 +22,7 @@ public:
     //Pos:Muestra por pantalla la cant de tiṕo de minas y si tiene los 2 tipos muestra que el obj fue completado
     void mostrar();
 
-    //Pre: Recibe lista de edificios, mapa y el jugador 1 o 2
+    //Pre: Recibe lista de edificios, mapa y el jugador de la partida
     //Pos:Asigna la cantidad de minas, chequea si hay mina oro, si hay mina, e inicializa los atributos
     Minero(ListaEdificios * edificios, Mapa * mapa, Jugador * jugador);
 
