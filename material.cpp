@@ -1,6 +1,9 @@
 #include <iostream>
 #include "material.h"
 
+
+Material::~Material() {}
+
 void Material::operator+(int numero){
     this->cantidad = cantidad + numero;
 

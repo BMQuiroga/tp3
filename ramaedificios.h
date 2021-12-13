@@ -17,6 +17,8 @@ public:
 
     RamaEdificios(Edificio* edificio);
 
+    ~RamaEdificios();
+
     //PRE: -
     //POST: Devuelve un edificio, lo busca por nombre
     Edificio* buscar_edificio(std::string edificio);
@@ -60,6 +62,9 @@ public:
     //PRE -
     //POST: recorre el arbol y va guardando los edificios en edificios.txt
     void modificar(std::ofstream & archivo);
+
+
+    void liberar_memoria();
 };
 
 

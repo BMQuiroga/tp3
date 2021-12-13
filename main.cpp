@@ -63,10 +63,14 @@ int main(){
         
     }
     menu.guardar();
+
+    cout << "Limpieza" << endl;
     delete jugador1;
     delete jugador2;
+    delete mapa;
     delete edificios;
-
+    materiales1.destruir();
+    materiales2.destruir();
     return 0;
 }
 

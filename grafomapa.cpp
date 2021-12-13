@@ -10,14 +10,17 @@ GrafoMapa::GrafoMapa(Jugador* jugador, Mapa* mapa) {
     this->mapa = mapa;
     this->filas = mapa->devolver_cantidad_filas();
     this->columnas = mapa->devolver_cantidad_columnas();
+    this->esta_inicializado = false;
 }
 
 GrafoMapa::~GrafoMapa(){
-    liberar_memoria();
-}
+    if (esta_inicializado) 
+        liberar_memoria();
+}   
 
 
 void GrafoMapa::generar_caminos() {
+    this->esta_inicializado = true;
     inicializar_matriz_adyacencia();
     inicializar_caminos();
     inicializar_vertices();

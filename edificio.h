@@ -27,6 +27,8 @@ public:
     //Post:Crea un objeto edificio con nombre, cant piedra, cant madera, cant metal, maximos permitidos asignados en 0.
     Edificio();
 
+    ~Edificio();
+
     //Pre:-
     //Post:Retorna el nombre del edificio
     std::string devolver_nombre();

@@ -19,6 +19,7 @@ private:
     int** matriz_vertices;
     Mapa* mapa;
     Jugador* jugador;
+    bool esta_inicializado;
 
 public:
 

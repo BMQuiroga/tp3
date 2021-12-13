@@ -91,6 +91,8 @@ public:
     //pre: - 
     //pos: devuelve tipo de camino
     char devolver_tipo_camino();
+
+    virtual void liberar_memoria() = 0;
 };
 
 
