@@ -70,6 +70,8 @@ int main(){
     delete jugador1;
     delete jugador2;
     delete mapa;
+    edificios->destruir();
+    mapa->destruir();
     delete edificios;
     materiales1.destruir();
     materiales2.destruir();

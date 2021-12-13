@@ -31,9 +31,9 @@ class Objetivo{
 
 protected:
     std::string nombre;
-    std::string destripcion;
-    int progreso;
-    int objetivo;
+    //std::string destripcion;
+    //int progreso;
+    //int objetivo;
 public:
     Objetivo();
     virtual ~Objetivo();
