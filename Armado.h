@@ -32,6 +32,8 @@ public:
     //Pre:-
     //Pos: Devuelve true si la cant de bombas es mayor o igual que 10 (bombas necesarias)
     bool checkear();
+
+    void actualizar(int valor);
 };
 
 

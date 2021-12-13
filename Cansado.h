@@ -30,6 +30,8 @@ public:
     //Pre:
     //Pos:Retorna true si la energia es igual a 0
     bool checkear();
+
+    void actualizar(int valor);
 };
 
 

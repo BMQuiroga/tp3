@@ -2,6 +2,7 @@
 #include "casillero_transitable.h"
 
 void CasilleroTransitable::poner_material(Material* mat){
+    delete material;
     this->material = mat;
 }
 

@@ -30,7 +30,7 @@ public:
 
     //pre:
     //pos:
-    virtual ~Casillero();
+    virtual ~Casillero() = 0;
 
     //Pre:
     //Post:Retorna el tipo de casillero

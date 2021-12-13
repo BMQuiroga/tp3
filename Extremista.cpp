@@ -28,6 +28,7 @@ bool Extremista::checkear() {
 }
 
 void Extremista::actualizar(int valor) {
+    //std::cout << "actualizo" <<std::endl;
     this->bombas_compradas += valor;
 }
 

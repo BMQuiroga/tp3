@@ -59,7 +59,7 @@ private:
 
 //Metodos
 public:
-    Mapa() {};
+    Mapa();
 
     //Pre: -
     //Post: Crea instancia de mapa con filas y columnas 
@@ -154,7 +154,7 @@ public:
 
     //Pre: Requiere un edificio valido
     //Post: Devuelve si el jugador tiene al menos un edificio del tipo que recibe
-    bool tiene_edificio(std::string nombre_edificio, Jugador* jugador);
+    //bool tiene_edificio(std::string nombre_edificio, Jugador* jugador);
 
     //Pre: Requiere un edificio valido
     //Post: Devuelve la cantidad de edificios de ese tipo que tiene construidos ese jugador

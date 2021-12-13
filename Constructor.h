@@ -46,7 +46,7 @@ public:
 
     //Pre:-
     //Pos: Actualiza los edificios construidos
-    void actualizar();
+    void actualizar(int valor);
     /*
     void actualizar_yacimiento(int valor);
     void actualizar_mina(int valor);

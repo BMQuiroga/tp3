@@ -6,6 +6,11 @@
 void CasilleroConstruible::construir(Edificio* edificio_nuevo){
     //this->edificio=edificio;
     //std::cout << edificio_nuevo->devolver_nombre() << "Edificio" << std::endl;
+
+    if (jugador == 0 && this->edificio->devolver_nombre() == "0") {
+        delete edificio;
+    }
+
     this->edificio = edificio_nuevo;
     /*this -> edificio->cambiar_todo(
                 edificio_nuevo->devolver_nombre(),
@@ -42,6 +47,7 @@ void CasilleroConstruible::demoler(Jugador* jugador){
     jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("piedra"))->sumar_cantidad(this->edificio->devolver_piedra()/2);
     jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("madera"))->sumar_cantidad(this->edificio->devolver_madera()/2);
     jugador->devolver_materiales()->consulta(jugador->devolver_materiales()->buscar_indice("metal"))->sumar_cantidad(this->edificio->devolver_metal()/2);
+
     Edificio* nuevo_edificio = new Edificio;
     this->edificio = nuevo_edificio;
 }
@@ -162,6 +168,8 @@ void CasilleroConstruible::mostrar(){
 }
 
 void CasilleroConstruible::liberar_memoria() {
-    delete edificio;
-    edificio = NULL;
+    if (jugador == 0) {
+        delete edificio;
+        edificio = NULL;
+    }
 }

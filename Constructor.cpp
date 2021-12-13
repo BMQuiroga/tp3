@@ -11,18 +11,9 @@ Constructor::Constructor(ListaEdificios *edificios, Mapa * mapa,Jugador *jugador
     this->nombre="Constructor";
     this->edificios = edificios;
     this->mapa = mapa;
-    /*
-    this->cantidad_yacimiento = 0;
-    this->cantidad_mina = 0;
-    this->cantidad_mina_oro = 0;
-    this->cantidad_planta_electrica = 0;
-    this->cantidad_fabrica = 0;
-    this->cantidad_aserradero = 0;
-    this->cantidad_escuela = 0;
-    this->cantidad_casa = 0;
-    this->cantidad_necesaria = 1;*/
+    this->jugador = jugador;
     this->cumplio = false;
-    this->edificios_requeridos=edificios->devolver_cantidad();
+    this->edificios_requeridos=edificios->devolver_cantidad()-1;//dando por hecho que existe obelisco, no lo necesitas para este objetivo
     this->edificios_construidos=0;
 
 }
@@ -116,15 +107,16 @@ int Constructor::calcular_progreso(){
     Edificio** array_edificios = edificios->devolver_todo();
     for (int i = 0; i < edificios->devolver_cantidad()-1; i++) {
         nombre = array_edificios[i]->devolver_nombre();
-        resultado = mapa->tiene_edificio(nombre, jugador);   
-        if (resultado) {
+        resultado = mapa->edificios_construidos(nombre, jugador);   
+        if (resultado>=1) {
             contador++;
         }
     }
     edificios_construidos = contador;
+    delete [] array_edificios;
     return contador;
 }
 
-void Constructor::actualizar(){
+void Constructor::actualizar(int valor){
     calcular_progreso();
 }
