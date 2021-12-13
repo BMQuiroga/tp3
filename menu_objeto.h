@@ -4,8 +4,6 @@
 #include "arboledificios.h"
 #include "listamateriales.h"
 #include "listaObjetivos.h"
-//#define CLR_SCREEN "clear"//PARA LINUX
-#define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
 #include "utilidad.h"
 
@@ -58,12 +56,27 @@ public:
     //Post: procesa la opcion ingresada por el usuario
     void procesar_opcion_partida(int opcion_elegida, Jugador *jugador, Jugador *rival);
 
-    
+    //Pre: -
+    //Post: guarda la partida 
     void guardar();
+
+    //Pre: -
+    //Post: escenario principal del juego
     void partida();
+
+    //Pre: -
+    //Post: reescribe el archivo materiales con los datos de la partida
     void reescribir_materiales();
+
+    //Pre: jugadores creados
+    //Post: crea una cola de jugadores asignar turnos
     Jugador** crear_cola_jugadores(Jugador *jugador1, Jugador *jugador2);
+
+    //Pre: -
+    //Post: cambia el turno de los jugadores
     void cambiar_turno(Jugador** lista_jugadores);
+
+
     bool checkear_si_gano(Jugador* jugador);
     void secuencia_victoria(Jugador* jugador);
     void modificar_datos_edificio();
