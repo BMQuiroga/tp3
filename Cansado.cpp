@@ -3,6 +3,8 @@
 //
 
 #include "Cansado.h"
+#include "jugador.h"
+
 Cansado::Cansado(Jugador * jugador) {
     this->nombre="Cansado";
     this->energia = jugador->devolver_energia();

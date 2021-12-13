@@ -5,8 +5,9 @@
 //#define OBJETIVO_H
 #include "arboledificios.h"
 #include "listamateriales.h"
-#include "jugador.h"
+//#include "jugador.h"
 #include <iostream>
+
 
 const int OBJ_COMPRAR_ANDYPOLIS = 1;
 const int OBJ_EDAD_PIEDRA = 2;
@@ -39,17 +40,18 @@ public:
 
     //comente para que compile, faltan declaraciones
 
-    // virtual void mostrar_progreso() = 0;
-    // virtual void mostrar_objetivo() = 0;
-    // virtual bool checkear() = 0;
-    // virtual int calcular_progreso() = 0;
-    // virtual void actualizar(int valor)=0;
+    //virtual void mostrar_progreso() = 0;
+    virtual void mostrar() = 0;
+    virtual bool checkear() = 0;
+    virtual int calcular_progreso() = 0;
+    void actualizar(int valor);
 
+    /*
     void mostrar();
     bool checkear();
     int calcular_progreso();
     void actualizar(int valor);
-    void actualizar(std::string nombre, int valor);
+    void actualizar(std::string nombre, int valor);*/
 
     virtual ~Objetivo() = default;
 };

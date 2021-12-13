@@ -68,7 +68,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
         while  (opcion != GUARDAR_Y_SALIR_PARTIDA && 
                 opcion != FINALIZAR_TURNO && 
                 lista_jugadores[JUGADOR]->devolver_energia() != 0  && 
-                !lista_jugadores[RIVAL]->ha_ganado()) {
+                !lista_jugadores[RIVAL]->checkear_objetivos()) {
 
             cout << "Es el turno del jugador numero " << lista_jugadores[JUGADOR]->devolver_nombre() << endl;  
             cout << "Tienes " << lista_jugadores[JUGADOR]->devolver_energia() << " de energia" << endl;
@@ -226,10 +226,10 @@ void Menu::reescribir_materiales(){
     archivo_materiales.close();
     }
 }
-
+/*
 bool Menu::checkear_si_gano(Jugador* jugador){
     return ( (mapa->tiene_edificio("obelisco",jugador)) || (jugador->cumplio_objetivo_secundario()) );
-}
+}*/
 
 void Menu::secuencia_victoria(Jugador* jugador){
     std::cout << "El jugador " << jugador->devolver_nombre() << " ha ganado el partido" << endl;

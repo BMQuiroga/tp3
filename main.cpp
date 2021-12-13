@@ -32,8 +32,8 @@ int main(){
 
     Menu menu(mapa, edificios, jugador1, jugador2);
 
-    ListaObjetivos vector1(jugador1, *edificios, mapa);
-    vector1.mostrar_objetivos();
+    //ListaObjetivos vector1(jugador1, *edificios, mapa);
+    //vector1.mostrar_objetivos();
 
 
     //ListaObjetivos vector_objetivos_completos1(jugador1, materiales1, edificios, mapa);

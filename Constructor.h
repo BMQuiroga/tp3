@@ -1,5 +1,3 @@
-
-
 #ifndef TP3_2021_2C_CONSTRUCTOR_H
 #define TP3_2021_2C_CONSTRUCTOR_H
 
@@ -28,7 +26,7 @@ public:
 
     void mostrar();
     void mostrar_progreso();
-    Constructor(ListaEdificios *edificios, Jugador * jugador);
+    Constructor(ListaEdificios *edificios, Mapa * mapa, Jugador * jugador);
     int calcular_progreso();
     bool checkear();
     void actualizar();

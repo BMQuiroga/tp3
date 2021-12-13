@@ -3,6 +3,7 @@
 //
 
 #include "Armado.h"
+#include "jugador.h"
 
 Armado::Armado(Jugador *jugador) {
     this->nombre="Armado";

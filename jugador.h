@@ -3,7 +3,19 @@
 #include "listamateriales.h"
 #include "arboledificios.h"
 #include "objetivo.h"
-#include "listaObjetivos.h"
+//#include "listaObjetivos.h"
+/*
+#include "ComprarAndypolis.h"
+#include "Armado.h"
+#include "Bombardero.h"
+#include "Cansado.h"
+#include "Constructor.h"
+#include "EdadDePiedra.h"
+#include "Energetico.h"
+#include "Extremista.h"
+#include "Letrado.h"
+#include "Minero.h"
+#include "Obelisco.h"*/
 
 class GrafoMapa;
 
@@ -15,10 +27,10 @@ private:
     GrafoMapa* grafo;
     int energia;
     int coordenada_x,coordenada_y;
-    Objetivo* objetivo_principal; //construir el obelisco.
-    Objetivo** objetivo_secundario;
+    Objetivo* objetivo_1;
     Objetivo* objetivo_2;
     Objetivo* objetivo_3;
+    Objetivo* objetivo_4;
 
 public:
     Jugador() /*{}*/;
@@ -39,17 +51,17 @@ public:
     int devolver_nombre();
     int devolver_coordenada_x();
     int devolver_coordenada_y();
-    void asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa, Jugador* jugador);
+    void asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa);
 
-    void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos);
+    //void asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos);
     void actualizar_objetivo(int numero_objetivo, int valor);
 
 
-    bool ha_ganado();
+    //bool ha_ganado();
 
     bool cumplio_objetivo_principal();
 
-    bool cumplio_objetivo_secundario();
+    //bool cumplio_objetivo_secundario();
     GrafoMapa* movimiento();
 
     void destruir();
@@ -62,7 +74,7 @@ public:
 
 private:
     void operacion_bombas(int valor);
-    Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador);
+    Objetivo* crear_objetivo(int numero_objetivo, ListaEdificios * edificios, Mapa * mapa);
     void crear_grafo(Mapa * mapa);
 };
 

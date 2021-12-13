@@ -8,6 +8,7 @@ private:
     Jugador * jugador;
     int cantidad_piedras;
     int cantidad_piedras_necesarias;
+    int indice;
     bool cumplio;
 public:
     EdadDePiedra(Jugador * jugador);

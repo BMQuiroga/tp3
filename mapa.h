@@ -159,7 +159,7 @@ public:
     int edificios_construidos(std::string nombre, Jugador* jugador);
 
 
-    void mover_jugador(Jugador* jugador);
+    //void mover_jugador(Jugador* jugador);
 
 
     Casillero* devolver_casillero(int x, int y);

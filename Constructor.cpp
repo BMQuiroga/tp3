@@ -6,10 +6,11 @@
 #include <iostream>
 #include "mapa.h"
 
-Constructor::Constructor(ListaEdificios *edificios, Jugador *jugador) {
+Constructor::Constructor(ListaEdificios *edificios, Mapa * mapa,Jugador *jugador) {
 
     this->nombre="Constructor";
     this->edificios = edificios;
+    this->mapa = mapa;
     /*
     this->cantidad_yacimiento = 0;
     this->cantidad_mina = 0;

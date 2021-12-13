@@ -3,6 +3,7 @@
 //
 
 #include "Energetico.h"
+#include "jugador.h"
 
 Energetico::Energetico(Jugador * jugador) {
     this->nombre="Energetico";
