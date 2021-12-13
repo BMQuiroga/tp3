@@ -41,3 +41,7 @@ void Cansado::mostrar_progreso() {
 int Cansado::calcular_progreso(){
     return 0;
 }
+
+void Cansado::actualizar(int valor) {
+    
+}

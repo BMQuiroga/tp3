@@ -28,6 +28,8 @@ public:
     //Pos: Devuelve true si la energia es mayor o igual que 100 (energia maxima)
     bool checkear();
 
+    void actualizar(int valor);
+
 };
 
 

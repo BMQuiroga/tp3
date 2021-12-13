@@ -125,6 +125,6 @@ int Constructor::calcular_progreso(){
     return contador;
 }
 
-void Constructor::actualizar(){
+void Constructor::actualizar(int valor){
     calcular_progreso();
 }

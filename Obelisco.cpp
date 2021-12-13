@@ -34,3 +34,7 @@ bool Obelisco::checkear(){
     
     return cumplio;
 }
+
+void Obelisco::actualizar(int valor){
+    
+}

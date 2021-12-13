@@ -32,6 +32,7 @@ public:
     //Pos:Devuelve true si la cant de escuelas construidas == cant escuelas maxima
     bool checkear();
 
+    void actualizar(int valor);
 };
 
 

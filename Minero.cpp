@@ -47,3 +47,7 @@ int Minero::calcular_progreso(){
     cantidad_minas_construidas = contador;
     return contador;
 }
+
+void Minero::actualizar(int valor){
+    
+}

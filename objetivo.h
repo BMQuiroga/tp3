@@ -46,7 +46,7 @@ public:
     virtual void mostrar() = 0;
     virtual bool checkear() = 0;
     virtual int calcular_progreso() = 0;
-    void actualizar(int valor);
+    virtual void actualizar(int valor) = 0;
 
     /*
     void mostrar();
