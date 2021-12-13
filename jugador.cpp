@@ -20,7 +20,7 @@ Jugador::Jugador() {}
 Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa){
     //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
-    this->energia = 5;
+    this->energia = 50;
     this->nombre = numero;
     this->crear_grafo(mapa);
     //this->asignar_objetivos(edificios, mapa);

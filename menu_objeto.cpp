@@ -239,8 +239,8 @@ void Menu::reescribir_materiales(){
 
 void Menu::secuencia_victoria(Jugador* jugador){
     std::cout << "El jugador " << jugador->devolver_nombre() << " ha ganado el partido" << endl;
-    //borrar_archivo_ubicaciones();
-    //resetear_archivo_materiales();
+    borrar_archivo_ubicaciones();
+    resetear_archivo_materiales();
 }
 
 void Menu::modificar_datos_edificio(){
@@ -291,13 +291,13 @@ void Menu::modificar_datos_edificio(){
          f=util.generador_de_numeros_aleatorios(1,10);
     }
     jugador1->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador1));
-    jugador1->asignar_objetivo_2(crear_objetivo(3,1));
-    jugador1->asignar_objetivo_3(crear_objetivo(7,1));
-    jugador1->asignar_objetivo_4(crear_objetivo(2,1));
+    jugador1->asignar_objetivo_2(crear_objetivo(a,1));
+    jugador1->asignar_objetivo_3(crear_objetivo(b,1));
+    jugador1->asignar_objetivo_4(crear_objetivo(c,1));
     jugador2->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador2));
-    jugador2->asignar_objetivo_2(crear_objetivo(3,2));
-    jugador2->asignar_objetivo_3(crear_objetivo(7,2));
-    jugador2->asignar_objetivo_4(crear_objetivo(2,2));
+    jugador2->asignar_objetivo_2(crear_objetivo(d,2));
+    jugador2->asignar_objetivo_3(crear_objetivo(e,2));
+    jugador2->asignar_objetivo_4(crear_objetivo(f,2));
 }
 
 Objetivo* Menu::crear_objetivo(int numero, int numero_jugador) {
