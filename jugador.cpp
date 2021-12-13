@@ -88,27 +88,30 @@ void Jugador::comprar_bombas(){
     int indice=this->materiales->buscar_indice("andycoins");
     int cantidad_andycoins = this->materiales->consulta(indice)->devolver_cantidad();
     std::string bombas;
-    std::cout<<"Posee "<< cantidad_andycoins <<" andycoins, cuantas bombas desea comprar?"<<std::endl;
-    std::cin>>bombas;
+    
+    if (cantidad_andycoins / 100 >= 1) {
+        std::cout<<"Posee "<< cantidad_andycoins <<" andycoins, cuantas bombas desea comprar?"<<std::endl;
+        std::cin>>bombas;
 
-    while(util.convertir_a_entero(bombas) > cantidad_andycoins / 100){ // falta el caso de que bombas sea string creo
-        std::cout<<"No alcanzan las andycoins, inserte un numero valido: "<<std::endl;
-        std::cin>>bombas; 
-    }
+        while(util.convertir_a_entero(bombas) > cantidad_andycoins / 100){ // falta el caso de que bombas sea string creo
+            std::cout<<"No alcanzan las andycoins, inserte un numero valido: "<<std::endl;
+            std::cin>>bombas; 
+        }
 
-    if(util.pedir_confirmacion()) {
-        if (util.convertir_a_entero(bombas) == 1)   std::cout << "Compraste " << bombas << " bomba." << std::endl;
-        else                                        std::cout << "Compraste " << bombas << " bombas" << std::endl;
+        if(util.pedir_confirmacion()) {
+            if (util.convertir_a_entero(bombas) == 1)   std::cout << "Compraste " << bombas << " bomba." << std::endl;
+            else                                        std::cout << "Compraste " << bombas << " bombas" << std::endl;
 
-        this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(util.convertir_a_entero(bombas));
-        this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(util.convertir_a_entero(bombas) * 100);
-        actualizar_bombas_compradas(util.convertir_a_entero(bombas));    //tirA SEG FAULT
-        this->energia-=5;
+            this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato()->operator+(util.convertir_a_entero(bombas));
+            this->materiales->obtener_nodo(materiales->buscar_indice("andycoins"))->obtener_dato()->operator-(util.convertir_a_entero(bombas) * 100);
+            actualizar_bombas_compradas(util.convertir_a_entero(bombas));    //tirA SEG FAULT
+            this->energia-=5;
+        } else {
+            std::cout << "Compra cancelada" << std::endl;
+        }
     } else {
-        std::cout << "Compra cancelada" << std::endl;
+        std::cout << "No tenes andycoins para comprar bombas." << endl;
     }
-
-
 }
 
 
