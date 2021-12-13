@@ -20,10 +20,9 @@ RamaEdificios::RamaEdificios(Edificio*edificio){
 RamaEdificios::~RamaEdificios() {
     // std::cout << "DESTRUCTOR " << valor->devolver_nombre() << std::endl;
     // ROMPE TODO
-    // if (valor != NULL) {
-    //     delete valor;
-    //     valor = NULL;
-    // }
+    delete valor;
+    valor = NULL;
+    
 }
 
 void RamaEdificios::asignar_nodo(Edificio* edificio){

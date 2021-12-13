@@ -18,12 +18,10 @@
 Jugador::Jugador() {}
 
 Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa){
-    //std::cout<<"Nombre"<<std::endl;
     mover_gratis(x,y);
     this->energia = 50;
     this->nombre = numero;
     this->crear_grafo(mapa);
-    //this->asignar_objetivos(edificios, mapa);
 }
 
 Jugador::~Jugador() {
@@ -47,8 +45,6 @@ void Jugador::mover_gratis(int x, int y){
 void Jugador::mover_jugador(Mapa* mapa, Jugador* rival) {
     Utilidad util;
     int destino_x, destino_y;
-
-    // ESTO ES UN WHILE HASTA QUE PONGA QUE QUIERE TERMINAR
 
     std::cout << "Ingrese el casillero de destino" << std::endl; 
     destino_x = mapa->pedir_fila();
@@ -137,13 +133,6 @@ int Jugador::devolver_coordenada_y(){
     return this->coordenada_y;
 }
 
-/*bool Jugador::checkear_objetivos(){
-    return((objetivo_1->checkear() && objetivo_2->checkear()) ||
-           (objetivo_2->checkear() && objetivo_3->checkear()) ||
-           (objetivo_1->checkear() && objetivo_3->checkear()) ||
-           (objetivo_principal->checkear()));
-}*/
-
 void Jugador::asignar_lista_materiales(ListaMateriales *materiales){
     this->materiales = materiales;
 }
@@ -153,13 +142,15 @@ void Jugador::sumar_energia(int numero){
 }
 
 void Jugador::restar_energia(int numero){
-    this->energia-=numero;
+    if (this->energia - numero >= 0) {
+        this->energia-=numero;
+    } else {
+        this->energia = 0;
+    }
 }
 
 void Jugador::destruir(){
     this->materiales->destruir();
-    //ACA SE DESTRUYEN LOS OBJETIVOS EN MEMORIA DINAMICA
-    //YES SIR
     delete this->objetivo_1;
     delete this->objetivo_2;
     delete this->objetivo_3;
@@ -168,7 +159,6 @@ void Jugador::destruir(){
 
 
 void Jugador::actualizar_bombas_compradas(int cantidad){
-    //std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
     if (objetivo_2->devolver_nombre()=="Extremista")
         objetivo_2->actualizar(cantidad);
     else if (objetivo_3->devolver_nombre()=="Extremista")
@@ -178,7 +168,6 @@ void Jugador::actualizar_bombas_compradas(int cantidad){
 }
 
 void Jugador::actualizar_bombas_usadas(){
-    //std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
     if (objetivo_2->devolver_nombre()=="Bombardero")
         objetivo_2->actualizar(1);
     else if (objetivo_3->devolver_nombre()=="Bombardero")
@@ -188,7 +177,6 @@ void Jugador::actualizar_bombas_usadas(){
 }
 
 void Jugador::actualizar_andycoins_juntadas(int cantidad){
-    //std::cout << objetivo_2->devolver_nombre() << objetivo_3->devolver_nombre() << objetivo_4->devolver_nombre() << std::endl;
     if (objetivo_2->devolver_nombre()=="ComprarAndypolis")
         objetivo_2->actualizar(cantidad);
     else if (objetivo_3->devolver_nombre()=="ComprarAndypolis")
