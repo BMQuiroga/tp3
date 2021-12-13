@@ -35,7 +35,7 @@ public:
 
     //pre: mapa valido
     //pos: mueve el jugador usando el camino minimo
-    void mover_jugador(Mapa* mapa);
+    void mover_jugador(Mapa* mapa, Jugador* rival);
 
     //pre: 0 <= x < filas;  0 <= y < columnas 
     //pos: cambia las coordenadas del jugador

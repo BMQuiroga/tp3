@@ -29,7 +29,7 @@ void Jugador::mover_gratis(int x, int y){
 }
 
 
-void Jugador::mover_jugador(Mapa* mapa) {
+void Jugador::mover_jugador(Mapa* mapa, Jugador* rival) {
     Utilidad util;
     int destino_x, destino_y;
 
@@ -40,7 +40,9 @@ void Jugador::mover_jugador(Mapa* mapa) {
     destino_y = mapa->pedir_columna();                          std::cout << std::endl;
 
     int costo = grafo->devolver_costo(this->coordenada_x, this->coordenada_y, destino_x, destino_y);
-    bool recorrido_valido = grafo->es_recorrido_valido(this->coordenada_x, this->coordenada_y, destino_x, destino_y, costo);
+    
+    bool recorrido_valido = (grafo->es_recorrido_valido(this->coordenada_x, this->coordenada_y, destino_x, destino_y, costo)) &&
+                            (rival->devolver_coordenada_x() != destino_x && rival->devolver_coordenada_y() != destino_y); 
 
     if (recorrido_valido) {
         std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
