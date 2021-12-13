@@ -12,9 +12,10 @@
 #include "Letrado.h"
 #include "Minero.h"
 #include "Obelisco.h"
-#include <cstdlib>
-#include <ctime>
-#include <cmath>
+//#include <cstdlib>
+//#include <ctime>
+//#include <cmath>
+//#include <fstream>
 
 const int JUGADOR = 0;
 const int RIVAL =   1;
@@ -30,21 +31,9 @@ Menu::Menu(Mapa* mapa, ListaEdificios* edificios, Jugador* jugador1, Jugador* ju
 
 
 void Menu::guardar(){
-    //std::cout << "aca1" << std::endl;
     edificios->reescribir();
-    //std::cout << "aca2" << std::endl;
     reescribir_materiales();
-    //std::cout << "aca3" << std::endl;
     mapa->reescribir_ubicaciones(jugador1,jugador2);
-    //std::cout << "aca4" << std::endl;
-    // edificios->destruir();
-    // //std::cout << "aca5" << std::endl;
-    // mapa->destruir();
-    // //std::cout << "aca6" << std::endl;
-    // jugador1->destruir();
-    // //std::cout << "aca7" << std::endl;
-    // jugador2->destruir();
-    // //std::cout << "aca8" << std::endl;
 }
 
 
@@ -101,8 +90,12 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
     
     if(lista_jugadores[RIVAL]->checkear_objetivos()){
         secuencia_victoria(lista_jugadores[RIVAL]);
-        //utilidad.pausa();
+        edificios->reescribir();
     }
+    else{
+        guardar();
+    }
+    
     delete [] lista_jugadores; //poner en otro lado
 }
 
@@ -248,8 +241,8 @@ bool Menu::checkear_si_gano(Jugador* jugador){
 
 void Menu::secuencia_victoria(Jugador* jugador){
     std::cout << "El jugador " << jugador->devolver_nombre() << " ha ganado el partido" << endl;
-    // borrar_archivo_ubicaciones();
-    // resetear_archivo_materiales(jugador);
+    borrar_archivo_ubicaciones();
+    resetear_archivo_materiales();
 }
 
 void Menu::modificar_datos_edificio(){
@@ -368,4 +361,23 @@ Objetivo* Menu::crear_objetivo(int numero, int numero_jugador) {
         break;
     }
     return nuevo_objetivo;
+}
+
+void Menu::borrar_archivo_ubicaciones(){
+    std::ofstream archivo;
+    archivo.open("ubicaciones.txt");
+
+    archivo << "1 (" << jugador1->devolver_coordenada_x() << ", " << jugador1->devolver_coordenada_y() << ")" << std::endl;
+    archivo << "2 (" << jugador2->devolver_coordenada_x() << ", " << jugador2->devolver_coordenada_y() << ")" << std::endl;
+    archivo.close();
+}
+
+void Menu::resetear_archivo_materiales(){
+    std::ofstream archivo;
+    archivo.open("materiales.txt");
+
+    //jugador1->devolver_materiales()->devolver_cantidad()
+    for (int i=0;i<jugador1->devolver_materiales()->devolver_cantidad();i++)
+        archivo << jugador1->devolver_materiales()->consulta(i+1)->devolver_nombre() << " 0 0" << std::endl;
+    archivo.close();
 }
