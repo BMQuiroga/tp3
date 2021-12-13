@@ -160,6 +160,10 @@ public:
     //Post: Devuelve la cantidad de edificios de ese tipo que tiene construidos ese jugador
     int edificios_construidos(std::string nombre, Jugador* jugador);
 
+
+    //void mover_jugador(Jugador* jugador);
+
+
     //pre: -
     //pos: devuelve el casillero de las coordenadas pasadas
     Casillero* devolver_casillero(int x, int y);

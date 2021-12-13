@@ -1,5 +1,3 @@
-
-
 #ifndef TP3_2021_2C_CONSTRUCTOR_H
 #define TP3_2021_2C_CONSTRUCTOR_H
 
@@ -32,10 +30,11 @@ public:
 
    
     void mostrar_progreso();
+    
 
     //Pre: Recibe la lista de edificios y el jugador de la partida
     //Pos: Inicializa los atributos
-    Constructor(ListaEdificios *edificios, Jugador * jugador);
+    Constructor(ListaEdificios *edificios, Mapa * mapa, Jugador * jugador);
 
     //Pre:-
     //Pos:Retorna la cantidad de edificios construidos

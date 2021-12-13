@@ -1,6 +1,17 @@
 #include <iostream>
 #include "menu_objeto.h"
 #include <fstream>
+#include "ComprarAndypolis.h"
+#include "Armado.h"
+#include "Bombardero.h"
+#include "Cansado.h"
+#include "Constructor.h"
+#include "EdadDePiedra.h"
+#include "Energetico.h"
+#include "Extremista.h"
+#include "Letrado.h"
+#include "Minero.h"
+#include "Obelisco.h"
 
 const int JUGADOR = 0;
 const int RIVAL =   1;
@@ -68,7 +79,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
         while  (opcion != GUARDAR_Y_SALIR_PARTIDA && 
                 opcion != FINALIZAR_TURNO && 
                 lista_jugadores[JUGADOR]->devolver_energia() != 0  && 
-                !lista_jugadores[RIVAL]->ha_ganado()) {
+                !lista_jugadores[RIVAL]->checkear_objetivos()) {
 
             mostrar_resumen(lista_jugadores);
             mostrar_menu_partida();
@@ -225,10 +236,10 @@ void Menu::reescribir_materiales(){
     archivo_materiales.close();
     }
 }
-
+/*
 bool Menu::checkear_si_gano(Jugador* jugador){
     return ( (mapa->tiene_edificio("obelisco",jugador)) || (jugador->cumplio_objetivo_secundario()) );
-}
+}*/
 
 void Menu::secuencia_victoria(Jugador* jugador){
     std::cout << "El jugador " << jugador->devolver_nombre() << " ha ganado el partido" << endl;
@@ -265,3 +276,98 @@ void Menu::modificar_datos_edificio(){
         }
     }
  }
+
+ void Menu::asignar_objetivos() {
+    int a=0;
+    int b=0;
+    int c=0;
+    Utilidad util;
+
+    while (a==b || b==c || a==c){
+         a=util.generador_de_numeros_aleatorios(1,10);
+         b=util.generador_de_numeros_aleatorios(1,10);
+         c=util.generador_de_numeros_aleatorios(1,10);
+    }
+    /*
+    this->objetivo_2 = crear_objetivo(a, edificios, mapa);
+    this->objetivo_3 = crear_objetivo(b, edificios, mapa);
+    this->objetivo_4 = crear_objetivo(c, edificios, mapa);
+    this->objetivo_1 = new Obelisco(edificios,mapa,this);*/
+
+    jugador1->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador1));
+    jugador1->asignar_objetivo_2(crear_objetivo(a,1));
+    jugador1->asignar_objetivo_3(crear_objetivo(b,1));
+    jugador1->asignar_objetivo_4(crear_objetivo(c,1));
+
+    while (a==b || b==c || a==c){
+         a=util.generador_de_numeros_aleatorios(1,10);
+         b=util.generador_de_numeros_aleatorios(1,10);
+         c=util.generador_de_numeros_aleatorios(1,10);
+    }
+    
+    jugador2->asignar_objetivo_1(new Obelisco(edificios,mapa,jugador2));
+    jugador2->asignar_objetivo_2(crear_objetivo(a,2));
+    jugador2->asignar_objetivo_3(crear_objetivo(b,2));
+    jugador2->asignar_objetivo_4(crear_objetivo(c,2));
+}
+
+Objetivo* Menu::crear_objetivo(int numero, int numero_jugador) {
+    Objetivo* nuevo_objetivo=nullptr;
+    switch (numero){
+    case OBJ_COMPRAR_ANDYPOLIS:
+        
+        nuevo_objetivo = new ComprarAndypolis();
+        break;
+    case OBJ_CONSTRUCTOR:
+        if(numero_jugador==1)
+            nuevo_objetivo = new Constructor(edificios, mapa, jugador1);
+        else
+            nuevo_objetivo = new Constructor(edificios, mapa, jugador2);
+        break;
+    case OBJ_BOMBARDERO:
+        nuevo_objetivo = new Bombardero();
+        break;
+    case OBJ_EDAD_PIEDRA:
+        if(numero_jugador==1)
+            nuevo_objetivo = new EdadDePiedra(jugador1);
+        else
+            nuevo_objetivo = new EdadDePiedra(jugador2);
+        break;
+    case OBJ_ENERGICO:
+        if(numero_jugador==1)
+            nuevo_objetivo = new Energetico(jugador1);
+        else
+            nuevo_objetivo = new Energetico(jugador2);
+        break;
+    case OBJ_LETRADO:
+        if(numero_jugador==1)
+            nuevo_objetivo = new Letrado(edificios, mapa, jugador1);
+        else
+            nuevo_objetivo = new Letrado(edificios, mapa, jugador2);
+        break;
+    case OBJ_MINERO:
+        if(numero_jugador==1)
+            nuevo_objetivo = new Minero(edificios, mapa, jugador1);
+        else
+            nuevo_objetivo = new Minero(edificios, mapa, jugador2);
+        break;
+    case OBJ_CANSADO:
+        if(numero_jugador==1)
+            nuevo_objetivo = new Cansado(jugador1);
+        else
+            nuevo_objetivo =  new Cansado(jugador2);
+        break;
+    case OBJ_ARMADO:
+        if(numero_jugador==1)
+            nuevo_objetivo = new Armado(jugador1);
+        else
+            nuevo_objetivo = new Armado(jugador2);
+        break;
+    case OBJ_EXTREMISTA:
+        nuevo_objetivo = new Extremista();
+        break;
+    default:
+        break;
+    }
+    return nuevo_objetivo;
+}

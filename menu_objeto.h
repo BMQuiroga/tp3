@@ -3,7 +3,9 @@
 #include "mapa.h"
 #include "arboledificios.h"
 #include "listamateriales.h"
-#include "listaObjetivos.h"
+//#include "listaObjetivos.h"
+//#define CLR_SCREEN "clear"//PARA LINUX
+#define CLR_SCREEN "CLS"//PARA WINDOWS#
 #include "jugador.h"
 #include "utilidad.h"
 
@@ -75,15 +77,14 @@ public:
     //Pre: -
     //Post: cambia el turno de los jugadores
     void cambiar_turno(Jugador** lista_jugadores);
+    //bool checkear_si_gano(Jugador* jugador);
+    void secuencia_victoria(Jugador* jugador);
+    void modificar_datos_edificio();
+    void asignar_objetivos();
+    Objetivo* crear_objetivo(int numero_objetivo, int numero_jugador);
 
 
     void mostrar_resumen(Jugador** cola);
-
-
-    bool checkear_si_gano(Jugador* jugador);
-    void secuencia_victoria(Jugador* jugador);
-    void modificar_datos_edificio();
-    
 };
 
 

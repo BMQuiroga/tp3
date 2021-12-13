@@ -3,6 +3,17 @@
 #include "grafomapa.h"
 #include "utilidad.h"
 #include "mapa.h"
+#include "ComprarAndypolis.h"
+#include "Armado.h"
+#include "Bombardero.h"
+#include "Cansado.h"
+#include "Constructor.h"
+#include "EdadDePiedra.h"
+#include "Energetico.h"
+#include "Extremista.h"
+#include "Letrado.h"
+#include "Minero.h"
+#include "Obelisco.h"
 
 Jugador::Jugador() {}
 
@@ -12,7 +23,7 @@ Jugador::Jugador(int x,int y,int numero, ListaEdificios* edificios, Mapa * mapa)
     this->energia = 2000;
     this->nombre = numero;
     this->crear_grafo(mapa);
-    this->asignar_objetivos(edificios, materiales, mapa, this);
+    //this->asignar_objetivos(edificios, mapa);
 }
 
 Jugador::~Jugador() {
@@ -138,76 +149,76 @@ void Jugador::restar_energia(int numero){
     this->energia-=numero;
 }
 
+/*
+void Jugador::asignar_objetivos(ListaEdificios* edificios, Mapa * mapa) {
+    int a=0;
+    int b=0;
+    int c=0;
+    Utilidad util;
 
-void Jugador::asignar_objetivos(ListaEdificios* edificios, ListaMateriales* materiales, Mapa * mapa, Jugador* jugador) {
-    //int a=0;
-    //int b=0;
-    //int c=0;
-
-    //while (a==b || b==c || a==c){
-    //     a=generador_de_numeros_aleatorios(1,10);
-    //     b=generador_de_numeros_aleatorios(1,10);
-    //     c=generador_de_numeros_aleatorios(1,10);
-    // }
-    
-    // this->objetivo_1 = crear_objetivo(a, edificios, materiales, mapa, jugador);
-    // this->objetivo_2 = crear_objetivo(b, edificios, materiales, mapa, jugador);
-    // this->objetivo_3 = crear_objetivo(c, edificios, materiales, mapa, jugador);
-    // this->objetivo_principal = crear_objetivo(OBJ_OBELISCO, edificios, materiales, mapa, jugador);
+    while (a==b || b==c || a==c){
+         a=util.generador_de_numeros_aleatorios(1,10);
+         b=util.generador_de_numeros_aleatorios(1,10);
+         c=util.generador_de_numeros_aleatorios(1,10);
+    }
+    std::cout << "aca" <<a<< std::endl;
+    this->objetivo_2 = crear_objetivo(a, edificios, mapa);
+    std::cout << "aca" <<b<< std::endl;
+    this->objetivo_3 = crear_objetivo(b, edificios, mapa);
+    std::cout << "aca" <<c<< std::endl;
+    this->objetivo_4 = crear_objetivo(c, edificios, mapa);
+    std::cout << "acaoleisco"<< std::endl;
+    this->objetivo_1 = new Obelisco(edificios,mapa,this);
 }
-
-
+*/
+/*
 void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 
     //this->objetivo_secundario = vector_objetivos;
 
 
-}
+}*/
 
-
-// Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios edificios, ListaMateriales materiales, Mapa * mapa, Jugador jugador) {
-//     Objetivo** nuevo_objetivo = new Objetivo*;
-//     return nuevo_objetivo; // hay que cambiarlo, es para que no tire warning
-//     // switch (numero_objetivo)
-//     // {
-//     // case OBJ_COMPRAR_ANDYPOLIS:
-//     //     nuevo_objetivo = new Comprar_Andypolis();
-//     //     break;
-//     // case OBJ_CONSTRUCTOR:
-//     //     nuevo_objetivo = new Constructor(edificios, mapa, jugador);
-//     //     break;
-//     // case OBJ_BOMBARDERO:
-//     //     nuevo_objetivo = new Bombardero();
-//     //     break;
-//     // case OBJ_EDAD_PIEDRA:
-//     //     nuevo_objetivo = new Edad_De_Piedra(materiales);
-//     //     break;
-//     // case OBJ_ENERGICO:
-//     //     nuevo_objetivo = new Energetico(jugador);
-//     //     break;
-//     // case OBJ_LETRADO:
-//     //     nuevo_objetivo = new Letrado(edificios, mapa, jugador);
-//     //     break;
-//     // case OBJ_MINERO:
-//     //     nuevo_objetivo = new Minero(edificios, mapa, jugador);
-//     //     break;
-//     // case OBJ_CANSADO:
-//     //     nuevo_objetivo = new Cansado(jugador);
-//     //     break;
-//     // case OBJ_ARMADO:
-//     //     nuevo_objetivo = new Armado(materiales);
-//     //     break;
-//     // case OBJ_EXTREMISTA:
-//     //     nuevo_objetivo = new Extremista();
-//     //     break;
-//     // case OBJ_OBELISCO:
-//     //     nuevo_objetivo = new Principal(mapa, jugador);
-//     //     break;
-//     // default:
-//     //     break;
-//     // }
-// }
-
+/*
+Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios * edificios, Mapa * mapa) {
+    Objetivo* nuevo_objetivo=nullptr;
+    switch (numero_objetivo){
+    case OBJ_COMPRAR_ANDYPOLIS:
+        nuevo_objetivo = new ComprarAndypolis();
+        break;
+    case OBJ_CONSTRUCTOR:
+        nuevo_objetivo = new Constructor(edificios, mapa, this);
+        break;
+    case OBJ_BOMBARDERO:
+        nuevo_objetivo = new Bombardero();
+        break;
+    case OBJ_EDAD_PIEDRA:
+        nuevo_objetivo = new EdadDePiedra(this);
+        break;
+    case OBJ_ENERGICO:
+        nuevo_objetivo = new Energetico(this);
+        break;
+    case OBJ_LETRADO:
+        nuevo_objetivo = new Letrado(edificios, mapa, this);
+        break;
+    case OBJ_MINERO:
+        nuevo_objetivo = new Minero(edificios, mapa, this);
+        break;
+    case OBJ_CANSADO:
+        nuevo_objetivo = new Cansado(this);
+        break;
+    case OBJ_ARMADO:
+        nuevo_objetivo = new Armado(this);
+        break;
+    case OBJ_EXTREMISTA:
+        nuevo_objetivo = new Extremista();
+        break;
+    default:
+        break;
+    }
+    return nuevo_objetivo;
+}*/
+/*
 void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
    
     // if(this->objetivo_1->devolver_nombre() == LISTA_OBJETIVOS[numero_objetivo]) {
@@ -219,9 +230,9 @@ void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
     // } else if(this->objetivo_principal->devolver_nombre() == LISTA_OBJETIVOS[numero_objetivo]) {
     //     this->objetivo_principal->actualizar(valor);
     // }
-}
+}*/
 
-
+/*
 bool Jugador::ha_ganado(){
 
     bool gano = false;
@@ -237,8 +248,9 @@ bool Jugador::ha_ganado(){
 bool Jugador::cumplio_objetivo_principal() {
 
     return false;
-}
+}*/
 
+/*
 bool Jugador::cumplio_objetivo_secundario() {
 
     int i = 0;
@@ -254,7 +266,7 @@ bool Jugador::cumplio_objetivo_secundario() {
     }
     //deberia hacer de la manera q una vez q se cumpla un objetivo secundario ya no lo chekea mas.
 }
-
+*/
 void Jugador::destruir(){
     this->materiales->destruir();
     //ACA SE DESTRUYEN LOS OBJETIVOS EN MEMORIA DINAMICA
@@ -262,11 +274,16 @@ void Jugador::destruir(){
 
 
 void Jugador::actualizar_bombas_compradas(int cantidad){
-    for (int i=0; i<3; i++){
+    /*for (int i=0; i<3; i++){
         if(objetivo_secundario[i]->devolver_nombre()=="Extremista")
             objetivo_secundario[i]->actualizar(cantidad);
-    }
-
+    }*/
+    if (objetivo_2->devolver_nombre()=="Extremista")
+        objetivo_2->actualizar(cantidad);
+    else if (objetivo_3->devolver_nombre()=="Extremista")
+        objetivo_3->actualizar(cantidad);
+    else if (objetivo_4->devolver_nombre()=="Extremista")
+        objetivo_4->actualizar(cantidad);
 }
 
 void Jugador::actualizar_bombas_usadas(){/*
@@ -275,6 +292,12 @@ void Jugador::actualizar_bombas_usadas(){/*
             objetivo_secundario[i]->actualizar(1);
     }
     */
+    if (objetivo_2->devolver_nombre()=="Bombardero")
+        objetivo_2->actualizar(1);
+    else if (objetivo_3->devolver_nombre()=="Bombardero")
+        objetivo_3->actualizar(1);
+    else if (objetivo_4->devolver_nombre()=="Bombardero")
+        objetivo_4->actualizar(1);
 }
 
 void Jugador::actualizar_andycoins_juntadas(int cantidad){/*
@@ -282,6 +305,12 @@ void Jugador::actualizar_andycoins_juntadas(int cantidad){/*
         if(objetivo_secundario[i]->devolver_nombre()=="ComprarAndypolis")
             objetivo_secundario[i]->actualizar(cantidad);
     }*/
+    if (objetivo_2->devolver_nombre()=="ComprarAndypolis")
+        objetivo_2->actualizar(cantidad);
+    else if (objetivo_3->devolver_nombre()=="ComprarAndypolis")
+        objetivo_3->actualizar(cantidad);
+    else if (objetivo_4->devolver_nombre()=="ComprarAndypolis")
+        objetivo_4->actualizar(cantidad);
 }
 
 void Jugador::mostrar_objetivos(){/*
@@ -291,4 +320,38 @@ void Jugador::mostrar_objetivos(){/*
     this->objetivo_secundario[2]->mostrar();
 
 */
+    objetivo_1->mostrar();
+    objetivo_2->mostrar();
+    objetivo_3->mostrar();
+    objetivo_4->mostrar();
+
+}
+
+bool Jugador::checkear_objetivos(){
+    objetivo_1->calcular_progreso();
+    objetivo_2->calcular_progreso();
+    objetivo_3->calcular_progreso();
+    objetivo_4->calcular_progreso();
+    bool obj1, obj2, obj3, obj4;
+    obj1=objetivo_1->checkear();
+    obj2=objetivo_2->checkear();
+    obj3=objetivo_3->checkear();
+    obj4=objetivo_4->checkear();
+    return( obj1 || (obj2 && obj3) || (obj2 && obj4) || (obj3 && obj4) );
+}
+
+void Jugador::asignar_objetivo_1(Objetivo * objetivo){
+    this->objetivo_1 = objetivo;
+}
+
+void Jugador::asignar_objetivo_2(Objetivo * objetivo){
+    this->objetivo_2 = objetivo;
+}
+
+void Jugador::asignar_objetivo_3(Objetivo * objetivo){
+    this->objetivo_3 = objetivo;
+}
+
+void Jugador::asignar_objetivo_4(Objetivo * objetivo){
+    this->objetivo_4 = objetivo;
 }
