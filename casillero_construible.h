@@ -73,6 +73,8 @@ public:
     //Pre:
     //Post: muestra "soy un casillero construible" y si tiene_material_o_edificio()
     void mostrar();
+
+    void liberar_memoria();
 };
 
 

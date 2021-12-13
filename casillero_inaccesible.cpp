@@ -9,9 +9,7 @@ CasilleroInaccesible::CasilleroInaccesible(){
 }
 
 
-CasilleroInaccesible::~CasilleroInaccesible() {
-    
-}
+CasilleroInaccesible::~CasilleroInaccesible() {}
 
 bool CasilleroInaccesible::tiene_material_o_edificio(){
     return false;
@@ -59,3 +57,6 @@ void CasilleroInaccesible::reparar(Jugador* jugador){
 void CasilleroInaccesible::mostrar(){
     std::cout<<"Soy un casillero intransitable y me encuentro vacio"<<std::endl;
 }
+
+
+void CasilleroInaccesible::liberar_memoria() {}

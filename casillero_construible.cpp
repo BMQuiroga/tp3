@@ -30,7 +30,7 @@ CasilleroConstruible::CasilleroConstruible(){
 }
 
 CasilleroConstruible::~CasilleroConstruible() {
-    delete edificio;
+    liberar_memoria();
 }
 
 
@@ -161,4 +161,9 @@ void CasilleroConstruible::mostrar(){
     }
     else if (!tiene_material_o_edificio())
         std::cout <<"Soy un casillero construible y me encuentro vacio" <<std::endl;
+}
+
+void CasilleroConstruible::liberar_memoria() {
+    delete edificio;
+    edificio = NULL;
 }

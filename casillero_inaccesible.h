@@ -65,6 +65,9 @@ public:
     //Post: Muestra "soy un casillero inaccesible y me encuentro vacio"
     void mostrar();
 
+
+    void liberar_memoria();
+
 };
 
 
