@@ -11,9 +11,10 @@ private:
     int cantidad_bombas_necesarias;
     bool cumplio;
 public:
+    Armado(Jugador * jugador);
+    ~Armado();
 
     void mostrar();
-    Armado(Jugador * jugador);
     int calcular_progreso();
     bool checkear();
 };

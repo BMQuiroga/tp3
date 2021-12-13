@@ -10,9 +10,10 @@ private:
     int energia_minima;
     bool cumplio;
 public:
+    Cansado(Jugador * jugador);
+    ~Cansado();
 
     void mostrar();
-    Cansado(Jugador * jugador);
     int calcular_progreso();
     bool checkear();
 };

@@ -34,6 +34,8 @@ protected:
     int progreso;
     int objetivo;
 public:
+    Objetivo();
+    virtual ~Objetivo();
     std::string devolver_nombre(); //me tira error
     //virtual void mostrar() = 0;
 
@@ -45,13 +47,12 @@ public:
     // virtual int calcular_progreso() = 0;
     // virtual void actualizar(int valor)=0;
 
-    void mostrar();
+    virtual void mostrar() = 0;
     bool checkear();
-    int calcular_progreso();
+    virtual int calcular_progreso() = 0;
     void actualizar(int valor);
     void actualizar(std::string nombre, int valor);
 
-    virtual ~Objetivo() = default;
 };
 
 /*

@@ -4,6 +4,9 @@ const std::string PATH_EDIFICIOS =      "edificios.txt";
 const std::string PATH_UBICACIONES =    "ubicaciones.txt";
 const std::string PATH_MATERIALES =     "materiales.txt";
 
+
+Archivo::Archivo() {}
+
 void Archivo::leer_archivo(ifstream &archivo, std::string path) {
     archivo.open(path, ios::in);
 

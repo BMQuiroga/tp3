@@ -12,7 +12,7 @@ private:
 
 public:
     Bombardero();
-
+    ~Bombardero();
     void mostrar();
     int calcular_progreso();
     bool checkear();
