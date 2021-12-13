@@ -69,13 +69,12 @@ int main(){
 
     cout << "Limpieza" << endl;
     std::cout << "aca " <<std::endl;
+
     delete jugador1;
     delete jugador2;
-    delete mapa;
-    std::cout << "aca1 " <<std::endl;
-    edificios->destruir();
-    std::cout << "aca2 " <<std::endl;
     mapa->destruir();
+    std::cout << "aca1 " <<std::endl;
+    std::cout << "aca2 " <<std::endl;
     std::cout << "aca3 " <<std::endl;
     delete edificios;
     std::cout << "aca4 " <<std::endl;

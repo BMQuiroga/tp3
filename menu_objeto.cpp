@@ -78,7 +78,7 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
 
     Jugador** lista_jugadores = crear_cola_jugadores(jugador1, jugador2);
 
-    while(opcion != GUARDAR_Y_SALIR_PARTIDA) {
+    while(opcion != GUARDAR_Y_SALIR_PARTIDA && !lista_jugadores[RIVAL]->checkear_objetivos()) {
         while  (opcion != GUARDAR_Y_SALIR_PARTIDA && 
                 opcion != FINALIZAR_TURNO && 
                 lista_jugadores[JUGADOR]->devolver_energia() != 0  && 
@@ -94,13 +94,15 @@ void Menu::partida(/*ListaEdificios edificios, Mapa mapa, Jugador j, Jugador u*/
             mapa->llamar_lluvia(jugador1,jugador2);
             std::cout << "lluvia" << std::endl;
         }
-        if(lista_jugadores[JUGADOR]->checkear_objetivos())
-            secuencia_victoria(lista_jugadores[JUGADOR]);
         cambiar_turno(lista_jugadores);
         utilidad.limpiar_pantalla();
         if (opcion != GUARDAR_Y_SALIR_PARTIDA) opcion = -1;
     }
     
+    if(lista_jugadores[RIVAL]->checkear_objetivos()){
+        secuencia_victoria(lista_jugadores[RIVAL]);
+        //utilidad.pausa();
+    }
     delete [] lista_jugadores; //poner en otro lado
 }
 
