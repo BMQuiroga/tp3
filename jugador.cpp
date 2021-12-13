@@ -325,10 +325,15 @@ void Jugador::mostrar_objetivos(){/*
     this->objetivo_secundario[2]->mostrar();
 
 */
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_1->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_2->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_3->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
     objetivo_4->mostrar();
+    std::cout<<"---------------------------------------"<<std::endl;
 
 }
 

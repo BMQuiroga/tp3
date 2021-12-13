@@ -3,6 +3,7 @@ fabrica 10 99 500 1
 planta electrica 4 4 4 4
 mina 200 50 140 1
 mina oro 200 50 280 2
+obelisco 100 100 100 1
 aserradero 40 25 100 5
 escuela 45 125 140 2
 casa 100 100 0 2

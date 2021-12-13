@@ -26,17 +26,17 @@ Mapa::Mapa(int filas, int columnas) {
 
 Mapa::~Mapa() {
     cout << "Destructor mapa" << endl;
-    for (int i = 0; i < devolver_cantidad_filas(); i++) {
-        for(int j = 0; j < devolver_cantidad_columnas(); j++) {
+    for (int i = 0; i < coordenada_x; i++) {
+        for(int j = 0; j < coordenada_y; j++) {
             //cout << "Posicion: (" << i << ", " << j << ")" << endl;
             //  matriz[i][j]->liberar_memoria();
             delete matriz[i][j];
         }
         delete [] matriz[i];
-        matriz[i] = NULL;
+        //matriz[i] = NULL;
     }
     delete [] matriz;
-    matriz = NULL;
+    //matriz = NULL;
 }
 
 void Mapa::definir(int coordenada_x,int coordenada_y){
@@ -325,7 +325,7 @@ void Mapa::construir(ListaEdificios* edificios, Jugador* jugador, Jugador* rival
 
             if(!casillero_ocupado(jugador, coord_x, coord_y) && !casillero_ocupado(rival, coord_x, coord_y)){
                 if(coord_x >= 0 && coord_x < coordenada_x && coord_y >= 0 && coord_y < coordenada_y){
-                    if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T'){
+                    if(matriz[coord_x][coord_y] -> devolver_tipo() == 'T' && (!matriz[coord_x][coord_y] -> tiene_material_o_edificio())){
                         realizar_construccion(edificios,coord_x,coord_y,edificio,jugador);
                         matriz[coord_x][coord_y] -> cambiar_jugador(jugador->devolver_nombre());
                     }
