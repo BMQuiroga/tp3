@@ -20,6 +20,10 @@ Casillero::Casillero(int coord_x, int coord_y){
 
 }*/
 
+Casillero::Casillero() {}
+
+Casillero::~Casillero() {}
+
 void Casillero::setear_id(int id) {
     this->id = id;
 }

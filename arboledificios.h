@@ -19,6 +19,8 @@ public:
     //POS: -
     ArbolEdificios(/*Edificio edificio*/);
 
+    //PRE: -
+    //POS: -
     ~ArbolEdificios();
 
     //PRE: -

@@ -370,7 +370,10 @@ int Mapa::edificios_construidos(std::string nombre, Jugador* jugador){
     int contador = 0;
     for (int i = 0; i < coordenada_x; i++){
         for(int j = 0; j<coordenada_y; j++){
-            if(matriz[i][j]->devolver_material_o_edificio() == nombre && matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->devolver_jugador() == jugador->devolver_nombre())
+            if( matriz[i][j]->devolver_tipo() == 'T' && matriz[i][j]->tiene_material_o_edificio() && 
+                matriz[i][j]->devolver_material_o_edificio() == nombre && matriz[i][j]->devolver_tipo() == 'T' && 
+                matriz[i][j]->devolver_jugador() == jugador->devolver_nombre())
+
                 contador++;
         }
     }
@@ -393,16 +396,16 @@ void Mapa::realizar_construccion(ListaEdificios* edificios, int coord_x, int coo
 }
 
 void Mapa::listar_edificios_construidos(ListaEdificios* edificios, Jugador* jugador){
+    
     Edificio** array_edificios = edificios->devolver_todo();
 
-    for(int i = 0 ; i < edificios->devolver_cantidad()-1 ; i++){//
+    for(int i = 0 ; i < edificios->devolver_cantidad() - 1; i++){//
         std::string nombre = array_edificios[i]->devolver_nombre();
         int construidos = edificios_construidos(nombre, jugador);
         if (construidos){
             std::cout <<"Nombre: " <<nombre<<", Cantidad construida: " <<construidos <<std::endl;
             std::cout <<"Coordenadas:";
             mostrar_coordenadas(nombre, jugador);
-            
         } 
     }
     delete[] array_edificios;

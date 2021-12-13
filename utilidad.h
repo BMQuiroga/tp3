@@ -38,18 +38,21 @@ public:
     //post: Devuelve un numero aleatorio entre los valores seleccionados (no incluye el max)
     int generador_de_numeros_aleatorios(int min, int max);
 
-
+    //pre: -
+    //pos: convierte el string a entero y valida si se puede hacer
     int convertir_a_entero(std::string numero);
 
-
+    //pre: -
+    //pos: limpia la pantalla
     void limpiar_pantalla();
-
-
+    
+    //pre: -
+    //pos: pausa el juego
     void pausa();
 
+    void encuadrar(std::string texto);
 
-    void dormir();
-
+    void linea();
     
     int diccionario_materiales(std::string material);
 };

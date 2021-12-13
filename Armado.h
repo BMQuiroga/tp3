@@ -12,9 +12,25 @@ private:
     bool cumplio;
 public:
 
-    void mostrar();
+    //Pre: Recibe el jugador de la partida
+    //Pos: Inicializa los atributos, cant_bombas_necesarias = 10
     Armado(Jugador * jugador);
+
+    //Pre:-
+    //Pos:Destructor
+    ~Armado();
+
+    //Pre:-
+    //Pos:Muestra por pantalla el objetivo, cantidad de bombas del inventario,
+    //    si cumple el objetivo muestra que fue completado
+    void mostrar();
+
+    //Pre:-
+    //Pos: Retorna la cantidad de bombas
     int calcular_progreso();
+
+    //Pre:-
+    //Pos: Devuelve true si la cant de bombas es mayor o igual que 10 (bombas necesarias)
     bool checkear();
 };
 

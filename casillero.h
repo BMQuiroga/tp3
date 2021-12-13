@@ -24,17 +24,24 @@ protected:
     char letra;
     
 public:
+    //pre: -
+    //pos: -
+    Casillero();
 
-    Casillero() {};
-    // virtual ~Casillero()=0;
-    virtual ~Casillero() {};
+    //pre:
+    //pos:
+    virtual ~Casillero();
 
     //Pre:
     //Post:Retorna el tipo de casillero
     char devolver_tipo();
 
+    //pre: -
+    //pos: asigna un id al casillero
     void setear_id(int id);
 
+    //pre: -
+    //pos: devuelve el id del casillero
     int obtener_id();
     
     //Pre:
@@ -81,6 +88,8 @@ public:
     //Post: muestra el tipo de casillero y si tiene_material_o_edificio()
     virtual void mostrar() = 0;
 
+    //pre: - 
+    //pos: devuelve tipo de camino
     char devolver_tipo_camino();
 };
 

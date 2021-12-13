@@ -12,6 +12,8 @@ Bombardero::Bombardero() {
 
 }
 
+Bombardero::~Bombardero() {}
+
 void Bombardero::mostrar(){
     cout << "Bombardero: haber usado 5 bombas." << endl;
     cout << "Bombas usadas: " << calcular_progreso() << "/5" << endl;

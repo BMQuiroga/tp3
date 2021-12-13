@@ -68,7 +68,7 @@ bool Utilidad::pedir_confirmacion() {
 int Utilidad::pedir_opcion() {
     std::string opcion;
 
-    std::cout << "Ingrese una opcion: " << std::endl;
+    std::cout << "Ingrese una opcion: " ;
     std::cin >> opcion;
 
     while (!this->es_numero(opcion))
@@ -107,6 +107,35 @@ void Utilidad::limpiar_pantalla() {
 
 void Utilidad::pausa() {
     system(PAUSE);
+}
+
+void Utilidad::linea() {
+    std::cout << "-------------------------------------------" << std::endl;
+}
+
+
+void Utilidad::encuadrar(std::string texto) {
+    char esq_sup_izq = (char) 201;
+    char esq_sup_der = (char) 187;
+    char esq_inf_der = (char) 188;
+    char esq_inf_izq = (char) 200;
+    char horizontal = (char) 205;
+    char vertical = (char) 186;
+
+    std::cout << esq_sup_izq;
+    for (int i = 0; i < (int) texto.length() + 4; i++) {
+        std::cout << horizontal;
+    }
+    std::cout << esq_sup_der;
+    std::cout << std::endl;
+    std::cout << vertical << "  " << texto << "  " << vertical;
+    std::cout << std::endl;
+    std::cout << esq_inf_izq;
+    for (int i = 0; i < (int) texto.length() + 4; i++) {
+        std::cout << horizontal;
+    }
+    std::cout << esq_inf_der;
+    std::cout << std::endl;
 }
 
 int Utilidad::diccionario_materiales(std::string material){

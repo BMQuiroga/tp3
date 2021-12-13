@@ -13,6 +13,8 @@ Armado::Armado(Jugador *jugador) {
     this->cumplio = false;
 }
 
+Armado::~Armado() {}
+
 bool Armado::checkear() {
     if (this->cantidad_bombas >= this->cantidad_bombas_necesarias){
         this->cumplio = true;

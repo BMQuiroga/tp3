@@ -32,6 +32,9 @@ std::string LISTA_OBJETIVOS [11] = { // NO CAMBIAR DE ORDEN
     "Más alto que las nubes: construir el obelisco.",
 };
 
+Objetivo::Objetivo() {}
+
+Objetivo::~Objetivo() {}
 
 bool Objetivo::checkear(){
     return false;
@@ -45,6 +48,7 @@ std::string Objetivo::devolver_nombre() {
 void Objetivo::actualizar(int valor) {
     
 }
+
 
 /*
 void Objetivo::mostrar() {

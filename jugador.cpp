@@ -40,7 +40,7 @@ void Jugador::mover_gratis(int x, int y){
 }
 
 
-void Jugador::mover_jugador(Mapa* mapa) {
+void Jugador::mover_jugador(Mapa* mapa, Jugador* rival) {
     Utilidad util;
     int destino_x, destino_y;
 
@@ -51,7 +51,9 @@ void Jugador::mover_jugador(Mapa* mapa) {
     destino_y = mapa->pedir_columna();                          std::cout << std::endl;
 
     int costo = grafo->devolver_costo(this->coordenada_x, this->coordenada_y, destino_x, destino_y);
-    bool recorrido_valido = grafo->es_recorrido_valido(this->coordenada_x, this->coordenada_y, destino_x, destino_y, costo);
+    
+    bool recorrido_valido = (grafo->es_recorrido_valido(this->coordenada_x, this->coordenada_y, destino_x, destino_y, costo)) &&
+                            (rival->devolver_coordenada_x() != destino_x && rival->devolver_coordenada_y() != destino_y); 
 
     if (recorrido_valido) {
         std::cout << "Hacer este recorrido cuesta " << costo << " de energia." << std::endl;
@@ -110,22 +112,11 @@ void Jugador::comprar_bombas(){
 }
 
 
-// void Jugador::operacion_bombas(int valor) {
-//     this->materiales->obtener_nodo(materiales->buscar_indice("bombas"))->obtener_dato().operator+(valor);
-
-// }
-
-GrafoMapa* Jugador::movimiento() {
-    return grafo;
-}
-
 ListaMateriales* Jugador::devolver_materiales(){
     return this->materiales;
 }
 
-// ListaMateriales Jugador::devolver_materiales() {
-//     return this->materiales;
-// }
+
 
 int Jugador::devolver_nombre(){
     return this->nombre;
@@ -158,7 +149,7 @@ void Jugador::restar_energia(int numero){
     this->energia-=numero;
 }
 
-
+/*
 void Jugador::asignar_objetivos(ListaEdificios* edificios, Mapa * mapa) {
     int a=0;
     int b=0;
@@ -179,7 +170,7 @@ void Jugador::asignar_objetivos(ListaEdificios* edificios, Mapa * mapa) {
     std::cout << "acaoleisco"<< std::endl;
     this->objetivo_1 = new Obelisco(edificios,mapa,this);
 }
-
+*/
 /*
 void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 
@@ -188,8 +179,8 @@ void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
 
 }*/
 
-
- Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios * edificios, Mapa * mapa) {
+/*
+Objetivo* Jugador::crear_objetivo(int numero_objetivo, ListaEdificios * edificios, Mapa * mapa) {
     Objetivo* nuevo_objetivo=nullptr;
     switch (numero_objetivo){
     case OBJ_COMPRAR_ANDYPOLIS:
@@ -226,7 +217,7 @@ void Jugador::asignar_objetivos_aleatorios(ListaObjetivos vector_objetivos) {
         break;
     }
     return nuevo_objetivo;
-}
+}*/
 /*
 void Jugador::actualizar_objetivo(int numero_objetivo, int valor) {
    

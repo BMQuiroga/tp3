@@ -46,7 +46,8 @@ public:
     //POS: A la cantidad del material, le resta un numero
     void restar_cantidad(int d);
 
-
+    //PRE: -
+    //POS: da de baja el nodo
     void baja();
 };
 

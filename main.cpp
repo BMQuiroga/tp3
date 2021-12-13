@@ -1,6 +1,7 @@
 #include <iostream>
 #include "menu_objeto.h"
 #include "archivo.h"
+#include "utilidad.h"
 
 using namespace std;
 
@@ -13,15 +14,14 @@ int main(){
     edificios->procesar_archivo_edificios();      
 
     ListaMateriales materiales1, materiales2;
+
     archivo.procesar_archivo_materiales(materiales1,materiales2);   //tuve que hacerlo asi porque sino perdia scope las variables y me devolvia 0 el primer puntero
     
     Mapa* mapa = archivo.procesar_archivo_mapa();
 
     Jugador* jugador1 = new Jugador(1,1,1, edificios, mapa);
     Jugador* jugador2 = new Jugador(2,2,2, edificios, mapa);
-    //std::cout << "aca" << std::endl;
     mapa->procesar_archivo_ubicaciones(edificios, jugador1, jugador2);
-    //std::cout << "aca" << std::endl;
     jugador1->asignar_lista_materiales(&materiales1);
     jugador2->asignar_lista_materiales(&materiales2);
     // Jugador jugador1(1,1,1, edificios, mapa);
@@ -53,8 +53,10 @@ int main(){
     else{
         int opcion_elegida;
         do{
-            cout<< "Bienvenido a Andypolis :D !" << endl;
+            util.encuadrar("Bienvenido a Andypolis :D !");
+            cout << endl;
             cout << "Escriba una opcion" <<endl;
+            cout << endl;
             menu.mostrar_menu();
             opcion_elegida = util.pedir_opcion();
             menu.procesar_opcion_menu(opcion_elegida);

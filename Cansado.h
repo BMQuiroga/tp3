@@ -11,9 +11,24 @@ private:
     bool cumplio;
 public:
 
-    void mostrar();
+    //Pre: Recibe el jugador de la partida
+    //Pos: Inicializa los atributos, energia minima = 0
     Cansado(Jugador * jugador);
+
+    //Pre:-
+    //Pos: Destructor
+    ~Cansado();
+
+    //Pre:-
+    //Pos: Muestra por pantalla el objetivo, y si lo cumple muestra que fue completado
+    void mostrar();
+
+    //Pre:
+    //Pos:
     int calcular_progreso();
+
+    //Pre:
+    //Pos:Retorna true si la energia es igual a 0
     bool checkear();
 };
 
